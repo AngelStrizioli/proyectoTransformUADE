@@ -14,8 +14,8 @@ import TipoDeMaterial from './components/TipoDeMaterial';
 import ReciclableSioNo from './components/ReciclableSioNo';
 import IdeaSimple from './components/IdeaSimple';
 import ApiController from './controller/ApiController';
-import MaterialCompleto from './components/MaterialCompleto'
-import EventoSimple from './components/Eventos/EventoSimple'
+import MaterialCompleto from './components/MaterialCompleto';
+import ListaEventos from './components/Eventos/ListaEventos';
 
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
@@ -210,8 +210,8 @@ const navigatorr = createDrawerNavigator({
   TodosLosMateriales: {
     screen: TodosLosMateriales,
   },
-  EventoSimple: {
-    screen: EventoSimple
+  ListaEventos: {
+    screen: ListaEventos
   }
 });
 

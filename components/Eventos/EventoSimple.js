@@ -7,15 +7,6 @@ import  MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 const { width } = Dimensions.get('window');
 
 class EventoSimple extends React.Component {
-
-  static navigationOptions = {
-    title: 'Todos los eventos',
-    header: null,
-    drawerIcon: ({ focused }) => (
-      <Ionicons name="md-globe" size={24} color={focused ? '#00B2FF' : 'black'} />
-    ),
-  };
-
   constructor(props) {
     super(props);
   }
@@ -76,7 +67,7 @@ class EventoSimple extends React.Component {
                 descripcion={"You shall not pass!!!"}
                 />
           </MapView>
-          </View>
+        </View>
       </ScrollView>
     );
   }

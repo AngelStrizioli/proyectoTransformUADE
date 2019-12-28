@@ -13,12 +13,12 @@ class ItemListaEventos extends React.Component {
     return(
       <TouchableOpacity>
         <ImageBackground
-          source={{uri: 'https://www.diariodecultura.com.ar/wp-content/uploads/2019/05/cultura-5.jpg'}}
+          source={{uri: this.props.backgroundImage}}
           style={styles.backgroundImage}>
           <View style={styles.container}>
             <View style={styles.containerItems}>
-                <Text style={styles.itemEventoTitulo}>TITULO DE EVENTO </Text>
-                <Text style={styles.itemEventoDesc}>Descripcion corta del evento Descripcion corta del evento</Text>
+                <Text style={styles.itemEventoTitulo}>{this.props.tittle}</Text>
+                <Text style={styles.itemEventoDesc}>{this.props.subTittle}</Text>
             </View>
             <View style={styles.containerIcono}>
               <Ionicons name="md-arrow-round-forward" size={28} color={'#FFFFFF'} />

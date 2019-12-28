@@ -17,6 +17,8 @@ import ApiController from './controller/ApiController';
 import MaterialCompleto from './components/MaterialCompleto';
 import ListaEventos from './components/Eventos/ListaEventos';
 
+//import EventoSimple from './components/Eventos/EventoSimple';
+
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
 
@@ -140,7 +142,6 @@ const styles = StyleSheet.create({
     // https://www.color-hex.com/ pag util para ver y hacer colores en hexa por si no sabemos el nombre en palabras
     backgroundColor: '#00B2FF',
     justifyContent: 'center',
-
   },
   inputSize: {
     //estas dos lineas sirven para que quede todo centrado

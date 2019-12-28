@@ -29,16 +29,15 @@ class ImageCarousel extends Component {
           source={{ uri: uri }}
           style={styles.imageBackground}
         >
-
+          
         </ImageBackground>
-
+        
       </TouchableOpacity>
     );
   };
 
   render() {
       const album = this.props.album;
-
       const data = album.map((url) =>{
         return {uri: url}
     });

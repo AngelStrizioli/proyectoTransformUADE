@@ -39,7 +39,6 @@ export default class ListaIdeas extends React.Component {
     }
     ApiController.getPosteosByProd(this.okBusqueda2.bind(this),data);
   }
-
   //transformo los datos recibidos de la BD en un array de productos
   okBusqueda2(newData) {
     var i, newArray = [];

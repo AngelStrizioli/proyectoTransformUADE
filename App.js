@@ -14,8 +14,10 @@ import TipoDeMaterial from './components/TipoDeMaterial';
 import ReciclableSioNo from './components/ReciclableSioNo';
 import IdeaSimple from './components/IdeaSimple';
 import ApiController from './controller/ApiController';
-import MaterialCompleto from './components/MaterialCompleto'
-import EventoSimple from './components/Eventos/EventoSimple'
+import MaterialCompleto from './components/MaterialCompleto';
+import ListaEventos from './components/Eventos/ListaEventos';
+import Instructivo from './components/Instructivo';
+//import EventoSimple from './components/Eventos/EventoSimple';
 
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
@@ -140,14 +142,11 @@ const styles = StyleSheet.create({
     // https://www.color-hex.com/ pag util para ver y hacer colores en hexa por si no sabemos el nombre en palabras
     backgroundColor: '#00B2FF',
     justifyContent: 'center',
-
   },
   inputSize: {
     //estas dos lineas sirven para que quede todo centrado
-
     flexDirection: 'row',
     justifyContent: 'center',
-
   },
   inputDesigne: {
     height: 48,
@@ -158,11 +157,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 40,
     paddingLeft: '5%',
-    //textAlign: 'center',
-    //fontFamily:'montserrat',
     fontSize: 16,
-    //el width podemos poner en pixeles y va a estar fijo para todos los dispositivos pero  si la pantalla
-    //es muy grande se ve medio peque. SI lo ponemos en porcentaje, en pantallas grandes se ve MUY grande
     width: 280
   },
   buttonSize: {
@@ -178,15 +173,9 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     backgroundColor: 'white',
     color: "#00B2FF",
-
     fontSize: 24,
     fontWeight: 'normal',
-    // fontFamily:'SFUIDisplay-Medium',
     borderRadius: 50, //android
-
-   // overflow: 'hidden',
-
-
     textAlign: "center",
     elevation: 2,//android
     shadowColor: 'rgba(0,0,0, .25)', // IOS
@@ -210,8 +199,11 @@ const navigatorr = createDrawerNavigator({
   TodosLosMateriales: {
     screen: TodosLosMateriales,
   },
-  EventoSimple: {
-    screen: EventoSimple
+  ListaEventos: {
+    screen: ListaEventos
+  },
+  Instructivo: {
+    screen: Instructivo,
   }
 });
 

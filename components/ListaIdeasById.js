@@ -6,12 +6,12 @@ import ApiController from '../controller/ApiController'
 
 // Funcion que crea la data necesaria de los posteos, hay que cambiarla
 // porque el schema de los posteos va a cambiar segun matias ezequiel panza
-function createData(item,idArray) 
+function createData(item,idArray)
 {
-  return { id : idArray, 
+  return { id : idArray,
     id: item.id,
     titulo: item.titulo,
-    tipo: item.tipo, 
+    tipo: item.tipo,
     video: item.video,
     img: item.img,
     album: item.album,
@@ -27,13 +27,13 @@ function createData(item,idArray)
 }
 
 export default class ListaIdeas extends React.Component {
-    constructor (props) {
-        super(props)
-        this.state = { ideas : [] }
-    }
-  
-   componentDidMount() {
-    //Leo los productos de la API BD
+  constructor (props) {
+    super(props)
+    this.state = { ideas : [] }
+  }
+
+  //Leo los productos de la API BD
+  componentDidMount() {
     let data = {
       id: this.props.id
     }
@@ -48,21 +48,19 @@ export default class ListaIdeas extends React.Component {
     this.setState({ ideas: newArray });
   }
 
-    _renderItems(){
-        return this.state.ideas.map((item) => <ItemListaIdeas key={item.id} idea={item} navigation={this.props.navigation}></ItemListaIdeas> );
-        {/* <ItemListaIdeas idea={item}></ItemListaIdeas> */}
+  _renderItems(){
+    return this.state.ideas.map((item) => <ItemListaIdeas key={item.id} idea={item} navigation={this.props.navigation}></ItemListaIdeas> );
+  }
 
-
+  render() {
+    if (this.state.ideas.length > 0) {
+      return (
+        <View style={{flex:1}}>
+          {this._renderItems()}
+        </View>
+      )
+    } else {
+      return <Text className="text-center">Cargando Ideas...</Text>
     }
-    render() {
-            if (this.state.ideas.length > 0) {
-              return (
-                <View style={{flex:1}}>
-                 {this._renderItems()}
-                </View>
-              )
-            } else {
-              return <Text className="text-center">Cargando Ideas...</Text> 
-            }
-          }
+  }
 }

@@ -38,7 +38,6 @@ class ImageCarousel extends Component {
 
   render() {
       const album = this.props.album;
-      
       const data = album.map((url) =>{
         return {uri: url}
     });

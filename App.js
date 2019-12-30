@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -16,27 +16,29 @@ import IdeaSimple from './components/IdeaSimple';
 import ApiController from './controller/ApiController';
 import MaterialCompleto from './components/MaterialCompleto'
 import EventoSimple from './components/Eventos/EventoSimple'
+import ListaEventos from './components/Eventos/ListaEventos';
+import CardsProductos from './components/CardsProductos'
 
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
 
-    class LogoHeader extends React.Component {
-      render() {
-        return (
-          <View style={{ alignSelf: 'center', flex: 1 }}>
-            <Image
-              resizeMode="cover"
-              source={require("./assets/images/LogoHorizontal.png")}
-              style={{
-                width: 240,
-                height: 50,
-                resizeMode: 'contain',
-              }}
-            />
-          </View>
-        );
-      }
-    }
+class LogoHeader extends React.Component {
+  render() {
+    return (
+      <View style={{ alignSelf: 'center', flex: 1 }}>
+        <Image
+          resizeMode="cover"
+          source={require("./assets/images/LogoHorizontal.png")}
+          style={{
+            width: 240,
+            height: 50,
+            resizeMode: 'contain',
+          }}
+        />
+      </View>
+    );
+  }
+}
 
 
 class App extends React.Component {
@@ -48,31 +50,33 @@ class App extends React.Component {
     ),
   };
 
- constructor(props) {
-  super(props);
-  this.state = {
-    nombreProducto:'',
-  };
-}
+  constructor(props) {
+    super(props);
+    this.state = {
+      nombreProducto: '',
+    };
+  }
 
- ObtenerDatosProd (newData){
-  //console.log(newData)
-  this.setState({ productos: newData })
+  ObtenerDatosProd(newData) {
+    //console.log(newData)
+    this.setState({ productos: newData })
     // aca empieza la navegacion
     this.fetchObjetos
-    if(this.state.productos.length>1){
+    if (this.state.productos.length > 1) {
       this.props.navigation.navigate('ResultadoProductoMultiple',
-    { productos: this.state.productos,
-      busqueda: this.state.busqueda})
-    }else{
-      if(this.state.productos.length==0){
+        {
+          productos: this.state.productos,
+          busqueda: this.state.busqueda
+        })
+    } else {
+      if (this.state.productos.length == 0) {
         alert("no se encontraron productos con este nombre: " + this.state.nombreProducto)
-    }else{
-      this.props.navigation.navigate('ResultadoProductoUnico',
-      { producto: this.state.productos[0]})
+      } else {
+        this.props.navigation.navigate('ResultadoProductoUnico',
+          { producto: this.state.productos[0] })
+      }
     }
-    }
- }
+  }
 
   onClickListener = () => {
     // funcion que llama al back para traer los productos cuando apretas el boton
@@ -80,54 +84,81 @@ class App extends React.Component {
     let data = {
       name: this.state.nombreProducto
     }
-    ApiController.getProductosByNombre(data,this.ObtenerDatosProd.bind(this));
+    ApiController.getProductosByNombre(data, this.ObtenerDatosProd.bind(this));
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={{
-          height: 70,
-          flexDirection: 'row',
-          justifyContent: 'flex-start',
-          alignItems: 'center'
-        }}>
-          <TouchableOpacity style={{ marginLeft: 10, marginBottom:'85%'}}
-            onPress={() => { this.props.navigation.toggleDrawer(); }}>
+      <ScrollView style={{ backgroundColor: '#00B2FF' }}>
+        <View style={styles.container}>
+          <View style={{
+            height: 70,
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            alignItems: 'center'
+          }}>
+            <TouchableOpacity style={{ marginLeft: 10, marginTop: '10%' }}
+              onPress={() => { this.props.navigation.toggleDrawer(); }}>
 
-            <Ionicons name="md-menu" size={32} color={'white'} />
+              <Ionicons name="md-menu" size={32} color={'white'} />
 
-          </TouchableOpacity>
-        </View>
-        <View style={styles.inputSize}>
-          <Image source={require("./assets/images/vectorpaint.png")} style={{ height: 142, width: 240, marginTop: -40 }} />
-        </View>
-        <View style={styles.inputSize}>
-          <TextInput
-            style={styles.inputDesigne}
-            editable
-            maxLength={32}
-            placeholder="¿Qué querés buscar?"
-            placeholderTextColor="#6DCAF2"
-            onChangeText = {(name) => this.setState({nombreProducto:name})}
-            value = {this.state.name}
-
-          />
-        </View>
-        <View>
-          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-            <TouchableOpacity onPress={this.onClickListener } >
-
-              <Text style={styles.buttonDesigne } >
-                ¡Transformalo!
-              </Text>
             </TouchableOpacity>
-            {/* Este view es para el boton de debug de las clases  */}
           </View>
-          <View style={{ flexDirection: 'row', justifyContent: 'center', }}/>
-          <View style={{ flexDirection: 'row', justifyContent: 'center', }}/>
+          <View style={styles.inputSize}>
+            <Image source={require("./assets/images/LogoHorizontal.png")} style={{
+              width: 320,
+              height: 70,
+              resizeMode: 'contain',
+            }} />
+          </View>
+
+          <View style={styles.inputSize} marginTop='4%'>
+            <Text style={styles.subtitleStyle}>Aprendé a transformar estos productos:</Text>
+          </View>
+
+          <View style={styles.inputSize}>
+            <View style={{ marginBottom: '5%', marginHorizontal: '2%' }}>
+              <CardsProductos navigation={this.props.navigation}></CardsProductos>
+            </View>
+          </View>
+
+          <View style={styles.inputSize}>
+            <Text style={styles.subtitleStyle}>O ingresá el producto que quieras:</Text>
+          </View>
+
+          <View style={styles.inputSize}>
+            <TextInput
+              style={styles.inputDesigne}
+              editable
+              maxLength={32}
+              placeholder="Ej: Lata, yerba, CD..."
+              placeholderTextColor="#6DCAF2"
+              onChangeText={(name) => this.setState({ nombreProducto: name })}
+              value={this.state.name}
+
+            />
+          </View>
+          <View>
+            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+              <TouchableOpacity onPress={this.onClickListener} >
+
+                <Text style={styles.buttonDesigne} >
+                  ¡Transformalo!
+              </Text>
+              </TouchableOpacity>
+              {/* Este view es para el boton de debug de las clases  */}
+            </View>
+
+            <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: '6%'}}>
+              <Text style={styles.titleStyle}>Eventos patrocinados:</Text>
+            </View>
+            <View style={{ marginTop: '1%', marginBottom: '3%'}}>
+              <ListaEventos navigation={this.props.navigation}></ListaEventos>
+            </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', }} />
+          </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -156,7 +187,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     color: '#00B2FF',
     borderRadius: 5,
-    marginTop: 40,
     paddingLeft: '5%',
     //textAlign: 'center',
     //fontFamily:'montserrat',
@@ -184,7 +214,7 @@ const styles = StyleSheet.create({
     // fontFamily:'SFUIDisplay-Medium',
     borderRadius: 50, //android
 
-   // overflow: 'hidden',
+    // overflow: 'hidden',
 
 
     textAlign: "center",
@@ -193,7 +223,24 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 3, width: 3 }, // IOS
     shadowOpacity: 1, // IOS
     shadowRadius: 1, //IOS
+  },
+  titleStyle: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 24,
+    marginVertical: '2%',
+    color: 'white'
+
+  },
+  subtitleStyle: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 18,
+    marginVertical: '2%',
+    color: 'white'
   }
+
+
 
 });
 
@@ -230,27 +277,27 @@ const bootRoot = createStackNavigator({
   ItemListaIdeas: {
     screen: ItemListaIdeas,
   },
-  IdeaSimple:{
+  IdeaSimple: {
     screen: IdeaSimple,
   },
-  ResultadoProductoUnico:{
+  ResultadoProductoUnico: {
     screen: ResultadoProductoUnico,
   },
-  MaterialCompleto:{
+  MaterialCompleto: {
     screen: MaterialCompleto,
   },
-  TipoDeMaterial:{
-    screen:TipoDeMaterial,
+  TipoDeMaterial: {
+    screen: TipoDeMaterial,
   },
-  ReciclableSioNo:{
-    screen:ReciclableSioNo,
+  ReciclableSioNo: {
+    screen: ReciclableSioNo,
   },
-  IdeasGuardadas:{
-    screen:IdeasGuardadas,
+  IdeasGuardadas: {
+    screen: IdeasGuardadas,
   }
 
-},{
-  defaultNavigationOptions:{
+}, {
+  defaultNavigationOptions: {
     headerTitle: () => <LogoHeader />,
 
     headerStyle: {

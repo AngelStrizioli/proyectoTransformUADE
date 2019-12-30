@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, StyleSheet, Image, View } from 'react-native';
 import ApiController from '../../controller/ApiController';
 import BotonEvento from './BotonEvento'
 
-export default class ListaEventos extends Component {
+export default class EventosPatrocinados extends Component {
 
     constructor(props){
         super(props);

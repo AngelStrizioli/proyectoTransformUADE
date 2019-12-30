@@ -15,9 +15,9 @@ import ReciclableSioNo from './components/ReciclableSioNo';
 import IdeaSimple from './components/IdeaSimple';
 import ApiController from './controller/ApiController';
 import MaterialCompleto from './components/MaterialCompleto'
-import EventoSimple from './components/Eventos/EventoSimple'
-import ListaEventos from './components/Eventos/ListaEventos';
+import EventosPatrocinados from './components/Eventos/EventosPatrocinados';
 import CardsProductos from './components/CardsProductos'
+import EventoSimple from './components/Eventos/EventoSimple'
 
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
@@ -153,7 +153,7 @@ class App extends React.Component {
               <Text style={styles.titleStyle}>Eventos patrocinados:</Text>
             </View>
             <View style={{ marginTop: '1%', marginBottom: '3%'}}>
-              <ListaEventos navigation={this.props.navigation}></ListaEventos>
+              <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'center', }} />
           </View>

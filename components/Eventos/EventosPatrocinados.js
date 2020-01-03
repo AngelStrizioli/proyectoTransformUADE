@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, TouchableOpacity, StyleSheet, Image, View } from 'react-native';
 import ApiController from '../../controller/ApiController';
-import BotonEvento from './BotonEvento'
+import ItemListaEventos from './ItemListaEventos'
 
 export default class EventosPatrocinados extends Component {
 
@@ -22,10 +22,10 @@ export default class EventosPatrocinados extends Component {
       
         if(this.state.cargado){
             return(
-              this.state.eventos.map((evento) => {
+              this.state.eventos.map((evento, i) => {
                 return(
-                  <BotonEvento key={evento._id} evento={evento}></BotonEvento>
-                )
+                  <ItemListaEventos key={i} backgroundImage={evento.img} evento={evento} navigation={this.props.navigation}/>
+                  )
               })
             )
           }else{

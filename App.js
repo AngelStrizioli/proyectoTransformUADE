@@ -18,9 +18,9 @@ import MaterialCompleto from './components/MaterialCompleto'
 import EventosPatrocinados from './components/Eventos/EventosPatrocinados';
 import CardsProductos from './components/CardsProductos'
 //import EventoSimple from './components/Eventos/EventoSimple'
-import MaterialCompleto from './components/MaterialCompleto';
 import ListaEventos from './components/Eventos/ListaEventos';
 import Instructivo from './components/Instructivo';
+import EventoSimple from './components/Eventos/EventoSimple';
 //import EventoSimple from './components/Eventos/EventoSimple';
 
 /* ### PÁGINA INICIAL ###
@@ -116,7 +116,7 @@ class App extends React.Component {
             }} />
           </View>
 
-          <View style={styles.inputSize} marginTop='4%'>
+          <View style={{marginTop:'5%'}}>
             <Text style={styles.subtitleStyle}>Aprendé a transformar estos productos:</Text>
           </View>
 
@@ -153,10 +153,10 @@ class App extends React.Component {
               {/* Este view es para el boton de debug de las clases  */}
             </View>
 
-            <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: '6%'}}>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: '6%' }}>
               <Text style={styles.titleStyle}>Eventos patrocinados:</Text>
             </View>
-            <View style={{ marginTop: '1%', marginBottom: '3%'}}>
+            <View style={{ marginTop: '2%'}}>
               <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'center', }} />
@@ -220,8 +220,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
     marginVertical: '2%',
-    color: 'white'
-
+    color: 'white',
+    textShadowColor: 'rgba(0, 0, 0, 0.25)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 1
   },
   subtitleStyle: {
     textAlign: 'center',
@@ -288,6 +290,9 @@ const bootRoot = createStackNavigator({
   },
   IdeasGuardadas: {
     screen: IdeasGuardadas,
+  },
+  EventoSimple:{
+    screen: EventoSimple
   }
 
 }, {

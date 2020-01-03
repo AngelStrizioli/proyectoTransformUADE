@@ -106,7 +106,7 @@ class ApiController extends Component
     }
 
     getEventos(devolverDatos){
-        const endpoint = `${url}${urlGetEventos}`;
+        const endpoint = `${urlLocal}${urlGetEventos}`;
         console.log("Buscando eventos")
        fetch(endpoint,{
             method: 'GET', // or 'PUT'

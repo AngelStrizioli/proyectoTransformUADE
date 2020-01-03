@@ -30,7 +30,7 @@ const data = [
       content: 'Aqui podras encontrar la informacion de tu producto y seleccionar la opcion que prefieras'
     },
     {
-      uri: 'https://i.pinimg.com/474x/24/c4/6d/24c46da58bab13abf3b61be7ec9d983c.jpg',
+      uri: 'https://i.imgur.com/SD3s2OU.jpg',
       title: 'Paso 4',
       content: 'Presiona el botón "Mas Info.." para obtener informacion sobre los materiales que componen el producto'
     },

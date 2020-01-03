@@ -47,9 +47,9 @@ class ResultadoProductoMultiple extends React.Component {
         </View>
         
         <View style={styles.buttonPosition}>
-          <TouchableOpacity style={{marginTop: 80, marginEnd:'5%'}} onPress={() => { this.props.navigation.goBack()}}>
+          <TouchableOpacity  style={styles.botonLargo}  onPress={() => { this.props.navigation.goBack()}}>
             <View style={{justifyContent:'center'}}>
-              <Text style={styles.buttonDesigne} >
+              <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>
               <Ionicons name="md-arrow-round-back" size={24} color={'white'} />
                        Buscar otra cosa...
                 </Text>
@@ -94,6 +94,24 @@ const styles = StyleSheet.create({
     //fontWeight: "bold"
     //marginVertical:'10%',
     marginBottom:'5%',
+  },
+  botonLargo:{
+    backgroundColor: '#00B2FF',
+    elevation: 2,
+    shadowColor: 'rgba(0,0,0, .25)', 
+    shadowOffset: { height: 3, width: 3 }, 
+    shadowOpacity: 1, 
+    shadowRadius: 2,
+    borderRadius: 70,
+    justifyContent:'center',
+    textAlignVertical: 'center',
+    alignSelf: 'center',
+    width: 250,
+    height: 50,
+    marginTop: 50,
+    marginBottom:20
+
+
   }
 
 })

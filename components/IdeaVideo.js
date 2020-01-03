@@ -41,8 +41,8 @@ class IdeaVideo extends React.Component{
                  {this.cambiarBoton()}
 
                <View style={styles.compoPosition}>
-                   <TouchableOpacity  onPress={() => { navigation.goBack()}} >
-                       <Text style={styles.buttonDesigne} >
+                   <TouchableOpacity style={styles.botonLargo} onPress={() => { navigation.goBack()}} >
+                       <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}} >
                            Volver
                        </Text>
                    </TouchableOpacity>
@@ -93,8 +93,11 @@ class IdeaVideo extends React.Component{
           
           return (
               <View style={styles.compoPosition}>
-                <TouchableOpacity  onPress={() => this._storeData()} >
-                  <Text style={styles.buttonPressed} >
+                <TouchableOpacity style={styles.buttonPressed}  onPress={() => this._storeData()} >
+                  <Text style={{  color: "#00B2FF",
+        fontSize: 24,
+        textAlign: "center",
+        textAlignVertical: 'center',}} >
                     ¡Guardado!
                   </Text>
                 </TouchableOpacity>
@@ -103,8 +106,8 @@ class IdeaVideo extends React.Component{
       }else{
           return(
               <View style={styles.compoPosition}>
-                <TouchableOpacity  onPress={() => this._storeData()} >
-                  <Text style={styles.buttonDesigne} >
+                <TouchableOpacity style={styles.botonLargo} onPress={() => this._storeData()} >
+                  <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>
                     Guardar para después
                   </Text>
                 </TouchableOpacity>
@@ -143,6 +146,7 @@ const styles = StyleSheet.create({
       compoPosition: {
         flexDirection: 'row',
         justifyContent: 'center',
+        marginBottom:20
       },
       buttonDesigne: {
         color: "white",
@@ -153,20 +157,35 @@ const styles = StyleSheet.create({
         width: 300,
         height: 55,
         borderRadius: 50,
-        marginBottom:'5%'
+        marginBottom:'5%',
+        alignSelf:'center'
 
-      }, buttonPressed:{
-        color: "#00B2FF",
-        fontSize: 24,
-        textAlign: "center",
+      },
+      botonLargo:{
+        backgroundColor: '#00B2FF',
+        elevation: 2,
+        shadowColor: 'rgba(0,0,0, .25)', 
+        shadowOffset: { height: 3, width: 3 }, 
+        shadowOpacity: 1, 
+        shadowRadius: 2,
+        borderRadius: 70,
+        justifyContent:'center',
         textAlignVertical: 'center',
-        backgroundColor: 'white',
-        width: 300,
-        height: 55,
-        borderRadius: 50,
-        borderColor: '#00B2FF',
-        borderWidth: 4,
-        marginBottom:'5%'
+        alignSelf: 'center',
+        width: 250,
+        height: 50,
+      }
+  , buttonPressed:{
+      
+    textAlign: "center",
+    textAlignVertical: 'center',
+    backgroundColor: 'white',
+    width: 300,
+    height: 55,
+    borderRadius: 50,
+    borderColor: '#00B2FF',
+    borderWidth: 4,
+    
       },
       imagenVideoStyle:{
         height: 200,

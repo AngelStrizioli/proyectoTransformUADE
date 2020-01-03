@@ -1,8 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, ScrollView } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createDrawerNavigator, DrawerNavigatorItems } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import IdeasGuardadas from './components/IdeasGuardadas';
 import ItemListaIdeas from './components/ItemListaIdeas';
@@ -17,6 +17,7 @@ import ApiController from './controller/ApiController';
 import MaterialCompleto from './components/MaterialCompleto';
 import ListaEventos from './components/Eventos/ListaEventos';
 import Instructivo from './components/Instructivo';
+import PerfilUsuario from './components/PerfilUsuario';
 //import EventoSimple from './components/Eventos/EventoSimple';
 
 /* ### PÁGINA INICIAL ###
@@ -43,7 +44,7 @@ import Instructivo from './components/Instructivo';
 
 class App extends React.Component {
   static navigationOptions = {
-    title: 'Transform',
+    title: 'Volver al inicio',
     header: null,
     drawerIcon: ({ focused }) => (
       <Ionicons name="md-arrow-round-back" size={24} color={focused ? '#00B2FF' : 'black'} />
@@ -116,19 +117,17 @@ class App extends React.Component {
 
           />
         </View>
-        <View>
-          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-            <TouchableOpacity onPress={this.onClickListener } >
+      
+          <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop:20 }}>
+            <TouchableOpacity style={styles.botonLargo} onPress={this.onClickListener } >
 
-              <Text style={styles.buttonDesigne } >
+              <Text style={{fontSize:24,textAlign:'center',color:'#00B2FF', textAlignVertical:'center'}}>
                 ¡Transformalo!
               </Text>
             </TouchableOpacity>
             {/* Este view es para el boton de debug de las clases  */}
           </View>
-          <View style={{ flexDirection: 'row', justifyContent: 'center', }}/>
-          <View style={{ flexDirection: 'row', justifyContent: 'center', }}/>
-        </View>
+
       </View>
     );
   }
@@ -182,13 +181,72 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 3, width: 3 }, // IOS
     shadowOpacity: 1, // IOS
     shadowRadius: 1, //IOS
+  },
+  botonLargo:{
+    backgroundColor: 'white',
+    elevation: 2,
+    shadowColor: 'rgba(0,0,0, .25)', 
+    shadowOffset: { height: 3, width: 3 }, 
+    shadowOpacity: 1, 
+    shadowRadius: 2,
+    borderRadius: 70,
+    justifyContent:'center',
+    textAlignVertical: 'center',
+    alignSelf: 'center',
+    width: 250,
+    height: 50,
+  },
+   image:{
+    marginTop:35,
+    marginBottom:20,
+    marginLeft:18,
+    width: 80,
+    height: 80,
+
+  
   }
 
 });
 
-const navigatorr = createDrawerNavigator({
-  App: {
-    screen: App
+
+class Logout extends React.Component{
+  static navigationOptions = {
+    title: 'Log out',
+    header: null,
+    drawerIcon: ({ focused }) => (
+      <Ionicons name="md-log-out" size={24} color={focused ? '#00B2FF' : 'black'} />
+    ),
+  };
+
+}
+const CustomDrawer=(props) =>(
+  <View style={{flex:1 }} >
+      <View style={{height:150,marginBottom:60 }}  >
+         <TouchableOpacity onPress={() => {this.props.navigation.navigate('PerfilUsuario')}}>
+          <Image
+                  title='Mi perfil'
+                  style={styles.image}
+                  borderRadius={40}
+                  source={{uri: 'http://www.lse.ac.uk/International-Inequalities/Assets/Images/BlankImage.jpg'}}
+                  />
+        <View style={{ borderBottomColor: 'black', borderBottomWidth: 0.5}}>
+          <Text style={{textAlign:'left', marginLeft:10, fontSize:20, fontWeight:'bold'}}>Juana Perez</Text>
+          <Text style={{textAlign:'left', marginLeft:10, fontSize:18, marginBottom:20 }}>juanitaP@gmail.com</Text>
+          </View>
+          </TouchableOpacity>
+      </View>
+      <View>
+          <DrawerNavigatorItems {...props} />
+      </View>
+        
+  </View>
+)
+
+const Navigatorr = createDrawerNavigator({
+
+  App: App, 
+   PerfilUsuario:{
+    screen:PerfilUsuario,
   },
   IdeasGuardadas: {
     screen: IdeasGuardadas,
@@ -204,14 +262,22 @@ const navigatorr = createDrawerNavigator({
   },
   Instructivo: {
     screen: Instructivo,
+  },
+  Logout:{
+    screen:Logout,
   }
+
+},{
+
+   contentComponent:CustomDrawer,
+ 
 });
 
 
 const bootRoot = createStackNavigator({
 
-  navigatorr: {
-    screen: navigatorr,
+  Navigatorr: {
+    screen: Navigatorr,
     navigationOptions: {
       header: null,
     },

@@ -1,7 +1,7 @@
 import {Component} from 'react';
 
 const url ="https://sipi-transform.herokuapp.com/";
-const urlLocal = "http://192.168.0.10:8080/"
+//const urlLocal = "http://192.168.0.10:8080/"
 
 const urlGetProductosByNombre="transform/getProductosByTagAndName";
 const urlGetPosteos="transform/getPosteos";
@@ -106,7 +106,7 @@ class ApiController extends Component
     }
 
     getEventos(devolverDatos){
-        const endpoint = `${urlLocal}${urlGetEventos}`;
+        const endpoint = `${url}${urlGetEventos}`;
         console.log("Buscando eventos")
        fetch(endpoint,{
             method: 'GET', // or 'PUT'
@@ -123,7 +123,7 @@ class ApiController extends Component
     }
 
     getPopularProducts(devolverDatos){
-        const endpoint = `${urlLocal}${urlGetPopularProd}`;
+        const endpoint = `${url}${urlGetPopularProd}`;
         console.log("Buscando productos")
        fetch(endpoint,{
             method: 'GET', // or 'PUT'

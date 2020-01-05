@@ -60,9 +60,9 @@ class ResultadoProductoUnico extends React.Component {
 
        
        <View style={styles.imagePosition}>
-          <TouchableOpacity style={{marginVertical: '10%'}} onPress={() => { navigation.navigate('App')}}>
-            <View style={{justifyContent:'center'}}>
-              <Text style={styles.buttonDesigne} >
+          <TouchableOpacity style={styles.botonLargo}  onPress={() => { navigation.navigate('App')}}>
+            <View style={{justifyContent:'center', marginTop:'2%', marginBottom:'2%'}}>
+              <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>
               <Ionicons name="md-arrow-round-back" size={24} color={'white'} />
                        Buscar otra cosa...
                 </Text>
@@ -99,11 +99,12 @@ const styles = StyleSheet.create({
   imagePosition: {
     flexDirection: 'row',
     justifyContent: 'center',
+
   },
   imageStyle: {
     width: '50%',
     marginTop: '5%',
-    marginLeft: '25%',
+    alignSelf:"center",
     minHeight: 200,
     maxHeight: 400,
 
@@ -119,7 +120,23 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginBottom:'5%',
     marginTop:'5%',
-  }
+  },
+    botonLargo:{
+      backgroundColor: '#00B2FF',
+      elevation: 2,
+      shadowColor: 'rgba(0,0,0, .25)', 
+      shadowOffset: { height: 3, width: 3 }, 
+      shadowOpacity: 1, 
+      shadowRadius: 2,
+      borderRadius: 70,
+      justifyContent:'center',
+      textAlignVertical: 'center',
+      alignSelf: 'center',
+      width: 250,
+      height: 50,
+
+    }
+
 
 })
 

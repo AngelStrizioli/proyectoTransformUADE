@@ -9,7 +9,7 @@ import {
   Dimensions,
   ImageBackground
 } from 'react-native';
-
+import { Container, Header, Content, Button, Right, Left, Body } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 import ImagenCarouselInstructivo from './ImagenCarouselInstructivo'
 
@@ -20,20 +20,24 @@ export default class Instructivo extends React.Component {
         title: 'Instructivo',
         header: null,
         drawerIcon: ({ focused }) => (
-          <Ionicons name="md-help-circle" size={24} color={focused ? '#00B2FF' : 'black'} />
+          <Ionicons name="md-help-circle"  size={24} color={focused ? '#00B2FF' : 'black'}  />
         ),
       };
     render() {
       return (
         <View style={styles.container}>
-        <TouchableOpacity  onPress={() => {this.props.navigation.navigate('App');}}>
+         <Header>
+        
+        <Button transparent  onPress={() => {this.props.navigation.navigate('App');}}>
             <Text style={{
-              fontSize: 20,
+              fontSize: 18,
               textAlign: 'center',
-              marginBottom:18}}>
+              color:'black'
+             }}>
                 Omitir instructivo
             </Text>
-        </TouchableOpacity>
+        </Button>
+        </Header>
           <View style={styles.carouselContainer2}>
             <ImagenCarouselInstructivo/> 
           </View> 

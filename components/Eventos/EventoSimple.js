@@ -1,8 +1,8 @@
-import React, {Compo} from 'react';
+import React, { Compo } from 'react';
 import { StyleSheet, ScrollView, View, Text, Dimensions, Image, ImageBackground } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
-import  MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 
 const { width } = Dimensions.get('window');
 
@@ -11,38 +11,65 @@ class EventoSimple extends React.Component {
     super(props);
   }
 
-  render(){
+  renderBlocks(evento) {
+    if (evento.blocks != undefined) {
+      return evento.blocks.map((block, i) => {
+        return (
+          <View key={i}>
+            <Text style={styles.subtitleStyle}>{block.subtitle}</Text>
+            <Text style={styles.textStyle}>{block.text}</Text>
+          </View>
+        )
+      })
+    }
+  }
+
+  renderMarkers(evento) {
+    if (evento.markers != undefined) {
+      return evento.markers.map((marker, i) => {
+        return(
+        <Marker
+          key={i}
+          coordinate={{
+            latitude: marker.lat,
+            longitude: marker.long,
+          }}
+          title={marker.title}
+          description={marker.desc}
+          pinColor="#00b2ff"
+        />)
+      })
+    }
+  }
+
+  render() {
     const { navigation } = this.props;
-    return(
+    const evento = navigation.getParam('evento', {});
+    return (
       <ScrollView style={styles.container}>
         <ImageBackground
-              source={{uri: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.buenosaires.gob.ar%2Fsites%2Fgcaba%2Ffiles%2Ffield%2Fimage%2Fpunto_verde_200.jpg&f=1&nofb=1'}}
-              style={styles.backgroundImage}>
-            <View style={styles.tittleContainer}>
-              <View style={styles.backButtonView}>
-                <TouchableOpacity style={styles.backButton} onPress={() => { navigation.goBack()}}>
-                  <Ionicons name="md-arrow-round-back" size={24} color={'white'} />
-                </TouchableOpacity>
-              </View>
-              <View style={styles.tittlePosition}>
-                <Text style={styles.titleStyle}>Puntos verdes</Text>
-              </View>
-              <View style={styles.fechaPosition}>
-                <Ionicons style={styles.fechaIcon}name="md-calendar" size={18} color={'white'} />
-                <Text style={styles.fechaText}>Durante todo el año</Text>
-              </View>
+          source={{ uri: evento.img }}
+          style={styles.backgroundImage}>
+          <View style={styles.tittleContainer}>
+            <View style={styles.backButtonView}>
+              <TouchableOpacity style={styles.backButton} onPress={() => { navigation.goBack() }}>
+                <Ionicons name="md-arrow-round-back" size={24} color={'white'} />
+              </TouchableOpacity>
             </View>
-          </ImageBackground>
+            <View style={styles.tittlePosition}>
+              <Text style={styles.titleStyle}>{evento.title}</Text>
+            </View>
+            <View style={styles.fechaPosition}>
+              <Ionicons style={styles.fechaIcon} name="md-calendar" size={18} color={'white'} />
+              <Text style={styles.fechaText}>{evento.fecha}</Text>
+            </View>
+          </View>
+        </ImageBackground>
+
+        {this.renderBlocks(evento)}
+
         <View>
-          <Text style={styles.subtitleStyle}>¿Que es?</Text>
-          <Text style={styles.textStyle}>Son estaciones ubicadas en plazas y parques para que puedas acercar tus reciclables.</Text>
-        </View>
-        <View>
-          <Text style={styles.subtitleStyle}>¿Cuándo podés acercar tus materiales?</Text>
-          <Text style={styles.textStyle}>Puntos Verdes con Atención: de Miércoles a Domingos de 11 a 19h. (Recordá que podes dejar tus materiales reciclables las 24hrs del día).</Text>
-        </View>
-        <View>
-          <Text style={styles.subtitleStyle}>¿Como llego?</Text>
+          <Text style={styles.subtitleStyle}>Ubicación</Text>
           <MapView
             style={styles.map}
             initialRegion={{
@@ -52,38 +79,9 @@ class EventoSimple extends React.Component {
               longitudeDelta: 0.0421,
             }}
           >
-            <Marker
-              coordinate={{
-                latitude: -34.603118,
-                longitude: -58.381681,
-              }}
-              title={"Markador de prueba 1"}
-              descripcion={"This is so epic!"}
-              />
-              <Marker
-                coordinate={{
-                  latitude: -34.60,
-                  longitude: -58.37,
-                }}
-                title={"PUNTO VERDE 2"}
-                descripcion={"You shall not pass!!!"}
-                />
-              <Marker
-                coordinate={{
-                  latitude: -34.61,
-                  longitude: -58.393,
-                }}
-                title={"PUNTO VERDE 2"}
-                descripcion={"You shall not pass!!!"}
-                />
-              <Marker
-                coordinate={{
-                  latitude: -34.598,
-                  longitude: -58.388,
-                }}
-                title={"PUNTO VERDE 2"}
-                descripcion={"You shall not pass!!!"}
-                />
+            {this.renderMarkers(evento)}
+            
+            
           </MapView>
         </View>
       </ScrollView>
@@ -94,7 +92,7 @@ class EventoSimple extends React.Component {
 const styles = StyleSheet.create({
   map: {
     marginVertical: '5%',
-    flex:1,
+    flex: 1,
     height: 300,
     width: '100%',
   },
@@ -103,11 +101,11 @@ const styles = StyleSheet.create({
     height: 200,
   },
   container: {
-    flex:1,
+    flex: 1,
     backgroundColor: 'white'
   },
-  compoView:{
-      marginVertical: '5%'
+  compoView: {
+    marginVertical: '5%'
   },
   tittleContainer: {
     flex: 1,
@@ -127,7 +125,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
   },
-  fechaIcon:{
+  fechaIcon: {
     bottom: 0,
     paddingBottom: 0,
   },
@@ -137,7 +135,7 @@ const styles = StyleSheet.create({
     marginLeft: '2%',
     textAlign: 'auto',
   },
-  backButtonView:{
+  backButtonView: {
     flex: 1,
     marginHorizontal: '2%',
     marginVertical: '6%',
@@ -152,20 +150,20 @@ const styles = StyleSheet.create({
 
   },
   titleStyle: {
-      fontSize: 26,
-      fontWeight: 'bold',
-      color: 'white',
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: 'white',
   },
   subtitleStyle: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      padding: '4%'
+    fontSize: 20,
+    fontWeight: 'bold',
+    padding: '4%'
   },
-  textStyle:{
-      paddingHorizontal:'5%',
-      fontSize:18,
-      textAlign:'justify',
-      lineHeight:26
+  textStyle: {
+    paddingHorizontal: '5%',
+    fontSize: 18,
+    textAlign: 'justify',
+    lineHeight: 26
   },
 })
 

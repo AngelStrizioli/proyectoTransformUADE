@@ -1,10 +1,18 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet, ImageBackground, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import { firebaseAuth } from '../environment/config';
 
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null }
+  constructor(props) {
+    super(props);
+    this.state = {
+			showPass: true,
+			press: false,
+		};
+		this.showPass = this.showPass.bind(this);
+	}
 
   handleLogin = () => {
     // TODO: Firebase stuff...
@@ -13,41 +21,66 @@ export default class Login extends React.Component {
       .then(() => this.props.navigation.navigate('Main'))
       .catch(error => this.setState({ errorMessage: error.message }));
   }
+  showPass() {
+    this.state.press === false ? this.setState({ showPass: false, press: true }) :this.setState({ showPass: true, press: false });
+    }
 
   render() {
     return (
-      <ImageBackground source={require('../../src/assets/images/splashTransform.png')}
-        style={{ width: '100%', height: '100%' }}>
+      <ScrollView style={{ backgroundColor: '#00B2FF' }}>
         <View style={styles.container}>
-          <View style={styles.headingSection}>
-            <Image source={require('../../src/assets/images/user.png')}
-              style={{ width: 100, height: 100 }} />
-          </View>
-          <Text style={styles.heading}>Login</Text>
+          <Image source={require('../assets/images/LogoHorizontal.png')} style={{
+            width: 300,
+            height: 60,
+            resizeMode: 'contain',
+          }}/>
+          <Text style={styles.heading}>¡Ingresa a tu cuenta para disfrutar de TRANSFORM!</Text>
           {this.state.errorMessage &&
             <Text style={{ color: 'red' }}>
-            {this.state.errorMessage}
-            </Text>}
-            <TextInput
+              {this.state.errorMessage}
+            </Text>
+          }
+            <View style={styles.inputSize}>
+            <Image source={require('../assets/images/username.png')} style={styles.icons}/>
+            <TextInput 
+            style={{ flex: 1 }}
             placeholder="Email"
             autoCapitalize="none"
-            style={styles.textInput}
+            returnKeyType={'done'}
             onChangeText={email => this.setState({ email })}
-            value={this.state.email}/>
-            <TextInput
-            secureTextEntry
+            value={this.state.email}
+            autoCorrect={false} />
+            </View>
+            <View style={styles.inputSize}>
+            <Image source={require('../assets/images/password.png')} style={styles.icons}/>
+            <TextInput 
+            style={{ flex: 1 }}
+            secureTextEntry={this.state.showPass}
             placeholder="Password"
             autoCapitalize="none"
-            style={styles.textInput}
             onChangeText={password => this.setState({ password })}
             value={this.state.password}/>
-          <Button title="Entrar" onPress={this.handleLogin} />
-          <Button
-          title="Don't have an account? Sign Up" color="transparent" type="outline"
+            <TouchableOpacity
+            activeOpacity={0.7}
+						onPress={this.showPass}>
+						<Image source={require('../assets/images/eye_black.png')} style={styles.icons} />
+					  </TouchableOpacity>
+            </View>
+          <TouchableOpacity onPress={this.handleLogin} >
+          <Text style={styles.signupBtn} >
+              Ingresar
+          </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+           color="transparent" type="outline"
           onPress={() => this.props.navigation.navigate('SignUp')}
-          />
+          > 
+          <Text style={styles.registerBtn} >
+            ¿No tienes cuenta? ¡Regístrate!
+          </Text>
+          </TouchableOpacity>
       </View>
-    </ImageBackground>
+    </ScrollView>
 )}
 }
 const heightConst = Dimensions.get('screen').height;
@@ -65,31 +98,78 @@ headingSection: {
 },
 heading: {
  color: '#fff',
- fontSize: 26,
- marginBottom: 10
+ fontSize: 20,
+ marginBottom: 10,
+ textAlign: 'center'
 },
-textInput: {
- height: 40,
- width: '90%',
- borderColor: '#fff',
- borderWidth: 1,
- marginTop: 8,
- color: '#fff'
+inputSize: {
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#fff',
+  height: 40,
+  margin: 10,
+  height: 48,
+  borderColor: 'white',
+  borderWidth: 1,
+  backgroundColor: 'white',
+  color: '#00B2FF',
+  borderRadius: 5,
+  paddingLeft: '5%',
+  fontSize: 16,
+  width: 280,
+  shadowColor: 'rgba(0,0,0, .25)', // IOS
+  shadowOffset: { height: 3, width: 3 }, // IOS
+  shadowOpacity: 1, // IOS
+  shadowRadius: 1, //IOS
 },
+
 signupBtn: {
- borderRadius: 5,
- marginBottom: 5,
- backgroundColor: 'transparent',
- borderWidth: 1,
- borderColor: '#fff',
- width: 100,
- height: 35,
- overflow: 'hidden',
- alignItems: 'center',
- justifyContent: 'center',
- marginTop: 10
+  marginTop: 20,
+  width: 246,
+  height: 40,
+  borderWidth: 1,
+  padding: 10,
+  borderColor: 'white',
+  backgroundColor: 'white',
+  color: "#00B2FF",
+  fontSize: 15,
+  fontWeight: 'normal',
+  borderRadius: 50, //android
+  textAlign: "center",
+  elevation: 2,//android
+  shadowColor: 'rgba(0,0,0, .25)', // IOS
+  shadowOffset: { height: 3, width: 3 }, // IOS
+  shadowOpacity: 1, // IOS
+  shadowRadius: 1, //IOS
+},
+registerBtn: {
+  marginTop: 20,
+  width: 246,
+  height: 40,
+  borderWidth: 1,
+  padding: 10,
+  borderColor: 'white',
+  backgroundColor: 'white',
+  color: "#00B2FF",
+  fontWeight: 'normal',
+  borderRadius: 50, //android
+  textAlign: "center",
+  elevation: 2,//android
+  shadowColor: 'rgba(0,0,0, .25)', // IOS
+  shadowOffset: { height: 3, width: 3 }, // IOS
+  shadowOpacity: 1, // IOS
+  shadowRadius: 1, //IOS
+  fontSize: 15,
 },
 buttonText: {
 color: '#fff',
-textAlign: 'center'}
+textAlign: 'center'
+},
+icons: {
+  width: 25,
+  height: 25,
+  tintColor: 'rgba(0,0,0,0.2)',
+  marginRight: 12,
+},
 })

@@ -233,8 +233,8 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         textAlignVertical: 'center',
         alignSelf: 'center',
-        width: 250,
-        height: 50,
+        width: 300,
+        height: 55,
       },
       buttonDesigne: {
         color: "white",

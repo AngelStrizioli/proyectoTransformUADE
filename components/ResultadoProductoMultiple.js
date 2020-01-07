@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
   buttonPosition: {
     flexDirection: 'row',
     justifyContent: 'center',
+    marginTop: '1%'
     
   },
 
@@ -106,12 +107,10 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     textAlignVertical: 'center',
     alignSelf: 'center',
-    width: 250,
-    height: 50,
+    width: 300,
+    height: 55,
     marginTop: 50,
     marginBottom:20
-
-
   }
 
 })

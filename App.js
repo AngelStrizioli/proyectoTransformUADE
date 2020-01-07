@@ -71,7 +71,7 @@ class App extends React.Component {
       this.props.navigation.navigate('ResultadoProductoMultiple',
         {
           productos: this.state.productos,
-          busqueda: this.state.busqueda
+          busqueda: this.state.nombreProducto
         })
     } else {
       if (this.state.productos.length == 0) {

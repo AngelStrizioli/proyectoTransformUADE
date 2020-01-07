@@ -22,6 +22,7 @@ import ListaEventos from '../components/Eventos/ListaEventos';
 import Instructivo from '../components/Instructivo';
 import EventoSimple from '../components/Eventos/EventoSimple';
 import PerfilUsuario from '../components/PerfilUsuario';
+import { firebaseAuth } from '../environment/config';
 //import EventoSimple from './components/Eventos/EventoSimple';
 
 /* ### PÁGINA INICIAL ###
@@ -62,6 +63,7 @@ class Main extends React.Component {
     };
   }
 
+  
   ObtenerDatosProd(newData) {
     //console.log(newData)
     this.setState({ productos: newData })
@@ -143,10 +145,10 @@ class Main extends React.Component {
 
             />
           </View>
+
           <View>
             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
               <TouchableOpacity onPress={this.onClickListener} >
-
                 <Text style={styles.buttonDesigne} >
                   ¡Transformalo!
               </Text>
@@ -261,6 +263,7 @@ const styles = StyleSheet.create({
 
 });
 
+
 const CustomDrawer=(props) =>(
   <View style={{flex:1 }} >
       <View style={{height:150,marginBottom:60 }}  >
@@ -272,8 +275,8 @@ const CustomDrawer=(props) =>(
                   source={{uri: 'http://www.lse.ac.uk/International-Inequalities/Assets/Images/BlankImage.jpg'}}
                   />
         <View style={{ borderBottomColor: 'black', borderBottomWidth: 0.5}}>
-          <Text style={{textAlign:'left', marginLeft:10, fontSize:20, fontWeight:'bold'}}>Juana Perez</Text>
-          <Text style={{textAlign:'left', marginLeft:10, fontSize:18, marginBottom:20 }}>juanitaP@gmail.com</Text>
+          <Text style={{textAlign:'left', marginLeft:10, fontSize:20, fontWeight:'bold'}}>Usuario</Text>
+<Text style={{textAlign:'left', marginLeft:10, fontSize:18, marginBottom:20 }}>emailPrueba@gmail.com</Text>
           </View>
           </TouchableOpacity>
       </View>

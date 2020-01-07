@@ -15,15 +15,13 @@ export default class Login extends React.Component {
 	}
 
   handleLogin = () => {
-    // TODO: Firebase stuff...
-    console.log('handleLogin');
     firebaseAuth.signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => this.props.navigation.navigate('Main'))
       .catch(error => this.setState({ errorMessage: error.message }));
   }
   showPass() {
     this.state.press === false ? this.setState({ showPass: false, press: true }) :this.setState({ showPass: true, press: false });
-    }
+  }
 
   render() {
     return (
@@ -41,35 +39,40 @@ export default class Login extends React.Component {
             </Text>
           }
             <View style={styles.inputSize}>
-            <Image source={require('../assets/images/username.png')} style={styles.icons}/>
-            <TextInput 
-            style={{ flex: 1 }}
-            placeholder="Email"
-            autoCapitalize="none"
-            returnKeyType={'done'}
-            onChangeText={email => this.setState({ email })}
-            value={this.state.email}
-            autoCorrect={false} />
+              <Image source={require('../assets/images/username.png')} style={styles.icons}/>
+              <TextInput 
+              style={{ flex: 1 }}
+              placeholder="Email"
+              autoCapitalize="none"
+              returnKeyType={'done'}
+              onChangeText={email => this.setState({ email })}
+              value={this.state.email}
+              autoCorrect={false} />
             </View>
             <View style={styles.inputSize}>
-            <Image source={require('../assets/images/password.png')} style={styles.icons}/>
-            <TextInput 
-            style={{ flex: 1 }}
-            secureTextEntry={this.state.showPass}
-            placeholder="Password"
-            autoCapitalize="none"
-            onChangeText={password => this.setState({ password })}
-            value={this.state.password}/>
-            <TouchableOpacity
-            activeOpacity={0.7}
-						onPress={this.showPass}>
-						<Image source={require('../assets/images/eye_black.png')} style={styles.icons} />
-					  </TouchableOpacity>
+              <Image source={require('../assets/images/password.png')} style={styles.icons}/>
+              <TextInput 
+              style={{ flex: 1 }}
+              secureTextEntry={this.state.showPass}
+              placeholder="Password"
+              autoCapitalize="none"
+              onChangeText={password => this.setState({ password })}
+              value={this.state.password}/>
+              <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={this.showPass}>
+                <Image source={require('../assets/images/eye_black.png')} style={styles.icons} />
+              </TouchableOpacity>
             </View>
           <TouchableOpacity onPress={this.handleLogin} >
-          <Text style={styles.signupBtn} >
-              Ingresar
-          </Text>
+            <Text style={styles.signupBtn} >
+                Ingresar
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.handleLoginGoogle} >
+            <Text style={styles.signupBtn} >
+                Ingresar con GOOGLE
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
            color="transparent" type="outline"

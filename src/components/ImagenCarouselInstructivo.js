@@ -15,17 +15,21 @@ import Carousel from 'react-native-anchor-carousel';
 const { width } = Dimensions.get('window');
 const data = [
     {
-      uri: 'https://s-media-cache-ak0.pinimg.com/736x/f2/04/96/f20496c1b1bf72494c9c8f6aa054e9f6--ginger-kitten-ginger-cats.jpg',
-      title: 'Paso 1',
-      content: 'Para comenzar puedes escribir el producto que quieres reutilizar o reciclar y presiona "¡Transformalo!"'
+      uri: 'https://i.imgur.com/6i4FZRF.jpg',
+      content: 'En nuestra página principal encontrarás distintos productos para que investigues la información que te brindamos.'
     },
     {
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Kitten_in_Rizal_Park%2C_Manila.jpg/1200px-Kitten_in_Rizal_Park%2C_Manila.jpg',
+      uri: 'https://s-media-cache-ak0.pinimg.com/736x/f2/04/96/f20496c1b1bf72494c9c8f6aa054e9f6--ginger-kitten-ginger-cats.jpg',
+      title: 'Paso 1',
+      content: 'Para comenzar puedes elegir uno de los productos que te mostramos, o escribir en el buscador lo que vos quieras, y luego presionar "¡Transformalo!"'
+    },
+    {
+      uri: 'https://i.imgur.com/FjTOcx2.jpg',
       title: 'Paso 2 ',
       content: 'Si existen productos similares al que buscaste, selecciona la opcion que deseas, sino, pasa al siguiente paso'
     },
     {
-      uri: 'https://i.pinimg.com/originals/5b/11/c6/5b11c6b5eabb728c76b652c330ddaf8e.jpgg',
+      uri: 'https://i.imgur.com/x176Gvq.jpg',
       title: 'Paso 3',
       content: 'Aqui podras encontrar la informacion de tu producto y seleccionar la opcion que prefieras'
     },
@@ -35,9 +39,22 @@ const data = [
       content: 'Presiona el botón "Mas Info.." para obtener informacion sobre los materiales que componen el producto'
     },
     {
-      uri: 'https://thumbs.dreamstime.com/z/gato-blanco-gatos-animales-dom%C3%A9sticos-gatito-gatitos-felinos-peque%C3%B1os-138362770.jpg',
+      uri: 'https://i.imgur.com/UsURWR5.jpg',
       title: 'Paso 5 ',
-      content: 'Presiona sobre la idea que mas te interese y recibiras informacion sobre como poder reutilizar el producto que buscaste'
+      content: 'Presiona sobre la idea que más te interese.'
+    },
+    {
+      uri: 'https://i.imgur.com/Y796adh.jpg',
+      content: 'Las ideas que brindamos son opciones fáciles y creativas para reutilizar los productos en vez de descartarlos.'
+    },
+    {
+      uri: 'https://i.imgur.com/wkcgKXd.jpg',
+      title: 'Paso 6',
+      content: 'Podés guardar las ideas que te interesen para tenerlas a mano en otro momento.'
+    },
+    {
+      uri: 'https://i.imgur.com/gLTOfn0.jpg',
+      content: 'Investigá las otras pestañas para ver todo el contenido de la aplicación.'
     }
   ];
 

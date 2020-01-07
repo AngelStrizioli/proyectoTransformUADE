@@ -41,10 +41,10 @@ export default class PerfilUsuario extends React.Component {
             <Text style={styles.subtitle}>Mi perfil</Text>
 
             <View style={styles.line}>
-                <Text style={styles.text}>Juana Perez</Text>
+                <Text style={styles.text}>Usuario</Text>
             </View>
             <View style={styles.line}>
-                <Text style={styles.text}>juanitaP@gmail.com</Text>
+                <Text style={styles.text}>usuarioPrueba@gmail.com</Text>
             </View>
             <View style={styles.line}>
                 <Text style={styles.text}>********</Text>

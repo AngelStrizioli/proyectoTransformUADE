@@ -61,7 +61,7 @@ class ResultadoProductoUnico extends React.Component {
        
        <View style={styles.imagePosition}>
           <TouchableOpacity style={styles.botonLargo}  onPress={() => { navigation.navigate('App')}}>
-            <View style={{justifyContent:'center', marginTop:'2%', marginBottom:'2%'}}>
+            <View style={{justifyContent:'center'}}>
               <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>
               <Ionicons name="md-arrow-round-back" size={24} color={'white'} />
                        Buscar otra cosa...

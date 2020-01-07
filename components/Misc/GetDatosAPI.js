@@ -15,7 +15,7 @@ export default new class GetDatosAPI {
             lat: obj.lat,
             long: obj.long,
             title: obj.plaza,
-            desc: obj.dias_y_horario
+            desc: obj.tipo
         })
     }
 

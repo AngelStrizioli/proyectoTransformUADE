@@ -37,7 +37,7 @@ export default new class GetDatosAPI {
     }
 
     getDatosPuntosVerdes(handleData){
-        var json = require("../../resources/puntos_verdes.json");
+        var json = require("../../../resources/puntos_verdes.json");
         
         let markers = [];
         for(let i = 0; i < json.length; i++){

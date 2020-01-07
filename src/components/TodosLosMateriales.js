@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import MaterialEsReciclable from './MaterialEsReciclable';
-import ApiController from '../controller/ApiController'
+import ApiController from '../controller/ApiController';
 
 /* ### PÁGINA QUE MUESTRA LA LISTA DE TODOS LOS MATERIALES CON INFORMACIÓN EN LA BD ###
     En prototipo: No está todavía */

@@ -10,7 +10,6 @@ import HeaderComponent from './Misc/HeaderComponent'
 export default class PerfilUsuario extends React.Component {
     static navigationOptions = {
         title: 'Mi perfil',
-        header: null,
         drawerIcon: ({ focused }) => (
           <Ionicons name="md-contact" size={24} color={focused ? '#00B2FF' : 'black'} />
         )

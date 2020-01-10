@@ -1,7 +1,48 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Header } from 'react-native-elements';
+import { DrawerActions } from 'react-navigation-drawer';
+
+import LogoHorizontal from '../../assets/images/LogoHorizontal.png'
+
+
+class LogoHeader extends React.Component {
+    render() {
+      return (
+        <View style={{ alignSelf: 'center', flex: 1 }}>
+          <Image
+            resizeMode="cover"
+            source={require("../../assets/images/LogoHorizontal.png")}
+            style={{
+              width: 240,
+              height: 50,
+              resizeMode: 'contain',
+            }}
+          />
+        </View>
+      );
+    }
+  }
+  class DrawerNav extends React.Component{
+    constructor(props) {
+        super(props);
+       
+      }
+      render(){
+          return(
+            <View>
+
+            <TouchableOpacity 
+              onPress={({ navigation }) => {navigation.dispatch(DrawerActions.openDrawer())}}>
+
+              <Ionicons name="md-menu" size={24} color={'white'} />
+
+            </TouchableOpacity>
+            </View>  
+            );
+      }
+  }
 
 export default class HeaderComponent extends React.Component {
     constructor(props) {
@@ -19,8 +60,9 @@ export default class HeaderComponent extends React.Component {
                     backgroundColor: '#00B2FF',
                     justifyContent: 'space-around',
                 }}
-                leftComponent={{icon: 'menu', color:'#fff'}}
-                centerComponent={{ text: this.props.tittle, style: styles.headerTittle }}
+                leftComponent={<DrawerNav />}
+                centerComponent={<LogoHeader />}
+                rightComponent={{ icon: 'search', color: '#fff' }}
             />
                 
         );

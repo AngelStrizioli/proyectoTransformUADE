@@ -23,6 +23,8 @@ import Instructivo from '../components/Instructivo';
 import EventoSimple from '../components/Eventos/EventoSimple';
 import PerfilUsuario from '../components/PerfilUsuario';
 import { firebaseAuth } from '../environment/config';
+import LogoHorizontal from '../assets/images/LogoHorizontal.png'
+import HeaderComponent from '../components/Misc/HeaderComponent'
 //import EventoSimple from './components/Eventos/EventoSimple';
 
 /* ### PÁGINA INICIAL ###
@@ -32,6 +34,7 @@ class LogoHeader extends React.Component {
   render() {
     return (
       <View style={{ alignSelf: 'center', flex: 1 }}>
+    
         <Image
           resizeMode="cover"
           source={require("../assets/images/LogoHorizontal.png")}
@@ -39,6 +42,7 @@ class LogoHeader extends React.Component {
             width: 240,
             height: 50,
             resizeMode: 'contain',
+            alignSelf:"center",
           }}
         />
       </View>
@@ -50,7 +54,6 @@ class LogoHeader extends React.Component {
 class Main extends React.Component {
   static navigationOptions = {
     title: 'Volver al inicio',
-    header: null,
     drawerIcon: ({ focused }) => (
       <Ionicons name="md-arrow-round-back" size={24} color={focused ? '#00B2FF' : 'black'} />
     ),
@@ -73,7 +76,8 @@ class Main extends React.Component {
       this.props.navigation.navigate('ResultadoProductoMultiple',
         {
           productos: this.state.productos,
-          busqueda: this.state.busqueda
+          busqueda: this.state.busqueda,
+        
         })
     } else {
       if (this.state.productos.length == 0) {
@@ -95,10 +99,12 @@ class Main extends React.Component {
   }
 
   render() {
+      {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/}
     return (
-      <ScrollView style={{ backgroundColor: '#00B2FF' }}>
+      <View style={{flex:1,backgroundColor: 'rgba(0, 0, 0, 0.05)',}}>
+      <ScrollView style={{ backgroundColor: '#f4fcff' }}>
         <View style={styles.container}>
-          <View style={{
+        {/*  <View style={{
             height: 70,
             flexDirection: 'row',
             justifyContent: 'flex-start',
@@ -110,16 +116,9 @@ class Main extends React.Component {
               <Ionicons name="md-menu" size={32} color={'white'} />
 
             </TouchableOpacity>
-          </View>
-          <View style={styles.inputSize}>
-            <Image source={require("../assets/images/LogoHorizontal.png")} style={{
-              width: 320,
-              height: 70,
-              resizeMode: 'contain',
-            }} />
-          </View>
+          </View>*/}
 
-          <View style={{marginTop:'5%'}}>
+          <View style={{marginTop:'2%'}}>
             <Text style={styles.subtitleStyle}>Aprendé a transformar estos productos:</Text>
           </View>
 
@@ -129,7 +128,56 @@ class Main extends React.Component {
             </View>
           </View>
 
-          <View style={styles.inputSize}>
+          <View style={{marginTop:'3%',marginBottom: 10 ,alignContent:'space-around' ,justifyContent:'space-around', flex: 5, flexWrap:'wrap' ,flexDirection: 'row'}}>
+         
+          <TouchableOpacity style={styles.tagsForm}>
+            <Text style={styles.textTags}>tags </Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity style={styles.tagsForm}>
+            <Text style={styles.textTags}>tags plastico </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.tagsForm}>
+            <Text style={styles.textTags}>tags metal</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.tagsForm}>
+            <Text style={styles.textTags}>tags algo muy largo</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.tagsForm}>
+            <Text style={styles.textTags}>tag medio</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.tagsForm}>
+            <Text style={styles.textTags}>tag</Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity style={styles.tagsForm}>
+            <Text style={styles.textTags}>tag con algo</Text>
+            </TouchableOpacity>
+
+
+
+            
+
+
+
+          </View>
+
+            <View style={{ flexDirection: 'row', marginTop: '3%' }}>
+              <Text style={styles.titleStyle}>Proximos eventos:</Text>
+            </View>
+            <View style={{ marginTop: '2%'}}>
+              <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
+            </View>
+
+
+
+
+            {/*volar algun dia */}
+            <View style={styles.inputSize}>
             <Text style={styles.subtitleStyle}>O ingresá el producto que quieras:</Text>
           </View>
 
@@ -146,7 +194,7 @@ class Main extends React.Component {
             />
           </View>
 
-          <View>
+        
             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
               <TouchableOpacity onPress={this.onClickListener} >
                 <Text style={styles.buttonDesigne} >
@@ -155,17 +203,10 @@ class Main extends React.Component {
               </TouchableOpacity>
               {/* Este view es para el boton de debug de las clases  */}
             </View>
-
-            <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: '6%' }}>
-              <Text style={styles.titleStyle}>Eventos patrocinados:</Text>
-            </View>
-            <View style={{ marginTop: '2%'}}>
-              <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
-            </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'center', }} />
-          </View>
+         
         </View>
       </ScrollView>
+      </View>
     );
   }
 }
@@ -176,7 +217,8 @@ const styles = StyleSheet.create({
     //esto esta para que quede todo exactamente en el medio de la pantalla, si se vuela queda arriba de todo
     flex: 1,
     // https://www.color-hex.com/ pag util para ver y hacer colores en hexa por si no sabemos el nombre en palabras
-    backgroundColor: '#00B2FF',
+    
+
     justifyContent: 'center',
   },
   inputSize: {
@@ -219,21 +261,36 @@ const styles = StyleSheet.create({
     shadowRadius: 1, //IOS
   },
   titleStyle: {
-    textAlign: 'center',
+    //textAlign: 'center',
+    marginLeft:'5%',
     fontWeight: 'bold',
     fontSize: 24,
     marginVertical: '2%',
-    color: 'white',
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 1
+    color: "#00B2FF",
+   // textShadowColor: 'rgba(0, 0, 0, 0.25)',
+    //textShadowOffset: { width: 1, height: 1 },
+    //textShadowRadius: 1
   },
   subtitleStyle: {
-    textAlign: 'center',
+    //textAlign: 'center',
+    marginLeft:'5%',
     fontWeight: 'bold',
     fontSize: 18,
     marginVertical: '2%',
-    color: 'white'
+    color: "#00B2FF",
+  },
+  tagsForm:{
+    borderRadius: 50,
+    backgroundColor:'#00B2FF',
+    height: 25,
+    paddingHorizontal:10
+
+  },
+  textTags:{
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: "white",
+    textAlign:'center',
   },
   botonLargo:{
     backgroundColor: 'white',
@@ -289,7 +346,9 @@ const CustomDrawer=(props) =>(
 
 const Navigatorr = createDrawerNavigator({
 
-  Main: Main, 
+  Main:{
+    screen: Main,
+    }, 
    PerfilUsuario:{
     screen:PerfilUsuario,
   },
@@ -319,12 +378,19 @@ const bootRoot = createStackNavigator({
 
   Navigatorr: {
     screen: Navigatorr,
-    navigationOptions: {
-      header: null,
-    },
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:10}} >
+      <Text> <Ionicons name="md-menu" size={30} color={'white'} /> </Text>
+      </TouchableOpacity>,
+    }),
   },
   ResultadoProductoMultiple: {
     screen: ResultadoProductoMultiple,
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:10}} >
+      <Text> <Ionicons name="md-menu" size={30} color={'white'} /> </Text>
+      </TouchableOpacity>,
+    }),
   },
   ItemListaIdeas: {
     screen: ItemListaIdeas,
@@ -349,12 +415,19 @@ const bootRoot = createStackNavigator({
   },
   EventoSimple:{
     screen: EventoSimple
+  },
+  HeaderComponent:{
+    screen:HeaderComponent,
   }
+
 
 }, {
   defaultNavigationOptions: {
     headerTitle: () => <LogoHeader />,
-
+    headerRight:() =><TouchableOpacity  style={{marginRight:10}} >
+                      <Text> <Ionicons name="md-search" size={30} color={'white'} /> </Text>
+                      </TouchableOpacity>,
+ 
     headerStyle: {
       backgroundColor: '#00B2FF',
     },

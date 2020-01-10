@@ -1,7 +1,9 @@
 import React from 'react';
-import { Text, View, StyleSheet, ImageBackground } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, Dimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
+
+const { width } = Dimensions.get('window');
 
 class ItemListaEventos extends React.Component {
   constructor(props){
@@ -12,8 +14,9 @@ class ItemListaEventos extends React.Component {
   render() {
     const {navigation} = this.props
     const {evento} = this.props
+
     return(
-      <TouchableOpacity onPress={() => { navigation.navigate('EventoSimple', {evento: evento}) }}>
+      <TouchableOpacity  onPress={() => { navigation.navigate('EventoSimple', {evento: evento}) }}>
         <ImageBackground
           source={{uri: this.props.backgroundImage}}
           style={styles.backgroundImage}>
@@ -64,6 +67,7 @@ const styles = StyleSheet.create({
   containerItems: {
     height: '100%',
     width: '90%',
+    marginTop:'15%',
     alignItems: 'flex-start',
   },
   containerIcono: {
@@ -73,6 +77,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   backgroundImage: {
-    height: 80,
+    height: width*0.3,
   }
 });

@@ -40,13 +40,13 @@ class IdeaVideo extends React.Component{
 
                  {this.cambiarBoton()}
 
-               <View style={styles.compoPosition}>
+              {/* <View style={styles.compoPosition}>
                    <TouchableOpacity style={styles.botonLargo} onPress={() => { navigation.goBack()}} >
                        <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}} >
                            Volver
                        </Text>
                    </TouchableOpacity>
-               </View>
+               </View>*/}
             </ScrollView>
         );
     }
@@ -191,8 +191,8 @@ const styles = StyleSheet.create({
         height: 200,
         width: 300,
         alignSelf: 'center',
-        borderWidth: 4,
-        borderColor: '#6DCAF2'
+        borderWidth: 0.5,
+        borderColor: 'black'
       },
       playButton:{
         fontSize: 64,

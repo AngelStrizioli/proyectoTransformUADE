@@ -116,10 +116,12 @@ class ListaEventos extends React.Component {
     const { navigation } = this.props;
     return (
       <View style={{ flex: 1 }}>
-        <HeaderComponent tittle={"Puntos de interés"} />
+       <Text style= {{ marginTop: '5%',marginBottom:'3%',fontSize: 26,fontWeight: 'bold',textAlign: 'center'}}>
+         Puntos de interes
+       </Text>
         {eventos.map((evento, i) => {
           return (
-            <ItemListaEventos key={i} evento={evento} backgroundImage={evento.img} navigation={navigation} />
+            <ItemListaEventos key={evento.title} evento={evento} backgroundImage={evento.img} navigation={navigation} />
           )
         })}
         {this.renderPuntosVerdes(navigation)}

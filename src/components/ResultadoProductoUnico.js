@@ -33,7 +33,7 @@ class ResultadoProductoUnico extends React.Component {
           <Text style={styles.titleStyle}>
             {producto.nombre}
           </Text>
-          <Image borderWidth={5} style={styles.imageStyle} borderColor='#00B2FF' source={{ uri: producto.urlImg}} />
+          <Image borderWidth={0.5} style={styles.imageStyle} borderColor='black' source={{ uri: producto.urlImg}} />
          
           <Text style={styles.subtitleStyle}>
             Descripción:
@@ -56,10 +56,11 @@ class ResultadoProductoUnico extends React.Component {
           </Text>
             {/*Parametro: URL Del endpoint que tiene el JSON de ideas del producto. El compo se encarga del resto
                 Nota: No sé si responde al formato de la BD. Avisarme si no - Fede*/}
+                
        <ListaIdeasById id={producto.id} navigation={this.props.navigation}></ListaIdeasById> 
 
        
-       <View style={styles.imagePosition}>
+      {/*<View style={styles.imagePosition}>
           <TouchableOpacity style={styles.botonLargo}  onPress={() => { navigation.navigate('App')}}>
             <View style={{justifyContent:'center'}}>
               <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>
@@ -69,7 +70,7 @@ class ResultadoProductoUnico extends React.Component {
 
             </View>
           </TouchableOpacity>
-        </View>
+        </View>*/}
           </ScrollView>
  
         );

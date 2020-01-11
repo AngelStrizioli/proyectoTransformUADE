@@ -24,13 +24,6 @@ export default class PerfilUsuario extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-            <Header>
-                <Right>
-                    <Button transparent onPress={() => {this.props.navigation.navigate('App');}}>
-                        <Text style={{color:'black'}}> Volver</Text>
-                    </Button>
-                </Right>
-            </Header>
             <Image
             style={styles.image}
             borderRadius={80}

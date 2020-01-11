@@ -60,7 +60,7 @@ export default class ListaIdeas extends React.Component {
                 </View>
               )
             } else {
-              return <Text className="text-center">Cargando Ideas...</Text>
+              return <Text style={{textAlign:'center', fontSize:18, marginBottom:'2%'}}>Cargando Ideas...</Text>
             }
           }
 

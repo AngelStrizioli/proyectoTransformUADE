@@ -127,7 +127,8 @@ class Main extends React.Component {
               <CardsProductos navigation={this.props.navigation}></CardsProductos>
             </View>
           </View>
-
+ 
+          {/* ESTAN HARDCORE PERO METAN A LOS TRAIDOS DE LA BD DENTRO DEL TEXT  */}
           <View style={{marginTop:'3%',marginBottom: 10 ,alignContent:'space-around' ,justifyContent:'space-around', flex: 5, flexWrap:'wrap' ,flexDirection: 'row'}}>
          
           <TouchableOpacity style={styles.tagsForm}>
@@ -157,12 +158,6 @@ class Main extends React.Component {
             <TouchableOpacity style={styles.tagsForm}>
             <Text style={styles.textTags}>tag con algo</Text>
             </TouchableOpacity>
-
-
-
-            
-
-
 
           </View>
 

@@ -91,13 +91,13 @@ class IdeaAlbum extends React.Component{
                 {this.cambiarBoton()}
 
 
-                <View style={styles.compoPosition}>
+               {/* <View style={styles.compoPosition}>
                     <TouchableOpacity style={styles.botonLargo} onPress={() => { navigation.goBack()}} >
                         <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>
                             Volver
                         </Text>
                     </TouchableOpacity>
-                </View>
+                </View>*/}
             </ScrollView>
         );
     }

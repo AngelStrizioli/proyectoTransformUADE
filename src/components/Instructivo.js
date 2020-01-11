@@ -9,13 +9,18 @@ import {
   Dimensions,
   ImageBackground
 } from 'react-native';
-import { Container, Header, Content, Button, Right, Left, Body } from 'native-base';
+
 import { Ionicons } from '@expo/vector-icons';
 import ImagenCarouselInstructivo from './ImagenCarouselInstructivo'
+import Main from '../screens/Main';
 
 const { width } = Dimensions.get('window'); 
 
 export default class Instructivo extends React.Component {
+  constructor(props) {
+    super(props);
+    
+  }
     static navigationOptions = {
         title: 'Instructivo',
         header: null,
@@ -26,18 +31,18 @@ export default class Instructivo extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-         <Header>
-        
-        <Button transparent  onPress={() => {this.props.navigation.navigate('App');}}>
+
+        <TouchableOpacity  onPress={() => {this.props.navigation.navigate('Main');}}>
             <Text style={{
               fontSize: 18,
+              fontWeight:'bold',
               textAlign: 'center',
               color:'black'
              }}>
                 Omitir instructivo
             </Text>
-        </Button>
-        </Header>
+        </TouchableOpacity>
+        
           <View style={styles.carouselContainer2}>
             <ImagenCarouselInstructivo/> 
           </View> 
@@ -53,6 +58,6 @@ export default class Instructivo extends React.Component {
     carouselContainer2: { 
       width: width,
       height:'85%', 
-      marginTop:10
+      marginTop:'5%',
     }, 
   });

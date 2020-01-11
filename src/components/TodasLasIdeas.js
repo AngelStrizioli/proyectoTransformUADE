@@ -39,7 +39,8 @@ class TodasLasIdeas extends React.Component{
       backgroundColor: 'white'
     },
     titleStyle: {
-      marginTop: '15%',
+      marginTop: '5%',
+      marginBottom:'3%',
       fontSize: 26,
       fontWeight: 'bold',
       textAlign: 'center'

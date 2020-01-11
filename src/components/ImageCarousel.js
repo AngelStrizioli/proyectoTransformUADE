@@ -66,17 +66,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF'
   },
   item: {
-    borderWidth: 2,
+    //borderWidth: 2,
     backgroundColor: 'white',
     flex: 1,
     //borderRadius: 3,
-    borderColor: '#6DCAF2',
+   // borderColor: '#6DCAF2',
     elevation: 3
   },
   imageBackground: {
     flex: 2,
     backgroundColor: '#EBEBEB',
-    borderWidth: 5,
-    borderColor: '#6DCAF2'
+    borderWidth: 0.5,
+    borderColor: 'black'
   }
 });

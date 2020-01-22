@@ -82,9 +82,22 @@ class IdeaAlbum extends React.Component{
                     <Text style={styles.subtitleStyle}>Descripción:</Text>
                     <Text style={styles.textStyle}>{idea.texto}</Text>
                 </View>
+
                 {this.materiales(idea)}
+
                 {this.pasoAPaso(idea)}
+
+
                 {this.cambiarBoton()}
+
+
+               {/* <View style={styles.compoPosition}>
+                    <TouchableOpacity style={styles.botonLargo} onPress={() => { navigation.goBack()}} >
+                        <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>
+                            Volver
+                        </Text>
+                    </TouchableOpacity>
+                </View>*/}
             </ScrollView>
         );
     }

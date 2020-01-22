@@ -4,15 +4,15 @@ import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, Scr
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator, DrawerNavigatorItems } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
-import IdeasGuardadas from '../components/IdeasGuardadas';
-import ItemListaIdeas from '../components/ItemListaIdeas';
+import IdeasGuardadas from '../components/Ideas/IdeasGuardadas';
+import ItemListaIdeas from '../components/Ideas/ItemListaIdeas';
 import ResultadoProductoMultiple from '../components/ResultadoProductoMultiple';
 import ResultadoProductoUnico from '../components/ResultadoProductoUnico';
 import TodasLasIdeas from '../components/TodasLasIdeas';
 import TodosLosMateriales from '../components/TodosLosMateriales';
 import TipoDeMaterial from '../components/TipoDeMaterial';
 import ReciclableSioNo from '../components/ReciclableSioNo';
-import IdeaSimple from '../components/IdeaSimple';
+import IdeaSimple from '../components/Ideas/IdeaSimple';
 import ApiController from '../controller/ApiController';
 import MaterialCompleto from '../components/MaterialCompleto'
 import EventosPatrocinados from '../components/Eventos/EventosPatrocinados';

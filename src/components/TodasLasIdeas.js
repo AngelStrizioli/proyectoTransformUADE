@@ -2,7 +2,8 @@ import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Text, View,StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import ListaIdeas from './ListaIdeas';
+import ListaIdeas from './Ideas/ListaIdeas';
+import { Divider } from 'react-native-elements';
 
 /* ### PÁGINA PARA MOSTRAR TODAS LAS IDEAS QUE ESTÁN GUARDADAS EN LA BD ###
     En prototipo: todavía no está */
@@ -18,17 +19,16 @@ class TodasLasIdeas extends React.Component{
 
     render(){
       return(
-
-
-      <ScrollView style={styles.container}>
-        <View>
-          <Text style= {styles.titleStyle}>Todas las ideas</Text>
-        </View>
-        <View>
-          <ListaIdeas navigation={this.props.navigation}></ListaIdeas>
-        </View>
-      </ScrollView>
-    );
+        <ScrollView style={styles.container}>
+          <View>
+            <Text style= {styles.titleStyle}>Todas las ideas</Text>
+          </View>
+          <Divider style={{ backgroundColor: 'blue' }} />
+          <View>
+            <ListaIdeas navigation={this.props.navigation}></ListaIdeas>
+          </View>
+        </ScrollView>
+      );
     }
 
 

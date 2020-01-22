@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import ListaIdeasById from './ListaIdeasById';
+import ListaIdeasById from './Ideas/ListaIdeasById';
 import MaterialEsReciclable from './MaterialEsReciclable';
 import { Ionicons } from '@expo/vector-icons';
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
+import { Divider } from 'react-native-elements';
 import MaterialCompleto from './MaterialCompleto';
 import { Icon } from 'native-base';
 import getProductosByMaterial from '../controller/ApiController'
@@ -77,7 +78,8 @@ class MaterialEsReciclable extends React.Component{
         console.log(material.id);
         if(materiales===1){
           return(
-            <View style={styles.containerMaterial}>
+            <View>
+              <TouchableOpacity style={styles.containerMaterial} onPress={() => { this.onClickListener(material.id) }}>
                   <View style={styles.containerImage}>
                      <View >
                         <Image title='Icono Material' source={{ uri: (logoMaterial) }} style={{height: 80, width: 80, alignSelf: 'center',marginTop:'5%' }} />
@@ -91,15 +93,18 @@ class MaterialEsReciclable extends React.Component{
                   <View style={{marginTop: '4%'}}>
                     <TouchableOpacity style={styles.botonLargo} onPress={() => { this.onClickListener(material.id) }}>
                         <View style={{flexDirection: 'row',justifyContent: 'space-around',}}>
-                        <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>Más Info...</Text>
-                      
+                          <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>Más Info...</Text>
                         </View>
                      </TouchableOpacity>
                   </View>
+              </TouchableOpacity>
+              <Divider style={{ backgroundColor: 'blue' }} />
+              
             </View>
         );}else{
           return(
-            <View style={styles.containerMaterial}>
+            <View> 
+              <TouchableOpacity style={styles.containerMaterial} onPress={() => { this.onClickListener(material.id) }}>
                   <View style={styles.containerImage}>
                      <View style={{heigth: 80, width: '38%', marginRight: '2%'}}>
                         <Image title='Icono Material' source={{ uri: (logoMaterial) }} style={{height: 60, width: 60, alignSelf: 'center',marginTop:'5%' }} />
@@ -118,7 +123,10 @@ class MaterialEsReciclable extends React.Component{
                       </TouchableOpacity>
                      </View>
                   </View>
-            </View>);
+              </TouchableOpacity>
+              <Divider style={{ backgroundColor: 'blue' }} />
+            </View>
+          );
           }
     }
   }
@@ -142,7 +150,7 @@ class MaterialEsReciclable extends React.Component{
       //textAlign: "center" 
     },
     containerMaterial:{
-      margin: '5%',
+      padding: '5%',
       //borderColor: '#6DCAF280',
       //borderWidth: 1,
       

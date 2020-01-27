@@ -1,10 +1,10 @@
 import React, { Compo } from 'react';
 import { StyleSheet, ScrollView, View, Text, Dimensions, Image, ImageBackground } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import LockMap from '../Misc/Maps/LockMap';
 
-const { width } = Dimensions.get('window');
+let { width, height } = Dimensions.get('window');
 
 class EventoSimple extends React.Component {
   constructor(props) {
@@ -20,24 +20,6 @@ class EventoSimple extends React.Component {
             <Text style={styles.textStyle}>{block.text}</Text>
           </View>
         )
-      })
-    }
-  }
-
-  renderMarkers(evento) {
-    if (evento.markers != undefined) {
-      return evento.markers.map((marker, i) => {
-        return(
-        <Marker
-          key={i}
-          coordinate={{
-            latitude: marker.lat,
-            longitude: marker.long,
-          }}
-          title={marker.title}
-          description={marker.desc}
-          pinColor="#00b2ff"
-        />)
       })
     }
   }
@@ -65,37 +47,14 @@ class EventoSimple extends React.Component {
             </View>
           </View>
         </ImageBackground>
-
         {this.renderBlocks(evento)}
-
-        <View>
-          <Text style={styles.subtitleStyle}>Ubicación</Text>
-          <MapView
-            style={styles.map}
-            initialRegion={{
-              latitude: -34.603118,
-              longitude: -58.381681,
-              latitudeDelta: 0.02,
-              longitudeDelta: 0.0421,
-            }}
-          >
-            {this.renderMarkers(evento)}
-            
-            
-          </MapView>
-        </View>
+        <LockMap evento={evento}/>
       </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  map: {
-    marginVertical: '5%',
-    flex: 1,
-    height: 300,
-    width: '100%',
-  },
   backgroundImage: {
     flex: 1,
     height: 200,

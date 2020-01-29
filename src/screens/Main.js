@@ -25,6 +25,8 @@ import PerfilUsuario from '../components/PerfilUsuario';
 import { firebaseAuth } from '../environment/config';
 import LogoHorizontal from '../assets/images/LogoHorizontal.png'
 import HeaderComponent from '../components/Misc/HeaderComponent'
+import CategoriasCards from '../components/CategoriasCards'
+import TagsCloud from '../components/TagsCloud';
 //import EventoSimple from './components/Eventos/EventoSimple';
 
 /* ### PÁGINA INICIAL ###
@@ -124,45 +126,19 @@ class Main extends React.Component {
 
           <View style={styles.inputSize}>
             <View style={{ marginBottom: '5%', marginHorizontal: '2%' }}>
-              <CardsProductos navigation={this.props.navigation}></CardsProductos>
+              <CategoriasCards navigation={this.props.navigation}></CategoriasCards>
             </View>
           </View>
  
           {/* ESTAN HARDCORE PERO METAN A LOS TRAIDOS DE LA BD DENTRO DEL TEXT  */}
           <View style={{marginTop:'3%',marginBottom: 10 ,alignContent:'space-around' ,justifyContent:'space-around', flex: 5, flexWrap:'wrap' ,flexDirection: 'row'}}>
-         
-          <TouchableOpacity style={styles.tagsForm}>
-            <Text style={styles.textTags}>tags </Text>
-            </TouchableOpacity>
-            
-            <TouchableOpacity style={styles.tagsForm}>
-            <Text style={styles.textTags}>tags plastico </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.tagsForm}>
-            <Text style={styles.textTags}>tags metal</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.tagsForm}>
-            <Text style={styles.textTags}>tags algo muy largo</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.tagsForm}>
-            <Text style={styles.textTags}>tag medio</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.tagsForm}>
-            <Text style={styles.textTags}>tag</Text>
-            </TouchableOpacity>
-            
-            <TouchableOpacity style={styles.tagsForm}>
-            <Text style={styles.textTags}>tag con algo</Text>
-            </TouchableOpacity>
+        
+            <TagsCloud navigation={this.props.navigation}></TagsCloud>
 
           </View>
 
             <View style={{ flexDirection: 'row', marginTop: '3%' }}>
-              <Text style={styles.titleStyle}>Proximos eventos:</Text>
+              <Text style={styles.titleStyle}>Próximos eventos:</Text>
             </View>
             <View style={{ marginTop: '2%'}}>
               <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>

@@ -23,6 +23,9 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "package": "com.Transform.transformAPK"
+    },
     "ios": {
       "supportsTablet": true
     }

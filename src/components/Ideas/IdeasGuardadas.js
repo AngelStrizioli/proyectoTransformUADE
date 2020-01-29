@@ -5,6 +5,8 @@ import ItemListaIdeas from './ItemListaIdeas';
 import {AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Divider } from 'react-native-elements';
+
 /* ### PÁGINA PARA VER TODAS LAS IDEAS GUARDADAS POR EL USUARIO ###
     En prototipo: Todavía no está. */
 class IdeasGuardadas extends React.Component{
@@ -64,8 +66,9 @@ class IdeasGuardadas extends React.Component{
             <View>
               <Text style= {styles.titleStyle}>Ideas Guardadas</Text>
             </View>
-
+            <Divider style={{ backgroundColor: 'blue' }} />
            {this._renderItems()}
+           
           </ScrollView>
         )
       } else {
@@ -94,7 +97,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
     },
     titleStyle: {
-      marginTop: '15%',
+      marginTop: '5%',
+      marginBottom:'3%',
       fontSize: 26,
       fontWeight: 'bold',
       textAlign: 'center'

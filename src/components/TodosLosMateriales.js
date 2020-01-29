@@ -4,6 +4,7 @@ import { Text, View, ScrollView, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import MaterialEsReciclable from './MaterialEsReciclable';
 import ApiController from '../controller/ApiController';
+import { Divider } from 'react-native-elements';
 
 /* ### PÁGINA QUE MUESTRA LA LISTA DE TODOS LOS MATERIALES CON INFORMACIÓN EN LA BD ###
     En prototipo: No está todavía */
@@ -57,12 +58,13 @@ class TodosLosMateriales extends React.Component{
 
        
           <Text style= {styles.titleStyle}>Todos los materiales</Text>
+          <Divider style={{ backgroundColor: 'blue' }} />
           <View>
           {materiales.map((material) =>{
               
               return (
                 <View key={material.nombre}>
-                <MaterialEsReciclable key={material.id} material={material} navigation={this.props.navigation}/>
+                  <MaterialEsReciclable key={material.id} material={material} navigation={this.props.navigation}/>
                
                 </View>
             )})}

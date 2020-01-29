@@ -12,6 +12,7 @@ import {
 
 import { Ionicons } from '@expo/vector-icons';
 import ImagenCarouselInstructivo from './ImagenCarouselInstructivo'
+import { Button } from 'react-native-elements';
 import Main from '../screens/Main';
 
 const { width } = Dimensions.get('window'); 
@@ -30,22 +31,17 @@ export default class Instructivo extends React.Component {
       };
     render() {
       return (
-        <View style={styles.container}>
-
-        <TouchableOpacity  onPress={() => {this.props.navigation.navigate('Main');}}>
-            <Text style={{
-              fontSize: 18,
-              fontWeight:'bold',
-              textAlign: 'center',
-              color:'black'
-             }}>
-                Omitir instructivo
-            </Text>
-        </TouchableOpacity>
-        
+        <View style={styles.container}>  
           <View style={styles.carouselContainer2}>
             <ImagenCarouselInstructivo/> 
           </View> 
+          <Button 
+            onPress={() => {this.props.navigation.navigate('Main');}}
+            title="Omitir instructivo"
+            type="outline"
+            raised="true"
+            titleStyle={{fontSize: 24, fontWeight: 'bold'}}
+            />
         </View>
       );
     }
@@ -60,4 +56,8 @@ export default class Instructivo extends React.Component {
       height:'85%', 
       marginTop:'5%',
     }, 
+    btnOmitirTutorial: {
+      width: width,
+      
+    },
   });

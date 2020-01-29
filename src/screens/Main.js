@@ -4,15 +4,15 @@ import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, Scr
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator, DrawerNavigatorItems } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
-import IdeasGuardadas from '../components/IdeasGuardadas';
-import ItemListaIdeas from '../components/ItemListaIdeas';
+import IdeasGuardadas from '../components/Ideas/IdeasGuardadas';
+import ItemListaIdeas from '../components/Ideas/ItemListaIdeas';
 import ResultadoProductoMultiple from '../components/ResultadoProductoMultiple';
 import ResultadoProductoUnico from '../components/ResultadoProductoUnico';
 import TodasLasIdeas from '../components/TodasLasIdeas';
 import TodosLosMateriales from '../components/TodosLosMateriales';
 import TipoDeMaterial from '../components/TipoDeMaterial';
 import ReciclableSioNo from '../components/ReciclableSioNo';
-import IdeaSimple from '../components/IdeaSimple';
+import IdeaSimple from '../components/Ideas/IdeaSimple';
 import ApiController from '../controller/ApiController';
 import MaterialCompleto from '../components/MaterialCompleto'
 import EventosPatrocinados from '../components/Eventos/EventosPatrocinados';
@@ -167,40 +167,8 @@ class Main extends React.Component {
             <View style={{ marginTop: '2%'}}>
               <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
             </View>
-
-
-
-
-            {/*volar algun dia */}
-            <View style={styles.inputSize}>
-            <Text style={styles.subtitleStyle}>O ingresá el producto que quieras:</Text>
           </View>
-
-          <View style={styles.inputSize}>
-            <TextInput
-              style={styles.inputDesigne}
-              editable
-              maxLength={32}
-              placeholder="Ej: Lata, yerba, CD..."
-              placeholderTextColor="#6DCAF2"
-              onChangeText={(name) => this.setState({ nombreProducto: name })}
-              value={this.state.name}
-
-            />
-          </View>
-
-        
-            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-              <TouchableOpacity onPress={this.onClickListener} >
-                <Text style={styles.buttonDesigne} >
-                  ¡Transformalo!
-              </Text>
-              </TouchableOpacity>
-              {/* Este view es para el boton de debug de las clases  */}
-            </View>
-         
-        </View>
-      </ScrollView>
+        </ScrollView>
       </View>
     );
   }
@@ -222,7 +190,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   inputDesigne: {
-    height: 48,
+    height: "100%",
+    width: "100%",
     borderColor: 'white',
     borderWidth: 1,
     backgroundColor: 'white',
@@ -230,7 +199,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: '5%',
     fontSize: 16,
-    width: 280
   },
   buttonSize: {
     flexDirection: 'row',
@@ -368,24 +336,79 @@ const Navigatorr = createDrawerNavigator({
  
 });
 
+class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      nombreProducto: ""
+    }
+  }
+
+  ObtenerDatosProd(newData) {
+    //console.log(newData)
+    this.setState({ productos: newData })
+    // aca empieza la navegacion
+    this.fetchObjetos
+    if (this.state.productos.length > 1) {
+      this.props.navigation.navigate('ResultadoProductoMultiple',
+        {
+          productos: this.state.productos,
+          busqueda: this.state.busqueda,
+        
+        })
+    } else {
+      if (this.state.productos.length == 0) {
+        alert("no se encontraron productos con este nombre: " + this.state.nombreProducto)
+      } else {
+        this.props.navigation.navigate('ResultadoProductoUnico',
+          { producto: this.state.productos[0] })
+      }
+    }
+  }
+
+  onClickListener = () => {
+    let data = {
+      name: this.state.nombreProducto
+    }
+    ApiController.getProductosByNombre(data, this.ObtenerDatosProd.bind(this));
+  }
+
+
+  render() {
+    return (
+      <View style={styles.inputSize}>
+      <TextInput
+        style={styles.inputDesigne}
+        editable
+        maxLength={32}
+        placeholder="Ej: Lata, yerba, CD..."
+        placeholderTextColor="#6DCAF2"
+        underlineColorAndroid = "transparent"
+        onChangeText={(name) => this.setState({ nombreProducto: name })}
+        value={this.state.name}
+        onSubmitEditing={this.onClickListener}
+      />
+     </View>
+    );
+  }
+}
 
 const bootRoot = createStackNavigator({
-
   Navigatorr: {
     screen: Navigatorr,
     navigationOptions: ({ navigation }) => ({
       headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:10}} >
-      <Text> <Ionicons name="md-menu" size={30} color={'white'} /> </Text>
+        <Text> <Ionicons name="md-menu" size={30} color={'white'} /> </Text>
       </TouchableOpacity>,
+      headerTitle: navigation.getParam("activeSearchBar") ? <SearchBar navigation={navigation}/> : <LogoHeader />,
+      headerRight:
+        <TouchableOpacity style={{marginRight:10}} onPress={() => { navigation.getParam("activeSearchBar") ? navigation.setParams({activeSearchBar:false}) : navigation.setParams({activeSearchBar:true})}}>
+            <Text> <Ionicons name="md-search" size={30} color={'white'} /> </Text>
+        </TouchableOpacity>,      
     }),
   },
   ResultadoProductoMultiple: {
     screen: ResultadoProductoMultiple,
-    navigationOptions: ({ navigation }) => ({
-      headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:10}} >
-      <Text> <Ionicons name="md-menu" size={30} color={'white'} /> </Text>
-      </TouchableOpacity>,
-    }),
   },
   ItemListaIdeas: {
     screen: ItemListaIdeas,
@@ -418,11 +441,9 @@ const bootRoot = createStackNavigator({
 
 }, {
   defaultNavigationOptions: {
-    headerTitle: () => <LogoHeader />,
-    headerRight:() =><TouchableOpacity  style={{marginRight:10}} >
-                      <Text> <Ionicons name="md-search" size={30} color={'white'} /> </Text>
-                      </TouchableOpacity>,
- 
+
+    headerTitle: <LogoHeader />,
+    headerRight: <View/>,
     headerStyle: {
       backgroundColor: '#00B2FF',
     },

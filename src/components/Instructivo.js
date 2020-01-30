@@ -13,7 +13,6 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import ImagenCarouselInstructivo from './ImagenCarouselInstructivo'
 import { Button } from 'react-native-elements';
-import Main from '../screens/Main';
 
 const { width } = Dimensions.get('window'); 
 

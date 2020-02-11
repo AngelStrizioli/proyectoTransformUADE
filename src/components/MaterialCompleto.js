@@ -113,7 +113,7 @@ class MaterialCompleto extends React.Component{
         }
           </View>
       */}
-        <View style={styles.buttonPosition}>
+        {/*<View style={styles.buttonPosition}>
           <TouchableOpacity style={{marginVertical: '10%'}} onPress={() => { this.props.navigation.goBack()}}>
             <View style={{justifyContent:'center'}}>
               <Text style={styles.buttonDesigne} >
@@ -124,7 +124,7 @@ class MaterialCompleto extends React.Component{
             </View>
           </TouchableOpacity>
         </View>
-        
+        */}
 
           </ScrollView>
 

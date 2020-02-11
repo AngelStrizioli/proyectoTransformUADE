@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 import ItemListaIdeas from './ItemListaIdeas'
 import ApiController from '../../controller/ApiController'
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 
 // Funcion que crea la data necesaria de los posteos, hay que cambiarla
@@ -55,9 +56,13 @@ export default class ListaIdeas extends React.Component {
   render() {
     if (this.state.ideas.length > 0) {
       return (
+        
+     
         <View style={{flex:1}}>
           {this._renderItems()}
         </View>
+     
+        
       )
     } else {
       return <Text style={{textAlign:'center', fontSize:18, marginBottom:'5%'}} >Cargando Ideas...</Text>

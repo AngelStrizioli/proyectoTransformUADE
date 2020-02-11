@@ -55,13 +55,13 @@ class ReciclableSioNo extends React.Component{
               {descarte}</Text>)})}
           </View>
 
-          <View style={styles.compoPosition}>
+         {/* <View style={styles.compoPosition}>
             <TouchableOpacity  onPress={() => { navigation.goBack()}} >
               <Text style={styles.buttonDesigne} >
                 Volver
               </Text>
             </TouchableOpacity>
-          </View>
+          </View>*/}
         </ScrollView>)
       }
     }

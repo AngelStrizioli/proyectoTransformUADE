@@ -104,7 +104,7 @@ class Main extends React.Component {
       {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/}
     return (
       <View style={{flex:1,backgroundColor: 'rgba(0, 0, 0, 0.05)',}}>
-      <ScrollView style={{ backgroundColor: '#f4fcff' }}>
+      <ScrollView style={{ backgroundColor: 'white' }}>
         <View style={styles.container}>
         {/*  <View style={{
             height: 70,
@@ -150,7 +150,11 @@ class Main extends React.Component {
   }
 }
 
-
+/*colores que usa uade en su pag web
+- blanco en fondos
+- 061B2C (azul muy oscuro) en los headers, logo, cars con mucha info
+- 0098a0 (medio turquesa parecido al nuestro) en links o botones
+- 0f446f (azul oscuro pero no tanto como el primero) en los touchables de los eventos */
 const styles = StyleSheet.create({
   container: {
     //esto esta para que quede todo exactamente en el medio de la pantalla, si se vuela queda arriba de todo
@@ -205,7 +209,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
     marginVertical: '2%',
-    color: "#00B2FF",
+    color: "#009eff",
    // textShadowColor: 'rgba(0, 0, 0, 0.25)',
     //textShadowOffset: { width: 1, height: 1 },
     //textShadowRadius: 1
@@ -216,11 +220,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     marginVertical: '2%',
-    color: "#00B2FF",
+    color: "#009eff",
   },
   tagsForm:{
     borderRadius: 50,
-    backgroundColor:'#00B2FF',
+    backgroundColor:'#061B2C',
     height: 25,
     paddingHorizontal:10
 
@@ -421,7 +425,7 @@ const bootRoot = createStackNavigator({
     headerTitle: <LogoHeader />,
     headerRight: <View/>,
     headerStyle: {
-      backgroundColor: '#00B2FF',
+      backgroundColor: '#009eff',
     },
     headerTintColor: 'white',
   }

@@ -1,6 +1,11 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet, ScrollView } from 'react-native';
+import { Text, View, Image, StyleSheet, ScrollView,Dimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+
+
+
+
+const { width } = Dimensions.get('window');
 
 /* ### COMPONENTE PARA HACER UN ITEM DE LA GALERIA DE IDEAS ###
     En prototipo: Dentro de producto único > Idea1, Idea2, Idea3... */
@@ -20,14 +25,16 @@ class ItemListaIdeas extends React.Component{
       const idea = this.props.idea;
       
       return(
+        
         <View style={styles.container}>
         
           <TouchableOpacity style={styles.itemIdea} onPress= {()=> {navigation.navigate('IdeaSimple', {idea: idea});}}>
-              <Image source={{uri: this.state.idea.img}} style={{width: "100%", height:200}} />
+              <Image source={{uri: this.state.idea.img}} style={{width: width, height:200}} />
               <Text style={styles.textStyle}>{this.state.idea.titulo}</Text>
           </TouchableOpacity>
     
         </View>
+        
         
     );
     }

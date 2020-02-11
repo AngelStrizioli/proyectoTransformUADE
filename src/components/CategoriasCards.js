@@ -77,7 +77,7 @@ export default class CategoriasCards extends Component {
                                         <Image source={{ uri: categoria.img }} style={{ height: width * 0.6, width: width * 0.6, resizeMode: 'contain', flex: 1 }} />
                                     </CardItem>
                                     <CardItem button onPress={() => {this.buscarProductos(categoria.title)}}>
-                                        <Text style={{ color: '#00B2FF', textAlign: "center", alignSelf: "center" }}>
+                                        <Text style={{ color: '#009eff', textAlign: "center", alignSelf: "center" }}>
                                             {categoria.title}
                                         </Text>
                                     </CardItem>

@@ -57,7 +57,7 @@ class ResultadoProductoUnico extends React.Component {
             {/*Parametro: URL Del endpoint que tiene el JSON de ideas del producto. El compo se encarga del resto
                 Nota: No sé si responde al formato de la BD. Avisarme si no - Fede*/}
                 
-       <ListaIdeasById id={producto.id} navigation={this.props.navigation}></ListaIdeasById> 
+       <ListaIdeasById  id={producto.id} navigation={this.props.navigation}></ListaIdeasById> 
 
        
       {/*<View style={styles.imagePosition}>

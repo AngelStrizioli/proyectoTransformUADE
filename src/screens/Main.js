@@ -29,6 +29,8 @@ import CategoriasCards from '../components/CategoriasCards'
 import TagsCloud from '../components/TagsCloud';
 //import EventoSimple from './components/Eventos/EventoSimple';
 
+import { globalStyle, themeMainColor } from "../styles/globalStyles";
+
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
 
@@ -57,7 +59,7 @@ class Main extends React.Component {
   static navigationOptions = {
     title: 'Volver al inicio',
     drawerIcon: ({ focused }) => (
-      <Ionicons name="md-arrow-round-back" size={24} color={focused ? '#00B2FF' : 'black'} />
+      <Ionicons name="md-arrow-round-back" size={24} color={focused ? themeMainColor : 'black'} />
     ),
   };
 
@@ -105,23 +107,9 @@ class Main extends React.Component {
     return (
       <View style={{flex:1,backgroundColor: 'rgba(0, 0, 0, 0.05)',}}>
       <ScrollView style={{ backgroundColor: 'white' }}>
-        <View style={styles.container}>
-        {/*  <View style={{
-            height: 70,
-            flexDirection: 'row',
-            justifyContent: 'flex-start',
-            alignItems: 'center'
-          }}>
-            <TouchableOpacity style={{ marginLeft: 10, marginTop: '10%' }}
-              onPress={() => { this.props.navigation.toggleDrawer(); }}>
-
-              <Ionicons name="md-menu" size={32} color={'white'} />
-
-            </TouchableOpacity>
-          </View>*/}
-
+        <View style={globalStyle.container}>
           <View style={{marginTop:'2%'}}>
-            <Text style={styles.subtitleStyle}>Aprendé a transformar estos productos:</Text>
+            <Text style={globalStyle.subtitleStyle}>Aprendé a transformar estos productos:</Text>
           </View>
 
           <View style={styles.inputSize}>
@@ -138,7 +126,7 @@ class Main extends React.Component {
           </View>
 
             <View style={{ flexDirection: 'row', marginTop: '3%' }}>
-              <Text style={styles.titleStyle}>Próximos eventos:</Text>
+              <Text style={globalStyle.titleStyle}>Próximos eventos:</Text>
             </View>
             <View style={{ marginTop: '2%'}}>
               <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
@@ -156,85 +144,17 @@ class Main extends React.Component {
 - 0098a0 (medio turquesa parecido al nuestro) en links o botones
 - 0f446f (azul oscuro pero no tanto como el primero) en los touchables de los eventos */
 const styles = StyleSheet.create({
-  container: {
-    //esto esta para que quede todo exactamente en el medio de la pantalla, si se vuela queda arriba de todo
-    flex: 1,
-    // https://www.color-hex.com/ pag util para ver y hacer colores en hexa por si no sabemos el nombre en palabras
-    
-
-    justifyContent: 'center',
-  },
   inputSize: {
     //estas dos lineas sirven para que quede todo centrado
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  inputDesigne: {
-    height: "100%",
-    width: "100%",
-    borderColor: 'white',
-    borderWidth: 1,
-    backgroundColor: 'white',
-    color: '#00B2FF',
-    borderRadius: 5,
-    paddingLeft: '5%',
-    fontSize: 16,
-  },
+
   buttonSize: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  buttonDesigne: {
-    marginTop: 20,
-    width: 246,
-    height: 55,
-    borderWidth: 1,
-    padding: 10,
-    borderColor: 'white',
-    backgroundColor: 'white',
-    color: "#00B2FF",
-    fontSize: 24,
-    fontWeight: 'normal',
-    borderRadius: 50, //android
-    textAlign: "center",
-    elevation: 2,//android
-    shadowColor: 'rgba(0,0,0, .25)', // IOS
-    shadowOffset: { height: 3, width: 3 }, // IOS
-    shadowOpacity: 1, // IOS
-    shadowRadius: 1, //IOS
-  },
-  titleStyle: {
-    //textAlign: 'center',
-    marginLeft:'5%',
-    fontWeight: 'bold',
-    fontSize: 24,
-    marginVertical: '2%',
-    color: "#009eff",
-   // textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    //textShadowOffset: { width: 1, height: 1 },
-    //textShadowRadius: 1
-  },
-  subtitleStyle: {
-    //textAlign: 'center',
-    marginLeft:'5%',
-    fontWeight: 'bold',
-    fontSize: 18,
-    marginVertical: '2%',
-    color: "#009eff",
-  },
-  tagsForm:{
-    borderRadius: 50,
-    backgroundColor:'#061B2C',
-    height: 25,
-    paddingHorizontal:10
 
-  },
-  textTags:{
-    fontWeight: 'bold',
-    fontSize: 18,
-    color: "white",
-    textAlign:'center',
-  },
   botonLargo:{
     backgroundColor: 'white',
     elevation: 2,
@@ -358,7 +278,7 @@ class SearchBar extends React.Component {
     return (
       <View style={styles.inputSize}>
       <TextInput
-        style={styles.inputDesigne}
+        style={globalStyle.inputDesigne}
         editable
         maxLength={32}
         placeholder="Ej: Lata, yerba, CD..."
@@ -424,9 +344,9 @@ const bootRoot = createStackNavigator({
 
     headerTitle: <LogoHeader />,
     headerRight: <View/>,
-    headerStyle: {
-      backgroundColor: '#009eff',
-    },
+    headerStyle: 
+      globalStyle.mainHeader
+    ,
     headerTintColor: 'white',
   }
 })

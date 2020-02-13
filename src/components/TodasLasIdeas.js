@@ -12,7 +12,7 @@ class TodasLasIdeas extends React.Component{
       title: 'Ver todas las ideas',
       header: null,
       drawerIcon: ({ focused }) => (
-        <Ionicons name="md-bulb" size={24} color={focused ? '#00B2FF' : 'black'} />
+        <Ionicons name="ios-bulb" size={24} color={focused ? '#00B2FF' : 'black'} />
       ),
 
     };
@@ -23,7 +23,7 @@ class TodasLasIdeas extends React.Component{
           <View>
             <Text style= {styles.titleStyle}>Todas las ideas</Text>
           </View>
-          <Divider style={{ backgroundColor: 'blue' }} />
+          <Divider style={{ backgroundColor: 'black' }} />
           <View>
             <ListaIdeas navigation={this.props.navigation}></ListaIdeas>
           </View>

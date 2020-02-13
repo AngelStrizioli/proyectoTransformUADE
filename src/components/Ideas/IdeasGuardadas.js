@@ -54,7 +54,7 @@ class IdeasGuardadas extends React.Component{
     static navigationOptions = {
       title: 'Ver mis ideas guardadas',
       drawerIcon: ({ focused }) => (
-        <Ionicons name="md-bookmark" size={24} color={focused ? '#00B2FF' : 'black'} />
+        <Ionicons name="ios-bookmark" size={24} color={focused ? '#00B2FF' : 'black'} />
       ),
     };
 
@@ -66,7 +66,7 @@ class IdeasGuardadas extends React.Component{
             <View>
               <Text style= {styles.titleStyle}>Ideas Guardadas</Text>
             </View>
-            <Divider style={{ backgroundColor: 'blue' }} />
+            <Divider style={{ backgroundColor: 'black' }} />
            {this._renderItems()}
            
           </ScrollView>

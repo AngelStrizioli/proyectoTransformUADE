@@ -26,7 +26,7 @@ class TodosLosMateriales extends React.Component{
       title: 'Ver todos los materiales',
       header: null,
       drawerIcon: ({ focused }) => (
-        <Ionicons name="md-cube" size={24} color={focused ? '#00B2FF' : 'black'} />
+        <Ionicons name="ios-cube" size={24} color={focused ? '#00B2FF' : 'black'} />
       ),
      
     };
@@ -58,7 +58,7 @@ class TodosLosMateriales extends React.Component{
 
        
           <Text style= {styles.titleStyle}>Todos los materiales</Text>
-          <Divider style={{ backgroundColor: 'blue' }} />
+          <Divider style={{ backgroundColor: 'black' }} />
           <View>
           {materiales.map((material) =>{
               

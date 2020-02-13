@@ -3,13 +3,18 @@ import { StyleSheet, ScrollView, View, Text, Dimensions, Image, ImageBackground 
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 import LockMap from '../Misc/Maps/LockMap';
+import { Card, CardItem } from 'native-base';
 
 let { width, height } = Dimensions.get('window');
 
 class EventoSimple extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  constructor(props){
+    super(props)
+    this.state={
+        corazon: false
+    }
+   
+}
 
   renderBlocks(evento) {
     if (evento.blocks != undefined) {
@@ -23,6 +28,42 @@ class EventoSimple extends React.Component {
       })
     }
   }
+  _storeLikes = () =>{
+
+    if (this.state.corazon == false){
+      this.setState({corazon: true})
+
+    }
+    else{
+      this.setState({corazon:false})
+
+    }
+
+}
+  cambiarCorazon(){
+    if(this.state.corazon === true){
+          
+      return (
+          
+            <TouchableOpacity  onPress={() => this._storeLikes()} >
+              <Text>
+              <Ionicons name="md-heart" size={30} color={'black'} />
+              </Text>
+            </TouchableOpacity>
+     
+      )
+  }else{
+      return(
+          
+            <TouchableOpacity  onPress={() => this._storeLikes()} >
+              <Text>
+              <Ionicons name="md-heart-empty" size={30}  />
+              </Text>
+            </TouchableOpacity>
+         
+      )
+  }
+  }
 
   render() {
     const { navigation } = this.props;
@@ -34,9 +75,7 @@ class EventoSimple extends React.Component {
           style={styles.backgroundImage}>
           <View style={styles.tittleContainer}>
             <View style={styles.backButtonView}>
-              <TouchableOpacity style={styles.backButton} onPress={() => { navigation.goBack() }}>
-                <Ionicons name="md-arrow-round-back" size={24} color={'white'} />
-              </TouchableOpacity>
+              
             </View>
             <View style={styles.tittlePosition}>
               <Text style={styles.titleStyle}>{evento.title}</Text>
@@ -47,6 +86,20 @@ class EventoSimple extends React.Component {
             </View>
           </View>
         </ImageBackground>
+        <Card >
+        <CardItem style={{justifyContent:'space-around'}}> 
+              
+         {this.cambiarCorazon()}
+         
+          <TouchableOpacity>
+              <Text> <Ionicons name="md-text" size={30} /> </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+              <Text> <Ionicons name="md-share" size={30} /> </Text>
+          </TouchableOpacity>
+          </CardItem>
+
+        </Card>
         {this.renderBlocks(evento)}
         <LockMap evento={evento}/>
       </ScrollView>

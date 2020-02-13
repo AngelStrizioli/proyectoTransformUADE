@@ -1,7 +1,8 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, Linking, ScrollView } from 'react-native';
+import { Image, StyleSheet, Text, View, Linking, ScrollView,AsyncStorage } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import {AsyncStorage} from 'react-native';
+import { Card, CardItem, Body } from 'native-base';
+import { Ionicons } from '@expo/vector-icons';
 
 /* ### PÁGINA PARA REPRESENTAR EL POSTEO DE UNA IDEA QUE CONTENGA UN  VIDEO ###
       En prototipo:
@@ -14,7 +15,8 @@ class IdeaVideo extends React.Component{
     constructor(props){
       super(props);
       this.state={
-        guardado: false
+        guardado: false,
+        corazon:false,
       }
       this._isStored()
     }
@@ -27,18 +29,38 @@ class IdeaVideo extends React.Component{
         return(
             <ScrollView style={styles.container}>
                 <Text style={styles.titleStyle}>{idea.titulo}</Text>
-                <Text style={styles.subtitleStyle}>VideoTutorial</Text>
-                <TouchableOpacity onPress={() => Linking.openURL(video)}>
-                    <Image title="El videardo" source={{ uri: (imagen) }} style={styles.imagenVideoStyle}/>
-                    <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
-                        {/*<Text style={styles.playButton}>&#9658;</Text>*/}
-                        <Image title="Play Video" source={{uri: "https://i.imgur.com/bT1lYuB.png"}} style={{ height: 200, width: 300}}/>
-                    </View>
-                </TouchableOpacity>
+                <Text style={styles.subtitleStyle}>Video Tutorial</Text>
+                <Card style={{marginBottom:'2%'}}>
+                  <CardItem style={{justifyContent:'flex-end'}}>
+                  {this.cambiarBoton()}
+                      
+                  </CardItem>
+                  <CardItem style={{alignSelf:'center'}}>
+                    <TouchableOpacity onPress={() => Linking.openURL(video)}>
+                        <Image title="El videardo" source={{ uri: (imagen) }} style={styles.imagenVideoStyle}/>
+                        <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+                            {/*<Text style={styles.playButton}>&#9658;</Text>*/}
+                            <Image title="Play Video" source={{uri: "https://i.imgur.com/bT1lYuB.png"}} style={{ height: 200, width: 300}}/>
+                        </View>
+                    </TouchableOpacity>
+                  </CardItem>
+                  <CardItem style={{justifyContent:'space-around', marginTop:'1%'}}>
+                  {this.cambiarCorazon()}
+
+                      <TouchableOpacity>
+                          <Text> <Ionicons name="md-text" size={30} /> </Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity>
+                          <Text> <Ionicons name="md-share" size={30} /> </Text>
+
+                          
+                      </TouchableOpacity>
+                  </CardItem>
+                </Card>
                 <Text style={styles.subtitleStyle}>Descripción:</Text>
                 <Text style={styles.textStyle}>{idea.texto}</Text>
-
-                 {this.cambiarBoton()}
+               
+                 
 
               {/* <View style={styles.compoPosition}>
                    <TouchableOpacity style={styles.botonLargo} onPress={() => { navigation.goBack()}} >
@@ -85,38 +107,66 @@ class IdeaVideo extends React.Component{
         console.log(e.message);
       }
     }
-  
+    _storeLikes = () =>{
+
+        if (this.state.corazon == false){
+          this.setState({corazon: true})
+        }
+        else{
+          this.setState({corazon:false})
+        }
+    
+    }
+
+   
 
   cambiarBoton(){
       //console.log(this.state.guardado)
       if(this.state.guardado === true){
           
           return (
-              <View style={styles.compoPosition}>
-                <TouchableOpacity style={styles.buttonPressed}  onPress={() => this._storeData()} >
-                  <Text style={{  color: "#00B2FF",
-        fontSize: 24,
-        textAlign: "center",
-        textAlignVertical: 'center',}} >
-                    ¡Guardado!
-                  </Text>
+            
+                <TouchableOpacity  onPress={() => this._storeData()} >
+                <Image style={{width:35, height:35}} source={{uri:('https://i.imgur.com/dHIs4kd.png')}} />
                 </TouchableOpacity>
-              </View>
+         
           )
       }else{
           return(
-              <View style={styles.compoPosition}>
-                <TouchableOpacity style={styles.botonLargo} onPress={() => this._storeData()} >
-                  <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>
-                    Guardar para después
-                  </Text>
+      
+                <TouchableOpacity onPress={() => this._storeData()} >
+                <Image style={{width:35, height:35}} source={{uri:('https://i.imgur.com/JkqyZWl.png')}} />
                 </TouchableOpacity>
-              </View>
+       
           )
       }
   }
+  cambiarCorazon(){
+    if(this.state.corazon === true){
+          
+      return (
+          
+            <TouchableOpacity  onPress={() => this._storeLikes()} >
+              <Text>
+              <Ionicons name="md-heart" size={30} color={'black'} />
+              </Text>
+            </TouchableOpacity>
+     
+      )
+  }else{
+      return(
+          
+            <TouchableOpacity  onPress={() => this._storeLikes()} >
+              <Text>
+              <Ionicons name="md-heart-empty" size={30}  />
+              </Text>
+            </TouchableOpacity>
+         
+      )
+  }
+  }
 
-
+  
 
 
 }
@@ -135,7 +185,7 @@ const styles = StyleSheet.create({
     subtitleStyle: {
         fontSize: 20,
         fontWeight: 'bold',
-        padding: '4%'
+        padding: '3%'
     },
     textStyle:{
         padding:'4%',
@@ -179,6 +229,8 @@ const styles = StyleSheet.create({
       
     textAlign: "center",
     textAlignVertical: 'center',
+    justifyContent:'center',
+    alignSelf: 'center',
     backgroundColor: 'white',
     width: 300,
     height: 55,

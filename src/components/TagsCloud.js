@@ -46,7 +46,7 @@ export default class TagsCloud extends Component {
 const styles = StyleSheet.create({
     tagsForm: {
         borderRadius: 50,
-        backgroundColor: '#009eff',
+        backgroundColor: '#0f446f',
         height: 25,
         paddingHorizontal: 10,
         marginBottom: 3

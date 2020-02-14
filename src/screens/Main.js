@@ -37,7 +37,9 @@ class LogoHeader extends React.Component {
     return (
       <View style={{ alignSelf: 'center', flex: 1 }}>
     
-       {/* <Image
+       {/* LO DEJE PARA QUE TENGAMOS BIEN LAS MEDIDAS PARA CUANDO VOLVAMOS A PONER 
+       EL HEADER TRANSFOM, NO LO BORREN HDPS -Belu
+       <Image
           resizeMode="cover"
           source={require("../assets/images/LogoHorizontal.png")}
           style={{
@@ -220,7 +222,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
     marginVertical: '2%',
-    color: "#009eff",
+    color: "#186db2",
    // textShadowColor: 'rgba(0, 0, 0, 0.25)',
     //textShadowOffset: { width: 1, height: 1 },
     //textShadowRadius: 1
@@ -231,7 +233,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     marginVertical: '2%',
-    color: "#009eff",
+    color: "#186db2",
   },
   tagsForm:{
     borderRadius: 50,

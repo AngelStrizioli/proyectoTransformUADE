@@ -6,6 +6,7 @@ import {AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Divider } from 'react-native-elements';
+import { themeMainColor } from '../../styles/globalStyles';
 
 /* ### PÁGINA PARA VER TODAS LAS IDEAS GUARDADAS POR EL USUARIO ###
     En prototipo: Todavía no está. */
@@ -54,7 +55,7 @@ class IdeasGuardadas extends React.Component{
     static navigationOptions = {
       title: 'Ver mis ideas guardadas',
       drawerIcon: ({ focused }) => (
-        <Ionicons name="md-bookmark" size={24} color={focused ? '#00B2FF' : 'black'} />
+        <Ionicons name="md-bookmark" size={24} color={focused ? themeMainColor : 'black'} />
       ),
     };
 

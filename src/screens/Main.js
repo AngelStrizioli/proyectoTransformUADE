@@ -282,7 +282,7 @@ class SearchBar extends React.Component {
         editable
         maxLength={32}
         placeholder="Ej: Lata, yerba, CD..."
-        placeholderTextColor="#6DCAF2"
+        placeholderTextColor={themeMainColor}
         underlineColorAndroid = "transparent"
         onChangeText={(name) => this.setState({ nombreProducto: name })}
         value={this.state.name}

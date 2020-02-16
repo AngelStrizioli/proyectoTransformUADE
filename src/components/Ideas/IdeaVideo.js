@@ -3,13 +3,7 @@ import { Image, StyleSheet, Text, View, Linking, ScrollView } from 'react-native
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {AsyncStorage} from 'react-native';
 
-/* ### PÁGINA PARA REPRESENTAR EL POSTEO DE UNA IDEA QUE CONTENGA UN  VIDEO ###
-      En prototipo:
-
-      Falta terminar porque no encontré una librería que no haga quilombo con el navigator o con alguna otra gilada
-     */
-
-
+import { themeMainColor } from '../../styles/globalStyles';
 class IdeaVideo extends React.Component{
     constructor(props){
       super(props);
@@ -94,7 +88,7 @@ class IdeaVideo extends React.Component{
           return (
               <View style={styles.compoPosition}>
                 <TouchableOpacity style={styles.buttonPressed}  onPress={() => this._storeData()} >
-                  <Text style={{  color: "#00B2FF",
+                  <Text style={{  color: themeMainColor,
         fontSize: 24,
         textAlign: "center",
         textAlignVertical: 'center',}} >
@@ -153,7 +147,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         textAlign: "center",
         textAlignVertical: 'center',
-        backgroundColor: '#00B2FF',
+        backgroundColor: themeMainColor,
         width: 300,
         height: 55,
         borderRadius: 50,
@@ -162,7 +156,7 @@ const styles = StyleSheet.create({
 
       },
       botonLargo:{
-        backgroundColor: '#00B2FF',
+        backgroundColor: themeMainColor,
         elevation: 2,
         shadowColor: 'rgba(0,0,0, .25)', 
         shadowOffset: { height: 3, width: 3 }, 
@@ -183,7 +177,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 55,
     borderRadius: 50,
-    borderColor: '#00B2FF',
+    borderColor: themeMainColor,
     borderWidth: 4,
     
       },

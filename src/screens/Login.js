@@ -116,7 +116,7 @@ inputSize: {
   borderColor: 'white',
   borderWidth: 1,
   backgroundColor: 'white',
-  color: '#00B2FF',
+  color: "#2A4F8F",
   borderRadius: 5,
   paddingLeft: '5%',
   fontSize: 16,

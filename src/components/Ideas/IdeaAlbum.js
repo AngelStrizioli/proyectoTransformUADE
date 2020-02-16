@@ -3,6 +3,7 @@ import { Image, StyleSheet, Text, View, ScrollView, Dimensions } from 'react-nat
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ImageCarousel from '../ImageCarousel';
 import {AsyncStorage} from 'react-native';
+import { themeMainColor } from '../../styles/globalStyles';
 
 /* ### PÁGINA PARA REPRESENTAR EL POSTEO DE UNA IDEA QUE CONTENGA UN ÁLBUM DE FOTOS ###
       En prototipo: Idea
@@ -148,7 +149,7 @@ class IdeaAlbum extends React.Component{
             return (
                 <View style={styles.compoPosition}>
                   <TouchableOpacity style={styles.buttonPressed}  onPress={() => this._storeData()} >
-                    <Text style={{ color: "#00B2FF",
+                    <Text style={{ color: themeMainColor,
         fontSize: 24,
         textAlign: "center",
         textAlignVertical: 'center',
@@ -223,7 +224,7 @@ const styles = StyleSheet.create({
         marginBottom: 20
       },
       botonLargo:{
-        backgroundColor: '#00B2FF',
+        backgroundColor: themeMainColor,
         elevation: 2,
         shadowColor: 'rgba(0,0,0, .25)', 
         shadowOffset: { height: 3, width: 3 }, 
@@ -241,7 +242,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         textAlign: "center",
         textAlignVertical: 'center',
-        backgroundColor: '#00B2FF',
+        backgroundColor: themeMainColor,
         width: 300,
         height: 55,
         borderRadius: 50,
@@ -256,7 +257,7 @@ const styles = StyleSheet.create({
         width: 300,
         height: 55,
         borderRadius: 50,
-        borderColor: '#00B2FF',
+        borderColor: themeMainColor,
         borderWidth: 4,
         
       }

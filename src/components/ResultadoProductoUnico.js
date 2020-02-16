@@ -11,6 +11,7 @@ import { Ionicons } from '@expo/vector-icons';
       En prototipo: Resultado Unico
      */
 
+import { themeMainColor } from '../styles/globalStyles';
 
 class ResultadoProductoUnico extends React.Component {
 
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: "center",
     textAlignVertical: 'center',
-    backgroundColor: '#00B2FF',
+    backgroundColor: themeMainColor,
     width: 300,
     height: 55,
     borderRadius: 50,
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
     marginTop:'5%',
   },
     botonLargo:{
-      backgroundColor: '#00B2FF',
+      backgroundColor: themeMainColor,
       elevation: 2,
       shadowColor: 'rgba(0,0,0, .25)', 
       shadowOffset: { height: 3, width: 3 }, 

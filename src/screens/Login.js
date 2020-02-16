@@ -3,6 +3,7 @@ import { View, Text, TextInput, StyleSheet, ScrollView, Image, Dimensions, Touch
 import { Button } from 'react-native-elements';
 import { firebaseAuth } from '../environment/config';
 
+import { mainThemeColor } from '../styles/globalStyles';
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null }
   constructor(props) {
@@ -25,7 +26,7 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <ScrollView style={{ backgroundColor: '#00B2FF' }}>
+      <ScrollView style={{ backgroundColor: mainThemeColor }}>
         <View style={styles.container}>
           <Image source={require('../assets/images/LogoHorizontal.png')} style={{
             width: 300,
@@ -116,7 +117,7 @@ inputSize: {
   borderColor: 'white',
   borderWidth: 1,
   backgroundColor: 'white',
-  color: "#2A4F8F",
+  color: mainThemeColor,
   borderRadius: 5,
   paddingLeft: '5%',
   fontSize: 16,
@@ -135,7 +136,7 @@ signupBtn: {
   padding: 10,
   borderColor: 'white',
   backgroundColor: 'white',
-  color: "#00B2FF",
+  color: mainThemeColor,
   fontSize: 15,
   fontWeight: 'normal',
   borderRadius: 50, //android
@@ -154,7 +155,7 @@ registerBtn: {
   padding: 10,
   borderColor: 'white',
   backgroundColor: 'white',
-  color: "#00B2FF",
+  color: mainThemeColor,
   fontWeight: 'normal',
   borderRadius: 50, //android
   textAlign: "center",

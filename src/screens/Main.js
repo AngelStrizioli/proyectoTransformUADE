@@ -29,7 +29,7 @@ import CategoriasCards from '../components/CategoriasCards'
 import TagsCloud from '../components/TagsCloud';
 //import EventoSimple from './components/Eventos/EventoSimple';
 
-import { globalStyle, themeMainColor } from "../styles/globalStyles";
+import { globalStyle, themeMainColor, themeMainBackgroundColor } from "../styles/globalStyles";
 
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
@@ -106,7 +106,7 @@ class Main extends React.Component {
       {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/}
     return (
       <View style={{flex:1,backgroundColor: 'rgba(0, 0, 0, 0.05)',}}>
-      <ScrollView style={{ backgroundColor: 'white' }}>
+      <ScrollView style={{ backgroundColor: themeMainBackgroundColor }}>
         <View style={globalStyle.container}>
           <View style={{marginTop:'2%'}}>
             <Text style={globalStyle.subtitleStyle}>Aprendé a transformar estos productos:</Text>

@@ -2,6 +2,8 @@ import React from 'react';
 import { Image, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import { themeMainColor } from '../../styles/globalStyles';
+
 /* ### PÁGINA PARA REPRESENTAR EL POSTEO DE UNA IDEA QUE CONTENGA SOLAMENTE TEXTO ### 
       En prototipo: 
 
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         textAlign: "center",
         textAlignVertical: 'center',
-        backgroundColor: '#00B2FF',
+        backgroundColor: themeMainColor,
         width: 300,
         height: 55,
         borderRadius: 50,

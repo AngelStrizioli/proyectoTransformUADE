@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { ListItem } from 'native-base';
 
+import { themeMainColor } from '../styles/globalStyles';
 class ReciclableSioNo extends React.Component{
     
     /*
@@ -54,14 +55,6 @@ class ReciclableSioNo extends React.Component{
               <Text key={descarte} style={styles.listTextStyle}> »  
               {descarte}</Text>)})}
           </View>
-
-         {/* <View style={styles.compoPosition}>
-            <TouchableOpacity  onPress={() => { navigation.goBack()}} >
-              <Text style={styles.buttonDesigne} >
-                Volver
-              </Text>
-            </TouchableOpacity>
-          </View>*/}
         </ScrollView>)
       }
     }
@@ -99,7 +92,7 @@ class ReciclableSioNo extends React.Component{
       fontSize: 24,
       textAlign: "center",
       textAlignVertical: 'center',
-      backgroundColor: '#00B2FF',
+      backgroundColor: themeMainColor,
       width: 300,
       height: 55,
       borderRadius: 50,

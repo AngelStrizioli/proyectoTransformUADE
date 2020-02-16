@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, Text, View, ScrollView, Dimensions,AsyncStorage } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ImageCarousel from '../ImageCarousel';
+import { themeMainColor } from '../../styles/globalStyles';
 import { Card, CardItem, Body } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -101,22 +102,8 @@ class IdeaAlbum extends React.Component{
                     <Text style={styles.subtitleStyle}>Descripción:</Text>
                     <Text style={styles.textStyle}>{idea.texto}</Text>
                 </View>
-
                 {this.materiales(idea)}
-
                 {this.pasoAPaso(idea)}
-
-
-               
-
-
-               {/* <View style={styles.compoPosition}>
-                    <TouchableOpacity style={styles.botonLargo} onPress={() => { navigation.goBack()}} >
-                        <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>
-                            Volver
-                        </Text>
-                    </TouchableOpacity>
-                </View>*/}
             </ScrollView>
         );
     }
@@ -194,19 +181,16 @@ class IdeaAlbum extends React.Component{
       }
 }
 
-cambiarCorazon(){
-  if(this.state.corazon === true){
-        
-    return (
-        
-          <TouchableOpacity  onPress={() => this._storeLikes()} >
-            <Text>
+  cambiarCorazon(){
+    if(this.state.corazon === true){
+      return (
+        <TouchableOpacity  onPress={() => this._storeLikes()} >
+          <Text>
             <Ionicons name="md-heart" size={30} color={'black'} />
-            </Text>
-          </TouchableOpacity>
-   
+          </Text>
+        </TouchableOpacity>
     )
-}else{
+    }else{
     return(
         
           <TouchableOpacity  onPress={() => this._storeLikes()} >
@@ -218,7 +202,6 @@ cambiarCorazon(){
     )
 }
 }
-
 }
 const styles = StyleSheet.create({
     container: {
@@ -271,7 +254,7 @@ const styles = StyleSheet.create({
         marginBottom: 20
       },
       botonLargo:{
-        backgroundColor: '#00B2FF',
+        backgroundColor: themeMainColor,
         elevation: 2,
         shadowColor: 'rgba(0,0,0, .25)', 
         shadowOffset: { height: 3, width: 3 }, 
@@ -289,7 +272,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         textAlign: "center",
         textAlignVertical: 'center',
-        backgroundColor: '#00B2FF',
+        backgroundColor: themeMainColor,
         width: 300,
         height: 55,
         borderRadius: 50,
@@ -298,17 +281,14 @@ const styles = StyleSheet.create({
       },
        buttonPressed:{
        
-            
-    textAlign: "center",
-    textAlignVertical: 'center',
-    justifyContent:'center',
-    alignSelf: 'center',
-    backgroundColor: 'white',
-    width: 300,
-    height: 55,
-    borderRadius: 50,
-    borderColor: '#00B2FF',
-    borderWidth: 4,
+        textAlign: "center",
+        textAlignVertical: 'center',
+        backgroundColor: 'white',
+        width: 300,
+        height: 55,
+        borderRadius: 50,
+        borderColor: themeMainColor,
+        borderWidth: 4,
         
       }
   });

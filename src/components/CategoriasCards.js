@@ -4,6 +4,7 @@ import { Card, CardItem, Body, Text } from 'native-base';
 import { Image, ScrollView, Dimensions } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 
+import { globalStyle } from '../styles/globalStyles'
 
 const { width } = Dimensions.get('window');
 
@@ -77,7 +78,7 @@ export default class CategoriasCards extends Component {
                                         <Image source={{ uri: categoria.img }} style={{ height: width * 0.6, width: width * 0.6, resizeMode: 'contain', flex: 1 }} />
                                     </CardItem>
                                     <CardItem button onPress={() => {this.buscarProductos(categoria.title)}}>
-                                        <Text style={{ color: '#186db2', textAlign: "center", alignSelf: "center" }}>
+                                        <Text style={ globalStyle.categoriaCardsText }>
                                             {categoria.title}
                                         </Text>
                                     </CardItem>

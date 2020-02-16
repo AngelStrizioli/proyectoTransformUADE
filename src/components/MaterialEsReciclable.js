@@ -12,6 +12,8 @@ import ApiController from '../controller/ApiController'
     
     -FALTA: Guardar en la bd los logos para cada uno de los materiales y hacer que estos se asignen dinamicamente
     */
+
+import { themeMainColor } from '../styles/globalStyles';
 class MaterialEsReciclable extends React.Component{
   constructor(props){
     super(props);
@@ -83,7 +85,7 @@ class MaterialEsReciclable extends React.Component{
                   <View style={styles.containerImage}>
                      <View >
                         <Image title='Icono Material' source={{ uri: (logoMaterial) }} style={{height: 80, width: 80, alignSelf: 'center',marginTop:'5%' }} />
-                         <Text style={{fontSize:18, textAlign:'center', color: '#00B2FF'}}>{material.nombre}</Text>
+                         <Text style={{fontSize:18, textAlign:'center', color: themeMainColor}}>{material.nombre}</Text>
                       </View>
                       <View >
                         <Image title='Icono Reciclable' source={{ uri: (imagenLogo) }} style={{height: 80, width: 80, alignSelf: 'center',marginTop:'5%' }} />
@@ -108,7 +110,7 @@ class MaterialEsReciclable extends React.Component{
                   <View style={styles.containerImage}>
                      <View style={{heigth: 80, width: '38%', marginRight: '2%'}}>
                         <Image title='Icono Material' source={{ uri: (logoMaterial) }} style={{height: 60, width: 60, alignSelf: 'center',marginTop:'5%' }} />
-                         <Text style={{fontSize:18, textAlign:'center', color: '#00B2FF'}}>{material.nombre}</Text>
+                         <Text style={{fontSize:18, textAlign:'center', color: themeMainColor}}>{material.nombre}</Text>
                       </View>
                       <View style={{heigth: 80, width: '45%'}}>
                         <Image title='Icono Reciclable' source={{ uri: (imagenLogo) }} style={{height: 60, width: 60, alignSelf: 'center',marginTop:'5%' }} />
@@ -160,7 +162,7 @@ class MaterialEsReciclable extends React.Component{
       justifyContent: 'space-around',
       //borderColor: "black",
       //borderWidth: 1,
-      backgroundColor: '#00B2FF',
+      backgroundColor: themeMainColor,
       marginTop: '17%',
       elevation: 2,
       shadowColor: 'rgba(0,0,0, .4)', 
@@ -172,7 +174,7 @@ class MaterialEsReciclable extends React.Component{
       width: 41
     },
     botonLargo:{
-      backgroundColor: '#00B2FF',
+      backgroundColor: themeMainColor,
       elevation: 2,
       shadowColor: 'rgba(0,0,0, .25)', 
       shadowOffset: { height: 3, width: 3 }, 

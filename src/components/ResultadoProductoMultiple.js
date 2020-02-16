@@ -8,6 +8,7 @@ import ItemResultadoProducto from './ItemResultadoProducto'
 /* ### PÁGINA PARA CUANDO UNA BÚSQUEDA DE "¡Transfórmalo!" DEVUELVE UN RESULTADO DE MÁS DE UN ELEMENTO ### 
       En prototipo: Resultados varios*/
 
+import { themeMainColor } from '../styles/globalStyles';
 
 class ResultadoProductoMultiple extends React.Component {
 
@@ -24,11 +25,6 @@ class ResultadoProductoMultiple extends React.Component {
       <ScrollView>
 
         <View style={styles.buttonPosition}>
-          {/*<TouchableOpacity onPress={() => { this.props.navigation.navigate('navigatorr'); }}>
-            <View style={{ marginRight: 10 }}>
-              <Ionicons name="md-menu" size={32} color={'#00B2FF'} />
-            </View>
-    </TouchableOpacity>*/}
           <Text style={styles.textStyle}>
 
             Resultados: {busqueda}
@@ -88,7 +84,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: "center",
     textAlignVertical: 'center',
-    backgroundColor: '#00B2FF',
+    backgroundColor: themeMainColor,
     width: 300,
     height: 55,
     borderRadius: 50,
@@ -97,7 +93,7 @@ const styles = StyleSheet.create({
     marginBottom:'5%',
   },
   botonLargo:{
-    backgroundColor: '#00B2FF',
+    backgroundColor: themeMainColor,
     elevation: 2,
     shadowColor: 'rgba(0,0,0, .25)', 
     shadowOffset: { height: 3, width: 3 }, 

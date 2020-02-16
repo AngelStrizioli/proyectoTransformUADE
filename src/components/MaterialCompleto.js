@@ -5,7 +5,7 @@ import ReciclableSioNo from './ReciclableSioNo';
 import ApiController from '../controller/ApiController'
 import ItemResultadoProducto from './ItemResultadoProducto'
 
-
+import { themeMainColor } from '../styles/globalStyles';
 class MaterialCompleto extends React.Component{
   constructor(props){
     super(props);
@@ -89,46 +89,7 @@ class MaterialCompleto extends React.Component{
               <Text key={descarte} style={styles.listTextStyle}> »  
               {descarte}</Text>)})}
           </View>
-            
-          {/* 
-
-          FALTA:
-          Agregar funcionalidad de la llamada a la bd para traer todos los productos que contengan este material
-
-          <Text style={styles.subtitleStyle}>
-             Se encuentra en:
-          </Text>
-          <View>
-            
-      {this.state.productos.map((producto)=>{ return(
-      producto.materiales.map((mat)=>{
-        if(mat.nombre==nombre){
-          return <TouchableOpacity key={producto.nombre}
-          onPress={() => { this.props.navigation.navigate('ResultadoProductoUnico', {producto: producto})}}>
-            <Text style={{fontSize:24, color:'#00B2FF', marginLeft: '5%'}}>{producto.nombre}</Text>
-          </TouchableOpacity>
-        }
-      }))
-        })
-        }
-          </View>
-      */}
-        {/*<View style={styles.buttonPosition}>
-          <TouchableOpacity style={{marginVertical: '10%'}} onPress={() => { this.props.navigation.goBack()}}>
-            <View style={{justifyContent:'center'}}>
-              <Text style={styles.buttonDesigne} >
-              <Ionicons name="md-arrow-round-back" size={24} color={'white'} />
-                       Volver
-                </Text>
-
-            </View>
-          </TouchableOpacity>
-        </View>
-        */}
-
-          </ScrollView>
-
-      
+        </ScrollView>
       );
     }
   }
@@ -164,7 +125,7 @@ class MaterialCompleto extends React.Component{
       fontSize: 24,
       textAlign: "center",
       textAlignVertical: 'center',
-      backgroundColor: '#00B2FF',
+      backgroundColor: themeMainColor,
       width: 300,
       height: 55,
       borderRadius: 50,
@@ -203,7 +164,7 @@ class MaterialCompleto extends React.Component{
         fontSize: 24,
         textAlign: "center",
         textAlignVertical: 'center',
-        backgroundColor: '#00B2FF',
+        backgroundColor: themeMainColor,
         width: 300,
         height: 55,
         borderRadius: 50,

@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import MaterialEsReciclable from './MaterialEsReciclable';
 import ApiController from '../controller/ApiController';
 import { Divider } from 'react-native-elements';
+import { themeMainColor } from '../styles/globalStyles';
 
 /* ### PÁGINA QUE MUESTRA LA LISTA DE TODOS LOS MATERIALES CON INFORMACIÓN EN LA BD ###
     En prototipo: No está todavía */
@@ -26,7 +27,7 @@ class TodosLosMateriales extends React.Component{
       title: 'Ver todos los materiales',
       header: null,
       drawerIcon: ({ focused }) => (
-        <Ionicons name="ios-cube" size={24} color={focused ? '#00B2FF' : 'black'} />
+        <Ionicons name="md-cube" size={24} color={focused ? themeMainColor : 'black'} />
       ),
      
     };

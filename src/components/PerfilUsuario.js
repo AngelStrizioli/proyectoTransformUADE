@@ -5,13 +5,14 @@ import { Image, StyleSheet, View,Text } from 'react-native';
 import { Container, Header, Content, Button, Right } from 'native-base';
 import { firebaseAuth } from '../environment/config';
 import HeaderComponent from './Misc/HeaderComponent'
+import { themeMainColor } from '../styles/globalStyles';
 
 
 export default class PerfilUsuario extends React.Component {
     static navigationOptions = {
         title: 'Mi perfil',
         drawerIcon: ({ focused }) => (
-          <Ionicons name="md-contact" size={24} color={focused ? '#00B2FF' : 'black'} />
+          <Ionicons name="md-contact" size={24} color={focused ? themeMainColor : 'black'} />
         )
       };
 

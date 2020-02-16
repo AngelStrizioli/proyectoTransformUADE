@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ApiController from '../controller/ApiController'
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
-
+import { tagsStyles } from "../styles/globalStyles";
 export default class TagsCloud extends Component {
     constructor(props) {
         super(props);
@@ -33,8 +33,8 @@ export default class TagsCloud extends Component {
         return (
             this.state.tags.map((tag) => {
                 return(
-                <TouchableOpacity key={tag} style={styles.tagsForm} onPress={() => this.buscarProductos(tag)}>
-                    <Text style={styles.textTags}>{tag} </Text>
+                <TouchableOpacity key={tag} style={tagsStyles.tagsForm} onPress={() => this.buscarProductos(tag)}>
+                    <Text style={tagsStyles.textTags}>{tag} </Text>
                 </TouchableOpacity>
                 )
             })
@@ -42,20 +42,3 @@ export default class TagsCloud extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    tagsForm: {
-        borderRadius: 50,
-        backgroundColor: '#0f446f',
-        height: 25,
-        paddingHorizontal: 10,
-        marginBottom: 3
-
-    },
-    textTags: {
-        fontWeight: 'bold',
-        fontSize: 18,
-        color: "white",
-        textAlign: 'center',
-    }
-})

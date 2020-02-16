@@ -119,22 +119,9 @@ class IdeaVideo extends React.Component{
       if(this.state.guardado === true){
           
           return (
-<<<<<<< HEAD
-              <View style={styles.compoPosition}>
-                <TouchableOpacity style={styles.buttonPressed}  onPress={() => this._storeData()} >
-                  <Text style={{  color: themeMainColor,
-        fontSize: 24,
-        textAlign: "center",
-        textAlignVertical: 'center',}} >
-                    ¡Guardado!
-                  </Text>
-=======
-            
-                <TouchableOpacity  onPress={() => this._storeData()} >
-                <Image style={{width:35, height:35}} source={{uri:('https://i.imgur.com/dHIs4kd.png')}} />
->>>>>>> 86d345e1165ed07ee244801b8a44307bea4ec06a
-                </TouchableOpacity>
-         
+            <TouchableOpacity  onPress={() => this._storeData()} >
+              <Image style={{width:35, height:35}} source={{uri:('https://i.imgur.com/dHIs4kd.png')}} />
+            </TouchableOpacity>
           )
       }else{
           return(

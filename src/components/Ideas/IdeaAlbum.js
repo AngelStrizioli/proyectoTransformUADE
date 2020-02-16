@@ -2,7 +2,6 @@ import React from 'react';
 import { Image, StyleSheet, Text, View, ScrollView, Dimensions,AsyncStorage } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ImageCarousel from '../ImageCarousel';
-import {AsyncStorage} from 'react-native';
 import { themeMainColor } from '../../styles/globalStyles';
 import { Card, CardItem, Body } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';

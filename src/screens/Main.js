@@ -16,13 +16,10 @@ import IdeaSimple from '../components/Ideas/IdeaSimple';
 import ApiController from '../controller/ApiController';
 import MaterialCompleto from '../components/MaterialCompleto'
 import EventosPatrocinados from '../components/Eventos/EventosPatrocinados';
-import CardsProductos from '../components/CardsProductos'
-//import EventoSimple from './components/Eventos/EventoSimple'
 import ListaEventos from '../components/Eventos/ListaEventos';
 import Instructivo from '../components/Instructivo';
 import EventoSimple from '../components/Eventos/EventoSimple';
 import PerfilUsuario from '../components/PerfilUsuario';
-import { firebaseAuth } from '../environment/config';
 import LogoHorizontal from '../assets/images/LogoHorizontal.png'
 import HeaderComponent from '../components/Misc/HeaderComponent'
 import CategoriasCards from '../components/CategoriasCards'
@@ -39,9 +36,7 @@ class LogoHeader extends React.Component {
     return (
       <View style={{ alignSelf: 'center', flex: 1 }}>
     
-       {/* LO DEJE PARA QUE TENGAMOS BIEN LAS MEDIDAS PARA CUANDO VOLVAMOS A PONER 
-       EL HEADER TRANSFOM, NO LO BORREN HDPS -Belu
-       <Image
+        <Image
           resizeMode="cover"
           source={require("../assets/images/LogoHorizontal.png")}
           style={{
@@ -49,17 +44,6 @@ class LogoHeader extends React.Component {
             height: 50,
             resizeMode: 'contain',
             alignSelf:"center",
-          }}
-        />*/}
-        <Image
-          resizeMode="cover"
-          source={{uri:'https://i.imgur.com/Ri9J9Am.png'}}
-          style={{
-            width: 240,
-            height: 40,
-            resizeMode: 'contain',
-            alignSelf:"center",
-            marginBottom:10
           }}
         />
       </View>
@@ -118,29 +102,9 @@ class Main extends React.Component {
   render() {
       {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/}
     return (
-<<<<<<< HEAD
       <View style={{flex:1,backgroundColor: 'rgba(0, 0, 0, 0.05)',}}>
       <ScrollView style={{ backgroundColor: themeMainBackgroundColor }}>
         <View style={globalStyle.container}>
-=======
-      <View style={{flex:1,backgroundColor: 'rgba(0, 0, 0, 0.1)',}}>
-      <ScrollView style={{ backgroundColor: 'white' }}>
-        <View style={styles.container}>
-        {/*  <View style={{
-            height: 70,
-            flexDirection: 'row',
-            justifyContent: 'flex-start',
-            alignItems: 'center'
-          }}>
-            <TouchableOpacity style={{ marginLeft: 10, marginTop: '10%' }}
-              onPress={() => { this.props.navigation.toggleDrawer(); }}>
-
-              <Ionicons name="md-menu" size={32} color={'white'} />
-
-            </TouchableOpacity>
-          </View>*/}
-
->>>>>>> 86d345e1165ed07ee244801b8a44307bea4ec06a
           <View style={{marginTop:'2%'}}>
             <Text style={globalStyle.subtitleStyle}>Aprendé a transformar estos productos:</Text>
           </View>
@@ -187,52 +151,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-<<<<<<< HEAD
-=======
-  buttonDesigne: {
-    marginTop: 20,
-    width: 246,
-    height: 55,
-    borderWidth: 1,
-    padding: 10,
-    borderColor: 'white',
-    backgroundColor: 'white',
-    color: "#00B2FF",
-    fontSize: 24,
-    fontWeight: 'normal',
-    borderRadius: 50, //android
-    textAlign: "center",
-    elevation: 2,//android
-    shadowColor: 'rgba(0,0,0, .25)', // IOS
-    shadowOffset: { height: 3, width: 3 }, // IOS
-    shadowOpacity: 1, // IOS
-    shadowRadius: 1, //IOS
-  },
-  titleStyle: {
-    //textAlign: 'center',
-    marginLeft:'5%',
-    fontWeight: 'bold',
-    fontSize: 24,
-    marginVertical: '2%',
-    color: "#186db2",
-   // textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    //textShadowOffset: { width: 1, height: 1 },
-    //textShadowRadius: 1
-  },
-  subtitleStyle: {
-    //textAlign: 'center',
-    marginLeft:'5%',
-    fontWeight: 'bold',
-    fontSize: 18,
-    marginVertical: '2%',
-    color: "#186db2",
-  },
-  tagsForm:{
-    borderRadius: 50,
-    backgroundColor:'#061B2C',
-    height: 25,
-    paddingHorizontal:10
->>>>>>> 86d345e1165ed07ee244801b8a44307bea4ec06a
 
   botonLargo:{
     backgroundColor: 'white',
@@ -254,7 +172,6 @@ const styles = StyleSheet.create({
     marginLeft:18,
     width: 80,
     height: 80,
-
   
   }
 
@@ -423,15 +340,9 @@ const bootRoot = createStackNavigator({
 
     headerTitle: <LogoHeader />,
     headerRight: <View/>,
-<<<<<<< HEAD
     headerStyle: 
       globalStyle.mainHeader
     ,
-=======
-    headerStyle: {
-      backgroundColor: '#061B2C',
-    },
->>>>>>> 86d345e1165ed07ee244801b8a44307bea4ec06a
     headerTintColor: 'white',
   }
 })

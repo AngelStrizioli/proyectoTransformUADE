@@ -13,9 +13,9 @@
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
     "splash": {
-      "image": "./src/assets/images/splashTransform.png",
+      "image": "./src/assets/images/splashTransform(ULTIMO).png",
       "resizeMode": "contain",
-      "backgroundColor": "#00B2FF"
+      "backgroundColor": "#061B2C"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

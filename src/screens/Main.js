@@ -37,7 +37,9 @@ class LogoHeader extends React.Component {
     return (
       <View style={{ alignSelf: 'center', flex: 1 }}>
     
-        <Image
+       {/* LO DEJE PARA QUE TENGAMOS BIEN LAS MEDIDAS PARA CUANDO VOLVAMOS A PONER 
+       EL HEADER TRANSFOM, NO LO BORREN HDPS -Belu
+       <Image
           resizeMode="cover"
           source={require("../assets/images/LogoHorizontal.png")}
           style={{
@@ -45,6 +47,17 @@ class LogoHeader extends React.Component {
             height: 50,
             resizeMode: 'contain',
             alignSelf:"center",
+          }}
+        />*/}
+        <Image
+          resizeMode="cover"
+          source={{uri:'https://i.imgur.com/Ri9J9Am.png'}}
+          style={{
+            width: 240,
+            height: 40,
+            resizeMode: 'contain',
+            alignSelf:"center",
+            marginBottom:10
           }}
         />
       </View>
@@ -103,7 +116,7 @@ class Main extends React.Component {
   render() {
       {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/}
     return (
-      <View style={{flex:1,backgroundColor: 'rgba(0, 0, 0, 0.05)',}}>
+      <View style={{flex:1,backgroundColor: 'rgba(0, 0, 0, 0.1)',}}>
       <ScrollView style={{ backgroundColor: 'white' }}>
         <View style={styles.container}>
         {/*  <View style={{
@@ -209,7 +222,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
     marginVertical: '2%',
-    color: "#009eff",
+    color: "#186db2",
    // textShadowColor: 'rgba(0, 0, 0, 0.25)',
     //textShadowOffset: { width: 1, height: 1 },
     //textShadowRadius: 1
@@ -220,7 +233,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     marginVertical: '2%',
-    color: "#009eff",
+    color: "#186db2",
   },
   tagsForm:{
     borderRadius: 50,
@@ -425,7 +438,7 @@ const bootRoot = createStackNavigator({
     headerTitle: <LogoHeader />,
     headerRight: <View/>,
     headerStyle: {
-      backgroundColor: '#009eff',
+      backgroundColor: '#061B2C',
     },
     headerTintColor: 'white',
   }

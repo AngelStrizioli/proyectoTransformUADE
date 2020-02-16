@@ -59,7 +59,7 @@ class TodosLosMateriales extends React.Component{
 
        
           <Text style= {styles.titleStyle}>Todos los materiales</Text>
-          <Divider style={{ backgroundColor: 'blue' }} />
+          <Divider style={{ backgroundColor: 'black' }} />
           <View>
           {materiales.map((material) =>{
               

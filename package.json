@@ -9,6 +9,7 @@
     "tunnel": "expo start --tunnel"
   },
   "dependencies": {
+    "@expo/vector-icons": "^10.0.6",
     "@react-native-community/google-signin": "^3.0.4",
     "expo": "^35.0.0",
     "expo-cli": "^3.9.1",

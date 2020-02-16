@@ -36,13 +36,13 @@ export default class Instructivo extends React.Component {
           <View style={styles.carouselContainer2}>
             <ImagenCarouselInstructivo/> 
           </View> 
-          <Button 
+          <TouchableOpacity style={{marginHorizontal:'1%',borderWidth:.5, borderRadius:3, borderColor:'#009eff'}}
             onPress={() => {this.props.navigation.navigate('Main');}}
-            title="Omitir instructivo"
-            type="outline"
-            raised="true"
-            titleStyle={{fontSize: 24, fontWeight: 'bold'}}
-            />
+           >
+            <Text style={{fontWeight:'bold', color:'#009eff', fontSize:24, textAlign:'center', marginVertical:'2%'}}>
+            Omitir instructivo
+            </Text>
+            </TouchableOpacity>
         </View>
       );
     }

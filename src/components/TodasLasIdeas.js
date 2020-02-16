@@ -24,7 +24,7 @@ class TodasLasIdeas extends React.Component{
           <View>
             <Text style= {styles.titleStyle}>Todas las ideas</Text>
           </View>
-          <Divider style={{ backgroundColor: 'blue' }} />
+          <Divider style={{ backgroundColor: 'black' }} />
           <View>
             <ListaIdeas navigation={this.props.navigation}></ListaIdeas>
           </View>

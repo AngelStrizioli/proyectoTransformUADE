@@ -1,9 +1,11 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
+import { Image, StyleSheet, Text, View, ScrollView, Dimensions,AsyncStorage } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ImageCarousel from '../ImageCarousel';
 import {AsyncStorage} from 'react-native';
 import { themeMainColor } from '../../styles/globalStyles';
+import { Card, CardItem, Body } from 'native-base';
+import { Ionicons } from '@expo/vector-icons';
 
 /* ### PÁGINA PARA REPRESENTAR EL POSTEO DE UNA IDEA QUE CONTENGA UN ÁLBUM DE FOTOS ###
       En prototipo: Idea
@@ -19,7 +21,8 @@ class IdeaAlbum extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            guardado: false
+            guardado: false,
+            corazon: false
         }
         this._isStored()
     }
@@ -76,29 +79,32 @@ class IdeaAlbum extends React.Component{
                 <View>
                     <Text style={styles.titleStyle}>{idea.titulo}</Text>
                 </View>
-                <View style={styles.carouselContainer2}>
-                    <ImageCarousel album={idea.album}/>
-                </View>
+                <Card>
+                <CardItem style={{justifyContent:'flex-end'}}>
+                {this.cambiarBoton()}
+                </CardItem>
+                <CardItem >
+                  <View style={styles.carouselContainer2}>
+                      <ImageCarousel album={idea.album}/>
+                  </View>
+                  </CardItem>
+                  <CardItem style={{justifyContent:'space-around', marginTop:'3%'}}>
+                  {this.cambiarCorazon()}
+
+                      <TouchableOpacity>
+                          <Text> <Ionicons name="md-text" size={30} /> </Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity>
+                          <Text> <Ionicons name="md-share" size={30} /> </Text>
+                      </TouchableOpacity>
+                  </CardItem>
+                </Card>
                 <View>
                     <Text style={styles.subtitleStyle}>Descripción:</Text>
                     <Text style={styles.textStyle}>{idea.texto}</Text>
                 </View>
-
                 {this.materiales(idea)}
-
                 {this.pasoAPaso(idea)}
-
-
-                {this.cambiarBoton()}
-
-
-               {/* <View style={styles.compoPosition}>
-                    <TouchableOpacity style={styles.botonLargo} onPress={() => { navigation.goBack()}} >
-                        <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>
-                            Volver
-                        </Text>
-                    </TouchableOpacity>
-                </View>*/}
             </ScrollView>
         );
     }
@@ -141,38 +147,63 @@ class IdeaAlbum extends React.Component{
         }
       }
 
+      _storeLikes = () =>{
+
+        if (this.state.corazon == false){
+          this.setState({corazon: true})
+        }
+        else{
+          this.setState({corazon:false})
+        }
+    
+    }
+
+
 
     cambiarBoton(){
         //console.log(this.state.guardado)
         if(this.state.guardado === true){
-
-            return (
-                <View style={styles.compoPosition}>
-                  <TouchableOpacity style={styles.buttonPressed}  onPress={() => this._storeData()} >
-                    <Text style={{ color: themeMainColor,
-        fontSize: 24,
-        textAlign: "center",
-        textAlignVertical: 'center',
-}} >
-                      ¡Guardado!
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-            )
-        }else{
-            return(
-                <View style={styles.compoPosition}>
-                  <TouchableOpacity  style={styles.botonLargo} onPress={() => this._storeData()} >
-                    <Text  style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}} >
-                      Guardar para después
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-            )
-        }
-    }
+          
+          return (
+            
+                <TouchableOpacity  onPress={() => this._storeData()} >
+                <Image style={{width:35, height:35}} source={{uri:('https://i.imgur.com/dHIs4kd.png')}} />
+                </TouchableOpacity>
+         
+          )
+      }else{
+          return(
+      
+                <TouchableOpacity onPress={() => this._storeData()} >
+                <Image style={{width:35, height:35}} source={{uri:('https://i.imgur.com/JkqyZWl.png')}} />
+                </TouchableOpacity>
+       
+          )
+      }
 }
 
+  cambiarCorazon(){
+    if(this.state.corazon === true){
+      return (
+        <TouchableOpacity  onPress={() => this._storeLikes()} >
+          <Text>
+            <Ionicons name="md-heart" size={30} color={'black'} />
+          </Text>
+        </TouchableOpacity>
+    )
+    }else{
+    return(
+        
+          <TouchableOpacity  onPress={() => this._storeLikes()} >
+            <Text>
+            <Ionicons name="md-heart-empty" size={30}  />
+            </Text>
+          </TouchableOpacity>
+       
+    )
+}
+}
+}
 const styles = StyleSheet.create({
     container: {
         flex: 1,

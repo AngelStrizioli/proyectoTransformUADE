@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, ScrollView, Dimensions,AsyncStorage } from 'react-native';
+import { Image, StyleSheet, Text, View, ScrollView, Dimensions,AsyncStorage, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ImageCarousel from '../ImageCarousel';
 import { Card, CardItem, Body } from 'native-base';
@@ -88,10 +88,11 @@ class IdeaAlbum extends React.Component{
                   </CardItem>
                   <CardItem style={{justifyContent:'space-around', marginTop:'3%'}}>
                   {this.cambiarCorazon()}
-
-                      <TouchableOpacity>
-                          <Text> <Ionicons name="md-text" size={30} /> </Text>
-                      </TouchableOpacity>
+                  <TouchableOpacity onPress={() => navigation.navigate('ComentariosIdeas', {idea: idea })}>
+                    <Text>
+                    <Ionicons name="md-text" size={30}/>
+                    </Text>
+                  </TouchableOpacity> 
                       <TouchableOpacity>
                           <Text> <Ionicons name="md-share" size={30} /> </Text>
                       </TouchableOpacity>
@@ -219,6 +220,7 @@ cambiarCorazon(){
 }
 }
 
+
 }
 const styles = StyleSheet.create({
     container: {
@@ -310,6 +312,30 @@ const styles = StyleSheet.create({
     borderColor: '#00B2FF',
     borderWidth: 4,
         
+      },
+      CommentBox: {
+        height:30,
+        position: "relative",
+        alignItems: "center",
+        marginRight: 15
+      },
+      CommentInput: {
+        height: 25,
+        marginLeft: 25,
+        marginRight:25,
+        zIndex:1
+      },
+      CancelCross: {
+        position:"absolute",
+        left:5,
+        top:3.5,
+        zIndex: 1
+      },
+      SendComment: {
+        position:"absolute",
+        right:0.1,
+        top:3.5,
+        zIndex: 1
       }
   });
 

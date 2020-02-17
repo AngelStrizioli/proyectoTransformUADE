@@ -159,7 +159,7 @@ class ApiController extends Component
     });
     }
 
-    pushCommentPost(data){
+    pushCommentPost(data,DevolverDatos){
         const endpoint = `${url}${urlPushCommentPost}`;
        fetch(endpoint,{
             method: 'POST', // or 'PUT'
@@ -168,7 +168,10 @@ class ApiController extends Component
             body: JSON.stringify(data) // data can be `string` or {object}!
         }).then ((response) => {
             return response.json();
-        });
+        }).then (responseData => {
+            console.log("Recibi datos"); 
+            DevolverDatos(responseData);
+    });
     }
 
     getCommentsEvents(data,DevolverDatos)

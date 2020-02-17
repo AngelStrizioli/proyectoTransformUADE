@@ -43,7 +43,6 @@ class ComentariosIdeas extends React.Component {
   }
 
   handleUpdate(response){
-    
     const { navigation } = this.props;
     const idea = navigation.getParam('idea', {});
     let data = {
@@ -51,7 +50,6 @@ class ComentariosIdeas extends React.Component {
     }
     ApiController.getCommentsPost(data, this.handleComments.bind(this))
   }
-
 
   componentDidMount(){
     this.handleUpdate()

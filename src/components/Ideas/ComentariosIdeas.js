@@ -37,12 +37,13 @@ class ComentariosIdeas extends React.Component {
       usuario: "Usuario", //harcodeado hasta que usemos usuarios reales
     }
      ApiController.pushCommentPost(data, this.handleUpdate.bind(this));
+     this.setState({
+      comentario:""
+    })
   }
 
   handleUpdate(response){
-    this.setState({
-      comentario:""
-    })
+    
     const { navigation } = this.props;
     const idea = navigation.getParam('idea', {});
     let data = {

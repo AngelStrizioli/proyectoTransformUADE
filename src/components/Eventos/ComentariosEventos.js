@@ -47,12 +47,13 @@ class ComentariosEventos extends React.Component {
       usuario: "Usuario", //harcodeado hasta que usemos usuarios reales
     }
      ApiController.pushCommentEvent(data, this.handleUpdate.bind(this));
+     this.setState({
+      comentario:""
+    })
   }
 
   handleUpdate(response){
-    this.setState({
-      comentario:""
-    })
+    
     const { navigation } = this.props;
     const evento = navigation.getParam('evento', {});
     let data = {

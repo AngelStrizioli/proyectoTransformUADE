@@ -2,19 +2,19 @@ import React, { Compo } from 'react';
 import { StyleSheet, ScrollView, View, Text, Dimensions, Image, ImageBackground } from 'react-native';
 import { TouchableOpacity, TouchableWithoutFeedback, TextInput } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
-import LockMap from '../Misc/Maps/LockMap';
-import { Card, CardItem } from 'native-base';
+import ComentariosCard from '../ComentariosCard'
+import { Textarea } from "native-base";
+import ApiController from "../../controller/ApiController"
 
 let { width, height } = Dimensions.get('window');
 
 
-class EventoSimple extends React.Component {
+class ComentariosEventos extends React.Component {
   constructor(props){
     super(props)
     this.state={
-        corazon: false,
-        comment: false,
-        textoComentado: ""
+        textoComentado: "",
+        comentarios:[]
     }
    
 }
@@ -31,41 +31,46 @@ class EventoSimple extends React.Component {
       })
     }
   }
-  _storeLikes = () =>{
 
-    if (this.state.corazon == false){
-      this.setState({corazon: true})
-
-    }
-    else{
-      this.setState({corazon:false})
-
-    }
-
-}
-  cambiarCorazon(){
-    if(this.state.corazon === true){
-          
-      return (
-          
-            <TouchableOpacity  onPress={() => this._storeLikes()} >
-              <Text>
-              <Ionicons name="md-heart" size={30} color={'black'} />
-              </Text>
-            </TouchableOpacity>
-     
-      )
-  }else{
-      return(
-          
-            <TouchableOpacity  onPress={() => this._storeLikes()} >
-              <Text>
-              <Ionicons name="md-heart-empty" size={30}  />
-              </Text>
-            </TouchableOpacity>
-         
-      )
+  _renderComment(){
+   return(
+    this.state.comentarios.map((comentario,i) =>{
+      return(<ComentariosCard key={i} comentario={comentario}/>)
+   })) 
   }
+
+ 
+  onClickListener(evento){
+    let data = {
+      id: evento.id,
+      texto: this.state.textoComentado,
+      usuario: "Usuario", //harcodeado hasta que usemos usuarios reales
+    }
+     ApiController.pushCommentEvent(data, this.handleUpdate.bind(this));
+     this.setState({
+      comentario:""
+    })
+  }
+
+  handleUpdate(response){
+    
+    const { navigation } = this.props;
+    const evento = navigation.getParam('evento', {});
+    let data = {
+      id : evento.id
+    }
+    ApiController.getCommentsEvents(data, this.handleComments.bind(this))
+  }
+
+
+  componentDidMount(){
+    this.handleUpdate()
+  }
+
+  handleComments(comments){
+    this.setState({
+      comentarios: comments
+    })
   }
 
   render() {
@@ -78,8 +83,7 @@ class EventoSimple extends React.Component {
           style={styles.backgroundImage}>
           <View style={styles.tittleContainer}>
             <View style={styles.backButtonView}>
-              
-            </View>
+            </View> 
             <View style={styles.tittlePosition}>
               <Text style={styles.titleStyle}>{evento.title}</Text>
             </View>
@@ -89,23 +93,24 @@ class EventoSimple extends React.Component {
             </View>
           </View>
         </ImageBackground>
-        <Card >
-        <CardItem style={{justifyContent:'space-around'}}> 
-              
-         {this.cambiarCorazon()}
-         <TouchableOpacity onPress={() => navigation.navigate('ComentariosEventos', {evento: evento })}>
-              <Text>
-              <Ionicons name="md-text" size={30}/>
-              </Text>
-        </TouchableOpacity>        
-          <TouchableOpacity>
-              <Text> <Ionicons name="md-share" size={30} /> </Text>
-          </TouchableOpacity>
-          </CardItem>
-
-        </Card>
-        {this.renderBlocks(evento)}
-        <LockMap evento={evento}/>
+        <View>
+          <View style={{margin:5}}>
+            <Textarea rowSpan={5} bordered 
+            placeholder="Deja aqui tu comentario"
+            placeholderTextColor="#061b2c"
+            underlineColorAndroid = "transparent"
+            onChangeText={(comentario) => this.setState({ textoComentado: comentario })}
+            value={this.state.comentario}
+            />
+              <Ionicons 
+                style={styles.SendComment}
+                name="md-send"
+                size={30}
+                onPress={() => this.onClickListener(evento)}
+              />
+          </View>
+        </View>
+        {this._renderComment()}
       </ScrollView>
     );
   }
@@ -181,29 +186,11 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     lineHeight: 26
   },
-  CommentBox: {
-    height:30,
-    position: "relative",
-    alignItems: "center",
-    marginRight: 15
-  },
-  CommentInput: {
-    height: 25,
-    marginLeft: 25,
-    marginRight:25,
-    zIndex:1
-  },
-  CancelCross: {
-    position:"absolute",
-    left:5,
-    top:3.5,
-    zIndex: 1
-  },
   SendComment: {
     position:"absolute",
-    right:0.1,
-    top:3.5,
+    right: 8,
+    top:93,
     zIndex: 1
-  }
+    },
 })
-export default EventoSimple;
+export default ComentariosEventos;

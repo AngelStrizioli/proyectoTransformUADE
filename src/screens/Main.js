@@ -24,6 +24,8 @@ import LogoHorizontal from '../assets/images/LogoHorizontal.png'
 import HeaderComponent from '../components/Misc/HeaderComponent'
 import CategoriasCards from '../components/CategoriasCards'
 import TagsCloud from '../components/TagsCloud';
+import ComentariosEventos from '../components/Eventos/ComentariosEventos'
+import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
 //import EventoSimple from './components/Eventos/EventoSimple';
 
 import { globalStyle, themeMainColor, themeMainBackgroundColor } from "../styles/globalStyles";
@@ -332,6 +334,12 @@ const bootRoot = createStackNavigator({
   },
   HeaderComponent:{
     screen:HeaderComponent,
+  },
+  ComentariosEventos: {
+    screen: ComentariosEventos
+  },
+  ComentariosIdeas: {
+    screen: ComentariosIdeas
   }
 
 

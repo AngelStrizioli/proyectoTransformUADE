@@ -10,6 +10,11 @@ const urlGetMateriales="transform/getMateriales";
 const urlGetProductosByMaterial="transform/getProductosByMaterial?id=";
 const urlGetEventos="transform/getEventos"
 const urlGetPopularProd = "transform/getPopularProducts"
+const urlPushCommentEvent = "transform/commentEvent"
+const urlPushCommentPost = "transform/commentPost"
+const urlGetCommentsEvent = "transform/getEventComments"
+const urlGetCommentsPost = "transform/getPostComments"
+
 
 class ApiController extends Component
 {
@@ -138,6 +143,69 @@ class ApiController extends Component
                 devolverDatos(responseData);
         });
     }
+    
+    pushCommentEvent(data,DevolverDatos){
+        const endpoint = `${url}${urlPushCommentEvent}`;
+       fetch(endpoint,{
+            method: 'POST', // or 'PUT'
+            mode: "cors",
+            headers:{ 'Content-Type': 'application/json'},
+            body: JSON.stringify(data) // data can be `string` or {object}!
+        }).then ((response) => {
+            return response.json();
+        }).then (responseData => {
+            console.log("Recibi datos"); 
+            DevolverDatos(responseData);
+    });
+    }
+
+    pushCommentPost(data,DevolverDatos){
+        const endpoint = `${url}${urlPushCommentPost}`;
+       fetch(endpoint,{
+            method: 'POST', // or 'PUT'
+            mode: "cors",
+            headers:{ 'Content-Type': 'application/json'},
+            body: JSON.stringify(data) // data can be `string` or {object}!
+        }).then ((response) => {
+            return response.json();
+        }).then (responseData => {
+            console.log("Recibi datos"); 
+            DevolverDatos(responseData);
+    });
+    }
+
+    getCommentsEvents(data,DevolverDatos)
+    {
+        const endpoint = `${url}${urlGetCommentsEvent}`;
+       fetch(endpoint,{
+            method: 'POST', // or 'PUT'
+            mode: "cors",
+            headers:{ 'Content-Type': 'application/json'},
+            body: JSON.stringify(data) // data can be `string` or {object}!
+        }).then ((response) => {
+            return response.json();
+        }).then (responseData => {
+                console.log("Recibi datos"); 
+                DevolverDatos(responseData);
+        });
+    }
+
+    getCommentsPost(data,DevolverDatos)
+    {
+        const endpoint = `${url}${urlGetCommentsPost}`;
+       fetch(endpoint,{
+            method: 'POST', // or 'PUT'
+            mode: "cors",
+            headers:{ 'Content-Type': 'application/json'},
+            body: JSON.stringify(data) // data can be `string` or {object}!
+        }).then ((response) => {
+            return response.json();
+        }).then (responseData => {
+                console.log("Recibi datos"); 
+                DevolverDatos(responseData);
+        });
+    }
+
 
 }
 

@@ -4,13 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Card, CardItem, Body } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 
-/* ### PÁGINA PARA REPRESENTAR EL POSTEO DE UNA IDEA QUE CONTENGA UN  VIDEO ###
-      En prototipo:
-
-      Falta terminar porque no encontré una librería que no haga quilombo con el navigator o con alguna otra gilada
-     */
-
-
+import { themeMainColor } from '../../styles/globalStyles';
 class IdeaVideo extends React.Component{
     constructor(props){
       super(props);
@@ -127,11 +121,9 @@ class IdeaVideo extends React.Component{
       if(this.state.guardado === true){
           
           return (
-            
-                <TouchableOpacity  onPress={() => this._storeData()} >
-                <Image style={{width:35, height:35}} source={{uri:('https://i.imgur.com/dHIs4kd.png')}} />
-                </TouchableOpacity>
-         
+            <TouchableOpacity  onPress={() => this._storeData()} >
+              <Image style={{width:35, height:35}} source={{uri:('https://i.imgur.com/dHIs4kd.png')}} />
+            </TouchableOpacity>
           )
       }else{
           return(
@@ -202,7 +194,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         textAlign: "center",
         textAlignVertical: 'center',
-        backgroundColor: '#00B2FF',
+        backgroundColor: themeMainColor,
         width: 300,
         height: 55,
         borderRadius: 50,
@@ -211,7 +203,7 @@ const styles = StyleSheet.create({
 
       },
       botonLargo:{
-        backgroundColor: '#00B2FF',
+        backgroundColor: themeMainColor,
         elevation: 2,
         shadowColor: 'rgba(0,0,0, .25)', 
         shadowOffset: { height: 3, width: 3 }, 
@@ -234,7 +226,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 55,
     borderRadius: 50,
-    borderColor: '#00B2FF',
+    borderColor: themeMainColor,
     borderWidth: 4,
     
       },

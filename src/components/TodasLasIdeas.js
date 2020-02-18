@@ -5,6 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import ListaIdeas from './Ideas/ListaIdeas';
 import { Divider } from 'react-native-elements';
 
+import { themeMainColor } from '../styles/globalStyles';
 /* ### PÁGINA PARA MOSTRAR TODAS LAS IDEAS QUE ESTÁN GUARDADAS EN LA BD ###
     En prototipo: todavía no está */
 class TodasLasIdeas extends React.Component{
@@ -12,7 +13,7 @@ class TodasLasIdeas extends React.Component{
       title: 'Ver todas las ideas',
       header: null,
       drawerIcon: ({ focused }) => (
-        <Ionicons name="ios-bulb" size={24} color={focused ? '#00B2FF' : 'black'} />
+        <Ionicons name="md-bulb" size={24} color={focused ? themeMainColor : 'black'} />
       ),
 
     };

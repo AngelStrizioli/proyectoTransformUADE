@@ -6,6 +6,8 @@ import ItemListaEventos from './ItemListaEventos'
 import HeaderComponent from '../Misc/HeaderComponent';
 import GetDatosAPI from '../Misc/GetDatosAPI';
 
+import { themeMainColor } from '../../styles/globalStyles';
+
 //hardcodeados por ahora
 const eventos = [{
   title: "Centro de Reciclaje de la Ciudad",
@@ -72,7 +74,7 @@ class ListaEventos extends React.Component {
     title: 'Puntos de interés',
     header: null,
     drawerIcon: ({ focused }) => (
-      <Ionicons name="md-globe" size={24} color={focused ? '#00B2FF' : 'black'} />
+      <Ionicons name="md-globe" size={24} color={focused ? themeMainColor : 'black'} />
     ),
   };
 

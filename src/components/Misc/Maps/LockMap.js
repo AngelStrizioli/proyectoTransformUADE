@@ -4,6 +4,8 @@ import { StyleSheet, View, Text } from "react-native";
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Button } from "native-base";
 
+import { themeMainColor } from '../../../styles/globalStyles';
+
 
 export default class LockMap extends React.Component {
     constructor(props) {
@@ -32,7 +34,7 @@ export default class LockMap extends React.Component {
               }}
               title={marker.title}
               description={marker.desc}
-              pinColor="#00b2ff"
+              pinColor={themeMainColor}
             />)
           })
         }

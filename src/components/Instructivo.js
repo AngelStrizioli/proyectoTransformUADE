@@ -14,6 +14,8 @@ import { Ionicons } from '@expo/vector-icons';
 import ImagenCarouselInstructivo from './ImagenCarouselInstructivo'
 import { Button } from 'react-native-elements';
 
+import { themeMainColor } from '../styles/globalStyles';
+
 const { width } = Dimensions.get('window'); 
 
 export default class Instructivo extends React.Component {
@@ -25,7 +27,7 @@ export default class Instructivo extends React.Component {
         title: 'Instructivo',
         header: null,
         drawerIcon: ({ focused }) => (
-          <Ionicons name="md-help-circle"  size={24} color={focused ? '#00B2FF' : 'black'}  />
+          <Ionicons name="md-help-circle"  size={24} color={focused ? themeMainColor : 'black'}  />
         ),
       };
     render() {

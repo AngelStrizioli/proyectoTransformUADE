@@ -21,10 +21,12 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/*"
     ],
     "android": {
-      "package": "com.Transform.transformAPK"
+      "package": "com.Transform.transformAPK",
+      "versionCode": 1,
+      "icon":"./src/assets/images/icon.png"
     },
     "ios": {
       "supportsTablet": true

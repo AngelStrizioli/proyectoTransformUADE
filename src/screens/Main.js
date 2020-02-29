@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, ScrollView } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, ScrollView, Dimensions } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator, DrawerNavigatorItems } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -26,6 +26,7 @@ import CategoriasCards from '../components/CategoriasCards'
 import TagsCloud from '../components/TagsCloud';
 import ComentariosEventos from '../components/Eventos/ComentariosEventos'
 import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
+import Conciencia from '../components/Conciencia'
 //import EventoSimple from './components/Eventos/EventoSimple';
 
 import { globalStyle, themeMainColor, themeMainBackgroundColor } from "../styles/globalStyles";
@@ -33,6 +34,8 @@ import { globalStyle, themeMainColor, themeMainBackgroundColor } from "../styles
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
 
+
+    const { width } = Dimensions.get('window');
 class LogoHeader extends React.Component {
   render() {
     return (
@@ -108,26 +111,33 @@ class Main extends React.Component {
       <ScrollView style={{ backgroundColor: themeMainBackgroundColor }}>
         <View style={globalStyle.container}>
           <View style={{marginTop:'2%'}}>
-            <Text style={globalStyle.subtitleStyle}>Aprendé a transformar estos productos:</Text>
+            <Text style={globalStyle.titleStyle}>Aprendé a transformar</Text>
           </View>
 
-          <View style={styles.inputSize}>
+        
             <View style={{ marginBottom: '5%', marginHorizontal: '2%' }}>
               <CategoriasCards navigation={this.props.navigation}></CategoriasCards>
             </View>
-          </View>
+      
  
           {/* ESTAN HARDCORE PERO METAN A LOS TRAIDOS DE LA BD DENTRO DEL TEXT  */}
-          <View style={{marginTop:'3%',marginBottom: 10 ,alignContent:'space-around' ,justifyContent:'space-around', flex: 5, flexWrap:'wrap' ,flexDirection: 'row'}}>
+          <View style={{ flexWrap:'wrap' ,flexDirection: 'row', marginHorizontal:'3%',marginTop:'4%'}}>
         
             <TagsCloud navigation={this.props.navigation}></TagsCloud>
 
           </View>
 
+
+          <View style={{ flexDirection: 'row', marginTop: '3%' }}>
+              <Text style={globalStyle.titleStyle}>Conciencia</Text>
+          </View>
+
+              <Conciencia />
+       
             <View style={{ flexDirection: 'row', marginTop: '3%' }}>
-              <Text style={globalStyle.titleStyle}>Próximos eventos:</Text>
+              <Text style={globalStyle.titleStyle}>Eventos</Text>
             </View>
-            <View style={{ marginTop: '2%'}}>
+            <View style={{ marginTop: '1%'}}>
               <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
             </View>
           </View>
@@ -146,7 +156,7 @@ const styles = StyleSheet.create({
   inputSize: {
     //estas dos lineas sirven para que quede todo centrado
     flexDirection: 'row',
-    justifyContent: 'center',
+    //justifyContent: 'center',
   },
 
   buttonSize: {
@@ -348,8 +358,7 @@ const bootRoot = createStackNavigator({
 
     headerTitle: <LogoHeader />,
     headerRight: <View/>,
-    headerStyle: 
-      globalStyle.mainHeader
+    headerStyle: globalStyle.mainHeader
     ,
     headerTintColor: 'white',
   }

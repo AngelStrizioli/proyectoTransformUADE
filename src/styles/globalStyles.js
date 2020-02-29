@@ -5,6 +5,8 @@ export const themeMainColor = "#061B2C";
 
 export const themeMainBackgroundColor = '#ECEEEF';
 
+export const tagsColor = '#0f446f';
+
 export const globalStyle = StyleSheet.create({
     container: {
         // https://www.color-hex.com/ pag util para ver y hacer colores en hexa por si no sabemos el nombre en palabras
@@ -16,20 +18,21 @@ export const globalStyle = StyleSheet.create({
     },
     titleStyle: {
         marginLeft:'5%',
+        //textAlign:'center',
         fontWeight: 'bold',
-        fontSize: 24,
-        marginVertical: '2%',
-        color: themeMainColor,
+        fontSize: 22,
+        marginVertical: '4%',
+        color: '#186db2',
     },
     subtitleStyle: {
         marginLeft:'5%',
         fontWeight: 'bold',
         fontSize: 18,
-        marginVertical: '2%',
-        color: themeMainColor,
+        marginVertical: '3%',
+        color: '#186db2',
     },
     categoriaCardsText: {
-        color: themeMainColor,
+        color: '#186db2',
          textAlign: "center",
         alignSelf: "center"
     },
@@ -49,16 +52,19 @@ export const globalStyle = StyleSheet.create({
 export const tagsStyles = StyleSheet.create({
     tagsForm: {
         borderRadius: 50,
-        backgroundColor: themeMainColor,
-        height: 25,
-        paddingHorizontal: 10,
-        marginBottom: 3
+        backgroundColor: tagsColor,
+        height: 30,
+        paddingHorizontal: 20,
+        paddingTop:2,
+        //marginVertical:15,
+        //marginBottom: 3
 
     },
     textTags: {
-        fontWeight: 'bold',
-        fontSize: 18,
+        //fontWeight: 'bold',
+        fontSize: 19,
         color: "white",
         textAlign: 'center',
+        //textAlignVertical:'center',
     }
 })

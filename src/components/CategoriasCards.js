@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import ApiController from '../controller/ApiController';
 import { Card, CardItem, Body, Text } from 'native-base';
-import { Image, ScrollView, Dimensions } from 'react-native';
+import { View,Image, ScrollView, Dimensions, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import { TouchableNativeFeedback} from 'react-native-gesture-handler'
 
 import { globalStyle } from '../styles/globalStyles'
 
@@ -13,29 +14,37 @@ export default class CategoriasCards extends Component {
         super(props);
         this.state = {
             categorias: [{
-                title: "Plástico",
-                img: "https://i.imgur.com/nOODZYG.jpg"
+                title: "Papel",
+                img: "https://i.imgur.com/OG1RVGW.png",
+                backgroundColor:'#00ff45',
             }, {
                 title: "Vidrio",
-                img: "https://i.imgur.com/hV9hrdo.jpg"
-            }, {
-                title: "Papel",
-                img: "https://i.imgur.com/AxkS4d7.jpg"
+                img: "https://i.imgur.com/1VeQWb5.png",
+                backgroundColor:'#00e6d4',
             }, {
                 title: "Pilas y Baterías",
-                img: "https://i.imgur.com/GPYt4Ft.jpg"
+                img: "https://i.imgur.com/cbiuZXa.png",
+                backgroundColor:'#e50000',
+            }, {
+                title: "Plástico",
+                img: "https://i.imgur.com/fCmH0nQ.png",
+                backgroundColor:'#0084e5',
             }, {
                 title: "Metales",
-                img: "https://i.imgur.com/mp9SkwO.jpg"
+                img: "https://i.imgur.com/UKPPz8D.png",
+                backgroundColor:'#e3ff00',
             }, {
                 title: "Textiles",
-                img: "https://i.imgur.com/fExfR2r.jpg"
+                img: "https://i.imgur.com/yfkEpxU.png",
+                backgroundColor:'#ff00db',
             }, {
-                title: "Aparatos electrónicos",
-                img: "https://i.imgur.com/xxr802T.jpg"
+                title: "Electrónica",
+                img: "https://i.imgur.com/0sIAH6f.png",
+                backgroundColor:'grey',
             }, {
                 title: "Orgánicos",
-                img: "https://i.imgur.com/7b0oaUy.jpg"
+                img: "https://i.imgur.com/gqCFXHJ.png",
+                backgroundColor:'#ff9c00',
             }],
             text: ""
         }
@@ -62,31 +71,27 @@ export default class CategoriasCards extends Component {
     render() {
         if (this.state.categorias.length != 0) {
             return (
-                <ScrollView horizontal>
-                    <Row>
+                <View style={{flexWrap:'wrap' ,flexDirection: 'row'}}>
+                  
                         {this.state.categorias.map((categoria) => {
                             return (
 
-                                <Card key={categoria.title} style={{
-                                    elevation: 2,//android
-                                    shadowColor: 'rgba(0,0,0, .25)', // IOS
-                                    shadowOffset: { height: 3, width: 3 }, // IOS
-                                    shadowOpacity: 1, // IOS
-                                    shadowRadius: 1,
-                                }}>
-                                    <CardItem cardBody button onPress={() => {this.buscarProductos(categoria.title)}}>
-                                        <Image source={{ uri: categoria.img }} style={{ height: width * 0.6, width: width * 0.6, resizeMode: 'contain', flex: 1 }} />
-                                    </CardItem>
-                                    <CardItem button onPress={() => {this.buscarProductos(categoria.title)}}>
-                                        <Text style={ globalStyle.categoriaCardsText }>
-                                            {categoria.title}
-                                        </Text>
-                                    </CardItem>
-                                </Card>
+                               <View style={{width:width*0.20, marginHorizontal:'2%', marginVertical:'2%',}} key={categoria.title}>
+                                    <TouchableOpacity onPress={() => {this.buscarProductos(categoria.title)}}>
+                                        <View style={{alignItems:'center'}}>
+                                        
+                                            <Image source={{uri: categoria.img}}  style={{borderRadius:36, backgroundColor:categoria.backgroundColor,height: width*0.18, width: width*0.18,resizeMode: 'contain', flex: 1 }} />
+                                            
+                                            <Text style={{textAlign:'center'}}>{categoria.title} </Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                    
+                                    
+                                </View>
                             )
                         })}
-                    </Row>
-                </ScrollView>
+                 
+                </View>
             )
         } else {
             return null;

@@ -78,32 +78,7 @@ class MaterialEsReciclable extends React.Component{
         //meter un amarillo o varios distintos solo hay que cambiar como se decide la variable imagenLogo)
         {console.log("cant: "+materiales)}
         console.log(material.id);
-        if(materiales===1){
-          return(
-            <View>
-              <TouchableOpacity style={styles.containerMaterial} onPress={() => { this.onClickListener(material.id) }}>
-                  <View style={styles.containerImage}>
-                     <View >
-                        <Image title='Icono Material' source={{ uri: (logoMaterial) }} style={{height: 80, width: 80, alignSelf: 'center',marginTop:'5%' }} />
-                         <Text style={{fontSize:18, textAlign:'center', color: themeMainColor}}>{material.nombre}</Text>
-                      </View>
-                      <View >
-                        <Image title='Icono Reciclable' source={{ uri: (imagenLogo) }} style={{height: 80, width: 80, alignSelf: 'center',marginTop:'5%' }} />
-                         <Text style={{ fontSize:18, textAlign:'center', color: colorTexto}}>{tituloPag}</Text>
-                      </View>
-                  </View>
-                  <View style={{marginTop: '4%'}}>
-                    <TouchableOpacity style={styles.botonLargo} onPress={() => { this.onClickListener(material.id) }}>
-                        <View style={{flexDirection: 'row',justifyContent: 'space-around',}}>
-                          <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>Más Info...</Text>
-                        </View>
-                     </TouchableOpacity>
-                  </View>
-              </TouchableOpacity>
-              <Divider style={{ backgroundColor: 'blue' }} />
-              
-            </View>
-        );}else{
+        
           return(
             <View> 
               <TouchableOpacity style={styles.containerMaterial} onPress={() => { this.onClickListener(material.id) }}>
@@ -117,19 +92,15 @@ class MaterialEsReciclable extends React.Component{
                          <Text style={{ fontSize:18, textAlign:'center', color: colorTexto}}>{tituloPag}</Text>
                       </View>
                       <View style={{heigth: 80, width: '15%', paddingRight: '2%', paddingTop: '3%', paddingLeft: '2%'}}>
-                        <TouchableOpacity style={styles.botonDebug} onPress={() => { this.onClickListener(material.id) }}>
-                          <View style={{flexDirection: 'row',justifyContent: 'space-around'}}>
-                          <Ionicons name="md-information-circle-outline" size={40} color={'white'} />
-                             {/*<Text style={{fontSize:18,textAlign:'center',color:'black'}}>Info</Text>*/}
-                          </View>
-                      </TouchableOpacity>
-                     </View>
+                          <Ionicons name="md-arrow-round-forward" size={30} color={'black'} />
+                      </View>
+
                   </View>
               </TouchableOpacity>
-              <Divider style={{ backgroundColor: 'blue' }} />
+
             </View>
           );
-          }
+          
     }
   }
 

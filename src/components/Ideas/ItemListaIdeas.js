@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet, ScrollView,Dimensions } from 'react-native';
+import { Text, View, Image, StyleSheet, ScrollView,Dimensions,ImageBackground } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
@@ -27,10 +27,11 @@ class ItemListaIdeas extends React.Component{
       return(
         
         <View style={styles.container}>
-        
           <TouchableOpacity style={styles.itemIdea} onPress= {()=> {navigation.navigate('IdeaSimple', {idea: idea});}}>
-              <Image source={{uri: this.state.idea.img}} style={{width: width, height:200}} />
+          <ImageBackground  source={{uri: this.state.idea.img}} style={{width: width, height:200}} >
+
               <Text style={styles.textStyle}>{this.state.idea.titulo}</Text>
+            </ImageBackground>
           </TouchableOpacity>
     
         </View>
@@ -49,7 +50,8 @@ class ItemListaIdeas extends React.Component{
       borderWidth: 0.5,
       borderColor: 'black',
       //padding: '2%',
-      margin: '3%'
+      margin: '3%',
+      width: width*0.6,
     },
     textStyle:{
       padding:'2%',

@@ -71,7 +71,7 @@ class ListaEventos extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'Puntos de interés',
+    title: 'Eventos',
     header: null,
     drawerIcon: ({ focused }) => (
       <Ionicons name="md-globe" size={24} color={focused ? themeMainColor : 'black'} />

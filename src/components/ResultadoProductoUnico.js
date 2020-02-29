@@ -3,7 +3,7 @@ import { Image, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ListaIdeasById from './Ideas/ListaIdeasById';
 import MaterialEsReciclable from './MaterialEsReciclable';
-import { Ionicons } from '@expo/vector-icons';
+
 
 //<Image source={require("../assets/images/LogoHorizontal.png")} />
 
@@ -34,17 +34,13 @@ class ResultadoProductoUnico extends React.Component {
           <Text style={styles.titleStyle}>
             {producto.nombre}
           </Text>
-          <Image borderWidth={0.5} style={styles.imageStyle} borderColor='black' source={{ uri: producto.urlImg}} />
          
-          <Text style={styles.subtitleStyle}>
-            Descripción:
-          </Text>
 
     <Text style={{marginTop: '4%', paddingHorizontal: '6%', textAlign: "justify", fontSize: 18, lineHeight:26}}>{producto.descripcion}</Text>
          
          
           <Text style={styles.subtitleStyle}>
-            Materiales:
+            Materiales
           </Text>
     {materiales.map((material) =>{
               return (
@@ -53,7 +49,7 @@ class ResultadoProductoUnico extends React.Component {
               )
             })}
           <Text style={styles.subtitleStyle}>
-            Ideas:
+            Ideas para transformar
           </Text>
             {/*Parametro: URL Del endpoint que tiene el JSON de ideas del producto. El compo se encarga del resto
                 Nota: No sé si responde al formato de la BD. Avisarme si no - Fede*/}
@@ -83,14 +79,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   titleStyle: {
-    fontSize: 26,
+    fontSize: 22,
     fontWeight: 'bold',
-    textAlign: 'center'
+    marginTop:'5%',
+    marginLeft:'5%'
+    //textAlign: 'center'
   },
   subtitleStyle: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
-    padding: '4%'
+    padding: '5%'
 
   },
   containerImage:{

@@ -24,15 +24,15 @@ class ResultadoProductoMultiple extends React.Component {
       <View style={styles.container}>
       <ScrollView>
 
-        <View style={styles.buttonPosition}>
+     
           <Text style={styles.textStyle}>
 
             Resultados: {busqueda}
           </Text>
          
-        </View>
+ 
 
-        <View style={{marginTop:'5%', marginLeft:'5%',  }}>
+        <View style={{marginTop:'5%', marginLeft:'6%'}}>
           
           { productos.map((producto) => {
              
@@ -42,19 +42,7 @@ class ResultadoProductoMultiple extends React.Component {
           
         </View>
         
-        <View style={styles.buttonPosition}>
-          <TouchableOpacity  style={styles.botonLargo}  onPress={() => { this.props.navigation.goBack()}}>
-            <View style={{justifyContent:'center'}}>
-              <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}}>
-              <Ionicons name="md-arrow-round-back" size={24} color={'white'} />
-                       Buscar otra cosa...
-                </Text>
-
-            </View>
-          </TouchableOpacity>
-        </View>
-
-    
+       
 
       </ScrollView>
       </View>
@@ -69,7 +57,8 @@ const styles = StyleSheet.create({
   textStyle: {
     fontSize: 26,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop:'3%'
   },
   buttonPosition: {
     flexDirection: 'row',

@@ -202,13 +202,7 @@ class IdeaAlbum extends React.Component{
        
     )
 }
-}
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 4a798da084ada182b22736d817493d983be09792
-}
+}}
 const styles = StyleSheet.create({
     container: {
         flex: 1,

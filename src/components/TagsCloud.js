@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import ApiController from '../controller/ApiController'
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, Dimensions, View} from 'react-native';
+
 
 import { tagsStyles } from "../styles/globalStyles";
+
+const { width } = Dimensions.get('window');
+
 export default class TagsCloud extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tags: ["utensilio", "hogar", "descartable", "envase", "cartón", "madera", "botella", "electrónicos", "ropa",  "tecnología"]
+            tags: ["Utensilio", "Tecnología", "Botella", "Envase",  "Descartable", "Cartón"]
         }
     }
 
@@ -33,9 +37,11 @@ export default class TagsCloud extends Component {
         return (
             this.state.tags.map((tag) => {
                 return(
-                <TouchableOpacity key={tag} style={tagsStyles.tagsForm} onPress={() => this.buscarProductos(tag)}>
-                    <Text style={tagsStyles.textTags}>{tag} </Text>
-                </TouchableOpacity>
+                    <View style={{ marginHorizontal:'1%', marginVertical:'1.5%'}} key={tag}>
+                        <TouchableOpacity  style={tagsStyles.tagsForm} onPress={() => this.buscarProductos(tag)}>
+                            <Text style={tagsStyles.textTags}>{tag} </Text>
+                        </TouchableOpacity>
+                    </View>
                 )
             })
 

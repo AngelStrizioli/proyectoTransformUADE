@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ApiController from '../controller/ApiController';
 import { Card, CardItem, Body, Text } from 'native-base';
-import { View,Image, ScrollView, Dimensions, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { View,Image, ScrollView, Dimensions,  TouchableOpacity } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { TouchableNativeFeedback} from 'react-native-gesture-handler'
 
@@ -13,7 +13,11 @@ export default class CategoriasCards extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            categorias: [{
+            categorias: [ {
+                title: "Plástico",
+                img: "https://i.imgur.com/fCmH0nQ.png",
+                backgroundColor:'#0084e5',
+            },{
                 title: "Papel",
                 img: "https://i.imgur.com/OG1RVGW.png",
                 backgroundColor:'#00ff45',
@@ -22,13 +26,9 @@ export default class CategoriasCards extends Component {
                 img: "https://i.imgur.com/1VeQWb5.png",
                 backgroundColor:'#00e6d4',
             }, {
-                title: "Pilas y Baterías",
+                title: "Pilas y baterías",
                 img: "https://i.imgur.com/cbiuZXa.png",
                 backgroundColor:'#e50000',
-            }, {
-                title: "Plástico",
-                img: "https://i.imgur.com/fCmH0nQ.png",
-                backgroundColor:'#0084e5',
             }, {
                 title: "Metales",
                 img: "https://i.imgur.com/UKPPz8D.png",

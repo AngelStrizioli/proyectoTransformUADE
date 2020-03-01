@@ -28,9 +28,10 @@ class ItemListaIdeas extends React.Component{
         
         <View style={styles.container}>
           <TouchableOpacity style={styles.itemIdea} onPress= {()=> {navigation.navigate('IdeaSimple', {idea: idea});}}>
-          <ImageBackground  source={{uri: this.state.idea.img}} style={{width: width, height:200}} >
-
+          <ImageBackground  source={{uri: this.state.idea.img}} style={{width: width*0.7, height:300}} >
+          <View style={styles.containerItems}> 
               <Text style={styles.textStyle}>{this.state.idea.titulo}</Text>
+            </View>
             </ImageBackground>
           </TouchableOpacity>
     
@@ -47,16 +48,29 @@ class ItemListaIdeas extends React.Component{
         backgroundColor: 'white'
     },
     itemIdea:{
-      borderWidth: 0.5,
-      borderColor: 'black',
+      //borderWidth: 0.5,
+      //borderColor: 'black',
       //padding: '2%',
       margin: '3%',
-      width: width*0.6,
+      width: width*0.8,
+      height:300
+    },
+    containerItems: {
+      height: '100%',
+      //width: '100%',
+      marginTop:'75%',
+      alignItems: 'flex-start',
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
     },
     textStyle:{
       padding:'2%',
-      fontSize:16,
-      textAlign:'center'
+      fontSize:20,
+      textAlign:'left',
+      fontWeight:'600',
+      paddingLeft:'3%',
+      textShadowColor: 'rgba(0, 0, 0, 0.25)',
+      textShadowOffset: {width: 1, height: 1},
+      color:'white',
     }
 
   });

@@ -6,6 +6,7 @@ import LockMap from '../Misc/Maps/LockMap';
 import { Card, CardItem } from 'native-base';
 
 let { width, height } = Dimensions.get('window');
+import { themeMainColor, globalStyle } from '../../styles/globalStyles';
 
 
 class EventoSimple extends React.Component {
@@ -24,8 +25,8 @@ class EventoSimple extends React.Component {
       return evento.blocks.map((block, i) => {
         return (
           <View key={i}>
-            <Text style={styles.subtitleStyle}>{block.subtitle}</Text>
-            <Text style={styles.textStyle}>{block.text}</Text>
+            <Text style={globalStyle.titleStyle}>{block.subtitle}</Text>
+            <Text style={globalStyle.textStyle}>{block.text}</Text>
           </View>
         )
       })
@@ -173,6 +174,7 @@ const styles = StyleSheet.create({
   subtitleStyle: {
     fontSize: 20,
     fontWeight: 'bold',
+    color:'red',
     padding: '4%'
   },
   textStyle: {

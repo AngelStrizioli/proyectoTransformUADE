@@ -25,7 +25,7 @@ class ItemListaEventos extends React.Component {
                 <View style={styles.containerItems}>
                     <Text style={styles.itemEventoTitulo}>{evento.title}</Text>
                     <Text style={styles.itemEventoDesc}>{evento.fecha}</Text>
-                    <View style={{alignSelf:'flex-end', paddingRight:'2%'}}>
+                    <View style={{alignSelf:'flex-end', paddingRight:'4%'}}>
                       <Ionicons name="md-arrow-round-forward" size={30} color={'#FFFFFF'} />
                 </View>
                 </View>

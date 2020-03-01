@@ -17,19 +17,19 @@ export const globalStyle = StyleSheet.create({
         backgroundColor: themeMainColor,
     },
     titleStyle: {
-        marginLeft:'5%',
+        margin:'5%',
         //textAlign:'center',
         fontWeight: 'bold',
         fontSize: 22,
-        marginVertical: '4%',
-        color: '#186db2',
+      
+        //color: '#186db2',
     },
-    subtitleStyle: {
-        marginLeft:'5%',
-        fontWeight: 'bold',
-        fontSize: 18,
-        marginVertical: '3%',
-        color: '#186db2',
+    textStyle: {
+        paddingHorizontal: '6%',
+        fontSize:18,
+        textAlign:'justify',
+        lineHeight:26
+
     },
     categoriaCardsText: {
         color: '#186db2',

@@ -11,7 +11,7 @@ import MaterialEsReciclable from './MaterialEsReciclable';
       En prototipo: Resultado Unico
      */
 
-import { themeMainColor } from '../styles/globalStyles';
+import { themeMainColor, globalStyle } from '../styles/globalStyles';
 
 class ResultadoProductoUnico extends React.Component {
 
@@ -31,15 +31,15 @@ class ResultadoProductoUnico extends React.Component {
 
     return (
         <ScrollView style={styles.container}>
-          <Text style={styles.titleStyle}>
+          <Text style={globalStyle.titleStyle}>
             {producto.nombre}
           </Text>
          
 
-    <Text style={{marginTop: '4%', paddingHorizontal: '6%', textAlign: "justify", fontSize: 18, lineHeight:26}}>{producto.descripcion}</Text>
+    <Text style={globalStyle.textStyle}>{producto.descripcion}</Text>
          
          
-          <Text style={styles.subtitleStyle}>
+          <Text style={globalStyle.titleStyle}>
             Materiales
           </Text>
     {materiales.map((material) =>{
@@ -48,7 +48,7 @@ class ResultadoProductoUnico extends React.Component {
                 /* Cambiar key por material.id cuando este cargado en la bd */
               )
             })}
-          <Text style={styles.subtitleStyle}>
+          <Text style={globalStyle.titleStyle}>
             Ideas para transformar
           </Text>
             {/*Parametro: URL Del endpoint que tiene el JSON de ideas del producto. El compo se encarga del resto

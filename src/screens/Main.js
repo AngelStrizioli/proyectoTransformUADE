@@ -107,12 +107,11 @@ class Main extends React.Component {
   render() {
       {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/}
     return (
-      <View style={{flex:1,backgroundColor: 'rgba(0, 0, 0, 0.05)',}}>
-      <ScrollView style={{ backgroundColor: themeMainBackgroundColor }}>
-        <View style={globalStyle.container}>
-          <View style={{marginTop:'2%'}}>
+      <View style={{flex:1}}>
+      <ScrollView >
+          
             <Text style={globalStyle.titleStyle}>Aprendé a transformar</Text>
-          </View>
+         
 
         
             <View style={{ marginBottom: '5%', marginHorizontal: '2%' }}>
@@ -140,7 +139,6 @@ class Main extends React.Component {
             <View style={{ marginTop: '1%'}}>
               <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
             </View>
-          </View>
         </ScrollView>
       </View>
     );

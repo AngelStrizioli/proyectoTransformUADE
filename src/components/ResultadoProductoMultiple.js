@@ -1,38 +1,24 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Text, View, ScrollView, } from 'react-native';
 
 import ItemResultadoProducto from './ItemResultadoProducto'
-//<Image source={require("../assets/images/LogoHorizontal.png")} />
+import { themeMainColor, globalStyle } from '../styles/globalStyles';
 
-/* ### PÁGINA PARA CUANDO UNA BÚSQUEDA DE "¡Transfórmalo!" DEVUELVE UN RESULTADO DE MÁS DE UN ELEMENTO ### 
-      En prototipo: Resultados varios*/
 
-import { themeMainColor } from '../styles/globalStyles';
 
 class ResultadoProductoMultiple extends React.Component {
+  
 
-  render() 
- 
-  {
+  render() {
     const { navigation } = this.props;
     var busqueda = navigation.getParam('busqueda', ''); 
     var productos = navigation.getParam('productos', []);
-   
-
+    
     return (
-      <View style={styles.container}>
       <ScrollView>
+            <Text style={globalStyle.titleStyle}>{busqueda}</Text>
 
-     
-          <Text style={styles.textStyle}>
-
-            Resultados: {busqueda}
-          </Text>
-         
- 
-
-        <View style={{marginTop:'5%', marginLeft:'6%'}}>
+        <View>
           
           { productos.map((producto) => {
              
@@ -41,64 +27,12 @@ class ResultadoProductoMultiple extends React.Component {
           }
           
         </View>
-        
-       
-
       </ScrollView>
-      </View>
+ 
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white'
-  },
-  textStyle: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop:'3%'
-  },
-  buttonPosition: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: '1%'
-    
-  },
 
-  
-  buttonDesigne: {
-    color: "white",
-    fontSize: 24,
-    textAlign: "center",
-    textAlignVertical: 'center',
-    backgroundColor: themeMainColor,
-    width: 300,
-    height: 55,
-    borderRadius: 50,
-    //fontWeight: "bold"
-    //marginVertical:'10%',
-    marginBottom:'5%',
-  },
-  botonLargo:{
-    backgroundColor: themeMainColor,
-    elevation: 2,
-    shadowColor: 'rgba(0,0,0, .25)', 
-    shadowOffset: { height: 3, width: 3 }, 
-    shadowOpacity: 1, 
-    shadowRadius: 2,
-    borderRadius: 70,
-    justifyContent:'center',
-    textAlignVertical: 'center',
-    alignSelf: 'center',
-    width: 300,
-    height: 55,
-    marginTop: 50,
-    marginBottom:20
-  }
-
-})
 
 
 

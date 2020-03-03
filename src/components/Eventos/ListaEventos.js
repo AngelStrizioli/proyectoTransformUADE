@@ -7,6 +7,7 @@ import HeaderComponent from '../Misc/HeaderComponent';
 import GetDatosAPI from '../Misc/GetDatosAPI';
 
 import { themeMainColor } from '../../styles/globalStyles';
+import { ScrollView } from 'react-native-gesture-handler';
 
 //hardcodeados por ahora
 const eventos = [{
@@ -117,7 +118,7 @@ class ListaEventos extends React.Component {
   render() {
     const { navigation } = this.props;
     return (
-      <View style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }}>
        <Text style= {{ marginTop: '5%',marginBottom:'3%',fontSize: 26,fontWeight: 'bold',textAlign: 'center'}}>
          Puntos de interes
        </Text>
@@ -128,7 +129,7 @@ class ListaEventos extends React.Component {
         })}
         {this.renderPuntosVerdes(navigation)}
         {this.renderEcoBici(navigation)}
-      </View>
+      </ScrollView>
     );
   }
 

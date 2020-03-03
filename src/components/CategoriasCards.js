@@ -32,7 +32,7 @@ export default class CategoriasCards extends Component {
             }, {
                 title: "Metales",
                 img: "https://i.imgur.com/UKPPz8D.png",
-                backgroundColor:'#e3ff00',
+                backgroundColor:'yellow',
             }, {
                 title: "Textiles",
                 img: "https://i.imgur.com/yfkEpxU.png",
@@ -71,7 +71,7 @@ export default class CategoriasCards extends Component {
     render() {
         if (this.state.categorias.length != 0) {
             return (
-                <View style={{flexWrap:'wrap' ,flexDirection: 'row'}}>
+                <View style={{flexWrap:'wrap' ,flexDirection: 'row', marginHorizontal: '2%' }}>
                   
                         {this.state.categorias.map((categoria) => {
                             return (
@@ -79,9 +79,7 @@ export default class CategoriasCards extends Component {
                                <View style={{width:width*0.20, marginHorizontal:'2%', marginVertical:'2%',}} key={categoria.title}>
                                     <TouchableOpacity onPress={() => {this.buscarProductos(categoria.title)}}>
                                         <View style={{alignItems:'center'}}>
-                                        
-                                            <Image source={{uri: categoria.img}}  style={{borderRadius:36, backgroundColor:categoria.backgroundColor,height: width*0.18, width: width*0.18,resizeMode: 'contain', flex: 1 }} />
-                                            
+                                            <Image source={{uri: categoria.img}}  style={{borderRadius:36, backgroundColor:categoria.backgroundColor,height: width*0.18, width: width*0.18}} />
                                             <Text style={{textAlign:'center'}}>{categoria.title} </Text>
                                         </View>
                                     </TouchableOpacity>

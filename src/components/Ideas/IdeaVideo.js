@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Card, CardItem, Body } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 import { themeMainColor, globalStyle } from '../../styles/globalStyles';
-
+import {Container, Footer, FooterTab, Button} from 'native-base'
 
 
 const { width } = Dimensions.get('window');
@@ -25,12 +25,12 @@ class IdeaVideo extends React.Component{
         var video = this.props.idea.video;
         var imagen = this.props.idea.img;
         return(
+          <Container>
             <ScrollView style={styles.container}>
+            
                 <Text style={globalStyle.titleStyle}>{idea.titulo}</Text>
                 
-                 
-                
-                      
+
             
                   <View style={{alignSelf:'center'}}>
                     <TouchableOpacity onPress={() => Linking.openURL(video)}>
@@ -41,7 +41,8 @@ class IdeaVideo extends React.Component{
                         </View>
                     </TouchableOpacity>
                   </View>
-                  <View style={{justifyContent:'space-around',marginTop:'3%' ,flexDirection:'row', height:35}}>
+
+                 {/* <View style={{justifyContent:'space-around',marginTop:'3%' ,flexDirection:'row', height:35}}>
                     {this.cambiarCorazon()}
                     <TouchableOpacity onPress={() => navigation.navigate('ComentariosIdeas', {idea: idea })}>
                       <Text>
@@ -52,23 +53,37 @@ class IdeaVideo extends React.Component{
                     <TouchableOpacity>
                         <Text> <Ionicons name="md-share" size={30} /> </Text>   
                     </TouchableOpacity>
-                  </View>
+                  </View>*/}
              
                 <Text style={globalStyle.titleStyle}>Descripción</Text>
                 <Text style={globalStyle.textStyle}>{idea.texto}</Text>
 
                 <Text style={globalStyle.titleStyle}>Pasos</Text>
-               
-                 
 
-              {/* <View style={styles.compoPosition}>
-                   <TouchableOpacity style={styles.botonLargo} onPress={() => { navigation.goBack()}} >
-                       <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}} >
-                           Volver
-                       </Text>
-                   </TouchableOpacity>
-               </View>*/}
             </ScrollView>
+            <Footer style={{}}>
+                    <FooterTab style={{marginHorizontal:'10%', marginTop:'3%'}}>
+
+                         {this.cambiarCorazon()}
+
+                         <TouchableOpacity onPress={() => navigation.navigate('ComentariosIdeas', {idea: idea })}>
+                      <Text>
+                        <Ionicons name="md-text" size={30}/>
+                      </Text>
+                    </TouchableOpacity> 
+
+                         {this.cambiarBoton()}
+                         <TouchableOpacity>
+                        <Text> <Ionicons name="md-share" size={30} /> </Text>   
+                    </TouchableOpacity>
+
+                    </FooterTab>
+                </Footer>
+
+
+
+
+            </Container>
         );
     }
 

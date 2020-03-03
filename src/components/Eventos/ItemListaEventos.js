@@ -25,7 +25,7 @@ class ItemListaEventos extends React.Component {
                 <View style={styles.containerItems}>
                     <Text style={styles.itemEventoTitulo}>{evento.title}</Text>
                     <Text style={styles.itemEventoDesc}>{evento.fecha}</Text>
-                    <View style={{alignSelf:'flex-end', paddingRight:'4%'}}>
+                    <View style={{alignSelf:'flex-end', paddingRight:'3%'}}>
                       <Ionicons name="md-arrow-round-forward" size={30} color={'#FFFFFF'} />
                 </View>
                 </View>
@@ -47,20 +47,14 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     flexWrap: 'wrap',
-    //backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    //padding: '2%',
   },
   itemEventoTitulo: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: '600',
-    //textShadowColor:'#585858',
-    //textShadowOffset:{width: 5, height: 5},
-    //textShadowRadius:10,
     color: 'white',
     lineHeight:40,
     textShadowColor: 'rgba(0, 0, 0, 0.25)',
     textShadowOffset: {width: 1, height: 1},
-    //backgroundColor: 'rgba(0, 0, 0, 0.6)',
     textShadowRadius: 1,
     paddingLeft:'3%'
   },
@@ -72,7 +66,6 @@ const styles = StyleSheet.create({
     paddingLeft:'3%',
     textShadowColor: 'rgba(0, 0, 0, 0.25)',
     textShadowOffset: {width: 1, height: 1},
-    //backgroundColor: 'rgba(0, 0, 0, 0.6)',
     textShadowRadius: 1
   },
   containerItems: {

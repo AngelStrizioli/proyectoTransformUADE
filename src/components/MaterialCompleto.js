@@ -5,7 +5,7 @@ import ReciclableSioNo from './ReciclableSioNo';
 import ApiController from '../controller/ApiController'
 import ItemResultadoProducto from './ItemResultadoProducto'
 
-import { themeMainColor } from '../styles/globalStyles';
+import { themeMainColor, globalStyle } from '../styles/globalStyles';
 class MaterialCompleto extends React.Component{
   constructor(props){
     super(props);
@@ -31,24 +31,34 @@ class MaterialCompleto extends React.Component{
         var descartes=material.comoReciclar
         
 
-        const urlReciclable = 'https://i.imgur.com/b2SVI7V.png';
-        const urlWarning = 'https://i.imgur.com/fqPjNqa.png';
-        const urlNoReciclable = 'https://i.imgur.com/R6WMDPY.png';
+        const urlReciclable = 'https://i.imgur.com/gagua5h.png';
+        const urlWarning = 'https://i.imgur.com/OBbLG58.png';
+        const urlNoReciclable = 'https://i.imgur.com/O3AUDTG.png';
+        
+        const urlReciclableGris = 'https://i.imgur.com/jo5jCnh.png';
+        const urlWarningGris = 'https://i.imgur.com/XeHAsid.png';
+        const urlNoReciclableGris = 'https://i.imgur.com/Lror3pS.png';
 
         let imagenLogo;
         let tituloPag;
         switch(material.esReciclable){
             case 1: 
-            imagenLogo = urlReciclable;
-            tituloPag = '¡Es reciclable!'
+            logo1 = urlReciclable;
+            tituloPag = '¡Es reciclable!';
+            logo2= urlNoReciclableGris;
+            logo3= urlWarningGris
             break;
             case 2: 
-            imagenLogo = urlWarning;
+            logo3 = urlWarning;
             tituloPag = '¡Cuidado!'
+            logo1= urlReciclableGris;
+            logo2= urlNoReciclableGris;
             break;
             case 3: 
-            imagenLogo = urlNoReciclable;
+            logo2 = urlNoReciclable;
             tituloPag = '¡No es reciclable!'
+            logo1= urlReciclableGris;
+            logo3= urlWarningGris
             break;
           }
 
@@ -57,34 +67,43 @@ class MaterialCompleto extends React.Component{
       
           <ScrollView style={styles.container}>
             
-            <Text style={styles.titleStyle}>
+            <Text style={globalStyle.titleStyle}>
             
                 {nombre}
 
             </Text>
             
           
-            <Image title='Icono Material' source={{uri: logo}} style={{ height: 160, width: 160, alignSelf: 'center' }} />
-            <Text style={styles.subtitleStyle}>
-              Acerca de...
-            </Text>
-            <Text style={styles.textStyle}>
+           {/* <Image title='Icono Material' source={{uri: logo}} style={{ height: 160, width: 160, alignSelf: 'center' }} />*/}
+            
+            <Text style={globalStyle.textStyle}>
               {texto}
             </Text>
+            {/*}
             <Text style={styles.subtitleStyle}>
               Se encuentra en...
             </Text>
             <View style={{marginLeft: '6%'}}>
               {productos.map((producto) =>{return(<ItemResultadoProducto  key={producto.id} titulo = {producto.nombre} producto={producto} navigation={this.props.navigation}/>)})}
-              
-            
-            </View>
-            <Text style={styles.subtitleStyle}>
-            {tituloPag}
-          </Text>
-          <Image title='Icono Reciclable' source={{uri:(imagenLogo)}} style={{height: 160, width: 160,  alignSelf: 'center' }}/>
-          <Text style={styles.subtitleStyle}>Cómo descartarlo:</Text>
-          <View style={styles.textStyle}>
+            </View>*/}
+           
+          <View style={{flexDirection:'row',justifyContent:'space-around', marginTop:'5%'}}>
+              <View style={{alignItems:'center'}}>
+                  <Image title='Icono Reciclable' source={{uri:(logo1)}} style={styles.imgStyle}/>
+                  <Text style={styles.tipoMaterial}>¡Es reciclable! </Text>
+              </View>
+              <View style={{alignItems:'center'}}>
+                  <Image title='Icono No Reciclable' source={{uri:(logo2)}} style={styles.imgStyle}/>
+                  <Text style={styles.tipoMaterial}>¡No es reciclable! </Text>
+              </View>
+              <View style={{alignItems:'center'}}>
+                  <Image title='Icono Warning' source={{uri:(logo3)}} style={styles.imgStyle}/>
+                  <Text style={styles.tipoMaterial}>¡Cuidado! </Text>
+              </View>
+          </View>
+          
+          <Text style={globalStyle.titleStyle}>Cómo descartarlo</Text>
+          <View style={globalStyle.textStyle}>
             {descartes.map((descarte)=>{return (
               <Text key={descarte} style={styles.listTextStyle}> »  
               {descarte}</Text>)})}
@@ -104,72 +123,37 @@ class MaterialCompleto extends React.Component{
         fontSize: 24,
         fontWeight: 'bold',
         padding:'2%'
-
     },
     textStyle:{
-        padding:'4%',
+        paddingHorizontal:'6%',
         fontSize:18,
         textAlign:'justify',
         lineHeight:26
     },
+    tipoMaterial:{
+        fontSize:18,
+        //marginTop:'5%'
+    },
+    imgStyle:{
+      height: 80,
+       width: 80,
+       marginBottom:15 
+    },
 
-    buttonPosition: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      
-    },
-  
-    
-    buttonDesigne: {
-      color: "white",
-      fontSize: 24,
-      textAlign: "center",
-      textAlignVertical: 'center',
-      backgroundColor: themeMainColor,
-      width: 300,
-      height: 55,
-      borderRadius: 50,
-      //marginVertical:'10%',
-      //marginBottom:'5%',
-    },
     //reciclable original
     
-      subtitleStyle2: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        padding:'4%'
-      },
       titleStyle:{
-          fontSize: 24,
+          fontSize: 22,
           fontWeight: 'bold',
           padding:'4%',
-          textAlign: "center"
+          //textAlign: "center"
   
       },
-      textStyle2:{
-          fontSize:18,
-          padding:'10%'
-      },
+     
       listTextStyle:{
         fontSize:18,
         padding:'1%',
         lineHeight:26,
-      },
-      compoPosition: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-      },
-      buttonDesigne2: {
-        color: "white",
-        fontSize: 24,
-        textAlign: "center",
-        textAlignVertical: 'center',
-        backgroundColor: themeMainColor,
-        width: 300,
-        height: 55,
-        borderRadius: 50,
-        marginBottom:'5%'
-        
       }
   
   })

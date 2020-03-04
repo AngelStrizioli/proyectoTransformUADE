@@ -4,7 +4,8 @@ import { StyleSheet, View, Text } from "react-native";
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Button } from "native-base";
 
-import { themeMainColor } from '../../../styles/globalStyles';
+import { themeMainColor, globalStyle } from '../../../styles/globalStyles';
+
 
 
 export default class LockMap extends React.Component {
@@ -45,7 +46,7 @@ export default class LockMap extends React.Component {
         const { navigation } = this.props;
         return (
             <View >
-                <Text style={styles.subtitleStyle}>Ubicación</Text>
+                <Text style={globalStyle.titleStyle}>Ubicación</Text>
                 <TouchableWithoutFeedback onPress={()=>{ this.handleUnblockMap()}} >
                     <View pointerEvents={this.state.touchableMap}>
                         <MapView

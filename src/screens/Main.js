@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, ScrollView } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, ScrollView, Dimensions } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator, DrawerNavigatorItems } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -26,19 +26,22 @@ import CategoriasCards from '../components/CategoriasCards'
 import TagsCloud from '../components/TagsCloud';
 import ComentariosEventos from '../components/Eventos/ComentariosEventos'
 import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
+import Conciencia from '../components/Conciencia'
 //import EventoSimple from './components/Eventos/EventoSimple';
 
-import { globalStyle, themeMainColor, themeMainBackgroundColor } from "../styles/globalStyles";
-
+import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles";
+import * as Font from 'expo-font';
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
 
+
+    const { width } = Dimensions.get('window');
 class LogoHeader extends React.Component {
   render() {
     return (
       <View style={{ alignSelf: 'center', flex: 1 }}>
-    
-        <Image
+      <Text style={{color:'white', textAlign:'center', fontSize:18}}>PONÉ LA BARRA DE BUSQUEDA </Text>
+     {/*   <Image
           resizeMode="cover"
           source={require("../assets/images/LogoHorizontal.png")}
           style={{
@@ -46,8 +49,7 @@ class LogoHeader extends React.Component {
             height: 50,
             resizeMode: 'contain',
             alignSelf:"center",
-          }}
-        />
+          }}/>*/}
       </View>
     );
   }
@@ -66,6 +68,7 @@ class Main extends React.Component {
     super(props);
     this.state = {
       nombreProducto: '',
+      fontLoaded: false,
     };
   }
 
@@ -101,38 +104,24 @@ class Main extends React.Component {
     ApiController.getProductosByNombre(data, this.ObtenerDatosProd.bind(this));
   }
 
+
+  
+
   render() {
       {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/}
     return (
-      <View style={{flex:1,backgroundColor: 'rgba(0, 0, 0, 0.05)',}}>
-      <ScrollView style={{ backgroundColor: themeMainBackgroundColor }}>
-        <View style={globalStyle.container}>
-          <View style={{marginTop:'2%'}}>
-            <Text style={globalStyle.subtitleStyle}>Aprendé a transformar estos productos:</Text>
-          </View>
-
-          <View style={styles.inputSize}>
-            <View style={{ marginBottom: '5%', marginHorizontal: '2%' }}>
-              <CategoriasCards navigation={this.props.navigation}></CategoriasCards>
-            </View>
-          </View>
- 
-          {/* ESTAN HARDCORE PERO METAN A LOS TRAIDOS DE LA BD DENTRO DEL TEXT  */}
-          <View style={{marginTop:'3%',marginBottom: 10 ,alignContent:'space-around' ,justifyContent:'space-around', flex: 5, flexWrap:'wrap' ,flexDirection: 'row'}}>
-        
+        <ScrollView >
+          <Text style={globalStyle.titleStyle}>Aprendé a transformar</Text>
+          <CategoriasCards navigation={this.props.navigation}></CategoriasCards>
+          <View style={tagsStyles.tagsPosition}>
             <TagsCloud navigation={this.props.navigation}></TagsCloud>
-
           </View>
-
-            <View style={{ flexDirection: 'row', marginTop: '3%' }}>
-              <Text style={globalStyle.titleStyle}>Próximos eventos:</Text>
-            </View>
-            <View style={{ marginTop: '2%'}}>
-              <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
-            </View>
-          </View>
+          <Text style={globalStyle.titleStyle}>Conciencia</Text>
+          <Conciencia />
+          <Text style={globalStyle.titleStyle}>Eventos</Text>
+          <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
         </ScrollView>
-      </View>
+
     );
   }
 }
@@ -144,29 +133,7 @@ class Main extends React.Component {
 - 0f446f (azul oscuro pero no tanto como el primero) en los touchables de los eventos */
 const styles = StyleSheet.create({
   inputSize: {
-    //estas dos lineas sirven para que quede todo centrado
     flexDirection: 'row',
-    justifyContent: 'center',
-  },
-
-  buttonSize: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-
-  botonLargo:{
-    backgroundColor: 'white',
-    elevation: 2,
-    shadowColor: 'rgba(0,0,0, .25)', 
-    shadowOffset: { height: 3, width: 3 }, 
-    shadowOpacity: 1, 
-    shadowRadius: 2,
-    borderRadius: 70,
-    justifyContent:'center',
-    textAlignVertical: 'center',
-    alignSelf: 'center',
-    width: 250,
-    height: 50,
   },
    image:{
     marginTop:35,
@@ -228,11 +195,11 @@ const Navigatorr = createDrawerNavigator({
   Instructivo: {
     screen: Instructivo,
   },
-},{
+},/*{
 
    contentComponent:CustomDrawer,
  
-});
+}*/);
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -348,8 +315,7 @@ const bootRoot = createStackNavigator({
 
     headerTitle: <LogoHeader />,
     headerRight: <View/>,
-    headerStyle: 
-      globalStyle.mainHeader
+    headerStyle: globalStyle.mainHeader
     ,
     headerTintColor: 'white',
   }

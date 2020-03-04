@@ -1,10 +1,14 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, Linking, ScrollView,AsyncStorage, TextInput } from 'react-native';
+import { Image, StyleSheet, Text, View, Linking, ScrollView,AsyncStorage, TextInput,Dimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Card, CardItem, Body } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
+import { themeMainColor, globalStyle } from '../../styles/globalStyles';
+import {Container, Footer, FooterTab, Button} from 'native-base'
 
-import { themeMainColor } from '../../styles/globalStyles';
+
+const { width } = Dimensions.get('window');
+
 class IdeaVideo extends React.Component{
     constructor(props){
       super(props);
@@ -21,15 +25,14 @@ class IdeaVideo extends React.Component{
         var video = this.props.idea.video;
         var imagen = this.props.idea.img;
         return(
+          <Container>
             <ScrollView style={styles.container}>
-                <Text style={styles.titleStyle}>{idea.titulo}</Text>
-                <Text style={styles.subtitleStyle}>Video Tutorial</Text>
-                <Card style={{marginBottom:'2%'}}>
-                  <CardItem style={{justifyContent:'flex-end'}}>
-                  {this.cambiarBoton()}
-                      
-                  </CardItem>
-                  <CardItem style={{alignSelf:'center'}}>
+            
+                <Text style={globalStyle.titleStyle}>{idea.titulo}</Text>
+                
+
+            
+                  <View style={{alignSelf:'center'}}>
                     <TouchableOpacity onPress={() => Linking.openURL(video)}>
                         <Image title="El videardo" source={{ uri: (imagen) }} style={styles.imagenVideoStyle}/>
                         <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
@@ -37,35 +40,50 @@ class IdeaVideo extends React.Component{
                             <Image title="Play Video" source={{uri: "https://i.imgur.com/bT1lYuB.png"}} style={{ height: 200, width: 300}}/>
                         </View>
                     </TouchableOpacity>
-                  </CardItem>
-                  <CardItem style={{justifyContent:'space-around', marginTop:'1%'}}>
-                  {this.cambiarCorazon()}
-                  <TouchableOpacity onPress={() => navigation.navigate('ComentariosIdeas', {idea: idea })}>
-                    <Text>
-                    <Ionicons name="md-text" size={30}/>
-                    </Text>
-                  </TouchableOpacity> 
-                  
-                      <TouchableOpacity>
-                          <Text> <Ionicons name="md-share" size={30} /> </Text>
+                  </View>
 
-                          
-                      </TouchableOpacity>
-                  </CardItem>
-                </Card>
-                <Text style={styles.subtitleStyle}>Descripción:</Text>
-                <Text style={styles.textStyle}>{idea.texto}</Text>
-               
-                 
+                 {/* <View style={{justifyContent:'space-around',marginTop:'3%' ,flexDirection:'row', height:35}}>
+                    {this.cambiarCorazon()}
+                    <TouchableOpacity onPress={() => navigation.navigate('ComentariosIdeas', {idea: idea })}>
+                      <Text>
+                        <Ionicons name="md-text" size={30}/>
+                      </Text>
+                    </TouchableOpacity> 
+                    {this.cambiarBoton()}
+                    <TouchableOpacity>
+                        <Text> <Ionicons name="md-share" size={30} /> </Text>   
+                    </TouchableOpacity>
+                  </View>*/}
+             
+                <Text style={globalStyle.titleStyle}>Descripción</Text>
+                <Text style={globalStyle.textStyle}>{idea.texto}</Text>
 
-              {/* <View style={styles.compoPosition}>
-                   <TouchableOpacity style={styles.botonLargo} onPress={() => { navigation.goBack()}} >
-                       <Text style={{fontSize:24,textAlign:'center',color:'white', textAlignVertical:'center'}} >
-                           Volver
-                       </Text>
-                   </TouchableOpacity>
-               </View>*/}
+                <Text style={globalStyle.titleStyle}>Pasos</Text>
+
             </ScrollView>
+            <Footer style={{}}>
+                    <FooterTab style={{marginHorizontal:'10%', marginTop:'3%'}}>
+
+                         {this.cambiarCorazon()}
+
+                         <TouchableOpacity onPress={() => navigation.navigate('ComentariosIdeas', {idea: idea })}>
+                      <Text>
+                        <Ionicons name="md-text" size={30}/>
+                      </Text>
+                    </TouchableOpacity> 
+
+                         {this.cambiarBoton()}
+                         <TouchableOpacity>
+                        <Text> <Ionicons name="md-share" size={30} /> </Text>   
+                    </TouchableOpacity>
+
+                    </FooterTab>
+                </Footer>
+
+
+
+
+            </Container>
         );
     }
 
@@ -122,14 +140,14 @@ class IdeaVideo extends React.Component{
           
           return (
             <TouchableOpacity  onPress={() => this._storeData()} >
-              <Image style={{width:35, height:35}} source={{uri:('https://i.imgur.com/dHIs4kd.png')}} />
+              <Image style={{width:30, height:30}} source={{uri:('https://i.imgur.com/dHIs4kd.png')}} />
             </TouchableOpacity>
           )
       }else{
           return(
       
                 <TouchableOpacity onPress={() => this._storeData()} >
-                <Image style={{width:35, height:35}} source={{uri:('https://i.imgur.com/JkqyZWl.png')}} />
+                <Image style={{width:30, height:30}} source={{uri:('https://i.imgur.com/JkqyZWl.png')}} />
                 </TouchableOpacity>
        
           )
@@ -168,18 +186,19 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     titleStyle: {
-        padding: '3%',
-        fontSize: 26,
+      marginVertical:'5%',
+      marginLeft:'5%',
+        fontSize: 22,
         fontWeight: 'bold',
-        textAlign: 'center'
+        //textAlign: 'center'
     },
     subtitleStyle: {
         fontSize: 20,
         fontWeight: 'bold',
-        padding: '3%'
+        //padding: '3%'
     },
     textStyle:{
-        padding:'4%',
+        paddingHorizontal: '6%',
         fontSize:18,
         textAlign:'justify',
         lineHeight:26
@@ -231,11 +250,12 @@ const styles = StyleSheet.create({
     
       },
       imagenVideoStyle:{
-        height: 200,
-        width: 300,
+        height: width*0.7,
+        width: width*0.98,
         alignSelf: 'center',
-        borderWidth: 0.5,
-        borderColor: 'black'
+        //marginHorizontal:'2%'
+        //borderWidth: 0.5,
+        //borderColor: 'black'
       },
       playButton:{
         fontSize: 64,

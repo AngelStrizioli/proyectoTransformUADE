@@ -6,6 +6,7 @@ import LockMap from '../Misc/Maps/LockMap';
 import { Card, CardItem } from 'native-base';
 
 let { width, height } = Dimensions.get('window');
+import { themeMainColor, globalStyle } from '../../styles/globalStyles';
 
 
 class EventoSimple extends React.Component {
@@ -24,8 +25,8 @@ class EventoSimple extends React.Component {
       return evento.blocks.map((block, i) => {
         return (
           <View key={i}>
-            <Text style={styles.subtitleStyle}>{block.subtitle}</Text>
-            <Text style={styles.textStyle}>{block.text}</Text>
+            <Text style={globalStyle.titleStyle}>{block.subtitle}</Text>
+            <Text style={globalStyle.textStyle}>{block.text}</Text>
           </View>
         )
       })
@@ -72,7 +73,7 @@ class EventoSimple extends React.Component {
     const { navigation } = this.props;
     const evento = navigation.getParam('evento', {});
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView >
         <ImageBackground
           source={{ uri: evento.img }}
           style={styles.backgroundImage}>
@@ -90,19 +91,17 @@ class EventoSimple extends React.Component {
           </View>
         </ImageBackground>
         <Card >
-        <CardItem style={{justifyContent:'space-around'}}> 
-              
-         {this.cambiarCorazon()}
-         <TouchableOpacity onPress={() => navigation.navigate('ComentariosEventos', {evento: evento })}>
-              <Text>
-              <Ionicons name="md-text" size={30}/>
-              </Text>
-        </TouchableOpacity>        
-          <TouchableOpacity>
-              <Text> <Ionicons name="md-share" size={30} /> </Text>
-          </TouchableOpacity>
+          <CardItem style={{justifyContent:'space-around'}}>      
+            {this.cambiarCorazon()}
+            <TouchableOpacity onPress={() => navigation.navigate('ComentariosEventos', {evento: evento })}>
+                  <Text>
+                  <Ionicons name="md-text" size={30}/>
+                  </Text>
+            </TouchableOpacity>        
+              <TouchableOpacity>
+                  <Text> <Ionicons name="md-share" size={30} /> </Text>
+              </TouchableOpacity>
           </CardItem>
-
         </Card>
         {this.renderBlocks(evento)}
         <LockMap evento={evento}/>
@@ -116,13 +115,8 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 200,
   },
-  container: {
-    flex: 1,
-    backgroundColor: 'white'
-  },
-  compoView: {
-    marginVertical: '5%'
-  },
+
+
   tittleContainer: {
     flex: 1,
     flexWrap: 'wrap',
@@ -173,6 +167,7 @@ const styles = StyleSheet.create({
   subtitleStyle: {
     fontSize: 20,
     fontWeight: 'bold',
+    color:'red',
     padding: '4%'
   },
   textStyle: {

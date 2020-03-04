@@ -1,7 +1,8 @@
 import {Component} from 'react';
 
-const url ="https://sipi-transform.herokuapp.com/";
-//const urlLocal = "http://192.168.0.10:8080/"
+//const url ="https://sipi-transform.herokuapp.com/";
+//const url = "https//127.0.0.1:8080/";
+const url = "http://192.168.0.11:8080/"
 
 const urlGetProductosByNombre="transform/getProductosByTagAndName";
 const urlGetPosteos="transform/getPosteos";
@@ -18,22 +19,25 @@ const urlGetCommentsPost = "transform/getPostComments"
 
 class ApiController extends Component
 {
-   
     getProductosByNombre(data,DevolverDatos)
     {
         const endpoint = `${url}${urlGetProductosByNombre}`;
-        console.log("Buscando", data.name)
-        //console.log(data);
+        console.log(endpoint)
+        console.log("Buscando", JSON.stringify(data));
        fetch(endpoint,{
             method: 'POST', // or 'PUT'
             mode: "cors",
             headers:{ 'Content-Type': 'application/json'},
             body: JSON.stringify(data) // data can be `string` or {object}!
         }).then ((response) => {
+            console.log(response);
             return response.json();
         }).then (responseData => {
                 console.log("Recibi datos"); 
                 DevolverDatos(responseData);
+        }).catch(err => {
+            console.log(err.message);
+            throw err;
         });
     }
 

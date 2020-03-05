@@ -5,7 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 import ItemListaEventos from './ItemListaEventos'
 import HeaderComponent from '../Misc/HeaderComponent';
 import GetDatosAPI from '../Misc/GetDatosAPI';
-
+import FooterMain from '../FooterMain';
+import {Container } from 'native-base'
 import { themeMainColor } from '../../styles/globalStyles';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -72,11 +73,11 @@ class ListaEventos extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'Eventos',
+    title: ' ',
     header: null,
-    drawerIcon: ({ focused }) => (
+   /* drawerIcon: ({ focused }) => (
       <Ionicons name="md-globe" size={24} color={focused ? themeMainColor : 'black'} />
-    ),
+    ),*/
   };
 
   componentDidMount() {
@@ -118,6 +119,7 @@ class ListaEventos extends React.Component {
   render() {
     const { navigation } = this.props;
     return (
+      <Container>
       <ScrollView style={{ flex: 1 }}>
        <Text style= {{ marginTop: '5%',marginBottom:'3%',fontSize: 26,fontWeight: 'bold',textAlign: 'center'}}>
          Puntos de interes
@@ -130,6 +132,8 @@ class ListaEventos extends React.Component {
         {this.renderPuntosVerdes(navigation)}
         {this.renderEcoBici(navigation)}
       </ScrollView>
+      <FooterMain />
+      </Container>
     );
   }
 

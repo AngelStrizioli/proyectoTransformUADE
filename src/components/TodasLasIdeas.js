@@ -4,22 +4,24 @@ import { Text, View,StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import ListaIdeas from './Ideas/ListaIdeas';
 import { Divider } from 'react-native-elements';
-
+import {Container } from 'native-base';
+import FooterMain from '../components/FooterMain'
 import { themeMainColor } from '../styles/globalStyles';
 /* ### PÁGINA PARA MOSTRAR TODAS LAS IDEAS QUE ESTÁN GUARDADAS EN LA BD ###
     En prototipo: todavía no está */
 class TodasLasIdeas extends React.Component{
     static navigationOptions = {
-      title: 'Ver todas las ideas',
+      title: ' ',
       header: null,
-      drawerIcon: ({ focused }) => (
+    /*  drawerIcon: ({ focused }) => (
         <Ionicons name="md-bulb" size={24} color={focused ? themeMainColor : 'black'} />
-      ),
+      ),*/
 
     };
 
     render(){
       return(
+        <Container>
         <ScrollView style={styles.container}>
           <View>
             <Text style= {styles.titleStyle}>Todas las ideas</Text>
@@ -29,6 +31,8 @@ class TodasLasIdeas extends React.Component{
             <ListaIdeas navigation={this.props.navigation}></ListaIdeas>
           </View>
         </ScrollView>
+        <FooterMain/>
+        </Container>
       );
     }
 

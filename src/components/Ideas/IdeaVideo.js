@@ -58,7 +58,7 @@ class IdeaVideo extends React.Component{
                 <Text style={globalStyle.titleStyle}>Descripción</Text>
                 <Text style={globalStyle.textStyle}>{idea.texto}</Text>
 
-                <Text style={globalStyle.titleStyle}>Pasos</Text>
+               {/*<Text style={globalStyle.titleStyle}>Pasos</Text>*/}
 
             </ScrollView>
             <Footer style={{}}>

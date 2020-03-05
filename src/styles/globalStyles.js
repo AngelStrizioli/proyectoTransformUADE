@@ -15,7 +15,8 @@ export const globalStyle = StyleSheet.create({
         justifyContent: 'center',
     },
     mainHeader:{
-        backgroundColor: themeMainColor,
+        backgroundColor: themeMainColor
+        
     },
     titleStyle: {
         margin:'5%',

@@ -28,7 +28,7 @@ class MaterialCompleto extends React.Component{
         var logo = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
         //reciclable original
         esReciclable=material.esReciclable
-        var descartes=material.comoReciclar
+        var descartes=material.items
         
 
         const urlReciclable = 'https://i.imgur.com/gagua5h.png';
@@ -41,6 +41,9 @@ class MaterialCompleto extends React.Component{
 
         let imagenLogo;
         let tituloPag;
+        let logo1;
+        let logo2;
+        let logo3;
         switch(material.esReciclable){
             case 1: 
             logo1 = urlReciclable;

@@ -22,13 +22,13 @@ class IdeaVideo extends React.Component{
     render(){
         const { navigation } = this.props;
         const idea = this.props.idea;
-        var video = this.props.idea.video;
+        var video = this.props.idea.video_url;
         var imagen = this.props.idea.img;
         return(
           <Container>
             <ScrollView style={styles.container}>
             
-                <Text style={globalStyle.titleStyle}>{idea.titulo}</Text>
+                <Text style={globalStyle.titleStyle}>{idea.title}</Text>
                 
 
             
@@ -56,7 +56,7 @@ class IdeaVideo extends React.Component{
                   </View>*/}
              
                 <Text style={globalStyle.titleStyle}>Descripción</Text>
-                <Text style={globalStyle.textStyle}>{idea.texto}</Text>
+                <Text style={globalStyle.textStyle}>{idea.text}</Text>
 
                 <Text style={globalStyle.titleStyle}>Pasos</Text>
 

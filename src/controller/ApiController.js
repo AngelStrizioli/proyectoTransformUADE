@@ -22,21 +22,16 @@ class ApiController extends Component
     getProductosByNombre(data,DevolverDatos)
     {
         const endpoint = `${url}${urlGetProductosByNombre}`;
-        console.log(endpoint)
-        console.log("Buscando", JSON.stringify(data));
        fetch(endpoint,{
             method: 'POST', // or 'PUT'
             mode: "cors",
             headers:{ 'Content-Type': 'application/json'},
             body: JSON.stringify(data) // data can be `string` or {object}!
         }).then ((response) => {
-            console.log(response);
             return response.json();
         }).then (responseData => {
-                console.log("Recibi datos"); 
-                DevolverDatos(responseData);
+            DevolverDatos(responseData);
         }).catch(err => {
-            console.log(err.message);
             throw err;
         });
     }
@@ -62,7 +57,7 @@ class ApiController extends Component
     getPosteosByProd(okBusqueda2, data)
     {
         const endpoint = `${url}${urlGetPosteosByProd}`;
-        console.log("Buscando posteos")
+        console.log("buscando posteos", JSON.stringify(data))
        fetch(endpoint,{
             method: 'POST', // or 'PUT'
             mode: "cors",

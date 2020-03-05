@@ -1,13 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 
 import ItemListaEventos from './ItemListaEventos'
-import HeaderComponent from '../Misc/HeaderComponent';
 import GetDatosAPI from '../Misc/GetDatosAPI';
 import FooterMain from '../FooterMain';
 import {Container } from 'native-base'
-import { themeMainColor } from '../../styles/globalStyles';
 import { ScrollView } from 'react-native-gesture-handler';
 
 //hardcodeados por ahora

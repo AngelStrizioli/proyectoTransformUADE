@@ -11,9 +11,10 @@ class ResultadoProductoMultiple extends React.Component {
 
   render() {
     const { navigation } = this.props;
-    var busqueda = navigation.getParam('busqueda', ''); 
-    var productos = navigation.getParam('productos', []);
-    
+    let busqueda = navigation.getParam('busqueda', ''); 
+    let productos = navigation.getParam('productos', []);
+   
+
     return (
       <ScrollView>
             <Text style={globalStyle.titleStyle}>{busqueda}</Text>

@@ -21,17 +21,15 @@ import ListaEventos from '../components/Eventos/ListaEventos';
 import Instructivo from '../components/Instructivo';
 import EventoSimple from '../components/Eventos/EventoSimple';
 import PerfilUsuario from '../components/PerfilUsuario';
-import LogoHorizontal from '../assets/images/LogoHorizontal.png'
 import HeaderComponent from '../components/Misc/HeaderComponent'
 import CategoriasCards from '../components/CategoriasCards'
 import TagsCloud from '../components/TagsCloud';
 import ComentariosEventos from '../components/Eventos/ComentariosEventos'
 import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
 import Conciencia from '../components/Conciencia'
+
 import {Container, Footer, FooterTab, } from 'native-base'
 import FooterMain from '../components/FooterMain'
-//import EventoSimple from './components/Eventos/EventoSimple';
-
 
 import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles";
 import * as Font from 'expo-font';
@@ -88,7 +86,7 @@ class Main extends React.Component {
       this.props.navigation.navigate('ResultadoProductoMultiple',
         {
           productos: this.state.productos,
-          busqueda: this.state.busqueda,
+          busqueda: this.state.nombreProducto,
         
         })
     } else {
@@ -109,14 +107,9 @@ class Main extends React.Component {
     }
     ApiController.getProductosByNombre(data, this.ObtenerDatosProd.bind(this));
   }
-
-
   
-
   render() {
-      {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/}
- 
-
+      {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/} 
     return (
     <Container>
         <ScrollView >
@@ -149,17 +142,11 @@ class Main extends React.Component {
 
               </FooterTab>
           </Footer>*/}
-
-
-
-      </Container>
+        </Container>
 
     );
   }
 }
-
-
-
 
 /*colores que usa uade en su pag web
 - blanco en fondos
@@ -180,10 +167,7 @@ const styles = StyleSheet.create({
   
   }
 
-
-
 });
-
 
 const CustomDrawer=(props) =>(
   <View style={{flex:1 }} >
@@ -208,13 +192,7 @@ const CustomDrawer=(props) =>(
   </View>
 )
 
-
-
-
-
-const DrawerLeft = createDrawerNavigator({
-
- 
+const DrawerLeft = createDrawerNavigator({ 
   Main:{
     screen: Main,
     }, 
@@ -236,18 +214,9 @@ const DrawerLeft = createDrawerNavigator({
    Instructivo: {
     screen: Instructivo,
   },
-
 },{
-
-    drawerPosition: 'left',
-   
-  
-    
- 
+    drawerPosition: 'left', 
 });
-
-
-
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -266,7 +235,7 @@ class SearchBar extends React.Component {
       this.props.navigation.navigate('ResultadoProductoMultiple',
         {
           productos: this.state.productos,
-          busqueda: this.state.busqueda,
+          busqueda: this.state.nombreProducto,
         
         })
     } else {
@@ -285,7 +254,6 @@ class SearchBar extends React.Component {
     }
     ApiController.getProductosByNombre(data, this.ObtenerDatosProd.bind(this));
   }
-
 
   render() {
     return (
@@ -306,17 +274,10 @@ class SearchBar extends React.Component {
   }
 }
 
-
-
-
 const bootRoot = createStackNavigator({
-
   DrawerLeft: {
     screen: DrawerLeft,
-
-
-    navigationOptions: ({ navigation }) => ({
-     
+    navigationOptions: ({ navigation }) => ({     
      headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:10}} >
         <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
       </TouchableOpacity>,
@@ -324,9 +285,7 @@ const bootRoot = createStackNavigator({
       /*headerRight:  <TouchableOpacity style={{marginRight:10}} onPress={() => { navigation.getParam("activeSearchBar") ? navigation.setParams({activeSearchBar:false}) : navigation.setParams({activeSearchBar:true})}}>
             <Text> <Ionicons name="md-search" size={30} color={'white'} /> </Text>
     </TouchableOpacity> ,*/
-    }),
-          
-    
+    }),    
   },
  
   Main:{

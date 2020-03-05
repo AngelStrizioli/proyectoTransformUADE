@@ -27,6 +27,8 @@ import TagsCloud from '../components/TagsCloud';
 import ComentariosEventos from '../components/Eventos/ComentariosEventos'
 import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
 import Conciencia from '../components/Conciencia'
+
+import CardsEventos from '../components/Eventos/CardsEventos'
 //import EventoSimple from './components/Eventos/EventoSimple';
 
 import { globalStyle, themeMainColor, themeMainBackgroundColor } from "../styles/globalStyles";
@@ -82,7 +84,7 @@ class Main extends React.Component {
       this.props.navigation.navigate('ResultadoProductoMultiple',
         {
           productos: this.state.productos,
-          busqueda: this.state.busqueda,
+          busqueda: this.state.nombreProducto,
         
         })
     } else {
@@ -127,17 +129,17 @@ class Main extends React.Component {
           </View>
 
 
-          <View style={{ flexDirection: 'row', marginTop: '3%' }}>
+          <View style={{marginTop: '3%' }}>
               <Text style={globalStyle.titleStyle}>Conciencia</Text>
           </View>
 
               <Conciencia />
        
-            <View style={{ flexDirection: 'row', marginTop: '3%' }}>
+            <View style={{ marginTop: '3%' }}>
               <Text style={globalStyle.titleStyle}>Eventos</Text>
             </View>
             <View style={{ marginTop: '1%'}}>
-              <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
+              <CardsEventos navigation={this.props.navigation}></CardsEventos>
             </View>
         </ScrollView>
       </View>
@@ -259,7 +261,7 @@ class SearchBar extends React.Component {
       this.props.navigation.navigate('ResultadoProductoMultiple',
         {
           productos: this.state.productos,
-          busqueda: this.state.busqueda,
+          busqueda: this.state.nombreProducto,
         
         })
     } else {

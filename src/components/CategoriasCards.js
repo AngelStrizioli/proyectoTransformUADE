@@ -82,7 +82,7 @@ export default class CategoriasCards extends Component {
                                         
                                             <Image source={{uri: categoria.img}}  style={{borderRadius:36, backgroundColor:categoria.backgroundColor,height: width*0.18, width: width*0.18,resizeMode: 'contain', flex: 1 }} />
                                             
-                                            <Text style={{textAlign:'center'}}>{categoria.title} </Text>
+                                            <Text style={{textAlign:'center', fontSize: 13}}>{categoria.title} </Text>
                                         </View>
                                     </TouchableOpacity>
                                     

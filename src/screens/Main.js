@@ -27,6 +27,7 @@ import TagsCloud from '../components/TagsCloud';
 import ComentariosEventos from '../components/Eventos/ComentariosEventos'
 import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
 import Conciencia from '../components/Conciencia'
+import CardsEventos from '../components/Eventos/CardsEventos'
 
 import {Container, Footer, FooterTab, } from 'native-base'
 import FooterMain from '../components/FooterMain'
@@ -122,7 +123,7 @@ class Main extends React.Component {
           <Text style={globalStyle.titleStyle}>Conciencia</Text>
           <Conciencia />
           <Text style={globalStyle.titleStyle}>Eventos</Text>
-          <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
+          <CardsEventos navigation={this.props.navigation}></CardsEventos>
         </ScrollView>
         <FooterMain />
       {/*  <Footer style={{}}>

@@ -15,7 +15,8 @@ import ImagenCarouselInstructivo from './ImagenCarouselInstructivo'
 import { Button } from 'react-native-elements';
 
 import { themeMainColor } from '../styles/globalStyles';
-
+import {Container } from 'native-base'
+import FooterMain from '../components/FooterMain'
 const { width } = Dimensions.get('window'); 
 
 export default class Instructivo extends React.Component {
@@ -24,14 +25,15 @@ export default class Instructivo extends React.Component {
     
   }
     static navigationOptions = {
-        title: 'Instructivo',
+        title: ' ',
         header: null,
-        drawerIcon: ({ focused }) => (
+       /* drawerIcon: ({ focused }) => (
           <Ionicons name="md-help-circle"  size={24} color={focused ? themeMainColor : 'black'}  />
-        ),
+        ),*/
       };
     render() {
       return (
+        <Container>
         <View style={styles.container}>  
           <View style={styles.carouselContainer2}>
             <ImagenCarouselInstructivo/> 
@@ -44,6 +46,8 @@ export default class Instructivo extends React.Component {
             </Text>
             </TouchableOpacity>
         </View>
+        <FooterMain />
+      </Container>
       );
     }
   }

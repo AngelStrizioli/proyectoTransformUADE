@@ -2,7 +2,8 @@ import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, ScrollView, Dimensions } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createDrawerNavigator, DrawerNavigatorItems } from 'react-navigation-drawer';
+
+import { createDrawerNavigator, DrawerNavigatorItems, DrawerActions } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import IdeasGuardadas from '../components/Ideas/IdeasGuardadas';
 import ItemListaIdeas from '../components/Ideas/ItemListaIdeas';
@@ -20,7 +21,6 @@ import ListaEventos from '../components/Eventos/ListaEventos';
 import Instructivo from '../components/Instructivo';
 import EventoSimple from '../components/Eventos/EventoSimple';
 import PerfilUsuario from '../components/PerfilUsuario';
-import LogoHorizontal from '../assets/images/LogoHorizontal.png'
 import HeaderComponent from '../components/Misc/HeaderComponent'
 import CategoriasCards from '../components/CategoriasCards'
 import TagsCloud from '../components/TagsCloud';
@@ -28,11 +28,11 @@ import ComentariosEventos from '../components/Eventos/ComentariosEventos'
 import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
 import Conciencia from '../components/Conciencia'
 
-import CardsEventos from '../components/Eventos/CardsEventos'
-//import EventoSimple from './components/Eventos/EventoSimple';
+import {Container, Footer, FooterTab, } from 'native-base'
+import FooterMain from '../components/FooterMain'
 
-import { globalStyle, themeMainColor, themeMainBackgroundColor } from "../styles/globalStyles";
-
+import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles";
+import * as Font from 'expo-font';
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
 
@@ -42,8 +42,8 @@ class LogoHeader extends React.Component {
   render() {
     return (
       <View style={{ alignSelf: 'center', flex: 1 }}>
-    
-        <Image
+      <Text style={{color:'white', textAlign:'center', fontSize:18}}>PONÉ LA BARRA DE BUSQUEDA </Text>
+     {/*   <Image
           resizeMode="cover"
           source={require("../assets/images/LogoHorizontal.png")}
           style={{
@@ -51,8 +51,7 @@ class LogoHeader extends React.Component {
             height: 50,
             resizeMode: 'contain',
             alignSelf:"center",
-          }}
-        />
+          }}/>*/}
       </View>
     );
   }
@@ -61,7 +60,7 @@ class LogoHeader extends React.Component {
 
 class Main extends React.Component {
   static navigationOptions = {
-    title: 'Volver al inicio',
+    title: 'Inicio',
     drawerIcon: ({ focused }) => (
       <Ionicons name="md-arrow-round-back" size={24} color={focused ? themeMainColor : 'black'} />
     ),
@@ -69,8 +68,11 @@ class Main extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       nombreProducto: '',
+      fontLoaded: false,
+
     };
   }
 
@@ -105,44 +107,43 @@ class Main extends React.Component {
     }
     ApiController.getProductosByNombre(data, this.ObtenerDatosProd.bind(this));
   }
-
+  
   render() {
-      {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/}
+      {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/} 
     return (
-      <View style={{flex:1}}>
-      <ScrollView >
-          
-            <Text style={globalStyle.titleStyle}>Aprendé a transformar</Text>
-         
+    <Container>
+        <ScrollView >
 
-        
-            <View style={{ marginBottom: '5%', marginHorizontal: '2%' }}>
-              <CategoriasCards navigation={this.props.navigation}></CategoriasCards>
-            </View>
-      
- 
-          {/* ESTAN HARDCORE PERO METAN A LOS TRAIDOS DE LA BD DENTRO DEL TEXT  */}
-          <View style={{ flexWrap:'wrap' ,flexDirection: 'row', marginHorizontal:'3%',marginTop:'4%'}}>
-        
+         <Text style={globalStyle.titleStyle}>Aprendé a transformar</Text>
+          <CategoriasCards navigation={this.props.navigation}></CategoriasCards>
+          <View style={tagsStyles.tagsPosition}>
             <TagsCloud navigation={this.props.navigation}></TagsCloud>
-
           </View>
-
-
-          <View style={{marginTop: '3%' }}>
-              <Text style={globalStyle.titleStyle}>Conciencia</Text>
-          </View>
-
-              <Conciencia />
-       
-            <View style={{ marginTop: '3%' }}>
-              <Text style={globalStyle.titleStyle}>Eventos</Text>
-            </View>
-            <View style={{ marginTop: '1%'}}>
-              <CardsEventos navigation={this.props.navigation}></CardsEventos>
-            </View>
+          <Text style={globalStyle.titleStyle}>Conciencia</Text>
+          <Conciencia />
+          <Text style={globalStyle.titleStyle}>Eventos</Text>
+          <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
         </ScrollView>
-      </View>
+        <FooterMain />
+      {/*  <Footer style={{}}>
+           <FooterTab style={{marginHorizontal:'10%', marginTop:'3%'}}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Instructivo')}>
+                  <Ionicons name="md-bulb" size={30}/>
+              </TouchableOpacity> 
+              <TouchableOpacity>
+                 <Ionicons name="md-cube" size={30} /> 
+              </TouchableOpacity>
+              <TouchableOpacity>
+                 <Ionicons name="md-globe" size={30} /> 
+              </TouchableOpacity>        
+              <TouchableOpacity>
+                 <Ionicons name="md-help-circle" size={30} /> 
+              </TouchableOpacity>
+
+              </FooterTab>
+          </Footer>*/}
+        </Container>
+
     );
   }
 }
@@ -154,29 +155,7 @@ class Main extends React.Component {
 - 0f446f (azul oscuro pero no tanto como el primero) en los touchables de los eventos */
 const styles = StyleSheet.create({
   inputSize: {
-    //estas dos lineas sirven para que quede todo centrado
     flexDirection: 'row',
-    //justifyContent: 'center',
-  },
-
-  buttonSize: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-
-  botonLargo:{
-    backgroundColor: 'white',
-    elevation: 2,
-    shadowColor: 'rgba(0,0,0, .25)', 
-    shadowOffset: { height: 3, width: 3 }, 
-    shadowOpacity: 1, 
-    shadowRadius: 2,
-    borderRadius: 70,
-    justifyContent:'center',
-    textAlignVertical: 'center',
-    alignSelf: 'center',
-    width: 250,
-    height: 50,
   },
    image:{
     marginTop:35,
@@ -184,13 +163,11 @@ const styles = StyleSheet.create({
     marginLeft:18,
     width: 80,
     height: 80,
+
   
   }
 
-
-
 });
-
 
 const CustomDrawer=(props) =>(
   <View style={{flex:1 }} >
@@ -215,17 +192,16 @@ const CustomDrawer=(props) =>(
   </View>
 )
 
-const Navigatorr = createDrawerNavigator({
-
+const DrawerLeft = createDrawerNavigator({ 
   Main:{
     screen: Main,
     }, 
-   PerfilUsuario:{
-    screen:PerfilUsuario,
-  },
-  IdeasGuardadas: {
-    screen: IdeasGuardadas,
-  },
+    PerfilUsuario:{
+      screen:PerfilUsuario,
+    },
+    IdeasGuardadas: {
+      screen: IdeasGuardadas,
+    },
   TodasLasIdeas: {
     screen: TodasLasIdeas,
   },
@@ -235,13 +211,11 @@ const Navigatorr = createDrawerNavigator({
   ListaEventos: {
     screen: ListaEventos
   },
-  Instructivo: {
+   Instructivo: {
     screen: Instructivo,
   },
 },{
-
-   contentComponent:CustomDrawer,
- 
+    drawerPosition: 'left', 
 });
 
 class SearchBar extends React.Component {
@@ -281,7 +255,6 @@ class SearchBar extends React.Component {
     ApiController.getProductosByNombre(data, this.ObtenerDatosProd.bind(this));
   }
 
-
   render() {
     return (
       <View style={styles.inputSize}>
@@ -302,22 +275,42 @@ class SearchBar extends React.Component {
 }
 
 const bootRoot = createStackNavigator({
-  Navigatorr: {
-    screen: Navigatorr,
-    navigationOptions: ({ navigation }) => ({
-      headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:10}} >
-        <Text> <Ionicons name="md-menu" size={30} color={'white'} /> </Text>
+  DrawerLeft: {
+    screen: DrawerLeft,
+    navigationOptions: ({ navigation }) => ({     
+     headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:10}} >
+        <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
       </TouchableOpacity>,
       headerTitle: navigation.getParam("activeSearchBar") ? <SearchBar navigation={navigation}/> : <LogoHeader />,
-      headerRight:
-        <TouchableOpacity style={{marginRight:10}} onPress={() => { navigation.getParam("activeSearchBar") ? navigation.setParams({activeSearchBar:false}) : navigation.setParams({activeSearchBar:true})}}>
+      /*headerRight:  <TouchableOpacity style={{marginRight:10}} onPress={() => { navigation.getParam("activeSearchBar") ? navigation.setParams({activeSearchBar:false}) : navigation.setParams({activeSearchBar:true})}}>
             <Text> <Ionicons name="md-search" size={30} color={'white'} /> </Text>
-        </TouchableOpacity>,      
-    }),
+    </TouchableOpacity> ,*/
+    }),    
   },
+ 
+  Main:{
+    screen:Main
+  },
+  
+  Instructivo: {
+    screen: Instructivo,
+  },
+  Footer:{screen:FooterMain},
+ 
+ 
   ResultadoProductoMultiple: {
     screen: ResultadoProductoMultiple,
   },
+  TodasLasIdeas: {
+    screen: TodasLasIdeas,
+  },
+  TodosLosMateriales: {
+    screen: TodosLosMateriales,
+  },
+  ListaEventos: {
+    screen: ListaEventos
+  },
+
   ItemListaIdeas: {
     screen: ItemListaIdeas,
   },
@@ -357,9 +350,8 @@ const bootRoot = createStackNavigator({
   defaultNavigationOptions: {
 
     headerTitle: <LogoHeader />,
-    headerRight: <View/>,
-    headerStyle: globalStyle.mainHeader
-    ,
+    headerStyle: globalStyle.mainHeader,
+    //headerRight: <View />,
     headerTintColor: 'white',
   }
 })

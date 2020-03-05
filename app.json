@@ -13,7 +13,7 @@
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
     "splash": {
-      "image": "./src/assets/images/splashTransform(ULTIMO).png",
+      "image": "./src/assets/images/Greentoo_Splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#061B2C"
     },
@@ -21,10 +21,12 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/*"
     ],
     "android": {
-      "package": "com.Transform.transformAPK"
+      "package": "com.Transform.transformAPK",
+      "versionCode": 1,
+      "icon":"./src/assets/images/icon.png"
     },
     "ios": {
       "supportsTablet": true

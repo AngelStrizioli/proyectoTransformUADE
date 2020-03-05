@@ -7,6 +7,7 @@ export const themeMainBackgroundColor = '#ECEEEF';
 
 export const tagsColor = '#0f446f';
 
+
 export const globalStyle = StyleSheet.create({
     container: {
         // https://www.color-hex.com/ pag util para ver y hacer colores en hexa por si no sabemos el nombre en palabras
@@ -14,7 +15,8 @@ export const globalStyle = StyleSheet.create({
         justifyContent: 'center',
     },
     mainHeader:{
-        backgroundColor: themeMainColor,
+        backgroundColor: themeMainColor
+        
     },
     titleStyle: {
         margin:'5%',
@@ -48,8 +50,19 @@ export const globalStyle = StyleSheet.create({
         fontSize: 16,
       },
 });
+export const categoriasStyle = StyleSheet.create({
+    positionStyle:{},
+    
+
+})
 
 export const tagsStyles = StyleSheet.create({
+    tagsPosition:{
+        flexWrap:'wrap' ,
+        flexDirection: 'row', 
+        marginHorizontal:'3%',
+        marginTop:'6%'
+    },
     tagsForm: {
         borderRadius: 50,
         backgroundColor: tagsColor,

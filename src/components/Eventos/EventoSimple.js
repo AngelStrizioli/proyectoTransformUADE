@@ -73,7 +73,7 @@ class EventoSimple extends React.Component {
     const { navigation } = this.props;
     const evento = navigation.getParam('evento', {});
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView >
         <ImageBackground
           source={{ uri: evento.img }}
           style={styles.backgroundImage}>
@@ -91,19 +91,17 @@ class EventoSimple extends React.Component {
           </View>
         </ImageBackground>
         <Card >
-        <CardItem style={{justifyContent:'space-around'}}> 
-              
-         {this.cambiarCorazon()}
-         <TouchableOpacity onPress={() => navigation.navigate('ComentariosEventos', {evento: evento })}>
-              <Text>
-              <Ionicons name="md-text" size={30}/>
-              </Text>
-        </TouchableOpacity>        
-          <TouchableOpacity>
-              <Text> <Ionicons name="md-share" size={30} /> </Text>
-          </TouchableOpacity>
+          <CardItem style={{justifyContent:'space-around'}}>      
+            {this.cambiarCorazon()}
+            <TouchableOpacity onPress={() => navigation.navigate('ComentariosEventos', {evento: evento })}>
+                  <Text>
+                  <Ionicons name="md-text" size={30}/>
+                  </Text>
+            </TouchableOpacity>        
+              <TouchableOpacity>
+                  <Text> <Ionicons name="md-share" size={30} /> </Text>
+              </TouchableOpacity>
           </CardItem>
-
         </Card>
         {this.renderBlocks(evento)}
         <LockMap evento={evento}/>
@@ -117,13 +115,8 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 200,
   },
-  container: {
-    flex: 1,
-    backgroundColor: 'white'
-  },
-  compoView: {
-    marginVertical: '5%'
-  },
+
+
   tittleContainer: {
     flex: 1,
     flexWrap: 'wrap',

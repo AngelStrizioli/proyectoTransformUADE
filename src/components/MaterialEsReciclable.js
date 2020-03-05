@@ -7,11 +7,7 @@ import MaterialCompleto from './MaterialCompleto';
 import { Icon } from 'native-base';
 import getProductosByMaterial from '../controller/ApiController'
 import ApiController from '../controller/ApiController'
-/* ### COMPONENTE PARA HACER UN ITEM DE LA GALERIA DE IDEAS ###
-    En prototipo: Dentro de producto único > Idea1, Idea2, Idea3... 
-    
-    -FALTA: Guardar en la bd los logos para cada uno de los materiales y hacer que estos se asignen dinamicamente
-    */
+import { Col, Row, Grid } from "react-native-easy-grid";
 
 import { themeMainColor } from '../styles/globalStyles';
 class MaterialEsReciclable extends React.Component{
@@ -82,20 +78,22 @@ class MaterialEsReciclable extends React.Component{
           return(
             <View> 
               <TouchableOpacity style={styles.containerMaterial} onPress={() => { this.onClickListener(material.id) }}>
-                  <View style={styles.containerImage}>
-                     <View style={{heigth: 80, width: '38%', marginRight: '2%'}}>
-                        <Image title='Icono Material' source={{ uri: (logoMaterial) }} style={{height: 60, width: 60, alignSelf: 'center',marginTop:'5%' }} />
-                         <Text style={{fontSize:18, textAlign:'center', color: themeMainColor}}>{material.nombre}</Text>
-                      </View>
-                      <View style={{heigth: 80, width: '45%'}}>
-                        <Image title='Icono Reciclable' source={{ uri: (imagenLogo) }} style={{height: 60, width: 60, alignSelf: 'center',marginTop:'5%' }} />
-                         <Text style={{ fontSize:18, textAlign:'center', color: colorTexto}}>{tituloPag}</Text>
-                      </View>
-                      <View style={{heigth: 80, width: '15%', paddingRight: '2%', paddingTop: '3%', paddingLeft: '2%'}}>
-                          <Ionicons name="md-arrow-round-forward" size={30} color={'black'} />
-                      </View>
+                  <Grid>
+                    <Row>
 
-                  </View>
+                      <Col size={10} style={{}}>
+                        <Image title='Icono Material' source={{ uri: (logoMaterial) }} style={{height: 60, width: 60}} />
+                        </Col>
+                        <Col size={30} style={{}}>
+                         <Text style={{fontSize:18,marginTop:'9%' ,textAlign:'left', color: themeMainColor, marginLeft:'3%'}}>{material.nombre}</Text>
+                         </Col>
+                         <Col size={10} style={{marginTop:'4%', alignItems:'flex-end'}}> 
+                          <Ionicons name="md-arrow-round-forward" size={30} color={'black'} />
+                          </Col>
+
+                      </Row>
+                  </Grid>
+                    
               </TouchableOpacity>
 
             </View>
@@ -108,7 +106,9 @@ class MaterialEsReciclable extends React.Component{
     
     containerImage:{
       flexDirection: 'row',
-      justifyContent:'space-around',
+      //justifyContent:'space-between',
+      //width:'100%',
+
       //marginBottom: '5%'
     },
     textStyle:{
@@ -126,6 +126,7 @@ class MaterialEsReciclable extends React.Component{
       padding: '5%',
       //borderColor: '#6DCAF280',
       //borderWidth: 1,
+      width:'100%',
       
     },
     botonDebug:{

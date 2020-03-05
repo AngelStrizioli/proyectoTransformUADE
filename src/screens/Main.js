@@ -2,7 +2,8 @@ import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, ScrollView, Dimensions } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createDrawerNavigator, DrawerNavigatorItems } from 'react-navigation-drawer';
+
+import { createDrawerNavigator, DrawerNavigatorItems, DrawerActions } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import IdeasGuardadas from '../components/Ideas/IdeasGuardadas';
 import ItemListaIdeas from '../components/Ideas/ItemListaIdeas';
@@ -27,7 +28,10 @@ import TagsCloud from '../components/TagsCloud';
 import ComentariosEventos from '../components/Eventos/ComentariosEventos'
 import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
 import Conciencia from '../components/Conciencia'
+import {Container, Footer, FooterTab, } from 'native-base'
+import FooterMain from '../components/FooterMain'
 //import EventoSimple from './components/Eventos/EventoSimple';
+
 
 import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles";
 import * as Font from 'expo-font';
@@ -58,7 +62,7 @@ class LogoHeader extends React.Component {
 
 class Main extends React.Component {
   static navigationOptions = {
-    title: 'Volver al inicio',
+    title: 'Inicio',
     drawerIcon: ({ focused }) => (
       <Ionicons name="md-arrow-round-back" size={24} color={focused ? themeMainColor : 'black'} />
     ),
@@ -66,9 +70,11 @@ class Main extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       nombreProducto: '',
       fontLoaded: false,
+
     };
   }
 
@@ -109,9 +115,13 @@ class Main extends React.Component {
 
   render() {
       {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/}
+ 
+
     return (
+    <Container>
         <ScrollView >
-          <Text style={globalStyle.titleStyle}>Aprendé a transformar</Text>
+
+         <Text style={globalStyle.titleStyle}>Aprendé a transformar</Text>
           <CategoriasCards navigation={this.props.navigation}></CategoriasCards>
           <View style={tagsStyles.tagsPosition}>
             <TagsCloud navigation={this.props.navigation}></TagsCloud>
@@ -121,10 +131,35 @@ class Main extends React.Component {
           <Text style={globalStyle.titleStyle}>Eventos</Text>
           <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
         </ScrollView>
+        <FooterMain />
+      {/*  <Footer style={{}}>
+           <FooterTab style={{marginHorizontal:'10%', marginTop:'3%'}}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Instructivo')}>
+                  <Ionicons name="md-bulb" size={30}/>
+              </TouchableOpacity> 
+              <TouchableOpacity>
+                 <Ionicons name="md-cube" size={30} /> 
+              </TouchableOpacity>
+              <TouchableOpacity>
+                 <Ionicons name="md-globe" size={30} /> 
+              </TouchableOpacity>        
+              <TouchableOpacity>
+                 <Ionicons name="md-help-circle" size={30} /> 
+              </TouchableOpacity>
+
+              </FooterTab>
+          </Footer>*/}
+
+
+
+      </Container>
 
     );
   }
 }
+
+
+
 
 /*colores que usa uade en su pag web
 - blanco en fondos
@@ -141,6 +176,7 @@ const styles = StyleSheet.create({
     marginLeft:18,
     width: 80,
     height: 80,
+
   
   }
 
@@ -172,17 +208,22 @@ const CustomDrawer=(props) =>(
   </View>
 )
 
-const Navigatorr = createDrawerNavigator({
 
+
+
+
+const DrawerLeft = createDrawerNavigator({
+
+ 
   Main:{
     screen: Main,
     }, 
-   PerfilUsuario:{
-    screen:PerfilUsuario,
-  },
-  IdeasGuardadas: {
-    screen: IdeasGuardadas,
-  },
+    PerfilUsuario:{
+      screen:PerfilUsuario,
+    },
+    IdeasGuardadas: {
+      screen: IdeasGuardadas,
+    },
   TodasLasIdeas: {
     screen: TodasLasIdeas,
   },
@@ -192,14 +233,21 @@ const Navigatorr = createDrawerNavigator({
   ListaEventos: {
     screen: ListaEventos
   },
-  Instructivo: {
+   Instructivo: {
     screen: Instructivo,
   },
-},/*{
 
-   contentComponent:CustomDrawer,
+},{
+
+    drawerPosition: 'left',
+   
+  
+    
  
-}*/);
+});
+
+
+
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -258,23 +306,52 @@ class SearchBar extends React.Component {
   }
 }
 
+
+
+
 const bootRoot = createStackNavigator({
-  Navigatorr: {
-    screen: Navigatorr,
+
+  DrawerLeft: {
+    screen: DrawerLeft,
+
+
     navigationOptions: ({ navigation }) => ({
-      headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:10}} >
-        <Text> <Ionicons name="md-menu" size={30} color={'white'} /> </Text>
+     
+     headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:10}} >
+        <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
       </TouchableOpacity>,
       headerTitle: navigation.getParam("activeSearchBar") ? <SearchBar navigation={navigation}/> : <LogoHeader />,
-      headerRight:
-        <TouchableOpacity style={{marginRight:10}} onPress={() => { navigation.getParam("activeSearchBar") ? navigation.setParams({activeSearchBar:false}) : navigation.setParams({activeSearchBar:true})}}>
+      /*headerRight:  <TouchableOpacity style={{marginRight:10}} onPress={() => { navigation.getParam("activeSearchBar") ? navigation.setParams({activeSearchBar:false}) : navigation.setParams({activeSearchBar:true})}}>
             <Text> <Ionicons name="md-search" size={30} color={'white'} /> </Text>
-        </TouchableOpacity>,      
+    </TouchableOpacity> ,*/
     }),
+          
+    
   },
+ 
+  Main:{
+    screen:Main
+  },
+  
+  Instructivo: {
+    screen: Instructivo,
+  },
+  Footer:{screen:FooterMain},
+ 
+ 
   ResultadoProductoMultiple: {
     screen: ResultadoProductoMultiple,
   },
+  TodasLasIdeas: {
+    screen: TodasLasIdeas,
+  },
+  TodosLosMateriales: {
+    screen: TodosLosMateriales,
+  },
+  ListaEventos: {
+    screen: ListaEventos
+  },
+
   ItemListaIdeas: {
     screen: ItemListaIdeas,
   },
@@ -314,9 +391,8 @@ const bootRoot = createStackNavigator({
   defaultNavigationOptions: {
 
     headerTitle: <LogoHeader />,
-    headerRight: <View/>,
-    headerStyle: globalStyle.mainHeader
-    ,
+    headerStyle: globalStyle.mainHeader,
+    //headerRight: <View />,
     headerTintColor: 'white',
   }
 })

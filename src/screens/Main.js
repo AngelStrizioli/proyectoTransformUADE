@@ -278,13 +278,11 @@ const bootRoot = createStackNavigator({
   DrawerLeft: {
     screen: DrawerLeft,
     navigationOptions: ({ navigation }) => ({     
-     headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:10}} >
+     headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{margin:10, maxWidth: "90%"}} >
         <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
       </TouchableOpacity>,
-      headerTitle: navigation.getParam("activeSearchBar") ? <SearchBar navigation={navigation}/> : <LogoHeader />,
-      /*headerRight:  <TouchableOpacity style={{marginRight:10}} onPress={() => { navigation.getParam("activeSearchBar") ? navigation.setParams({activeSearchBar:false}) : navigation.setParams({activeSearchBar:true})}}>
-            <Text> <Ionicons name="md-search" size={30} color={'white'} /> </Text>
-    </TouchableOpacity> ,*/
+      headerTitle: <SearchBar navigation={navigation}/>,
+      headerRight: <View />,
     }),    
   },
  
@@ -348,8 +346,8 @@ const bootRoot = createStackNavigator({
 
 }, {
   defaultNavigationOptions: {
-
-    headerTitle: <LogoHeader />,
+    headerTitle: <SearchBar />,
+    headerRight: <View />,
     headerStyle: globalStyle.mainHeader,
     //headerRight: <View />,
     headerTintColor: 'white',

@@ -24,17 +24,17 @@ export default class LockMap extends React.Component {
     }
 
     renderMarkers(evento) {
-        if (evento.markers != undefined) {
-          return evento.markers.map((marker, i) => {
+        if (evento.locations != undefined) {
+          return evento.locations.map((marker, i) => {
             return(
             <Marker
               key={i}
               coordinate={{
-                latitude: marker.lat,
-                longitude: marker.long,
+                latitude: marker.latitude,
+                longitude: marker.longitude,
               }}
-              title={marker.title}
-              description={marker.desc}
+              title={marker.address}
+              description={marker.address}
               pinColor={themeMainColor}
             />)
           })

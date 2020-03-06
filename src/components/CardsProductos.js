@@ -37,11 +37,11 @@ export default class CardsProductos extends Component {
                                                                 shadowOpacity: 1, // IOS
                                                                 shadowRadius: 1, }}>
                                     <CardItem cardBody button onPress={() => { navigation.navigate('ResultadoProductoUnico', {producto: producto}) }}>
-                                        <Image source={{ uri: producto.urlImg }} style={{ height: width*0.6, width:width*0.6, resizeMode: 'contain', flex: 1 }} />
+                                        <Image source={{ uri: producto.url_image }} style={{ height: width*0.6, width:width*0.6, resizeMode: 'contain', flex: 1 }} />
                                     </CardItem>
                                     <CardItem button onPress={() => { navigation.navigate('ResultadoProductoUnico', {producto: producto}) }}>
                                         <Text style={{ color: themeMainColor, textAlign: "center" , alignSelf:"center"}}>
-                                            {producto.nombre}
+                                            {producto.name}
                                         </Text>
                                     </CardItem>
                                 </Card>

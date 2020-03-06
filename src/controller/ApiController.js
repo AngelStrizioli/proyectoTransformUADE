@@ -9,7 +9,7 @@ const urlGetPosteos="transform/getPosteos";
 const urlGetPosteosByProd="transform/getPosteosByProd?id=";
 const urlGetMateriales="transform/getMateriales";
 const urlGetProductosByMaterial="transform/getProductosByMaterial?id=";
-const urlGetEventos="transform/getEventos"
+const urlGetEventos="transform/getEvents"
 const urlGetPopularProd = "transform/getPopularProducts"
 const urlPushCommentEvent = "transform/commentEvent"
 const urlPushCommentPost = "transform/commentPost"
@@ -45,11 +45,8 @@ class ApiController extends Component
             mode: "cors",
             headers:{ 'Content-Type': 'application/json'},
        }).then ((response) => {
-            //console.log("response",response);
             return response.json();
         }).then (responseData => {
-                //console.log(responseData);
-                console.log("Recibi datos");
                 okBusqueda(responseData);
         });
     }
@@ -64,11 +61,8 @@ class ApiController extends Component
             headers:{ 'Content-Type': 'application/json'},
             body: JSON.stringify(data)
        }).then ((response) => {
-            //console.log("response",response);
             return response.json();
         }).then (responseData => {
-                //console.log(responseData);
-                console.log("Recibi datos");
                 okBusqueda2(responseData);
         });
     }
@@ -76,17 +70,13 @@ class ApiController extends Component
     getMateriales(okBusqueda3)
     {
         const endpoint = `${url}${urlGetMateriales}`;
-        console.log("Buscando materiales")
        fetch(endpoint,{
             method: 'GET', // or 'PUT'
             mode: "cors",
             headers:{ 'Content-Type': 'application/json'},
        }).then ((response) => {
-            //console.log("response",response);
             return response.json();
         }).then (responseData => {
-                //console.log(responseData);
-                console.log("Recibi datos");
                 okBusqueda3(responseData);
         });
     }
@@ -94,8 +84,6 @@ class ApiController extends Component
     getProductosByMaterial(data,DevolverDatos)
     {
         const endpoint = `${url}${urlGetProductosByMaterial}`;
-        console.log("Buscando", data.id)
-        //console.log(data);
        fetch(endpoint,{
             method: 'POST', // or 'PUT'
             mode: "cors",
@@ -104,24 +92,21 @@ class ApiController extends Component
         }).then ((response) => {
             return response.json();
         }).then (responseData => {
-                console.log("Recibi datos"); 
                 DevolverDatos(responseData);
         });
     }
 
     getEventos(devolverDatos){
         const endpoint = `${url}${urlGetEventos}`;
-        console.log("Buscando eventos")
        fetch(endpoint,{
             method: 'GET', // or 'PUT'
             mode: "cors",
             headers:{ 'Content-Type': 'application/json'},
        }).then ((response) => {
-            //console.log("response",response);
+            console.log("responseData", response);
             return response.json();
         }).then (responseData => {
-                //console.log(responseData);
-                console.log("Recibi datos");
+                console.log("responseData", responseData);
                 devolverDatos(responseData);
         });
     }

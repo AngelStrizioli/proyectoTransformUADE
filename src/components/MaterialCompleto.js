@@ -23,11 +23,11 @@ class MaterialCompleto extends React.Component{
         //material original
         var material = navigation.getParam('material', {});
         var productos = navigation.getParam('productos', []);
-        var nombre = material.nombre;
-        var texto = material.texto;
+        var nombre = material.name;
+        var texto = material.text;
         var logo = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
         //reciclable original
-        esReciclable=material.esReciclable
+        esReciclable=material.isRecyclable
         var descartes=material.items
         
 
@@ -44,7 +44,7 @@ class MaterialCompleto extends React.Component{
         let logo1;
         let logo2;
         let logo3;
-        switch(material.esReciclable){
+        switch(material.isRecyclable){
             case 1: 
             logo1 = urlReciclable;
             tituloPag = '¡Es reciclable!';
@@ -74,22 +74,10 @@ class MaterialCompleto extends React.Component{
             
                 {nombre}
 
-            </Text>
-            
-          
-           {/* <Image title='Icono Material' source={{uri: logo}} style={{ height: 160, width: 160, alignSelf: 'center' }} />*/}
-            
-            <Text style={globalStyle.textStyle}>
+            </Text>        
+          <Text style={globalStyle.textStyle}>
               {texto}
             </Text>
-            {/*}
-            <Text style={styles.subtitleStyle}>
-              Se encuentra en...
-            </Text>
-            <View style={{marginLeft: '6%'}}>
-              {productos.map((producto) =>{return(<ItemResultadoProducto  key={producto.id} titulo = {producto.nombre} producto={producto} navigation={this.props.navigation}/>)})}
-            </View>*/}
-           
           <View style={{flexDirection:'row',justifyContent:'space-around', marginTop:'5%'}}>
               <View style={{alignItems:'center'}}>
                   <Image title='Icono Reciclable' source={{uri:(logo1)}} style={styles.imgStyle}/>

@@ -2,7 +2,8 @@ import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, ScrollView, Dimensions } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createDrawerNavigator, DrawerNavigatorItems } from 'react-navigation-drawer';
+
+import { createDrawerNavigator, DrawerNavigatorItems, DrawerActions } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import IdeasGuardadas from '../components/Ideas/IdeasGuardadas';
 import ItemListaIdeas from '../components/Ideas/ItemListaIdeas';
@@ -15,19 +16,20 @@ import ReciclableSioNo from '../components/ReciclableSioNo';
 import IdeaSimple from '../components/Ideas/IdeaSimple';
 import ApiController from '../controller/ApiController';
 import MaterialCompleto from '../components/MaterialCompleto'
-import EventosPatrocinados from '../components/Eventos/EventosPatrocinados';
 import ListaEventos from '../components/Eventos/ListaEventos';
 import Instructivo from '../components/Instructivo';
 import EventoSimple from '../components/Eventos/EventoSimple';
 import PerfilUsuario from '../components/PerfilUsuario';
-import LogoHorizontal from '../assets/images/LogoHorizontal.png'
 import HeaderComponent from '../components/Misc/HeaderComponent'
 import CategoriasCards from '../components/CategoriasCards'
 import TagsCloud from '../components/TagsCloud';
 import ComentariosEventos from '../components/Eventos/ComentariosEventos'
 import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
 import Conciencia from '../components/Conciencia'
-//import EventoSimple from './components/Eventos/EventoSimple';
+import CardsEventos from '../components/Eventos/CardsEventos'
+
+import {Container, Footer, FooterTab, } from 'native-base'
+import FooterMain from '../components/FooterMain'
 
 import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles";
 import * as Font from 'expo-font';
@@ -40,16 +42,7 @@ class LogoHeader extends React.Component {
   render() {
     return (
       <View style={{ alignSelf: 'center', flex: 1 }}>
-      <Text style={{color:'white', textAlign:'center', fontSize:18}}>PONÉ LA BARRA DE BUSQUEDA </Text>
-     {/*   <Image
-          resizeMode="cover"
-          source={require("../assets/images/LogoHorizontal.png")}
-          style={{
-            width: 240,
-            height: 50,
-            resizeMode: 'contain',
-            alignSelf:"center",
-          }}/>*/}
+        <Text style={{color:'white', textAlign:'center', fontSize:18}}>PONÉ LA BARRA DE BUSQUEDA </Text>
       </View>
     );
   }
@@ -58,7 +51,7 @@ class LogoHeader extends React.Component {
 
 class Main extends React.Component {
   static navigationOptions = {
-    title: 'Volver al inicio',
+    title: 'Inicio',
     drawerIcon: ({ focused }) => (
       <Ionicons name="md-arrow-round-back" size={24} color={focused ? themeMainColor : 'black'} />
     ),
@@ -66,9 +59,11 @@ class Main extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       nombreProducto: '',
       fontLoaded: false,
+
     };
   }
 
@@ -82,7 +77,7 @@ class Main extends React.Component {
       this.props.navigation.navigate('ResultadoProductoMultiple',
         {
           productos: this.state.productos,
-          busqueda: this.state.busqueda,
+          busqueda: this.state.nombreProducto,
         
         })
     } else {
@@ -103,15 +98,14 @@ class Main extends React.Component {
     }
     ApiController.getProductosByNombre(data, this.ObtenerDatosProd.bind(this));
   }
-
-
   
-
   render() {
-      {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/}
+      {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/} 
     return (
+    <Container>
         <ScrollView >
-          <Text style={globalStyle.titleStyle}>Aprendé a transformar</Text>
+
+         <Text style={globalStyle.titleStyle}>Aprendé a transformar</Text>
           <CategoriasCards navigation={this.props.navigation}></CategoriasCards>
           <View style={tagsStyles.tagsPosition}>
             <TagsCloud navigation={this.props.navigation}></TagsCloud>
@@ -119,9 +113,10 @@ class Main extends React.Component {
           <Text style={globalStyle.titleStyle}>Conciencia</Text>
           <Conciencia />
           <Text style={globalStyle.titleStyle}>Eventos</Text>
-          <EventosPatrocinados navigation={this.props.navigation}></EventosPatrocinados>
+          <CardsEventos navigation={this.props.navigation}></CardsEventos>
         </ScrollView>
-
+        <FooterMain />
+        </Container>
     );
   }
 }
@@ -141,13 +136,11 @@ const styles = StyleSheet.create({
     marginLeft:18,
     width: 80,
     height: 80,
+
   
   }
 
-
-
 });
-
 
 const CustomDrawer=(props) =>(
   <View style={{flex:1 }} >
@@ -172,17 +165,16 @@ const CustomDrawer=(props) =>(
   </View>
 )
 
-const Navigatorr = createDrawerNavigator({
-
+const DrawerLeft = createDrawerNavigator({ 
   Main:{
     screen: Main,
     }, 
-   PerfilUsuario:{
-    screen:PerfilUsuario,
-  },
-  IdeasGuardadas: {
-    screen: IdeasGuardadas,
-  },
+    PerfilUsuario:{
+      screen:PerfilUsuario,
+    },
+    IdeasGuardadas: {
+      screen: IdeasGuardadas,
+    },
   TodasLasIdeas: {
     screen: TodasLasIdeas,
   },
@@ -192,14 +184,12 @@ const Navigatorr = createDrawerNavigator({
   ListaEventos: {
     screen: ListaEventos
   },
-  Instructivo: {
+   Instructivo: {
     screen: Instructivo,
   },
-},/*{
-
-   contentComponent:CustomDrawer,
- 
-}*/);
+},{
+    drawerPosition: 'left', 
+});
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -218,7 +208,7 @@ class SearchBar extends React.Component {
       this.props.navigation.navigate('ResultadoProductoMultiple',
         {
           productos: this.state.productos,
-          busqueda: this.state.busqueda,
+          busqueda: this.state.nombreProducto,
         
         })
     } else {
@@ -237,7 +227,6 @@ class SearchBar extends React.Component {
     }
     ApiController.getProductosByNombre(data, this.ObtenerDatosProd.bind(this));
   }
-
 
   render() {
     return (
@@ -259,22 +248,40 @@ class SearchBar extends React.Component {
 }
 
 const bootRoot = createStackNavigator({
-  Navigatorr: {
-    screen: Navigatorr,
-    navigationOptions: ({ navigation }) => ({
-      headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:10}} >
-        <Text> <Ionicons name="md-menu" size={30} color={'white'} /> </Text>
+  DrawerLeft: {
+    screen: DrawerLeft,
+    navigationOptions: ({ navigation }) => ({     
+     headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{margin:10, maxWidth: "90%"}} >
+        <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
       </TouchableOpacity>,
-      headerTitle: navigation.getParam("activeSearchBar") ? <SearchBar navigation={navigation}/> : <LogoHeader />,
-      headerRight:
-        <TouchableOpacity style={{marginRight:10}} onPress={() => { navigation.getParam("activeSearchBar") ? navigation.setParams({activeSearchBar:false}) : navigation.setParams({activeSearchBar:true})}}>
-            <Text> <Ionicons name="md-search" size={30} color={'white'} /> </Text>
-        </TouchableOpacity>,      
-    }),
+      headerTitle: <SearchBar navigation={navigation}/>,
+      headerRight: <View />,
+    }),    
   },
+ 
+  Main:{
+    screen:Main
+  },
+  
+  Instructivo: {
+    screen: Instructivo,
+  },
+  Footer:{screen:FooterMain},
+ 
+ 
   ResultadoProductoMultiple: {
     screen: ResultadoProductoMultiple,
   },
+  TodasLasIdeas: {
+    screen: TodasLasIdeas,
+  },
+  TodosLosMateriales: {
+    screen: TodosLosMateriales,
+  },
+  ListaEventos: {
+    screen: ListaEventos
+  },
+
   ItemListaIdeas: {
     screen: ItemListaIdeas,
   },
@@ -312,11 +319,10 @@ const bootRoot = createStackNavigator({
 
 }, {
   defaultNavigationOptions: {
-
-    headerTitle: <LogoHeader />,
-    headerRight: <View/>,
-    headerStyle: globalStyle.mainHeader
-    ,
+    headerTitle: <SearchBar />,
+    headerRight: <View />,
+    headerStyle: globalStyle.mainHeader,
+    //headerRight: <View />,
     headerTintColor: 'white',
   }
 })

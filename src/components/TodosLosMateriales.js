@@ -6,37 +6,34 @@ import MaterialEsReciclable from './MaterialEsReciclable';
 import ApiController from '../controller/ApiController';
 import { Divider } from 'react-native-elements';
 import { themeMainColor } from '../styles/globalStyles';
+import {Container } from 'native-base';
+import FooterMain from './FooterMain'
 
 /* ### PÁGINA QUE MUESTRA LA LISTA DE TODOS LOS MATERIALES CON INFORMACIÓN EN LA BD ###
     En prototipo: No está todavía */
 
-  function createData(item,idArray) 
+  function createData(material,idArray) 
     {
       return { id : idArray, 
-        id: item.id,
-        nombre: item.nombre,
-        logo: item.logo,
-        esReciclable: item.esReciclable,
-        texto: item.texto,
-        comoReciclar: item.comoReciclar
+        id: material.id,
+        nombre: material.name,
+        logo: material.logo,
+        esReciclable: material.isRecyclable,
+        texto: material.text,
+        comoReciclar: material.items
       };
   }
     
 class TodosLosMateriales extends React.Component{
     static navigationOptions = {
-      title: 'Ver todos los materiales',
-      header: null,
-      drawerIcon: ({ focused }) => (
-        <Ionicons name="md-cube" size={24} color={focused ? themeMainColor : 'black'} />
-      ),
-     
+      title: ' ',
+      header: null,     
     };
     constructor (props) {
       super(props)
       this.state = { materiales : [] }
   }
     
-
   componentDidMount() {
     //Leo los productos de la API BD
     ApiController.getMateriales(this.okBusqueda3.bind(this));
@@ -48,30 +45,28 @@ class TodosLosMateriales extends React.Component{
       newArray.push(createData(newData[i], i));
     }
     this.setState({ materiales: newArray });
-    //console.log("data");
-    //console.log(this.state.data);
   }
   
     render(){
       let materiales = this.state.materiales;
       return(
-        <ScrollView style={styles.container}>
-
-       
+        <Container>
+        <ScrollView style={styles.container}>       
           <Text style= {styles.titleStyle}>Todos los materiales</Text>
           <Divider style={{ backgroundColor: 'black' }} />
           <View>
-          {materiales.map((material) =>{
-              
+          {materiales.map((material) =>{         
               return (
-                <View key={material.nombre}>
+                <View key={material.name}>
                   <MaterialEsReciclable key={material.id} material={material} navigation={this.props.navigation}/>
-               
                 </View>
             )})}
           </View>
        
         </ScrollView>
+        <FooterMain/>
+        </Container>
+        
     );
     }
   }

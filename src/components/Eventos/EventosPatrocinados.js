@@ -15,7 +15,9 @@ export default class EventosPatrocinados extends Component {
     }
 
     handleEventos(listaEventos){
-        this.setState({eventos: listaEventos, cargado: true});
+      if (listaEventos !== undefined){
+        this.setState({ eventos: listaEventos, cargado: true });
+      }    
     }
 
     render(){

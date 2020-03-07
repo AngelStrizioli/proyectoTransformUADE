@@ -1,9 +1,9 @@
 import {Component} from 'react';
 import { Feather } from '@expo/vector-icons';
 
-const url ="https://sipi-transform.herokuapp.com/";
+const url ="https://transform-ceeef.appspot.com/";
 //const url = "https//127.0.0.1:8080/";
-const urlLocal = "http://192.168.0.8:8080/"
+//const urlLocal = "http://192.168.0.8:8080/"
 
 const urlBuscarProductos="transform/buscarProductos"; //Needs wowrk
 const urlGetProductsByTagName="getProductsByTagName";
@@ -155,7 +155,7 @@ class ApiController extends Component
     }
 
     pushCommentPost(data,DevolverDatos){
-        const endpoint = `${urlLocal}${urlPushCommentPost}`;
+        const endpoint = `${url}${urlPushCommentPost}`;
        fetch(endpoint,{
             method: 'POST', // or 'PUT'
             mode: "cors",

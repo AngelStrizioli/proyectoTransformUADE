@@ -123,7 +123,7 @@ class ListaEventos extends React.Component {
        </Text>
         {eventos.map((evento, i) => {
           return (
-            <ItemListaEventos key={evento.title} evento={evento} backgroundImage={evento.img} navigation={navigation} />
+            <ItemListaEventos key={evento.title} evento={evento} backgroundImage={evento.image} navigation={navigation} />
           )
         })}
         {this.renderPuntosVerdes(navigation)}

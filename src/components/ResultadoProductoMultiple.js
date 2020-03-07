@@ -78,24 +78,15 @@ class ResultadoProductoMultiple extends React.Component {
     return (
       <View style={styles.container}>
       <ScrollView>
-
-      
-          {this.renderTitle(categoria, busqueda)}
-         
- 
-
-        <View style={{marginTop:'5%', marginLeft:'6%'}}>
+        {this.renderTitle(categoria, busqueda)}
+       <View style={{marginTop:'5%', marginLeft:'6%'}}>
           
           { productos.map((producto) => {
-             
-              return <ItemResultadoProducto  key={producto.id} titulo = {producto.nombre} producto={producto} navigation={this.props.navigation}/>
+              return <ItemResultadoProducto  key={producto.id} titulo = {producto.name} producto={producto} navigation={this.props.navigation}/>
             })
-          }
-          
+          }  
         </View>
         
-       
-
       </ScrollView>
       </View>
     );

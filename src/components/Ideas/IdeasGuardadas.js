@@ -79,7 +79,7 @@ class IdeasGuardadas extends React.Component{
           justifyContent: 'center',
         }}>
           <Text style={{textAlign: 'center', fontSize: 18}}>No tenés ideas guardadas.</Text>
-          <TouchableOpacity onPress={() => {this.props.navigation.navigate('App');}}>
+          <TouchableOpacity onPress={() => {this.props.navigation.navigate('Main')}}>
           <Text style={{margin: 24,
               fontSize: 18,
               fontWeight: 'bold',

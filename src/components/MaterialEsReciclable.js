@@ -19,7 +19,7 @@ class MaterialEsReciclable extends React.Component{
   ObtenerDatosProd(newData){
     
     this.setState({ productos: newData })
-    this.props.navigation.navigate('MaterialCompleto',  {productos:this.state.productos,material:  this.props.material})
+    this.props.navigation.navigate('MaterialCompleto',  {productos:this.state.productos,material:  this.props.material, titleProd: this.props.colorTitle})
   }
   onClickListener = (id) => { 
     // funcion que llama al back para traer los productos cuando apretas el boton
@@ -35,7 +35,9 @@ class MaterialEsReciclable extends React.Component{
       const { navigation } = this.props;
       const materiales =this.props.materiales;
       const material = this.props.material;
-      
+      //const colorTitle = this.state.materialColor.find(colorTitle => colorTitle.title === material.nombre)
+      const colorTitle = this.props.colorTitle
+
 
       const logoMaterial = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
         //esto vuela cuando le pongamos los logos a los materiales en la bd
@@ -72,8 +74,6 @@ class MaterialEsReciclable extends React.Component{
 
         //esto es lo que hay que cambiar si decidimos hacer mas categorias (hay un verde y un rojo, si decidimos 
         //meter un amarillo o varios distintos solo hay que cambiar como se decide la variable imagenLogo)
-        {console.log("cant: "+materiales)}
-        console.log(material.id);
         
           return(
             <View> 

@@ -5,6 +5,7 @@ import { Card, CardItem, Body } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 import { themeMainColor, globalStyle } from '../../styles/globalStyles';
 import {Container, Footer, FooterTab, Button} from 'native-base'
+import { Video } from 'expo-av'
 
 
 const { width } = Dimensions.get('window');
@@ -29,19 +30,31 @@ class IdeaVideo extends React.Component{
             <ScrollView style={styles.container}>
             
                 <Text style={globalStyle.titleStyle}>{idea.titulo}</Text>
-                
+                <View style={{flex: 1, marginLeft:8}}> 
+                  <Video
+                    source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+                    rate={1.0}
+                    volume={1.0}
+                    isMuted={false}
+                    resizeMode="cover"
+                    shouldPlay
+                    isLooping= {false}
+                    useNativeControls={true} 
+                    style={{ width: 400, height: 300 }}
+                  />
+                </View>
 
             
-                  <View style={{alignSelf:'center'}}>
+                 {/*<View style={{alignSelf:'center'}}>
                     <TouchableOpacity onPress={() => Linking.openURL(video)}>
                         <Image title="El videardo" source={{ uri: (imagen) }} style={styles.imagenVideoStyle}/>
                         <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
-                            {/*<Text style={styles.playButton}>&#9658;</Text>*/}
+                            {/*<Text style={styles.playButton}>&#9658;</Text>*}
                             <Image title="Play Video" source={{uri: "https://i.imgur.com/bT1lYuB.png"}} style={{ height: 200, width: 300}}/>
                         </View>
                     </TouchableOpacity>
                   </View>
-
+          */}
                  {/* <View style={{justifyContent:'space-around',marginTop:'3%' ,flexDirection:'row', height:35}}>
                     {this.cambiarCorazon()}
                     <TouchableOpacity onPress={() => navigation.navigate('ComentariosIdeas', {idea: idea })}>

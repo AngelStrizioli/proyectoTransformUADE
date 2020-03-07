@@ -57,6 +57,7 @@ class TodosLosMateriales extends React.Component{
   
     render(){
       let materiales = this.state.materiales;
+      
       return(
         <Container>
         <ScrollView style={styles.container}>

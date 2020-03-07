@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import ReciclableSioNo from './ReciclableSioNo';
 
 import { themeMainColor } from '../styles/globalStyles';
 
@@ -20,11 +19,15 @@ class TipoDeMaterial extends React.Component{
         const { navigation } = this.props;
 
         var material = navigation.getParam('material', {});
-        var nombre = material.nombre;
-        var texto = material.texto;
+        var nombre = material.name;
+        var texto = material.text;
         var logo = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
-        var descartes = material.comoReciclar;
-
+        var descartes;
+        if (material.items === null || material.items === undefined) {
+          descartes = [];
+        } else {
+          descartes = material.items.split('|');
+        }
         const urlReciclable = 'https://i.imgur.com/b2SVI7V.png';
         const urlWarning = 'https://i.imgur.com/fqPjNqa.png';
         const urlNoReciclable = 'https://i.imgur.com/R6WMDPY.png';
@@ -34,7 +37,7 @@ class TipoDeMaterial extends React.Component{
         let colorTexto;
         let icono;
 
-        switch(material.esReciclable){
+        switch(material.isRecyclable){
           case 1: 
           imagenLogo = urlReciclable;
           tituloPag = '¡Es reciclable!';

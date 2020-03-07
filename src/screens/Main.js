@@ -1,11 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, ScrollView, Dimensions } from 'react-native';
+import { Text, TouchableOpacity, View, ScrollView, Dimensions } from 'react-native';
 import { createAppContainer, createSwitchNavigator  } from 'react-navigation';
-//import { NavigationContainer } from '@react-navigation/native';
-//import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { createDrawerNavigator, DrawerNavigatorItems, DrawerActions } from 'react-navigation-drawer';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import IdeasGuardadas from '../components/Ideas/IdeasGuardadas';
 import ItemListaIdeas from '../components/Ideas/ItemListaIdeas';
@@ -14,11 +12,9 @@ import ResultadoProductoUnico from '../components/ResultadoProductoUnico';
 import TodasLasIdeas from '../components/TodasLasIdeas';
 import TodosLosMateriales from '../components/TodosLosMateriales';
 import TipoDeMaterial from '../components/TipoDeMaterial';
-import ReciclableSioNo from '../components/ReciclableSioNo';
 import IdeaSimple from '../components/Ideas/IdeaSimple';
 import ApiController from '../controller/ApiController';
 import MaterialCompleto from '../components/MaterialCompleto'
-import EventosPatrocinados from '../components/Eventos/EventosPatrocinados';
 import ListaEventos from '../components/Eventos/ListaEventos';
 import Instructivo from '../components/Instructivo';
 import EventoSimple from '../components/Eventos/EventoSimple';
@@ -30,19 +26,15 @@ import ComentariosEventos from '../components/Eventos/ComentariosEventos'
 import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
 import Conciencia from '../components/Conciencia'
 import CardsEventos from '../components/Eventos/CardsEventos'
-import {Container, Footer, FooterTab, } from 'native-base'
+
+import {Container } from 'native-base'
 import FooterMain from '../components/FooterMain'
 import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles";
-import * as Font from 'expo-font';
-import { withNavigation } from 'react-navigation';
 import SearchBar from '../components/SearchBar'
 
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
-
-
-    const { width } = Dimensions.get('window');
-
+const { width } = Dimensions.get('window');
 
 class Main extends React.Component {
   static navigationOptions = {
@@ -54,17 +46,13 @@ class Main extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       nombreProducto: '',
       fontLoaded: false,
-
     };
   }
-
   
   ObtenerDatosProd(newData) {
-    //console.log(newData)
     this.setState({ productos: newData })
     // aca empieza la navegacion
     this.fetchObjetos
@@ -73,7 +61,6 @@ class Main extends React.Component {
         {
           productos: this.state.productos,
           busqueda: this.state.nombreProducto,
-        
         })
     } else {
       if (this.state.productos.length == 0) {
@@ -86,8 +73,6 @@ class Main extends React.Component {
   }
 
   onClickListener = () => {
-    // funcion que llama al back para traer los productos cuando apretas el boton
-    //console.log("props",this.props);
     let data = {
       name: this.state.nombreProducto
     }
@@ -95,7 +80,6 @@ class Main extends React.Component {
   }
   
   render() {
-      {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/} 
     return (
     <Container>
         <ScrollView >
@@ -112,9 +96,7 @@ class Main extends React.Component {
 
         </ScrollView>
         <FooterMain />
-
-        </Container>
-
+    </Container>
     );
   }
 }
@@ -125,12 +107,7 @@ class Main extends React.Component {
 - 0098a0 (medio turquesa parecido al nuestro) en links o botones
 - 0f446f (azul oscuro pero no tanto como el primero) en los touchables de los eventos */
 
-
-
-
-
 const bootRoot = createStackNavigator({
-  
   Main:{
     screen:Main
   },
@@ -152,8 +129,8 @@ const bootRoot = createStackNavigator({
   TipoDeMaterial: {
     screen: TipoDeMaterial,
   },
-  ReciclableSioNo: {
-    screen: ReciclableSioNo,
+  IdeasGuardadas: {
+    screen: IdeasGuardadas,
   },
   EventoSimple:{
     screen: EventoSimple
@@ -202,8 +179,6 @@ const DrawerRight = createDrawerNavigator({
  
 },{
     drawerPosition: 'right', 
-  
-    
 });
 
 

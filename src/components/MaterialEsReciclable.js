@@ -23,7 +23,6 @@ class MaterialEsReciclable extends React.Component{
   }
   onClickListener = (id) => { 
     // funcion que llama al back para traer los productos cuando apretas el boton
-    //console.log("props",this.props);
     let data = {
       id: id
     }
@@ -34,7 +33,7 @@ class MaterialEsReciclable extends React.Component{
     render(){
       const { navigation } = this.props;
       const materiales =this.props.materiales;
-      const material = this.props.material;
+      var material = this.props.material;
       
 
       const logoMaterial = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
@@ -43,13 +42,8 @@ class MaterialEsReciclable extends React.Component{
       const urlReciclable = 'https://i.imgur.com/b2SVI7V.png';
       const urlWarning = 'https://i.imgur.com/fqPjNqa.png';
       const urlNoReciclable = 'https://i.imgur.com/R6WMDPY.png';
-        //cambiar estas const por los logos reales cuando esten terminados
 
-      let imagenLogo;
-      let colorTexto;
-      let icono;
-
-      switch(material.esReciclable){
+      switch(material.isRecyclable){
         case 1: 
         imagenLogo = urlReciclable;
         tituloPag = '¡Es reciclable!';
@@ -72,25 +66,21 @@ class MaterialEsReciclable extends React.Component{
 
         //esto es lo que hay que cambiar si decidimos hacer mas categorias (hay un verde y un rojo, si decidimos 
         //meter un amarillo o varios distintos solo hay que cambiar como se decide la variable imagenLogo)
-        {console.log("cant: "+materiales)}
-        console.log(material.id);
-        
+        {
           return(
             <View> 
               <TouchableOpacity style={styles.containerMaterial} onPress={() => { this.onClickListener(material.id) }}>
                   <Grid>
                     <Row>
-
                       <Col size={10} style={{}}>
                         <Image title='Icono Material' source={{ uri: (logoMaterial) }} style={{height: 60, width: 60}} />
                         </Col>
                         <Col size={30} style={{}}>
-                         <Text style={{fontSize:18,marginTop:'9%' ,textAlign:'left', color: themeMainColor, marginLeft:'3%'}}>{material.nombre}</Text>
+                         <Text style={{fontSize:18,marginTop:'9%' ,textAlign:'left', color: themeMainColor, marginLeft:'3%'}}>{material.name}</Text>
                          </Col>
                          <Col size={10} style={{marginTop:'4%', alignItems:'flex-end'}}> 
                           <Ionicons name="md-arrow-round-forward" size={30} color={'black'} />
                           </Col>
-
                       </Row>
                   </Grid>
                     
@@ -101,8 +91,9 @@ class MaterialEsReciclable extends React.Component{
           
     }
   }
-
-  const styles = StyleSheet.create({
+}
+ 
+const styles = StyleSheet.create({
     
     containerImage:{
       flexDirection: 'row',

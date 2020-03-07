@@ -14,7 +14,7 @@
     "@react-navigation/bottom-tabs": "^5.1.1",
     "@react-navigation/native": "^5.0.9",
     "expo": "^35.0.0",
-    "expo-cli": "^3.9.1",
+    "expo-cli": "^3.13.2",
     "expo-google-sign-in": "~7.0.0",
     "firebase": "^7.7.0",
     "jetifier": "^1.6.4",

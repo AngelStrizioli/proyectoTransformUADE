@@ -5,7 +5,7 @@ import { View,Image, ScrollView, Dimensions,  TouchableOpacity } from 'react-nat
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { TouchableNativeFeedback} from 'react-native-gesture-handler'
 
-import { globalStyle } from '../styles/globalStyles'
+import { plasticoColor,papelColor,vidrioColor,pilaColor,metalColor,textilColor,electroColor,organicoColor } from '../styles/globalStyles'
 
 const { width } = Dimensions.get('window');
 
@@ -16,35 +16,35 @@ export default class CategoriasCards extends Component {
             categorias: [ {
                 title: "Plástico",
                 img: "https://i.imgur.com/fCmH0nQ.png",
-                backgroundColor:'#0084e5',
+                backgroundColor:plasticoColor,
             },{
                 title: "Papel",
                 img: "https://i.imgur.com/OG1RVGW.png",
-                backgroundColor:'#00ff45',
+                backgroundColor:papelColor,
             }, {
                 title: "Vidrio",
-                img: "https://i.imgur.com/1VeQWb5.png",
-                backgroundColor:'#00e6d4',
+               img: "https://i.imgur.com/1VeQWb5.png",
+                backgroundColor:vidrioColor,
             }, {
                 title: "Pilas y baterías",
                 img: "https://i.imgur.com/cbiuZXa.png",
-                backgroundColor:'#e50000',
+                backgroundColor:pilaColor,
             }, {
                 title: "Metales",
                 img: "https://i.imgur.com/UKPPz8D.png",
-                backgroundColor:'yellow',
+                backgroundColor:metalColor,
             }, {
                 title: "Textiles",
                 img: "https://i.imgur.com/yfkEpxU.png",
-                backgroundColor:'#ff00db',
+                backgroundColor:textilColor,
             }, {
                 title: "Electrónica",
                 img: "https://i.imgur.com/0sIAH6f.png",
-                backgroundColor:'grey',
+                backgroundColor:electroColor,
             }, {
                 title: "Orgánicos",
                 img: "https://i.imgur.com/gqCFXHJ.png",
-                backgroundColor:'#ff9c00',
+                backgroundColor:organicoColor,
             }],
             text: ""
         }
@@ -79,7 +79,7 @@ export default class CategoriasCards extends Component {
                                <View style={{width:width*0.20, marginHorizontal:'2%', marginVertical:'2%',}} key={categoria.title}>
                                     <TouchableOpacity onPress={() => {this.buscarProductos(categoria.title)}}>
                                         <View style={{alignItems:'center'}}>
-                                            <Image source={{uri: categoria.img}}  style={{borderRadius:36, backgroundColor:categoria.backgroundColor,height: width*0.18, width: width*0.18}} />
+                                            <Image source={{uri: categoria.img}}  style={{borderRadius:25, backgroundColor:categoria.backgroundColor,height: width*0.12, width: width*0.12}} />
                                             <Text style={{textAlign:'center'}}>{categoria.title} </Text>
                                         </View>
                                     </TouchableOpacity>

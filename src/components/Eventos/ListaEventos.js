@@ -6,6 +6,7 @@ import GetDatosAPI from '../Misc/GetDatosAPI';
 import FooterMain from '../FooterMain';
 import {Container } from 'native-base'
 import { ScrollView } from 'react-native-gesture-handler';
+import HeaderBottomTab from '../HeaderBottomTab'
 
 //hardcodeados por ahora
 const eventos = [{
@@ -117,6 +118,7 @@ class ListaEventos extends React.Component {
     const { navigation } = this.props;
     return (
       <Container>
+      <HeaderBottomTab />
       <ScrollView style={{ flex: 1 }}>
        <Text style= {{ marginTop: '5%',marginBottom:'3%',fontSize: 26,fontWeight: 'bold',textAlign: 'center'}}>
          Puntos de interes

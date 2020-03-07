@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, StyleSheet} from 'react-native';
 
 import ItemResultadoProducto from './ItemResultadoProducto'
-import { themeMainColor, globalStyle } from '../styles/globalStyles';
+import { themeMainColor, plasticoColor,papelColor,vidrioColor,pilaColor,metalColor,textilColor,electroColor,organicoColor  } from '../styles/globalStyles';
 
 
 
@@ -11,39 +11,39 @@ class ResultadoProductoMultiple extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        categorias: [ {
-            title: "Plástico",
-            img: "https://i.imgur.com/fCmH0nQ.png",
-            backgroundColor:'#0084e5',
-        },{
-            title: "Papel",
-            img: "https://i.imgur.com/OG1RVGW.png",
-            backgroundColor:'#00ff45',
-        }, {
-            title: "Vidrio",
-            img: "https://i.imgur.com/1VeQWb5.png",
-            backgroundColor:'#00e6d4',
-        }, {
-            title: "Pilas y baterías",
-            img: "https://i.imgur.com/cbiuZXa.png",
-            backgroundColor:'#e50000',
-        }, {
-            title: "Metales",
-            img: "https://i.imgur.com/UKPPz8D.png",
-            backgroundColor:'#e3ff00',
-        }, {
-            title: "Textiles",
-            img: "https://i.imgur.com/yfkEpxU.png",
-            backgroundColor:'#ff00db',
-        }, {
-            title: "Electrónica",
-            img: "https://i.imgur.com/0sIAH6f.png",
-            backgroundColor:'grey',
-        }, {
-            title: "Orgánicos",
-            img: "https://i.imgur.com/gqCFXHJ.png",
-            backgroundColor:'#ff9c00',
-        }],
+      categorias: [ {
+        title: "Plástico",
+        img: "https://i.imgur.com/fCmH0nQ.png",
+        backgroundColor:plasticoColor,
+    },{
+        title: "Papel",
+        img: "https://i.imgur.com/OG1RVGW.png",
+        backgroundColor:papelColor,
+    }, {
+        title: "Vidrio",
+       img: "https://i.imgur.com/1VeQWb5.png",
+        backgroundColor:vidrioColor,
+    }, {
+        title: "Pilas y baterías",
+        img: "https://i.imgur.com/cbiuZXa.png",
+        backgroundColor:pilaColor,
+    }, {
+        title: "Metales",
+        img: "https://i.imgur.com/UKPPz8D.png",
+        backgroundColor:metalColor,
+    }, {
+        title: "Textiles",
+        img: "https://i.imgur.com/yfkEpxU.png",
+        backgroundColor:textilColor,
+    }, {
+        title: "Electrónica",
+        img: "https://i.imgur.com/0sIAH6f.png",
+        backgroundColor:electroColor,
+    }, {
+        title: "Orgánicos",
+        img: "https://i.imgur.com/gqCFXHJ.png",
+        backgroundColor:organicoColor,
+    }],
         text: ""
     }
 }
@@ -84,7 +84,7 @@ class ResultadoProductoMultiple extends React.Component {
          
  
 
-        <View style={{marginTop:'5%', marginLeft:'6%'}}>
+        <View style={{marginTop:'5%', marginLeft:'4%'}}>
           
           { productos.map((producto) => {
              

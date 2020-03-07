@@ -37,10 +37,11 @@ export default class CardsEventos extends Component {
                                     shadowOffset: { height: 3, width: 3 }, // IOS
                                     shadowOpacity: 1, // IOS
                                     shadowRadius: 1,
+                                    
                                 }}>
                                     <CardItem cardBody button onPress={() => { navigation.navigate('EventoSimple', {evento: evento}) }}>
                                         <Body>
-                                            <ImageBackground source={{ uri: evento.img }} style={{ height: width * 0.6, width: width * 0.6, resizeMode: 'cover', flex: 1 }}>
+                                            <ImageBackground source={{ uri: evento.img }} style={{ height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }}>
 
                                                 <View style={{
                                                     flex: 1,

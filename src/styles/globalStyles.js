@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 // export const themeMainColor = "#00B2FF";
 export const themeMainColor = "#061B2C";
@@ -6,7 +6,7 @@ export const themeMainColor = "#061B2C";
 export const themeMainBackgroundColor = '#ECEEEF';
 
 export const tagsColor = '#0f446f';
-
+const { width } = Dimensions.get('window');
 
 export const globalStyle = StyleSheet.create({
     container: {
@@ -42,8 +42,8 @@ export const globalStyle = StyleSheet.create({
         alignSelf: "center"
     },
     inputDesigne: {
-        marginLeft:'6%',
-        width: 255,
+        marginHorizontal:'3%',
+        width: "90%",
         backgroundColor: 'white',
         color: themeMainColor,
         borderRadius: 25,
@@ -64,7 +64,7 @@ export const tagsStyles = StyleSheet.create({
         borderRadius: 50,
         backgroundColor: tagsColor,
         height: 30,
-        paddingHorizontal: 20,
+        paddingHorizontal: width*0.05,
         paddingTop:2,
         //marginVertical:15,
         //marginBottom: 3

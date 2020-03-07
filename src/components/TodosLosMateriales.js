@@ -6,9 +6,7 @@ import MaterialEsReciclable from './MaterialEsReciclable';
 import ApiController from '../controller/ApiController';
 import { Divider } from 'react-native-elements';
 import { themeMainColor } from '../styles/globalStyles';
-import {Container } from 'native-base';
-import FooterMain from './FooterMain'
-import HeaderBottomTab from './HeaderBottomTab'
+
 
 /* ### PÁGINA QUE MUESTRA LA LISTA DE TODOS LOS MATERIALES CON INFORMACIÓN EN LA BD ###
     En prototipo: No está todavía */
@@ -27,12 +25,12 @@ import HeaderBottomTab from './HeaderBottomTab'
     
 class TodosLosMateriales extends React.Component{
     static navigationOptions = {
-      title: ' ',
+      title: 'Materiales',
       header: null,
       
-     /* drawerIcon: ({ focused }) => (
+      drawerIcon: ({ focused }) => (
         <Ionicons name="md-cube" size={24} color={focused ? themeMainColor : 'black'} />
-      ),*/
+      ),
      
     };
     constructor (props) {
@@ -59,8 +57,7 @@ class TodosLosMateriales extends React.Component{
     render(){
       let materiales = this.state.materiales;
       return(
-        <Container>
-        <HeaderBottomTab />
+
         <ScrollView style={styles.container}>
 
        
@@ -78,8 +75,8 @@ class TodosLosMateriales extends React.Component{
           </View>
        
         </ScrollView>
-        <FooterMain/>
-        </Container>
+
+ 
         
     );
     }

@@ -5,7 +5,6 @@ import { Image, StyleSheet, View,Text } from 'react-native';
 import { Container, Header, Content, Button, Right } from 'native-base';
 import { firebaseAuth } from '../environment/config';
 import { themeMainColor } from '../styles/globalStyles';
-import HeaderExample from './HeaderDrawer'
 
 
 export default class PerfilUsuario extends React.Component {
@@ -24,9 +23,7 @@ export default class PerfilUsuario extends React.Component {
     };
     render() {
       return (
-          <Container>
-              <HeaderExample />
-          
+
         <View style={styles.container}>
             <Image
             style={styles.image}
@@ -56,7 +53,7 @@ export default class PerfilUsuario extends React.Component {
             </Button>
 
         </View>
-        </Container>
+
       );
     }
   }

@@ -27,8 +27,8 @@ class ItemListaIdeas extends React.Component{
       return(
         
         <View style={styles.container}>
-          <TouchableOpacity style={styles.itemIdea} onPress= {()=> {navigation.navigate('IdeaSimple', {idea: idea});}}>
-          <ImageBackground  source={{uri: this.state.idea.img}} style={{width: width*0.7, height:300}} >
+          <TouchableOpacity  onPress= {()=> {navigation.navigate('IdeaSimple', {idea: idea});}}>
+          <ImageBackground  source={{uri: this.state.idea.img}} style={{height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }} >
           <View style={styles.containerItems}> 
               <Text style={styles.textStyle}>{this.state.idea.titulo}</Text>
             </View>
@@ -45,7 +45,9 @@ class ItemListaIdeas extends React.Component{
   const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white'
+        backgroundColor: 'white', 
+        alignItems:'center',
+        marginTop:'4%'
     },
     itemIdea:{
       //borderWidth: 0.5,

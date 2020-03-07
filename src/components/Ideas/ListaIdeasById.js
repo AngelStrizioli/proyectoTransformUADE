@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView,Dimensions } from 'react-native';
 import ItemListaIdeas from './ItemListaIdeas'
 import ApiController from '../../controller/ApiController'
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import CardIdeas from './CardIdeas'
 import { CardItem } from 'native-base';
 
+
+const { width } = Dimensions.get('window');
 
 
 export default class ListaIdeas extends React.Component {

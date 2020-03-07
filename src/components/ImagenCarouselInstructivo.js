@@ -15,47 +15,38 @@ import Carousel from 'react-native-anchor-carousel';
 const { width } = Dimensions.get('window');
 const data = [
     {
-      uri: 'https://i.imgur.com/6i4FZRF.jpg',
-      content: 'En nuestra página principal encontrarás distintos productos para que investigues la información que te brindamos.'
+      uri: 'https://i.imgur.com/yWGOZ35.jpg',
+      content: 'En nuestra página principal encontrarás los botones con las categorias de productos, podés presionar una de ellas, buscar un producto por su nombre en la barra superior o seleccionar uno de los tags. Si sigues bajando encontraras mas secciones'
     },
     {
-      uri: 'https://s-media-cache-ak0.pinimg.com/736x/f2/04/96/f20496c1b1bf72494c9c8f6aa054e9f6--ginger-kitten-ginger-cats.jpg',
-      title: 'Paso 1',
-      content: 'Para comenzar puedes elegir uno de los productos que te mostramos, o escribir en el buscador lo que vos quieras, y luego presionar "¡Transformalo!"'
+      uri: 'https://i.imgur.com/2g0ollT.jpg',
+      content: 'Arriba a la derecha podemos encontrar la barra lateral con todas las funciones de tu cuenta'
     },
     {
-      uri: 'https://i.imgur.com/FjTOcx2.jpg',
-      title: 'Paso 2 ',
-      content: 'Si existen productos similares al que buscaste, selecciona la opcion que deseas, sino, pasa al siguiente paso'
+      uri: 'https://i.imgur.com/FcNSqAu.jpg',
+      content: 'Una vez seleccionada la categoria deseada, podrás seleccionar el producto que te interese  '
     },
     {
-      uri: 'https://i.imgur.com/x176Gvq.jpg',
-      title: 'Paso 3',
-      content: 'Aqui podras encontrar la informacion de tu producto y seleccionar la opcion que prefieras'
+      uri: 'https://i.imgur.com/qwTh4NB.jpg',
+      content: 'Dentro del producto se encuentra una breve descripción, el material que lo compone y distintas ideas para reutilizarlo'
     },
     {
-      uri: 'https://i.imgur.com/SD3s2OU.jpg',
-      title: 'Paso 4',
-      content: 'Presiona el botón "Mas Info.." para obtener informacion sobre los materiales que componen el producto'
+      uri: 'https://i.imgur.com/Ml0T1S5.jpg',
+      content: 'Si presionas al material, te encontras con una definicion, si es reciclable y la manera correcta de desecharlo '
     },
     {
-      uri: 'https://i.imgur.com/UsURWR5.jpg',
-      title: 'Paso 5 ',
-      content: 'Presiona sobre la idea que más te interese.'
+      uri: 'https://i.imgur.com/N7NdQcn.jpg',
+      content: 'Por otro lado, si seleccionas una de las ideas aparecerá un video informativo de como poder llevar a cabo la misma'
     },
     {
-      uri: 'https://i.imgur.com/Y796adh.jpg',
-      content: 'Las ideas que brindamos son opciones fáciles y creativas para reutilizar los productos en vez de descartarlos.'
+      uri: 'https://i.imgur.com/2Yj2Iln.jpg',
+      content: 'De nuevo en la pantalla principal, al descender te encontrarás con los botones de eventos'
     },
     {
-      uri: 'https://i.imgur.com/wkcgKXd.jpg',
-      title: 'Paso 6',
-      content: 'Podés guardar las ideas que te interesen para tenerlas a mano en otro momento.'
+      uri: 'https://i.imgur.com/itZ0qug.jpg',
+      content: 'Al seleccionarlo, te brindará informacion sobre cuando y dónde se realiza'
     },
-    {
-      uri: 'https://i.imgur.com/gLTOfn0.jpg',
-      content: 'Investigá las otras pestañas para ver todo el contenido de la aplicación.'
-    }
+    
   ];
 
 

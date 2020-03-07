@@ -12,13 +12,12 @@ import {
 
 import { Ionicons } from '@expo/vector-icons';
 import ImagenCarouselInstructivo from './ImagenCarouselInstructivo'
-import { Button } from 'react-native-elements';
+
 
 import { themeMainColor } from '../styles/globalStyles';
-import {Container } from 'native-base'
-import FooterMain from '../components/FooterMain'
+
 const { width } = Dimensions.get('window'); 
-import HeaderExample from './HeaderDrawer'
+
 
 export default class Instructivo extends React.Component {
   constructor(props) {
@@ -34,22 +33,14 @@ export default class Instructivo extends React.Component {
       };
     render() {
       return (
-        <Container>
-        <HeaderExample />
+
         <View style={styles.container}>  
           <View style={styles.carouselContainer2}>
             <ImagenCarouselInstructivo/> 
           </View> 
-          <TouchableOpacity style={{marginHorizontal:'1%',borderWidth:.5, borderRadius:3, borderColor:'#009eff'}}
-            onPress={() => {this.props.navigation.navigate('Main');}}
-           >
-            <Text style={{fontWeight:'bold', color:'#009eff', fontSize:24, textAlign:'center', marginVertical:'2%'}}>
-            Omitir instructivo
-            </Text>
-            </TouchableOpacity>
         </View>
 
-      </Container>
+
       );
     }
   }
@@ -60,7 +51,7 @@ export default class Instructivo extends React.Component {
     },
     carouselContainer2: { 
       width: width,
-      height:'85%', 
+      height:'90%', 
       marginTop:'5%',
     }, 
     btnOmitirTutorial: {

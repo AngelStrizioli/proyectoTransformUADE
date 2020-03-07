@@ -17,8 +17,6 @@ class ResultadoProductoUnico extends React.Component {
           <Text style={globalStyle.textStyle}>{producto.description}</Text>
           <Text style={globalStyle.titleStyle}>Materiales</Text>
             {materiales.map((material) =>{
-                console.log("materials", JSON.stringify(material));
-                console.log(materiales.length);
                 return (
                   <MaterialEsReciclable key={material.id} material={material} materiales={materiales.length} navigation={navigation}/>
                 )

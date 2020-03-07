@@ -1,11 +1,7 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import ReciclableSioNo from './ReciclableSioNo';
-import ApiController from '../controller/ApiController'
-import ItemResultadoProducto from './ItemResultadoProducto'
+import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 
-import { themeMainColor, globalStyle } from '../styles/globalStyles';
+import { globalStyle } from '../styles/globalStyles';
 class MaterialCompleto extends React.Component{
   constructor(props){
     super(props);
@@ -27,9 +23,13 @@ class MaterialCompleto extends React.Component{
         var texto = material.text;
         var logo = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
         //reciclable original
-        esReciclable=material.isRecyclable
-        var descartes=material.items
-        
+        var esReciclable=material.isRecyclable
+        var descartes;
+        if (material.items === null || material.items === undefined) {
+          descartes = [];
+        } else {
+          descartes = material.items.split('|');
+        }
 
         const urlReciclable = 'https://i.imgur.com/gagua5h.png';
         const urlWarning = 'https://i.imgur.com/OBbLG58.png';

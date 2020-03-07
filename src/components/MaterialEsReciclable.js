@@ -23,7 +23,6 @@ class MaterialEsReciclable extends React.Component{
   }
   onClickListener = (id) => { 
     // funcion que llama al back para traer los productos cuando apretas el boton
-    //console.log("props",this.props);
     let data = {
       id: id
     }

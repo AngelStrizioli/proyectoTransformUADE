@@ -89,7 +89,6 @@ class ComentariosIdeas extends React.Component {
   render() {
     const { navigation } = this.props;
     const idea = navigation.getParam('idea', {});
-    console.log(idea.title)
     return (
       <ScrollView style={styles.container}>
         <View>

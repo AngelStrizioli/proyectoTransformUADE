@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, View, ScrollView, StyleSheet} from 'react-native';
 
 import ItemResultadoProducto from './ItemResultadoProducto'
-import { themeMainColor, globalStyle } from '../styles/globalStyles';
-
-
+import { themeMainColor, plasticoColor,papelColor,vidrioColor,pilaColor,metalColor,textilColor,electroColor,organicoColor  } from '../styles/globalStyles';
 
 class ResultadoProductoMultiple extends React.Component {
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -50,17 +47,13 @@ class ResultadoProductoMultiple extends React.Component {
     }else{
       return(
       <Text style={styles.textStyle}>
-
             Resultados: {busqueda}
           </Text>
           )
     }
   }
 
-
-  render() 
- 
-  {
+  render() {
     const { navigation } = this.props;
     let busqueda = navigation.getParam('busqueda', ''); 
     let productos = navigation.getParam('productos', []);
@@ -73,16 +66,12 @@ class ResultadoProductoMultiple extends React.Component {
           {this.renderTitle(categoria, busqueda)}
         <View style={{marginTop:'5%', marginLeft:'6%'}}>
           
-          { productos.map((producto) => {
-             
+          { productos.map((producto) => {             
               return <ItemResultadoProducto  key={producto.id} titulo = {producto.nombre} producto={producto} navigation={this.props.navigation} colorTitle={categoria.titleColor}/>
             })
-          }
-          
+          }  
         </View>
         
-       
-
       </ScrollView>
       </View>
     );
@@ -118,8 +107,6 @@ const styles = StyleSheet.create({
     width: 300,
     height: 55,
     borderRadius: 50,
-    //fontWeight: "bold"
-    //marginVertical:'10%',
     marginBottom:'5%',
   },
   botonLargo:{
@@ -138,9 +125,6 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginBottom:20
   }
-
 })
-
-
 
 export default ResultadoProductoMultiple;

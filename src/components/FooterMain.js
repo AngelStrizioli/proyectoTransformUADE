@@ -15,7 +15,7 @@ class FooterMain extends React.Component {
         const { navigation } = this.props;
       return (
      
-       <Footer style={{height:65}}>
+       <Footer style={{height:65, backgroundColor:'white'}}>
            <FooterTab style={{marginHorizontal:'10%', marginTop:'3%'}}>
              <TouchableOpacity onPress={() =>this.props.navigation.navigate('Main')}>
                 <View style={{alignItems:'center'}}> 
@@ -41,12 +41,6 @@ class FooterMain extends React.Component {
                  <Text style={{fontSize:8}}>Eventos</Text>
                 </View> 
               </TouchableOpacity>        
-              <TouchableOpacity onPress={() =>this.props.navigation.navigate('Instructivo')}>
-              <View style={{alignItems:'center'}}>
-                 <Ionicons name="md-help-circle" size={30} /> 
-                 <Text style={{fontSize:8}}>Instructivo</Text>
-                </View> 
-              </TouchableOpacity>
 
               </FooterTab>
           </Footer>

@@ -24,7 +24,7 @@ export default class EventosPatrocinados extends Component {
             return(
               this.state.eventos.map((evento, i) => {
                 return(
-                  <ItemListaEventos key={i} backgroundImage={evento.img} evento={evento} navigation={this.props.navigation}/>
+                  <ItemListaEventos key={i} backgroundImage={evento.image} evento={evento} navigation={this.props.navigation}/>
                   )
               })
             )

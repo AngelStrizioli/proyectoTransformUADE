@@ -7,7 +7,6 @@ import MaterialEsReciclable from './MaterialEsReciclable';
 import {globalStyle } from '../styles/globalStyles';
 
 class ResultadoProductoUnico extends React.Component {
-
   render() {
     const { navigation } = this.props;
     var producto = navigation.getParam('producto', {})
@@ -18,6 +17,7 @@ class ResultadoProductoUnico extends React.Component {
         <ScrollView>
           <Text style={{color: titleColor, margin:'5%', fontWeight: 'bold', fontSize: 22}}>{producto.nombre}</Text>    
           <Text style={globalStyle.textStyle}>{producto.descripcion}</Text>
+
           <Text style={globalStyle.titleStyle}>Materiales</Text>
             {materiales.map((material) =>{
                 return (

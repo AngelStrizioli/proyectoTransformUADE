@@ -1,9 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, ScrollView, Dimensions } from 'react-native';
-import { createAppContainer } from 'react-navigation';
+import { Text, TouchableOpacity, View, ScrollView, Dimensions } from 'react-native';
+import { createAppContainer, createSwitchNavigator  } from 'react-navigation';
 
-import { createDrawerNavigator, DrawerNavigatorItems, DrawerActions } from 'react-navigation-drawer';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import IdeasGuardadas from '../components/Ideas/IdeasGuardadas';
 import ItemListaIdeas from '../components/Ideas/ItemListaIdeas';
@@ -12,11 +12,9 @@ import ResultadoProductoUnico from '../components/ResultadoProductoUnico';
 import TodasLasIdeas from '../components/TodasLasIdeas';
 import TodosLosMateriales from '../components/TodosLosMateriales';
 import TipoDeMaterial from '../components/TipoDeMaterial';
-import ReciclableSioNo from '../components/ReciclableSioNo';
 import IdeaSimple from '../components/Ideas/IdeaSimple';
 import ApiController from '../controller/ApiController';
 import MaterialCompleto from '../components/MaterialCompleto'
-import EventosPatrocinados from '../components/Eventos/EventosPatrocinados';
 import ListaEventos from '../components/Eventos/ListaEventos';
 import Instructivo from '../components/Instructivo';
 import EventoSimple from '../components/Eventos/EventoSimple';
@@ -29,35 +27,14 @@ import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
 import Conciencia from '../components/Conciencia'
 import CardsEventos from '../components/Eventos/CardsEventos'
 
-import {Container, Footer, FooterTab, } from 'native-base'
+import {Container } from 'native-base'
 import FooterMain from '../components/FooterMain'
-
 import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles";
-import * as Font from 'expo-font';
+import SearchBar from '../components/SearchBar'
+
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
-
-
-    const { width } = Dimensions.get('window');
-class LogoHeader extends React.Component {
-  render() {
-    return (
-      <View style={{ alignSelf: 'center', flex: 1 }}>
-      <Text style={{color:'white', textAlign:'center', fontSize:18}}>PONÉ LA BARRA DE BUSQUEDA </Text>
-     {/*   <Image
-          resizeMode="cover"
-          source={require("../assets/images/LogoHorizontal.png")}
-          style={{
-            width: 240,
-            height: 50,
-            resizeMode: 'contain',
-            alignSelf:"center",
-          }}/>*/}
-      </View>
-    );
-  }
-}
-
+const { width } = Dimensions.get('window');
 
 class Main extends React.Component {
   static navigationOptions = {
@@ -69,17 +46,13 @@ class Main extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       nombreProducto: '',
       fontLoaded: false,
-
     };
   }
-
   
   ObtenerDatosProd(newData) {
-    //console.log(newData)
     this.setState({ productos: newData })
     // aca empieza la navegacion
     this.fetchObjetos
@@ -88,7 +61,6 @@ class Main extends React.Component {
         {
           productos: this.state.productos,
           busqueda: this.state.nombreProducto,
-        
         })
     } else {
       if (this.state.productos.length == 0) {
@@ -101,8 +73,6 @@ class Main extends React.Component {
   }
 
   onClickListener = () => {
-    // funcion que llama al back para traer los productos cuando apretas el boton
-    //console.log("props",this.props);
     let data = {
       name: this.state.nombreProducto
     }
@@ -110,7 +80,6 @@ class Main extends React.Component {
   }
   
   render() {
-      {/* decidir entre celeste: dbf5ff y celeste palido: f4fcff*/} 
     return (
     <Container>
         <ScrollView >
@@ -124,192 +93,27 @@ class Main extends React.Component {
           <Conciencia />
           <Text style={globalStyle.titleStyle}>Eventos</Text>
           <CardsEventos navigation={this.props.navigation}></CardsEventos>
+
         </ScrollView>
         <FooterMain />
-      {/*  <Footer style={{}}>
-           <FooterTab style={{marginHorizontal:'10%', marginTop:'3%'}}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('Instructivo')}>
-                  <Ionicons name="md-bulb" size={30}/>
-              </TouchableOpacity> 
-              <TouchableOpacity>
-                 <Ionicons name="md-cube" size={30} /> 
-              </TouchableOpacity>
-              <TouchableOpacity>
-                 <Ionicons name="md-globe" size={30} /> 
-              </TouchableOpacity>        
-              <TouchableOpacity>
-                 <Ionicons name="md-help-circle" size={30} /> 
-              </TouchableOpacity>
-
-              </FooterTab>
-          </Footer>*/}
-        </Container>
-
+    </Container>
     );
   }
 }
 
 /*colores que usa uade en su pag web
 - blanco en fondos
-- 061B2C (azul muy oscuro) en los headers, logo, cars con mucha info
+- 061B2B (azul muy oscuro) en los headers, logo, cars con mucha info
 - 0098a0 (medio turquesa parecido al nuestro) en links o botones
 - 0f446f (azul oscuro pero no tanto como el primero) en los touchables de los eventos */
-const styles = StyleSheet.create({
-  inputSize: {
-    flexDirection: 'row',
-  },
-   image:{
-    marginTop:35,
-    marginBottom:20,
-    marginLeft:18,
-    width: 80,
-    height: 80,
-
-  
-  }
-
-});
-
-const CustomDrawer=(props) =>(
-  <View style={{flex:1 }} >
-      <View style={{height:150,marginBottom:60 }}  >
-         <TouchableOpacity onPress={() => {props.navigation.navigate('PerfilUsuario')}}>
-          <Image
-                  title='Mi perfil'
-                  style={styles.image}
-                  borderRadius={40}
-                  source={{uri: 'http://www.lse.ac.uk/International-Inequalities/Assets/Images/BlankImage.jpg'}}
-                  />
-        <View style={{ borderBottomColor: 'black', borderBottomWidth: 0.5}}>
-          <Text style={{textAlign:'left', marginLeft:10, fontSize:20, fontWeight:'bold'}}>Usuario</Text>
-<Text style={{textAlign:'left', marginLeft:10, fontSize:18, marginBottom:20 }}>emailPrueba@gmail.com</Text>
-          </View>
-          </TouchableOpacity>
-      </View>
-      <View>
-          <DrawerNavigatorItems {...props} />
-      </View>
-        
-  </View>
-)
-
-const DrawerLeft = createDrawerNavigator({ 
-  Main:{
-    screen: Main,
-    }, 
-    PerfilUsuario:{
-      screen:PerfilUsuario,
-    },
-    IdeasGuardadas: {
-      screen: IdeasGuardadas,
-    },
-  TodasLasIdeas: {
-    screen: TodasLasIdeas,
-  },
-  TodosLosMateriales: {
-    screen: TodosLosMateriales,
-  },
-  ListaEventos: {
-    screen: ListaEventos
-  },
-   Instructivo: {
-    screen: Instructivo,
-  },
-},{
-    drawerPosition: 'left', 
-});
-
-class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      nombreProducto: ""
-    }
-  }
-
-  ObtenerDatosProd(newData) {
-    //console.log(newData)
-    this.setState({ productos: newData })
-    // aca empieza la navegacion
-    this.fetchObjetos
-    if (this.state.productos.length > 1) {
-      this.props.navigation.navigate('ResultadoProductoMultiple',
-        {
-          productos: this.state.productos,
-          busqueda: this.state.nombreProducto,
-        
-        })
-    } else {
-      if (this.state.productos.length == 0) {
-        alert("no se encontraron productos con este nombre: " + this.state.nombreProducto)
-      } else {
-        this.props.navigation.navigate('ResultadoProductoUnico',
-          { producto: this.state.productos[0] })
-      }
-    }
-  }
-
-  onClickListener = () => {
-    let data = {
-      name: this.state.nombreProducto
-    }
-    ApiController.getProductosByNombre(data, this.ObtenerDatosProd.bind(this));
-  }
-
-  render() {
-    return (
-      <View style={styles.inputSize}>
-      <TextInput
-        style={globalStyle.inputDesigne}
-        editable
-        maxLength={32}
-        placeholder="Ej: Lata, yerba, CD..."
-        placeholderTextColor={themeMainColor}
-        underlineColorAndroid = "transparent"
-        onChangeText={(name) => this.setState({ nombreProducto: name })}
-        value={this.state.name}
-        onSubmitEditing={this.onClickListener}
-      />
-     </View>
-    );
-  }
-}
 
 const bootRoot = createStackNavigator({
-  DrawerLeft: {
-    screen: DrawerLeft,
-    navigationOptions: ({ navigation }) => ({     
-     headerLeft: <TouchableOpacity onPress={() => navigation.openDrawer()} style={{margin:10, maxWidth: "90%"}} >
-        <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
-      </TouchableOpacity>,
-      headerTitle: <SearchBar navigation={navigation}/>,
-      headerRight: <View />,
-    }),    
-  },
- 
   Main:{
     screen:Main
   },
-  
-  Instructivo: {
-    screen: Instructivo,
-  },
-  Footer:{screen:FooterMain},
- 
- 
   ResultadoProductoMultiple: {
     screen: ResultadoProductoMultiple,
   },
-  TodasLasIdeas: {
-    screen: TodasLasIdeas,
-  },
-  TodosLosMateriales: {
-    screen: TodosLosMateriales,
-  },
-  ListaEventos: {
-    screen: ListaEventos
-  },
-
   ItemListaIdeas: {
     screen: ItemListaIdeas,
   },
@@ -325,9 +129,6 @@ const bootRoot = createStackNavigator({
   TipoDeMaterial: {
     screen: TipoDeMaterial,
   },
-  ReciclableSioNo: {
-    screen: ReciclableSioNo,
-  },
   IdeasGuardadas: {
     screen: IdeasGuardadas,
   },
@@ -342,17 +143,70 @@ const bootRoot = createStackNavigator({
   },
   ComentariosIdeas: {
     screen: ComentariosIdeas
-  }
+  },
 
 
 }, {
-  defaultNavigationOptions: {
-    headerTitle: <SearchBar />,
-    headerRight: <View />,
-    headerStyle: globalStyle.mainHeader,
-    //headerRight: <View />,
-    headerTintColor: 'white',
+  defaultNavigationOptions:({navigation})=> {
+
+   return{ headerRight:(<TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginRight:10, marginTop:20, height:50}} >
+    <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
+  </TouchableOpacity>),
+    headerTitle:( <SearchBar />),
+    headerStyle: (globalStyle.mainHeader),
+    headerTintColor:('white'),}
   }
 })
+const DrawerRight = createDrawerNavigator({ 
+  Inicio:{
+    screen: bootRoot,
+    navigationOptions:()=>{
+     return{ title: ('Inicio'),
+      drawerIcon: ({ focused }) => (
+        <Ionicons name="md-home" size={24} color={focused ? themeMainColor : 'black'} />
+      ),}
+    }
+  },
+    PerfilUsuario:{
+      screen:PerfilUsuario,
+    },
+    IdeasGuardadas: {
+      screen: IdeasGuardadas,
+    },
+    Instructivo: {
+      screen: Instructivo,
+    },
+ 
+},{
+    drawerPosition: 'right', 
+});
 
-export default createAppContainer(bootRoot);
+
+
+const Swi = createSwitchNavigator({
+  DrawerRight: {
+    screen: DrawerRight,
+    navigationOptions:()=>{
+      return{
+        headerTintColor:'red'
+      }
+    }
+  },
+
+  Footer:{screen:FooterMain},
+
+  TodasLasIdeas: {
+      screen: TodasLasIdeas,
+    },
+    TodosLosMateriales: {
+      screen: TodosLosMateriales,
+    },
+    ListaEventos: {
+      screen: ListaEventos
+    },
+    
+
+
+});
+
+export default createAppContainer(Swi);

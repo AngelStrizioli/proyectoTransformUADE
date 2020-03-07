@@ -15,7 +15,7 @@ class IdeaTexto extends React.Component{
         const idea = this.props.idea;
 
         return(
-            <Text  style={styles.titleStyle}>{idea.title}</Text>
+            <Text  style={styles.titleStyle}>{idea.titulo}</Text>
         );
     }
 

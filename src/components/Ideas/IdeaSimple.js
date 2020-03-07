@@ -16,11 +16,11 @@ import IdeaTexto from './IdeaTexto';
 
             var idea = navigation.getParam('idea', {})
             
-            if(idea.type == 'album'){
+            if(idea.tipo == 'album'){
                 return (
                 <IdeaAlbum idea={idea} navigation={navigation}/>
                 );
-            }else if (idea.type == 'video'){
+            }else if (idea.tipo == 'video'){
                 return (
                 <IdeaVideo idea={idea} navigation={navigation}/>
                 );

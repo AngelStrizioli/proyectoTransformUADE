@@ -32,9 +32,9 @@ class ComentariosIdeas extends React.Component {
  
   onClickListener(idea){
     let data = {
-      id: idea.id,
-      texto: this.state.textoComentado,
-      usuario: "Usuario", //harcodeado hasta que usemos usuarios reales
+      post_id: 1,
+      text: this.state.textoComentado,
+      user_id: "Usuario", //harcodeado hasta que usemos usuarios reales
     }
      ApiController.pushCommentPost(data, this.handleUpdate.bind(this));
      this.setState({
@@ -46,7 +46,7 @@ class ComentariosIdeas extends React.Component {
     const { navigation } = this.props;
     const idea = navigation.getParam('idea', {});
     let data = {
-      id : idea.id
+      post_id : 1
     }
     ApiController.getCommentsPost(data, this.handleComments.bind(this))
   }

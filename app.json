@@ -11,7 +11,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/images/icon.png",
+    "icon": "./src/assets/images/Greentoo_Icon.png",
     "splash": {
       "image": "./src/assets/images/uade_splash.png",
       "resizeMode": "contain",
@@ -26,7 +26,7 @@
     "android": {
       "package": "com.Transform.transformAPK",
       "versionCode": 1,
-      "icon":"./src/assets/images/icon.png"
+      "icon":"./src/assets/images/Greentoo_Icon.png"
     },
     "ios": {
       "supportsTablet": true

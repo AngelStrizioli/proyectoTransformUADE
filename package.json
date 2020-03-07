@@ -14,8 +14,10 @@
     "@react-navigation/bottom-tabs": "^5.1.1",
     "@react-navigation/native": "^5.0.9",
     "expo": "^35.0.0",
-    "expo-cli": "^3.13.2",
+    "expo-av": "~7.0.0",
+    "expo-cli": "^3.9.1",
     "expo-google-sign-in": "~7.0.0",
+    "expo-video-player": "^1.5.7",
     "firebase": "^7.7.0",
     "jetifier": "^1.6.4",
     "native-base": "^2.13.8",
@@ -37,7 +39,8 @@
     "react-navigation": "^4.0.10",
     "react-navigation-drawer": "^2.2.2",
     "react-navigation-stack": "^1.10.3",
-    "tunnel": "0.0.6"
+    "tunnel": "0.0.6",
+    "@react-native-community/netinfo": "~3.2.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^7.0.0",

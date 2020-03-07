@@ -6,6 +6,50 @@ class MaterialCompleto extends React.Component{
   constructor(props){
     super(props);
     this.state ={ 
+      materialColor: [ {
+        title: "Plástico PET",
+        titleColor:'#62A60A',
+    },{
+      title: "Plástico P.P.",
+      titleColor:'#62A60A',
+    },{
+      title: "Plástico H.D.P.E",
+      titleColor:'#62A60A',
+    },{
+      title: "Otros Plásticos",
+      titleColor:'#62A60A',
+    },{
+      title: "Plástico P.s.",
+      titleColor:'#62A60A',
+    },{
+        title: "Papel/Cartón", 
+        titleColor: '#FF6B0B'
+    }, {
+        title: "Vidrio",
+        titleColor: '#00A6CE'
+    }, {
+        title: "Pilas y baterías",
+        titleColor: '#CF0A2C'
+    }, {
+        title: "Metales",
+        titleColor: '#F7A700'
+    }, {
+        title: "Textiles",
+        titleColor: '#C126B8'
+    }, {
+        title: "RAEEs",
+        titleColor: '#4F738A'
+    }, {
+        title: "Orgánico",
+        titleColor: '#A58D28'
+    },{
+        title: "Madera",
+        titleColor: '#A58D28'
+    },{
+        title: "TetraBrik",
+        titleColor: '#A58D28'
+    }],
+    text: ""
      
     }
   }
@@ -23,6 +67,11 @@ class MaterialCompleto extends React.Component{
         var texto = material.text;
         var logo = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
         //reciclable original
+
+        const titleProd = navigation.getParam('titleProd', {})
+        const titleColor = titleProd
+        const colorMateriales = this.state.materialColor.find(colorMateriales => colorMateriales.title === material.nombre)
+
         var esReciclable=material.isRecyclable
         var descartes;
         if (material.items === null || material.items === undefined) {
@@ -30,6 +79,7 @@ class MaterialCompleto extends React.Component{
         } else {
           descartes = material.items.split('|');
         }
+
 
         const urlReciclable = 'https://i.imgur.com/gagua5h.png';
         const urlWarning = 'https://i.imgur.com/OBbLG58.png';
@@ -70,7 +120,7 @@ class MaterialCompleto extends React.Component{
       
           <ScrollView style={styles.container}>
             
-            <Text style={globalStyle.titleStyle}>
+            <Text style={{ color: colorMateriales.titleColor , margin:'5%', fontWeight: 'bold', fontSize: 22}}>
             
                 {nombre}
 

@@ -3,10 +3,9 @@ import { View, Text } from 'react-native';
 
 import ItemListaEventos from './ItemListaEventos'
 import GetDatosAPI from '../Misc/GetDatosAPI';
-import FooterMain from '../FooterMain';
-import {Container } from 'native-base'
+
 import { ScrollView } from 'react-native-gesture-handler';
-import HeaderBottomTab from '../HeaderBottomTab'
+
 
 //hardcodeados por ahora
 const eventos = [{
@@ -71,11 +70,11 @@ class ListaEventos extends React.Component {
   }
 
   static navigationOptions = {
-    title: ' ',
-    header: null,
-   /* drawerIcon: ({ focused }) => (
+    title: 'Eventos',
+    
+    drawerIcon: ({ focused }) => (
       <Ionicons name="md-globe" size={24} color={focused ? themeMainColor : 'black'} />
-    ),*/
+    ),
   };
 
   componentDidMount() {
@@ -117,8 +116,8 @@ class ListaEventos extends React.Component {
   render() {
     const { navigation } = this.props;
     return (
-      <Container>
-      <HeaderBottomTab />
+
+     
       <ScrollView style={{ flex: 1 }}>
        <Text style= {{ marginTop: '5%',marginBottom:'3%',fontSize: 26,fontWeight: 'bold',textAlign: 'center'}}>
          Puntos de interes
@@ -131,8 +130,8 @@ class ListaEventos extends React.Component {
         {this.renderPuntosVerdes(navigation)}
         {this.renderEcoBici(navigation)}
       </ScrollView>
-      <FooterMain />
-      </Container>
+ 
+
     );
   }
 

@@ -1,7 +1,10 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons,  FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { Text, TouchableOpacity, View, ScrollView, Dimensions } from 'react-native';
 import { createAppContainer, createSwitchNavigator  } from 'react-navigation';
+
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+
 
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -27,10 +30,10 @@ import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
 import Conciencia from '../components/Conciencia'
 import CardsEventos from '../components/Eventos/CardsEventos'
 
-import {Container } from 'native-base'
-import FooterMain from '../components/FooterMain'
+import {Container, Footer, FooterTab, } from 'native-base'
 import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles";
 import SearchBar from '../components/SearchBar'
+
 
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
@@ -81,10 +84,9 @@ class Main extends React.Component {
   
   render() {
     return (
-    <Container>
+ 
         <ScrollView >
-
-         <Text style={globalStyle.titleStyle}>Aprendé a transformar</Text>
+         <Text  style={globalStyle.titleStyle}>Aprendé a transformar</Text>
           <CategoriasCards navigation={this.props.navigation}></CategoriasCards>
           <View style={tagsStyles.tagsPosition}>
             <TagsCloud navigation={this.props.navigation}></TagsCloud>
@@ -93,12 +95,7 @@ class Main extends React.Component {
           <Conciencia />
           <Text style={globalStyle.titleStyle}>Eventos</Text>
           <CardsEventos navigation={this.props.navigation}></CardsEventos>
-
-        </ScrollView>
-        <FooterMain />
-    </Container>
-    );
-  }
+        </ScrollView>);}
 }
 
 /*colores que usa uade en su pag web
@@ -107,10 +104,65 @@ class Main extends React.Component {
 - 0098a0 (medio turquesa parecido al nuestro) en links o botones
 - 0f446f (azul oscuro pero no tanto como el primero) en los touchables de los eventos */
 
-const bootRoot = createStackNavigator({
+
+
+const Tab = createBottomTabNavigator({
   Main:{
-    screen:Main
+    screen:Main,  
   },
+  TodasLasIdeas:{
+    screen:TodasLasIdeas
+  },
+  TodosLosMateriales:{
+    screen:TodosLosMateriales,
+  },
+  ListaEventos:{
+    screen:ListaEventos
+  }},
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+        let IconComponent = Ionicons;
+        let iconName;
+        if (routeName === 'Main') {
+          iconName = focused
+            ? 'ios-home'
+            : 'md-home';
+          // Sometimes we want to add badges to some icons.
+          // You can check the implementation below.
+          
+        } else if (routeName === 'TodasLasIdeas') {
+          iconName = focused ? 'ios-bulb' : 'md-bulb';
+        }
+        else if (routeName === 'TodosLosMateriales') {
+          iconName = focused ? 'ios-cube' : 'md-cube';
+        }
+        else if (routeName === 'ListaEventos') {
+          iconName = focused ? 'md-calendar' : 'ios-calendar';
+        }
+
+        // You can return any component that you like here!
+        return <IconComponent name={iconName} size={25} color={tintColor} />;
+      },
+    }),
+    tabBarOptions: {
+      activeTintColor: '#0f446f',
+      inactiveTintColor: 'gray',
+    },
+  })
+
+
+
+const bootRoot = createStackNavigator({
+  
+  Tab:{
+    screen:Tab,
+    navigationOptions:()=>{
+      return{ headerLeft: (<View />),
+      }}
+  },
+  
   ResultadoProductoMultiple: {
     screen: ResultadoProductoMultiple,
   },
@@ -129,8 +181,8 @@ const bootRoot = createStackNavigator({
   TipoDeMaterial: {
     screen: TipoDeMaterial,
   },
-  IdeasGuardadas: {
-    screen: IdeasGuardadas,
+  ReciclableSioNo: {
+    screen: ReciclableSioNo,
   },
   EventoSimple:{
     screen: EventoSimple
@@ -144,12 +196,68 @@ const bootRoot = createStackNavigator({
   ComentariosIdeas: {
     screen: ComentariosIdeas
   },
+  
+},{
+  defaultNavigationOptions:({navigation})=> {
 
+    return{ headerRight:(<TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginHorizontal:15, marginTop:20, height:50}} >
+     <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
+   </TouchableOpacity>),
+     headerTitle:( <SearchBar />),
+     headerStyle: (globalStyle.mainHeader),
+     headerTintColor:('white'),}
+   }
+})
+
+
+const ContainerPerfilUsuario = createStackNavigator({
+  PerfilUsuario:{
+    screen:PerfilUsuario,
+    navigationOptions:()=>{
+      return{ headerLeft: (<View />),
+      }}}
 
 }, {
   defaultNavigationOptions:({navigation})=> {
 
-   return{ headerRight:(<TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginRight:10, marginTop:20, height:50}} >
+   return{ headerRight:(<TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginHorizontal:15, marginTop:20, height:50}} >
+    <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
+  </TouchableOpacity>),
+    headerTitle:( <SearchBar />),
+    headerStyle: (globalStyle.mainHeader),
+    headerTintColor:('white'),}
+  }
+});
+const ContainerIdeasGuardadas = createStackNavigator({
+  IdeasGuardadas:{
+    screen:IdeasGuardadas,
+    navigationOptions:()=>{
+      return{ headerLeft: (<View />),
+      }}}
+
+}, {
+  defaultNavigationOptions:({navigation})=> {
+
+   return{ headerRight:(<TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginHorizontal:15, marginTop:20, height:50}} >
+    <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
+  </TouchableOpacity>),
+    headerTitle:( <SearchBar />),
+    headerStyle: (globalStyle.mainHeader),
+    headerTintColor:('white'),}
+  }
+});
+const ContainerInstructivo = createStackNavigator({
+  Instructivo:{
+    screen:Instructivo,
+    navigationOptions:()=>{
+      return{ headerLeft: (<View />),
+      }}
+  }
+
+}, {
+  defaultNavigationOptions:({navigation})=> {
+
+   return{ headerRight:(<TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginHorizontal:15, marginTop:20, height:50}} >
     <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
   </TouchableOpacity>),
     headerTitle:( <SearchBar />),
@@ -157,6 +265,8 @@ const bootRoot = createStackNavigator({
     headerTintColor:('white'),}
   }
 })
+
+
 const DrawerRight = createDrawerNavigator({ 
   Inicio:{
     screen: bootRoot,
@@ -164,49 +274,41 @@ const DrawerRight = createDrawerNavigator({
      return{ title: ('Inicio'),
       drawerIcon: ({ focused }) => (
         <Ionicons name="md-home" size={24} color={focused ? themeMainColor : 'black'} />
-      ),}
-    }
+      ),}}
   },
     PerfilUsuario:{
-      screen:PerfilUsuario,
+      screen:ContainerPerfilUsuario,
+      navigationOptions:()=>{
+        return{ title: ('Mi perfil'),
+         drawerIcon: ({ focused }) => (
+           <Ionicons name="md-contact" size={24} color={focused ? themeMainColor : 'black'} />
+         ),}}
     },
     IdeasGuardadas: {
-      screen: IdeasGuardadas,
+      screen: ContainerIdeasGuardadas,
+      navigationOptions:()=>{
+        return{ title: ('Mis ideas guardadas'),
+         drawerIcon: ({ focused }) => (
+           <Ionicons name="md-bookmark" size={24} color={focused ? themeMainColor : 'black'} />
+         ),}}
     },
     Instructivo: {
-      screen: Instructivo,
+      screen: ContainerInstructivo,
+      navigationOptions:()=>{
+        return{ title: ('Instructivo'),
+         drawerIcon: ({ focused }) => (
+           <Ionicons name="md-help-circle" size={24} color={focused ? themeMainColor : 'black'} />
+         ),}}
     },
  
 },{
-    drawerPosition: 'right', 
-});
-
-
-
-const Swi = createSwitchNavigator({
-  DrawerRight: {
-    screen: DrawerRight,
-    navigationOptions:()=>{
-      return{
-        headerTintColor:'red'
-      }
-    }
-  },
-
-  Footer:{screen:FooterMain},
-
-  TodasLasIdeas: {
-      screen: TodasLasIdeas,
-    },
-    TodosLosMateriales: {
-      screen: TodosLosMateriales,
-    },
-    ListaEventos: {
-      screen: ListaEventos
-    },
+    drawerPosition: 'right',  
     
-
-
 });
 
-export default createAppContainer(Swi);
+
+
+
+
+
+export default createAppContainer(DrawerRight);

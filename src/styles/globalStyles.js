@@ -15,11 +15,14 @@ export const globalStyle = StyleSheet.create({
         justifyContent: 'center',
     },
     mainHeader:{
-        backgroundColor: themeMainColor
+        backgroundColor: themeMainColor,
+        height:55
         
     },
     titleStyle: {
-        margin:'5%',
+        marginTop:'4%',
+        marginLeft:'5%',
+        marginBottom:'2%',
         //textAlign:'center',
         fontWeight: 'bold',
         fontSize: 22,
@@ -39,22 +42,16 @@ export const globalStyle = StyleSheet.create({
         alignSelf: "center"
     },
     inputDesigne: {
-        height: "100%",
-        width: "100%",
-        borderColor: 'white',
-        borderWidth: 1,
+        marginLeft:'6%',
+        width: 255,
         backgroundColor: 'white',
         color: themeMainColor,
-        borderRadius: 5,
+        borderRadius: 25,
         paddingLeft: '5%',
+        //marginBottom:5,
         fontSize: 16,
       },
 });
-export const categoriasStyle = StyleSheet.create({
-    positionStyle:{},
-    
-
-})
 
 export const tagsStyles = StyleSheet.create({
     tagsPosition:{
@@ -81,3 +78,19 @@ export const tagsStyles = StyleSheet.create({
         //textAlignVertical:'center',
     }
 })
+
+export const plasticoColor = '#62A60A' ;
+
+export const papelColor = '#FF6B0B';
+
+export const vidrioColor = '#00A6CE';
+
+export const pilaColor = '#CF0A2C';
+
+export const metalColor = '#F7A700';
+
+export const textilColor = '#C126B8';
+
+export const electroColor = '#4F738A';
+
+export const organicoColor = '#A58D28';

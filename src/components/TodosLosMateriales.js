@@ -1,13 +1,12 @@
 //https://snack.expo.io/@dinithminura/drawer-navigation?session_id=snack-session-DKu05jLVS
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, View, ScrollView, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import MaterialEsReciclable from './MaterialEsReciclable';
 import ApiController from '../controller/ApiController';
 import { Divider } from 'react-native-elements';
-import { themeMainColor } from '../styles/globalStyles';
 import {Container } from 'native-base';
 import FooterMain from './FooterMain'
+import HeaderBottomTab from './HeaderBottomTab'
 
 /* ### PÁGINA QUE MUESTRA LA LISTA DE TODOS LOS MATERIALES CON INFORMACIÓN EN LA BD ###
     En prototipo: No está todavía */
@@ -51,6 +50,7 @@ class TodosLosMateriales extends React.Component{
       let materiales = this.state.materiales;
       return(
         <Container>
+        <HeaderBottomTab />
         <ScrollView style={styles.container}>       
           <Text style= {styles.titleStyle}>Todos los materiales</Text>
           <Divider style={{ backgroundColor: 'black' }} />

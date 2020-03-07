@@ -18,6 +18,7 @@ import { themeMainColor } from '../styles/globalStyles';
 import {Container } from 'native-base'
 import FooterMain from '../components/FooterMain'
 const { width } = Dimensions.get('window'); 
+import HeaderExample from './HeaderDrawer'
 
 export default class Instructivo extends React.Component {
   constructor(props) {
@@ -25,15 +26,16 @@ export default class Instructivo extends React.Component {
     
   }
     static navigationOptions = {
-        title: ' ',
-        header: null,
-       /* drawerIcon: ({ focused }) => (
+        title: 'Instructivo',
+        
+       drawerIcon: ({ focused }) => (
           <Ionicons name="md-help-circle"  size={24} color={focused ? themeMainColor : 'black'}  />
-        ),*/
+        ),
       };
     render() {
       return (
         <Container>
+        <HeaderExample />
         <View style={styles.container}>  
           <View style={styles.carouselContainer2}>
             <ImagenCarouselInstructivo/> 
@@ -46,7 +48,7 @@ export default class Instructivo extends React.Component {
             </Text>
             </TouchableOpacity>
         </View>
-        <FooterMain />
+
       </Container>
       );
     }

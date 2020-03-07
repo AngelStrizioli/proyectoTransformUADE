@@ -7,6 +7,8 @@ import { withNavigation } from 'react-navigation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Divider } from 'react-native-elements';
 import { themeMainColor } from '../../styles/globalStyles';
+ import HeaderExample from '../HeaderDrawer'
+import { Container } from 'native-base';
 
 /* ### PÁGINA PARA VER TODAS LAS IDEAS GUARDADAS POR EL USUARIO ###
     En prototipo: Todavía no está. */
@@ -62,6 +64,8 @@ class IdeasGuardadas extends React.Component{
     render(){
       if (this.state.ideas.length > 0) {
         return (
+          <Container> 
+          <HeaderExample /> 
           <ScrollView style={styles.container}>
 
             <View>
@@ -71,6 +75,7 @@ class IdeasGuardadas extends React.Component{
            {this._renderItems()}
            
           </ScrollView>
+          </Container>
         )
       } else {
       return(

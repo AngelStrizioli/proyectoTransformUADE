@@ -13,7 +13,7 @@
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
     "splash": {
-      "image": "./src/assets/images/Greentoo_Splash.png",
+      "image": "./src/assets/images/uade_splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#061B2C"
     },

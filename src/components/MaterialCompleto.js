@@ -1,15 +1,55 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import ReciclableSioNo from './ReciclableSioNo';
-import ApiController from '../controller/ApiController'
-import ItemResultadoProducto from './ItemResultadoProducto'
+import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 
-import { themeMainColor, globalStyle } from '../styles/globalStyles';
+import { globalStyle } from '../styles/globalStyles';
 class MaterialCompleto extends React.Component{
   constructor(props){
     super(props);
     this.state ={ 
+      materialColor: [ {
+        title: "Plástico PET",
+        titleColor:'#62A60A',
+    },{
+      title: "Plástico P.P.",
+      titleColor:'#62A60A',
+    },{
+      title: "Plástico H.D.P.E",
+      titleColor:'#62A60A',
+    },{
+      title: "Otros Plásticos",
+      titleColor:'#62A60A',
+    },{
+      title: "Plástico P.s.",
+      titleColor:'#62A60A',
+    },{
+        title: "Papel/Cartón", 
+        titleColor: '#FF6B0B'
+    }, {
+        title: "Vidrio",
+        titleColor: '#00A6CE'
+    }, {
+        title: "Pilas y baterías",
+        titleColor: '#CF0A2C'
+    }, {
+        title: "Metales",
+        titleColor: '#F7A700'
+    }, {
+        title: "Textiles",
+        titleColor: '#C126B8'
+    }, {
+        title: "RAEEs",
+        titleColor: '#4F738A'
+    }, {
+        title: "Orgánico",
+        titleColor: '#A58D28'
+    },{
+        title: "Madera",
+        titleColor: '#A58D28'
+    },{
+        title: "TetraBrik",
+        titleColor: '#A58D28'
+    }],
+    text: ""
      
     }
   }
@@ -23,13 +63,23 @@ class MaterialCompleto extends React.Component{
         //material original
         var material = navigation.getParam('material', {});
         var productos = navigation.getParam('productos', []);
-        var nombre = material.nombre;
-        var texto = material.texto;
+        var nombre = material.name;
+        var texto = material.text;
         var logo = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
         //reciclable original
-        esReciclable=material.esReciclable
-        var descartes=material.comoReciclar
-        
+
+        const titleProd = navigation.getParam('titleProd', {})
+        const titleColor = titleProd
+        const colorMateriales = this.state.materialColor.find(colorMateriales => colorMateriales.title === material.nombre)
+
+        var esReciclable=material.isRecyclable
+        var descartes;
+        if (material.items === null || material.items === undefined) {
+          descartes = [];
+        } else {
+          descartes = material.items.split('|');
+        }
+
 
         const urlReciclable = 'https://i.imgur.com/gagua5h.png';
         const urlWarning = 'https://i.imgur.com/OBbLG58.png';
@@ -41,7 +91,10 @@ class MaterialCompleto extends React.Component{
 
         let imagenLogo;
         let tituloPag;
-        switch(material.esReciclable){
+        let logo1;
+        let logo2;
+        let logo3;
+        switch(material.isRecyclable){
             case 1: 
             logo1 = urlReciclable;
             tituloPag = '¡Es reciclable!';
@@ -67,26 +120,14 @@ class MaterialCompleto extends React.Component{
       
           <ScrollView style={styles.container}>
             
-            <Text style={globalStyle.titleStyle}>
+            <Text style={{ color: colorMateriales.titleColor , margin:'5%', fontWeight: 'bold', fontSize: 22}}>
             
                 {nombre}
 
-            </Text>
-            
-          
-           {/* <Image title='Icono Material' source={{uri: logo}} style={{ height: 160, width: 160, alignSelf: 'center' }} />*/}
-            
-            <Text style={globalStyle.textStyle}>
+            </Text>        
+          <Text style={globalStyle.textStyle}>
               {texto}
             </Text>
-            {/*}
-            <Text style={styles.subtitleStyle}>
-              Se encuentra en...
-            </Text>
-            <View style={{marginLeft: '6%'}}>
-              {productos.map((producto) =>{return(<ItemResultadoProducto  key={producto.id} titulo = {producto.nombre} producto={producto} navigation={this.props.navigation}/>)})}
-            </View>*/}
-           
           <View style={{flexDirection:'row',justifyContent:'space-around', marginTop:'5%'}}>
               <View style={{alignItems:'center'}}>
                   <Image title='Icono Reciclable' source={{uri:(logo1)}} style={styles.imgStyle}/>

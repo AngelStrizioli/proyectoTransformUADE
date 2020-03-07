@@ -41,7 +41,9 @@ export default class CardsEventos extends Component {
                                 }}>
                                     <CardItem cardBody button onPress={() => { navigation.navigate('EventoSimple', {evento: evento}) }}>
                                         <Body>
+
                                             <ImageBackground source={{ uri: evento.img }} style={{ height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }}>
+
 
                                                 <View style={{
                                                     flex: 1,

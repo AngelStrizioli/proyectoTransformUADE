@@ -1,49 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, View, ScrollView, StyleSheet} from 'react-native';
 
 import ItemResultadoProducto from './ItemResultadoProducto'
 import { themeMainColor, plasticoColor,papelColor,vidrioColor,pilaColor,metalColor,textilColor,electroColor,organicoColor  } from '../styles/globalStyles';
 
-
-
 class ResultadoProductoMultiple extends React.Component {
-  
   constructor(props) {
     super(props);
     this.state = {
-      categorias: [ {
-        title: "Plástico",
-        img: "https://i.imgur.com/fCmH0nQ.png",
-        backgroundColor:plasticoColor,
-    },{
-        title: "Papel",
-        img: "https://i.imgur.com/OG1RVGW.png",
-        backgroundColor:papelColor,
-    }, {
-        title: "Vidrio",
-       img: "https://i.imgur.com/1VeQWb5.png",
-        backgroundColor:vidrioColor,
-    }, {
-        title: "Pilas y baterías",
-        img: "https://i.imgur.com/cbiuZXa.png",
-        backgroundColor:pilaColor,
-    }, {
-        title: "Metales",
-        img: "https://i.imgur.com/UKPPz8D.png",
-        backgroundColor:metalColor,
-    }, {
-        title: "Textiles",
-        img: "https://i.imgur.com/yfkEpxU.png",
-        backgroundColor:textilColor,
-    }, {
-        title: "Electrónica",
-        img: "https://i.imgur.com/0sIAH6f.png",
-        backgroundColor:electroColor,
-    }, {
-        title: "Orgánicos",
-        img: "https://i.imgur.com/gqCFXHJ.png",
-        backgroundColor:organicoColor,
-    }],
+        categorias: [ {
+            title: "Plástico",
+            titleColor:'#62A60A',
+        },{
+            title: "Papel", 
+            titleColor: '#FF6B0B'
+        }, {
+            title: "Vidrio",
+            titleColor: '#00A6CE'
+        }, {
+            title: "Pilas y baterías",
+            titleColor: '#CF0A2C'
+        }, {
+            title: "Metales",
+            titleColor: '#F7A700'
+        }, {
+            title: "Textiles",
+            titleColor: '#C126B8'
+        }, {
+            title: "Electrónica",
+            titleColor: '#4F738A'
+        }, {
+            title: "Orgánicos",
+            titleColor: '#A58D28'
+        }],
         text: ""
     }
 }
@@ -51,24 +40,20 @@ class ResultadoProductoMultiple extends React.Component {
   renderTitle(categoria, busqueda){
     if(categoria){
       return (
-        <View style={{height: 60, backgroundColor: categoria.backgroundColor, justifyContent: 'center', alignItems:'center'}}>
-          <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold', alignSelf: 'center', textAlignVertical: 'center'}}>{categoria.title}</Text>
+        <View style={{height: 50, backgroundColor: categoria.backgroundColor, justifyContent: 'center', alignItems:'center', paddingTop: '5%' }}>
+          <Text style={{color: categoria.titleColor, fontSize: 24, fontWeight: 'bold', alignSelf: 'center', textAlignVertical: 'center'}}>{categoria.title}</Text>
         </View>
       )
     }else{
       return(
       <Text style={styles.textStyle}>
-
             Resultados: {busqueda}
           </Text>
           )
     }
   }
 
-
-  render() 
- 
-  {
+  render() {
     const { navigation } = this.props;
     let busqueda = navigation.getParam('busqueda', ''); 
     let productos = navigation.getParam('productos', []);
@@ -78,24 +63,15 @@ class ResultadoProductoMultiple extends React.Component {
     return (
       <View style={styles.container}>
       <ScrollView>
-
-      
           {this.renderTitle(categoria, busqueda)}
-         
- 
-
-        <View style={{marginTop:'5%', marginLeft:'4%'}}>
+        <View style={{marginTop:'5%', marginLeft:'6%'}}>
           
-          { productos.map((producto) => {
-             
-              return <ItemResultadoProducto  key={producto.id} titulo = {producto.nombre} producto={producto} navigation={this.props.navigation}/>
+          { productos.map((producto) => {             
+              return <ItemResultadoProducto  key={producto.id} titulo = {producto.nombre} producto={producto} navigation={this.props.navigation} colorTitle={categoria.titleColor}/>
             })
-          }
-          
+          }  
         </View>
         
-       
-
       </ScrollView>
       </View>
     );
@@ -131,8 +107,6 @@ const styles = StyleSheet.create({
     width: 300,
     height: 55,
     borderRadius: 50,
-    //fontWeight: "bold"
-    //marginVertical:'10%',
     marginBottom:'5%',
   },
   botonLargo:{
@@ -151,9 +125,6 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginBottom:20
   }
-
 })
-
-
 
 export default ResultadoProductoMultiple;

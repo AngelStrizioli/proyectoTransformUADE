@@ -14,7 +14,7 @@ export default class BotonEvento extends React.Component {
                         <Text style={{ fontSize: 18, color: 'black' }}>
                             {evento.title}
                         </Text>
-                        <Image source={{ uri: evento.img }} style={{ width: 80, height: 80 }} />
+                        <Image source={{ uri: evento.image }} style={{ width: 80, height: 80 }} />
                     </View>
                 </TouchableOpacity>
             </View>);

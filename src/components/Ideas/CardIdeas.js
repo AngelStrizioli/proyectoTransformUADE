@@ -42,7 +42,7 @@ export default class CardIdeas extends Component {
                                         textShadowOffset: { width: 1, height: 1 },
                                         textShadowRadius: 1,
                                         paddingLeft: '3%'
-                                    }}>{idea.titulo}</Text>
+                                    }}>{idea.title}</Text>
                                 </View>
 
                             </View>

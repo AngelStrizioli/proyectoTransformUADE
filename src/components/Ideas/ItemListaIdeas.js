@@ -30,7 +30,7 @@ class ItemListaIdeas extends React.Component{
           <TouchableOpacity  onPress= {()=> {navigation.navigate('IdeaSimple', {idea: idea});}}>
           <ImageBackground  source={{uri: this.state.idea.img}} style={{height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }} >
           <View style={styles.containerItems}> 
-              <Text style={styles.textStyle}>{this.state.idea.titulo}</Text>
+              <Text style={styles.textStyle}>{this.state.idea.title}</Text>
             </View>
             </ImageBackground>
           </TouchableOpacity>

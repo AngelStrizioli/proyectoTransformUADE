@@ -7,7 +7,7 @@ import { Textarea } from "native-base";
 import ApiController from "../../controller/ApiController"
 import ImageCarousel from '../ImageCarousel';
 import { Card, CardItem, Body } from 'native-base';
-
+import { Video } from 'expo-av'
 
 let { width, height } = Dimensions.get('window');
 
@@ -32,9 +32,9 @@ class ComentariosIdeas extends React.Component {
  
   onClickListener(idea){
     let data = {
-      id: idea.id,
-      texto: this.state.textoComentado,
-      usuario: "Usuario", //harcodeado hasta que usemos usuarios reales
+      post_id: 1,
+      text: this.state.textoComentado,
+      user_id: "Usuario", //harcodeado hasta que usemos usuarios reales
     }
      ApiController.pushCommentPost(data, this.handleUpdate.bind(this));
      this.setState({
@@ -46,7 +46,7 @@ class ComentariosIdeas extends React.Component {
     const { navigation } = this.props;
     const idea = navigation.getParam('idea', {});
     let data = {
-      id : idea.id
+      post_id : 1
     }
     ApiController.getCommentsPost(data, this.handleComments.bind(this))
   }
@@ -61,7 +61,7 @@ class ComentariosIdeas extends React.Component {
     })
   }
   _showImage(idea){
-    if(idea.tipo === "album"){
+    if(idea.type === "album"){
       return(
         <Card>
           <CardItem >
@@ -74,13 +74,19 @@ class ComentariosIdeas extends React.Component {
     }else{
       return(
         <Card style={{alignSelf:'center'}}>
-          <TouchableOpacity onPress={() => Linking.openURL(idea.video)}>
-             <Image title="El videardo" source={{ uri: (idea.img) }} style={styles.imagenVideoStyle}/>
-               <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
-                 {/*<Text style={styles.playButton}>&#9658;</Text>*/}
-                  <Image title="Play Video" source={{uri: "https://i.imgur.com/bT1lYuB.png"}} style={{ height: 200, width: 300}}/>
-                </View>
-          </TouchableOpacity>
+          <View > 
+            <Video
+              source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+              rate={1.0}
+              volume={1.0}
+              isMuted={false}
+              resizeMode="cover"
+              shouldPlay
+              isLooping= {false}
+              useNativeControls={true} 
+              style={{ width: 400, height: 300 }}
+            />
+           </View>
        </Card>
       )
     }
@@ -89,11 +95,10 @@ class ComentariosIdeas extends React.Component {
   render() {
     const { navigation } = this.props;
     const idea = navigation.getParam('idea', {});
-    console.log(idea.titulo)
     return (
       <ScrollView style={styles.container}>
         <View>
-          <Text style={styles.titleStyle}>{idea.titulo}</Text>
+          <Text style={styles.titleStyle}>{idea.title}</Text>
         </View>
           {this._showImage(idea)}
           <View style={{margin:5}}>

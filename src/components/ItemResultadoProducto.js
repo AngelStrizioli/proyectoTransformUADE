@@ -22,9 +22,10 @@ export default class ItemResultadoProducto extends React.Component {
   render() {
     const { navigation } = this.props;
     const producto = this.props.producto;
+    const colorTitle = this.props.colorTitle
       return (
         <View style={{marginBottom:'3%', marginLeft:'2%'}}>
-          <TouchableOpacity onPress={() => { navigation.navigate('ResultadoProductoUnico', {producto: producto}) }}>
+          <TouchableOpacity onPress={() => { navigation.navigate('ResultadoProductoUnico', {producto: producto , title: colorTitle})}}>
               <View style={{flexDirection:'row', justifyContent:'space-between', marginRight:'7%'}}>
               <Text style={globalStyle.textStyle}>{this.state.titulo} </Text>
               <Ionicons name="md-arrow-round-forward" size={24} color={themeMainColor} />

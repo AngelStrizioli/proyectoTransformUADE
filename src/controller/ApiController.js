@@ -1,9 +1,9 @@
 import {Component} from 'react';
 import { Feather } from '@expo/vector-icons';
 
-//const url ="https://sipi-transform.herokuapp.com/";
+const url ="https://sipi-transform.herokuapp.com/";
 //const url = "https//127.0.0.1:8080/";
-const url = "http://192.168.0.11:8080/"
+const urlLocal = "http://192.168.0.8:8080/"
 
 const urlBuscarProductos="transform/buscarProductos"; //Needs wowrk
 const urlGetProductsByTagName="getProductsByTagName";
@@ -16,7 +16,8 @@ const urlGetEventos="transform/getEvents" //Anda
 
 //Work on this
 const urlGetPopularProd = "transform/getPopularProducts"
-const urlPushCommentEvent = "transform/commentEvent"
+
+const urlPushCommentEvent = "/api/addCommentToEvent"
 const urlPushCommentPost = "transform/commentPost"
 const urlGetCommentsEvent = "transform/getEventComments"
 const urlGetCommentsPost = "transform/getPostComments"
@@ -154,7 +155,7 @@ class ApiController extends Component
     }
 
     pushCommentPost(data,DevolverDatos){
-        const endpoint = `${url}${urlPushCommentPost}`;
+        const endpoint = `${urlLocal}${urlPushCommentPost}`;
        fetch(endpoint,{
             method: 'POST', // or 'PUT'
             mode: "cors",

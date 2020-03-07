@@ -1,11 +1,7 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import ReciclableSioNo from './ReciclableSioNo';
-import ApiController from '../controller/ApiController'
-import ItemResultadoProducto from './ItemResultadoProducto'
+import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 
-import { themeMainColor, globalStyle } from '../styles/globalStyles';
+import { globalStyle } from '../styles/globalStyles';
 class MaterialCompleto extends React.Component{
   constructor(props){
     super(props);
@@ -23,13 +19,17 @@ class MaterialCompleto extends React.Component{
         //material original
         var material = navigation.getParam('material', {});
         var productos = navigation.getParam('productos', []);
-        var nombre = material.nombre;
-        var texto = material.texto;
+        var nombre = material.name;
+        var texto = material.text;
         var logo = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
         //reciclable original
-        esReciclable=material.esReciclable
-        var descartes=material.comoReciclar
-        
+        var esReciclable=material.isRecyclable
+        var descartes;
+        if (material.items === null || material.items === undefined) {
+          descartes = [];
+        } else {
+          descartes = material.items.split('|');
+        }
 
         const urlReciclable = 'https://i.imgur.com/gagua5h.png';
         const urlWarning = 'https://i.imgur.com/OBbLG58.png';
@@ -41,7 +41,10 @@ class MaterialCompleto extends React.Component{
 
         let imagenLogo;
         let tituloPag;
-        switch(material.esReciclable){
+        let logo1;
+        let logo2;
+        let logo3;
+        switch(material.isRecyclable){
             case 1: 
             logo1 = urlReciclable;
             tituloPag = '¡Es reciclable!';
@@ -71,22 +74,10 @@ class MaterialCompleto extends React.Component{
             
                 {nombre}
 
-            </Text>
-            
-          
-           {/* <Image title='Icono Material' source={{uri: logo}} style={{ height: 160, width: 160, alignSelf: 'center' }} />*/}
-            
-            <Text style={globalStyle.textStyle}>
+            </Text>        
+          <Text style={globalStyle.textStyle}>
               {texto}
             </Text>
-            {/*}
-            <Text style={styles.subtitleStyle}>
-              Se encuentra en...
-            </Text>
-            <View style={{marginLeft: '6%'}}>
-              {productos.map((producto) =>{return(<ItemResultadoProducto  key={producto.id} titulo = {producto.nombre} producto={producto} navigation={this.props.navigation}/>)})}
-            </View>*/}
-           
           <View style={{flexDirection:'row',justifyContent:'space-around', marginTop:'5%'}}>
               <View style={{alignItems:'center'}}>
                   <Image title='Icono Reciclable' source={{uri:(logo1)}} style={styles.imgStyle}/>

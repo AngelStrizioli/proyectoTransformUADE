@@ -33,11 +33,15 @@ export default class ListaIdeas extends React.Component {
   render() {
     if (this.state.ideas.length > 1) {
       return (
+
+
         <ScrollView horizontal>
           <Row>
             {this._renderItems()}
           </Row>
         </ScrollView>
+
+
       )
     } else {
       if (this.state.ideas.length == 1) {

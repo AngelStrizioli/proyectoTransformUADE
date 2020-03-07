@@ -1,9 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, Dimensions } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button, ScrollView, Dimensions } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 
-import { createDrawerNavigator, DrawerNavigatorItems } from 'react-navigation-drawer';
+import { createDrawerNavigator, DrawerNavigatorItems, DrawerActions } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import IdeasGuardadas from '../components/Ideas/IdeasGuardadas';
 import ItemListaIdeas from '../components/Ideas/ItemListaIdeas';
@@ -12,9 +12,11 @@ import ResultadoProductoUnico from '../components/ResultadoProductoUnico';
 import TodasLasIdeas from '../components/TodasLasIdeas';
 import TodosLosMateriales from '../components/TodosLosMateriales';
 import TipoDeMaterial from '../components/TipoDeMaterial';
+import ReciclableSioNo from '../components/ReciclableSioNo';
 import IdeaSimple from '../components/Ideas/IdeaSimple';
 import ApiController from '../controller/ApiController';
 import MaterialCompleto from '../components/MaterialCompleto'
+import EventosPatrocinados from '../components/Eventos/EventosPatrocinados';
 import ListaEventos from '../components/Eventos/ListaEventos';
 import Instructivo from '../components/Instructivo';
 import EventoSimple from '../components/Eventos/EventoSimple';
@@ -27,7 +29,7 @@ import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
 import Conciencia from '../components/Conciencia'
 import CardsEventos from '../components/Eventos/CardsEventos'
 
-import {Container } from 'native-base'
+import {Container, Footer, FooterTab, } from 'native-base'
 import FooterMain from '../components/FooterMain'
 
 import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles";
@@ -41,7 +43,16 @@ class LogoHeader extends React.Component {
   render() {
     return (
       <View style={{ alignSelf: 'center', flex: 1 }}>
-        <Text style={{color:'white', textAlign:'center', fontSize:18}}>PONÉ LA BARRA DE BUSQUEDA </Text>
+      <Text style={{color:'white', textAlign:'center', fontSize:18}}>PONÉ LA BARRA DE BUSQUEDA </Text>
+     {/*   <Image
+          resizeMode="cover"
+          source={require("../assets/images/LogoHorizontal.png")}
+          style={{
+            width: 240,
+            height: 50,
+            resizeMode: 'contain',
+            alignSelf:"center",
+          }}/>*/}
       </View>
     );
   }
@@ -68,6 +79,7 @@ class Main extends React.Component {
 
   
   ObtenerDatosProd(newData) {
+    //console.log(newData)
     this.setState({ productos: newData })
     // aca empieza la navegacion
     this.fetchObjetos
@@ -90,6 +102,7 @@ class Main extends React.Component {
 
   onClickListener = () => {
     // funcion que llama al back para traer los productos cuando apretas el boton
+    //console.log("props",this.props);
     let data = {
       name: this.state.nombreProducto
     }
@@ -113,7 +126,25 @@ class Main extends React.Component {
           <CardsEventos navigation={this.props.navigation}></CardsEventos>
         </ScrollView>
         <FooterMain />
+      {/*  <Footer style={{}}>
+           <FooterTab style={{marginHorizontal:'10%', marginTop:'3%'}}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Instructivo')}>
+                  <Ionicons name="md-bulb" size={30}/>
+              </TouchableOpacity> 
+              <TouchableOpacity>
+                 <Ionicons name="md-cube" size={30} /> 
+              </TouchableOpacity>
+              <TouchableOpacity>
+                 <Ionicons name="md-globe" size={30} /> 
+              </TouchableOpacity>        
+              <TouchableOpacity>
+                 <Ionicons name="md-help-circle" size={30} /> 
+              </TouchableOpacity>
+
+              </FooterTab>
+          </Footer>*/}
         </Container>
+
     );
   }
 }
@@ -197,6 +228,7 @@ class SearchBar extends React.Component {
   }
 
   ObtenerDatosProd(newData) {
+    //console.log(newData)
     this.setState({ productos: newData })
     // aca empieza la navegacion
     this.fetchObjetos
@@ -292,6 +324,9 @@ const bootRoot = createStackNavigator({
   },
   TipoDeMaterial: {
     screen: TipoDeMaterial,
+  },
+  ReciclableSioNo: {
+    screen: ReciclableSioNo,
   },
   IdeasGuardadas: {
     screen: IdeasGuardadas,

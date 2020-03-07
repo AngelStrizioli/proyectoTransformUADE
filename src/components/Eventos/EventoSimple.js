@@ -75,7 +75,7 @@ class EventoSimple extends React.Component {
     return (
       <ScrollView >
         <ImageBackground
-          source={{ uri: evento.image }}
+          source={{ uri: evento.img }}
           style={styles.backgroundImage}>
           <View style={styles.tittleContainer}>
             <View style={styles.backButtonView}>
@@ -86,7 +86,7 @@ class EventoSimple extends React.Component {
             </View>
             <View style={styles.fechaPosition}>
               <Ionicons style={styles.fechaIcon} name="md-calendar" size={18} color={'white'} />
-              <Text style={styles.fechaText}>{evento.date}</Text>
+              <Text style={styles.fechaText}>{evento.fecha}</Text>
             </View>
           </View>
         </ImageBackground>

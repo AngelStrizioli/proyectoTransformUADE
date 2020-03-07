@@ -59,6 +59,7 @@ class IdeaAlbum extends React.Component{
                     <Text style={styles.subtitleStyle}>Instrucciones:</Text>
                     {
                         idea.pasos.map((paso, index) => {
+                            //console.log(paso);
                             return(
                             <Text key={index} style={styles.listTextStyle}>{index+1}. {paso}</Text>
                             )
@@ -113,10 +114,16 @@ class IdeaAlbum extends React.Component{
         var found = await AsyncStorage.getItem(this.props.idea.id);
         if (found === null) {
           await AsyncStorage.setItem(this.props.idea.id,JSON.stringify(this.props.idea));
+          console.log(JSON.stringify(this.props.idea));
+          console.log("Se guardo el item: " + this.props.idea.id);
           this.setState({guardado: true})
+          //console.log(this.state.guardado)
+
         } else {
           await AsyncStorage.removeItem(this.props.idea.id);
+          console.log("Se elimino el item: " + this.props.idea.id);
           this.setState({guardado: false})
+          //console.log(this.state.guardado)
         }
       } catch (e) {
         console.log(e.message);
@@ -129,8 +136,11 @@ class IdeaAlbum extends React.Component{
           var found = await AsyncStorage.getItem(this.props.idea.id);
           if (found === null) {
             this.setState({guardado: false})
+            //console.log(this.state.guardado)
+
           } else {
             this.setState({guardado: true})
+            //console.log(this.state.guardado)
           }
         } catch (e) {
           console.log(e.message);
@@ -151,17 +161,23 @@ class IdeaAlbum extends React.Component{
 
 
     cambiarBoton(){
+        //console.log(this.state.guardado)
         if(this.state.guardado === true){
+          
           return (
+            
                 <TouchableOpacity  onPress={() => this._storeData()} >
                 <Image style={{width:35, height:35}} source={{uri:('https://i.imgur.com/dHIs4kd.png')}} />
                 </TouchableOpacity>
+         
           )
       }else{
           return(
+      
                 <TouchableOpacity onPress={() => this._storeData()} >
                 <Image style={{width:35, height:35}} source={{uri:('https://i.imgur.com/JkqyZWl.png')}} />
                 </TouchableOpacity>
+       
           )
       }
 }
@@ -183,6 +199,7 @@ class IdeaAlbum extends React.Component{
             <Ionicons name="md-heart-empty" size={30}  />
             </Text>
           </TouchableOpacity>
+       
     )
 }
 }

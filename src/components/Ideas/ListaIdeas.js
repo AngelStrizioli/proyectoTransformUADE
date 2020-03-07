@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text, View, } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 import ItemListaIdeas from './ItemListaIdeas'
 import ApiController from '../../controller/ApiController'
 

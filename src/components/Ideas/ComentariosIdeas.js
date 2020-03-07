@@ -61,7 +61,7 @@ class ComentariosIdeas extends React.Component {
     })
   }
   _showImage(idea){
-    if(idea.type === "album"){
+    if(idea.tipo === "album"){
       return(
         <Card>
           <CardItem >
@@ -89,10 +89,11 @@ class ComentariosIdeas extends React.Component {
   render() {
     const { navigation } = this.props;
     const idea = navigation.getParam('idea', {});
+    console.log(idea.titulo)
     return (
       <ScrollView style={styles.container}>
         <View>
-          <Text style={styles.titleStyle}>{idea.title}</Text>
+          <Text style={styles.titleStyle}>{idea.titulo}</Text>
         </View>
           {this._showImage(idea)}
           <View style={{margin:5}}>

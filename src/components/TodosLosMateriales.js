@@ -12,28 +12,34 @@ import FooterMain from './FooterMain'
 /* ### PÁGINA QUE MUESTRA LA LISTA DE TODOS LOS MATERIALES CON INFORMACIÓN EN LA BD ###
     En prototipo: No está todavía */
 
-  function createData(material,idArray) 
+  function createData(item,idArray) 
     {
       return { id : idArray, 
-        id: material.id,
-        nombre: material.name,
-        logo: material.logo,
-        esReciclable: material.isRecyclable,
-        texto: material.text,
-        comoReciclar: material.items
+        id: item.id,
+        nombre: item.nombre,
+        logo: item.logo,
+        esReciclable: item.esReciclable,
+        texto: item.texto,
+        comoReciclar: item.comoReciclar
       };
   }
     
 class TodosLosMateriales extends React.Component{
     static navigationOptions = {
       title: ' ',
-      header: null,     
+      header: null,
+      
+     /* drawerIcon: ({ focused }) => (
+        <Ionicons name="md-cube" size={24} color={focused ? themeMainColor : 'black'} />
+      ),*/
+     
     };
     constructor (props) {
       super(props)
       this.state = { materiales : [] }
   }
     
+
   componentDidMount() {
     //Leo los productos de la API BD
     ApiController.getMateriales(this.okBusqueda3.bind(this));
@@ -45,20 +51,26 @@ class TodosLosMateriales extends React.Component{
       newArray.push(createData(newData[i], i));
     }
     this.setState({ materiales: newArray });
+    //console.log("data");
+    //console.log(this.state.data);
   }
   
     render(){
       let materiales = this.state.materiales;
       return(
         <Container>
-        <ScrollView style={styles.container}>       
+        <ScrollView style={styles.container}>
+
+       
           <Text style= {styles.titleStyle}>Todos los materiales</Text>
           <Divider style={{ backgroundColor: 'black' }} />
           <View>
-          {materiales.map((material) =>{         
+          {materiales.map((material) =>{
+              
               return (
-                <View key={material.name}>
+                <View key={material.nombre}>
                   <MaterialEsReciclable key={material.id} material={material} navigation={this.props.navigation}/>
+               
                 </View>
             )})}
           </View>

@@ -33,6 +33,9 @@ import CardsEventos from '../components/Eventos/CardsEventos'
 import {Container, Footer, FooterTab, } from 'native-base'
 import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles";
 import SearchBar from '../components/SearchBar'
+import Login from './Login'
+import SignUp from './SignUp'
+import MiCuenta from '../components/MiCuenta'
 
 
 /* ### PÁGINA INICIAL ###
@@ -196,6 +199,19 @@ const bootRoot = createStackNavigator({
   ComentariosIdeas: {
     screen: ComentariosIdeas
   },
+  Login:{
+    screen: Login,
+  },
+  SignUp:{
+    screen: SignUp,
+  },
+  MiCuenta:{
+    screen: MiCuenta
+  },
+  IdeasGuardadas: {
+    screen: IdeasGuardadas,
+  },
+
   
 },{
   defaultNavigationOptions:({navigation})=> {
@@ -266,7 +282,6 @@ const ContainerInstructivo = createStackNavigator({
   }
 })
 
-
 const DrawerRight = createDrawerNavigator({ 
   Inicio:{
     screen: bootRoot,
@@ -274,6 +289,10 @@ const DrawerRight = createDrawerNavigator({
      return{ title: ('Inicio'),
       drawerIcon: ({ focused }) => (
         <Ionicons name="md-home" size={24} color={focused ? themeMainColor : 'black'} />
+
+      ),}
+    }
+  },/*
       ),}}
   },
     PerfilUsuario:{
@@ -284,7 +303,18 @@ const DrawerRight = createDrawerNavigator({
            <Ionicons name="md-contact" size={24} color={focused ? themeMainColor : 'black'} />
          ),}}
     },
+    Login:{
+      screen: Login,
+    },
+    SignUp:{
+      screen: SignUp,
+    },
     IdeasGuardadas: {
+
+      screen: IdeasGuardadas,
+    },*/
+    MiCuenta:{
+      screen: MiCuenta
       screen: ContainerIdeasGuardadas,
       navigationOptions:()=>{
         return{ title: ('Mis ideas guardadas'),

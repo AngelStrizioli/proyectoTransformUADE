@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { firebaseAuth } from '../environment/config';
 import { themeMainColor } from '../styles/globalStyles';
-
+import { Ionicons } from '@expo/vector-icons';
 export default class SignUp extends React.Component {
   state = { email: '', password: '', errorMessage: null }
   constructor(props) {
@@ -12,7 +12,15 @@ export default class SignUp extends React.Component {
 			press: false,
 		};
 		this.showPass = this.showPass.bind(this);
-	}
+  }
+  /*
+  static navigationOptions = {
+    title: 'Registrarse',
+    drawerIcon: ({ focused }) => (
+      <Ionicons name="md-contact" size={24} color={focused ? themeMainColor : 'black'} />
+    )
+  };
+*/
   handleSignUp = () => {
     //FIREBASE AUTHENTICIATION STUFF
     console.log("handled signup");
@@ -29,12 +37,12 @@ export default class SignUp extends React.Component {
     return (
       <ScrollView style={{ backgroundColor: themeMainColor }}>
       <View style={styles.container}>
-        <Image source={require('../assets/images/LogoHorizontal.png')} style={{
+        {/*<Image source={require('../assets/images/uade_splash.png')} style={{
           width: 300,
           height: 60,
           resizeMode: 'contain',
-        }}/>    
-          <Text style={styles.heading}>¡Regístrate para disfrutar de TRANSFORM!</Text>
+        }}/>*/ } 
+          <Text style={styles.heading}>¡Regístrate para disfrutar de Conciencia UADE!</Text>
           {this.state.errorMessage &&
             <Text style={{ color: 'red' }}>
               {this.state.errorMessage}
@@ -80,9 +88,10 @@ export default class SignUp extends React.Component {
 const heightConst = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
  container: {
-     height: heightConst - 50,
-     justifyContent: 'center',
-     alignItems: 'center'
+  height: heightConst-155,
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin: 15,
  },
  headingSection: {
      borderColor: 1,

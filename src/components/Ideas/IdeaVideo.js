@@ -31,7 +31,7 @@ class IdeaVideo extends React.Component{
                 <Text style={globalStyle.titleStyle}>{idea.titulo}</Text>
                 <View style={{flex: 1, marginLeft:8}}> 
                   <Video
-                    source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+                    source={{ uri: video }}
                     rate={1.0}
                     volume={1.0}
                     isMuted={false}

@@ -31,6 +31,9 @@ import {Container } from 'native-base'
 import FooterMain from '../components/FooterMain'
 import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles";
 import SearchBar from '../components/SearchBar'
+import Login from './Login'
+import SignUp from './SignUp'
+import MiCuenta from '../components/MiCuenta'
 
 /* ### PÁGINA INICIAL ###
     En prototipo: Init */
@@ -144,6 +147,18 @@ const bootRoot = createStackNavigator({
   ComentariosIdeas: {
     screen: ComentariosIdeas
   },
+  Login:{
+    screen: Login,
+  },
+  SignUp:{
+    screen: SignUp,
+  },
+  MiCuenta:{
+    screen: MiCuenta
+  },
+  IdeasGuardadas: {
+    screen: IdeasGuardadas,
+  },
 
 
 }, {
@@ -157,6 +172,7 @@ const bootRoot = createStackNavigator({
     headerTintColor:('white'),}
   }
 })
+
 const DrawerRight = createDrawerNavigator({ 
   Inicio:{
     screen: bootRoot,
@@ -166,12 +182,21 @@ const DrawerRight = createDrawerNavigator({
         <Ionicons name="md-home" size={24} color={focused ? themeMainColor : 'black'} />
       ),}
     }
-  },
+  },/*
     PerfilUsuario:{
       screen:PerfilUsuario,
     },
+    Login:{
+      screen: Login,
+    },
+    SignUp:{
+      screen: SignUp,
+    },
     IdeasGuardadas: {
       screen: IdeasGuardadas,
+    },*/
+    MiCuenta:{
+      screen: MiCuenta
     },
     Instructivo: {
       screen: Instructivo,

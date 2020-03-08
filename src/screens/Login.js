@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import { firebaseAuth } from '../environment/config';
-
-import { mainThemeColor } from '../styles/globalStyles';
+import { Ionicons } from '@expo/vector-icons';
+import { themeMainColor } from '../styles/globalStyles';
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null }
   constructor(props) {
@@ -13,8 +13,15 @@ export default class Login extends React.Component {
 			press: false,
 		};
 		this.showPass = this.showPass.bind(this);
-	}
-
+  }
+  /*
+  static navigationOptions = {
+    title: 'Iniciar Sesion',
+    drawerIcon: ({ focused }) => (
+      <Ionicons name="md-contact" size={24} color={focused ? themeMainColor : 'black'} />
+    )
+  };
+  */
   handleLogin = () => {
     firebaseAuth.signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => this.props.navigation.navigate('Main'))
@@ -25,15 +32,16 @@ export default class Login extends React.Component {
   }
 
   render() {
+    //const stateUser = navigation.getParam('stateUser', {})
     return (
-      <ScrollView style={{ backgroundColor: mainThemeColor }}>
+      <ScrollView style={{ backgroundColor: themeMainColor }}>
         <View style={styles.container}>
-          <Image source={require('../assets/images/LogoHorizontal.png')} style={{
+          {/*<Image source={require('../assets/images/LogoHorizontal.png')} style={{
             width: 300,
             height: 60,
             resizeMode: 'contain',
-          }}/>
-          <Text style={styles.heading}>¡Ingresa a tu cuenta para disfrutar de TRANSFORM!</Text>
+          }}/> */}
+          <Text style={styles.heading}>¡Ingresa a tu cuenta para disfrutar de Conciencia UADE!</Text>
           {this.state.errorMessage &&
             <Text style={{ color: 'red' }}>
               {this.state.errorMessage}
@@ -90,9 +98,10 @@ export default class Login extends React.Component {
 const heightConst = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
 container: {
- height: heightConst - 50,
+ height: heightConst-155,
  justifyContent: 'center',
- alignItems: 'center'
+ alignItems: 'center',
+ margin: 15,
 },
 headingSection: {
  borderColor: 1,
@@ -117,7 +126,7 @@ inputSize: {
   borderColor: 'white',
   borderWidth: 1,
   backgroundColor: 'white',
-  color: mainThemeColor,
+  color: themeMainColor,
   borderRadius: 5,
   paddingLeft: '5%',
   fontSize: 16,
@@ -136,7 +145,7 @@ signupBtn: {
   padding: 10,
   borderColor: 'white',
   backgroundColor: 'white',
-  color: mainThemeColor,
+  color: themeMainColor,
   fontSize: 15,
   fontWeight: 'normal',
   borderRadius: 50, //android
@@ -155,7 +164,7 @@ registerBtn: {
   padding: 10,
   borderColor: 'white',
   backgroundColor: 'white',
-  color: mainThemeColor,
+  color: themeMainColor,
   fontWeight: 'normal',
   borderRadius: 50, //android
   textAlign: "center",

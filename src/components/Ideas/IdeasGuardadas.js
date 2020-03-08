@@ -64,7 +64,6 @@ class IdeasGuardadas extends React.Component{
     render(){
       if (this.state.ideas.length > 0) {
         return (
-          <Container> 
           <ScrollView style={styles.container}>
 
             <View>
@@ -74,7 +73,6 @@ class IdeasGuardadas extends React.Component{
            {this._renderItems()}
            
           </ScrollView>
-
         )
       } else {
       return(

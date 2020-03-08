@@ -184,9 +184,6 @@ const bootRoot = createStackNavigator({
   TipoDeMaterial: {
     screen: TipoDeMaterial,
   },
-  ReciclableSioNo: {
-    screen: ReciclableSioNo,
-  },
   EventoSimple:{
     screen: EventoSimple
   },
@@ -314,7 +311,7 @@ const DrawerRight = createDrawerNavigator({
       screen: IdeasGuardadas,
     },*/
     MiCuenta:{
-      screen: MiCuenta
+      screen: MiCuenta,
       screen: ContainerIdeasGuardadas,
       navigationOptions:()=>{
         return{ title: ('Mis ideas guardadas'),

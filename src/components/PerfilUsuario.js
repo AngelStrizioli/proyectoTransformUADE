@@ -7,31 +7,22 @@ import { firebaseAuth } from '../environment/config';
 import { themeMainColor } from '../styles/globalStyles';
 import { withNavigation } from 'react-navigation'
 
-
-
 class PerfilUsuario extends React.Component {
-    /*static navigationOptions = {
-        title: 'Mi perfil',
-        drawerIcon: ({ focused }) => (
-          <Ionicons name="md-contact" size={24} color={focused ? themeMainColor : 'black'} />
-        )
-      };
-    */
-   constructor(props){
-    super(props);
-    this.state={
+    constructor(props){
+        super(props);
+        this.state={}
     }
-  }
+
     logOut = () => {
         console.log("!!");
         firebaseAuth.signOut()
             .then(() => this.props.navigation.navigate('Login'))
             .catch(error => this.setState({errorMessage: error.message}));
     };
+    
     render() {
      const { navigation } = this.props;
       return (
-          <Container>
         <View style={styles.container}>
             <Image
             style={styles.image}
@@ -68,11 +59,11 @@ class PerfilUsuario extends React.Component {
       
 
         </View>
-
       );
     }
-  }
-  const styles = StyleSheet.create({
+}
+
+const styles = StyleSheet.create({
     container: {
         flex:1,
     },

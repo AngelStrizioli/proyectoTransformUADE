@@ -19,7 +19,7 @@ export default class CardIdeas extends Component {
             }}>
                 <CardItem cardBody button onPress={() => { navigation.navigate('IdeaSimple', { idea: idea }) }}>
                     <Body>
-                        <ImageBackground source={{ uri: idea.img }} style={{ height: width * 0.6, width: width * 0.6, resizeMode: 'cover', flex: 1 }}>
+                        <ImageBackground source={{ uri: idea.img }} style={{ height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }}>
 
                             <View style={{
                                 flex: 1,

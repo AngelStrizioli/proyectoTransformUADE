@@ -11,7 +11,7 @@ export default class TagsCloud extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tags: ["Utensilio", "Tecnología", "Botella", "Envase",  "Descartable", "Cartón"]
+            tags: ["Utensilio", "Tecnología", "Botella", "Envase" , "Cartón", "Descartable"]
         }
     }
 

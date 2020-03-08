@@ -6,7 +6,7 @@ import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Ic
 export default class ComentariosCard extends Component {
   render() {
     const comentario = this.props.comentario
-    var utcDate = comentario.fecha;  // ISO-8601 formatted date returned from server
+    var utcDate = comentario.createdAt;  // ISO-8601 formatted date returned from server
     var localDate = new Date(utcDate);
     return (
       <View>
@@ -15,14 +15,14 @@ export default class ComentariosCard extends Component {
               <Left>
                 <Thumbnail source={{uri: 'https://jesusmaestro.escuelateresiana.com/wp-content/uploads/2015/03/user-default.png'}} />
                 <Body>
-                  <Text>{comentario.usuario}</Text>
+                  <Text>{comentario.user_id}</Text>
                   <Text note>{localDate.toLocaleDateString()}</Text>
                 </Body>
               </Left>
             </CardItem>
             <CardItem>
               <Body>
-              <Text>{comentario.texto}</Text>
+              <Text>{comentario.text}</Text>
               </Body>
             </CardItem>
             <CardItem>

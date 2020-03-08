@@ -176,8 +176,8 @@ class MaterialCompleto extends React.Component{
         //marginTop:'5%'
     },
     imgStyle:{
-      height: 80,
-       width: 80,
+      height: 60,
+       width: 60,
        marginBottom:15 
     },
 

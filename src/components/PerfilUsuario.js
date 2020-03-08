@@ -5,8 +5,8 @@ import { Image, StyleSheet, View,Text, TouchableOpacity } from 'react-native';
 import { Container, Header, Content, Button, Right } from 'native-base';
 import { firebaseAuth } from '../environment/config';
 import { themeMainColor } from '../styles/globalStyles';
-import HeaderExample from './HeaderDrawer'
 import { withNavigation } from 'react-navigation'
+
 
 
 class PerfilUsuario extends React.Component {
@@ -32,8 +32,6 @@ class PerfilUsuario extends React.Component {
      const { navigation } = this.props;
       return (
           <Container>
-            
-          
         <View style={styles.container}>
             <Image
             style={styles.image}
@@ -70,7 +68,7 @@ class PerfilUsuario extends React.Component {
       
 
         </View>
-        </Container>
+
       );
     }
   }

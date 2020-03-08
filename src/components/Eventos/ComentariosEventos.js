@@ -42,9 +42,9 @@ class ComentariosEventos extends React.Component {
  
   onClickListener(evento){
     let data = {
-      id: evento.id,
-      texto: this.state.textoComentado,
-      usuario: "Usuario", //harcodeado hasta que usemos usuarios reales
+      event_id: evento.id,
+      text: this.state.textoComentado,
+      user_id: "Usuario", //harcodeado hasta que usemos usuarios reales
     }
      ApiController.pushCommentEvent(data, this.handleUpdate.bind(this));
      this.setState({
@@ -57,7 +57,7 @@ class ComentariosEventos extends React.Component {
     const { navigation } = this.props;
     const evento = navigation.getParam('evento', {});
     let data = {
-      id : evento.id
+      event_id : evento.id
     }
     ApiController.getCommentsEvents(data, this.handleComments.bind(this))
   }

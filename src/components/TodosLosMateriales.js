@@ -16,11 +16,11 @@ import { themeMainColor } from '../styles/globalStyles';
     {
       return { id : idArray, 
         id: material.id,
-        nombre: material.name,
+        name: material.name,
         logo: material.logo,
-        esReciclable: material.isRecyclable,
-        texto: material.text,
-        comoReciclar: material.items
+        isRecyclable: material.isRecyclable,
+        text: material.description,
+        items: material.items
       };
   }
     
@@ -33,10 +33,8 @@ class TodosLosMateriales extends React.Component{
       drawerIcon: ({ focused }) => (
         <Ionicons name="md-cube" size={24} color={focused ? themeMainColor : 'black'} />
       ),
-     
-   
-
     };
+
     constructor (props) {
       super(props)
       this.state = { materiales : [] }
@@ -57,10 +55,7 @@ class TodosLosMateriales extends React.Component{
   
     render(){
       let materiales = this.state.materiales;
-      
       return(
-
-
         <ScrollView style={styles.container}>
 
           <Text style= {styles.titleStyle}>Todos los materiales</Text>

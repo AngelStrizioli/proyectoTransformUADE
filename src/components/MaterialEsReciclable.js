@@ -33,15 +33,14 @@ class MaterialEsReciclable extends React.Component{
     render(){
       const { navigation } = this.props;
       const materiales =this.props.materiales;
-      const colorTitle = this.props.colorTitle
       var material = this.props.material;
-
       const logoMaterial = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
         //esto vuela cuando le pongamos los logos a los materiales en la bd
 
       const urlReciclable = 'https://i.imgur.com/b2SVI7V.png';
       const urlWarning = 'https://i.imgur.com/fqPjNqa.png';
       const urlNoReciclable = 'https://i.imgur.com/R6WMDPY.png';
+
 
       switch(material.isRecyclable){
         case 1: 
@@ -64,9 +63,7 @@ class MaterialEsReciclable extends React.Component{
         break;
       }
 
-        //esto es lo que hay que cambiar si decidimos hacer mas categorias (hay un verde y un rojo, si decidimos 
-        //meter un amarillo o varios distintos solo hay que cambiar como se decide la variable imagenLogo)
-       {
+      {
           return(
             <View> 
               <TouchableOpacity style={styles.containerMaterial} onPress={() => { this.onClickListener(material.id) }}>

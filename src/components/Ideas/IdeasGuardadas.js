@@ -34,7 +34,6 @@ class IdeasGuardadas extends React.Component{
     }
 
     _renderItems(){
-        console.log("rendering items");
         return this.state.ideas.map((item) => <ItemListaIdeas key={item.id} idea={item} navigation={this.props.navigation}></ItemListaIdeas> );
     }
 

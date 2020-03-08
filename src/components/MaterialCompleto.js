@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 
-import { globalStyle } from '../styles/globalStyles';
+import { globalStyle, themeMainColor } from '../styles/globalStyles';
 class MaterialCompleto extends React.Component{
   constructor(props){
     super(props);
@@ -68,11 +68,10 @@ class MaterialCompleto extends React.Component{
         var logo = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
         //reciclable original
 
-        const titleProd = navigation.getParam('titleProd', {})
-        const titleColor = titleProd
-        const colorMateriales = this.state.materialColor.find(colorMateriales => colorMateriales.title === material.nombre)
+        const titleProd = navigation.getParam('titleProd', {});
+        const titleColor = navigation.getParam('titleProd', {});
+        const colorMateriales = this.state.materialColor.find(colorMateriales => colorMateriales.title === material.name)
 
-        var esReciclable=material.isRecyclable
         var descartes;
         if (material.items === null || material.items === undefined) {
           descartes = [];

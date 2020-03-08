@@ -6,6 +6,7 @@ import { Container, Header, Content, Button, Right } from 'native-base';
 import { firebaseAuth } from '../environment/config';
 import { themeMainColor } from '../styles/globalStyles';
 import { withNavigation } from 'react-navigation'
+import { ScrollView } from 'react-native-gesture-handler';
 
 class PerfilUsuario extends React.Component {
     constructor(props){
@@ -14,7 +15,6 @@ class PerfilUsuario extends React.Component {
     }
 
     logOut = () => {
-        console.log("!!");
         firebaseAuth.signOut()
             .then(() => this.props.navigation.navigate('Login'))
             .catch(error => this.setState({errorMessage: error.message}));
@@ -56,7 +56,6 @@ class PerfilUsuario extends React.Component {
                   Ideas Guardadas  
                 </Text>
             </Button>
-      
 
         </View>
       );

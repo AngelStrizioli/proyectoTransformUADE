@@ -3,10 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Header } from 'react-native-elements';
 import { DrawerActions } from 'react-navigation-drawer';
-
-import LogoHorizontal from '../../assets/images/LogoHorizontal.png'
 import { themeMainColor } from '../../styles/globalStyles';
-
 
 class LogoHeader extends React.Component {
     render() {

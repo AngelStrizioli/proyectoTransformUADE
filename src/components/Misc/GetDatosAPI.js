@@ -31,7 +31,6 @@ export default new class GetDatosAPI {
             for(let i = 0; i<stations.length; i++){
                 markers.push(this.createDataEB(stations[i]));
             }
-            console.log("LISTO REY")
             handleData(markers)
         })
     }
@@ -43,7 +42,6 @@ export default new class GetDatosAPI {
         for(let i = 0; i < json.length; i++){
             markers.push(this.createDataPV(json[i]));
         }
-        console.log("LISTO KING");
         handleData(markers)
     }
 

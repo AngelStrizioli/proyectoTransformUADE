@@ -15,7 +15,6 @@ class SearchBar extends React.Component {
     }
   
     ObtenerDatosProd(newData) {
-      //console.log(newData)
       this.setState({ productos: newData })
       // aca empieza la navegacion
       this.fetchObjetos

@@ -34,13 +34,14 @@ export default class Login extends React.Component {
   render() {
     //const stateUser = navigation.getParam('stateUser', {})
     return (
-      <ScrollView style={{ backgroundColor: themeMainColor }}>
+      <ScrollView style={{ backgroundColor: 'white' }}>
         <View style={styles.container}>
-          {/*<Image source={require('../assets/images/LogoHorizontal.png')} style={{
-            width: 300,
-            height: 60,
-            resizeMode: 'contain',
-          }}/> */}
+        <Image source={require('../assets/images/splashGreenToo2.png')} style={{
+                      width: 1000, 
+                      height: 200,
+                      resizeMode: 'contain',
+                      marginBottom: 20
+                    }}/>
           <Text style={styles.heading}>¡Ingresa a tu cuenta para disfrutar de Conciencia UADE!</Text>
           {this.state.errorMessage &&
             <Text style={{ color: 'red' }}>
@@ -66,28 +67,26 @@ export default class Login extends React.Component {
               placeholder="Password"
               autoCapitalize="none"
               onChangeText={password => this.setState({ password })}
-              value={this.state.password}/>
+              value={this.state.password}
+              />
               <TouchableOpacity
               activeOpacity={0.7}
               onPress={this.showPass}>
                 <Image source={require('../assets/images/eye_black.png')} style={styles.icons} />
               </TouchableOpacity>
             </View>
-          <TouchableOpacity onPress={this.handleLogin} >
+          <TouchableOpacity onPress={this.handleLogin} style={styles.boton}>
             <Text style={styles.signupBtn} >
                 Ingresar
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.handleLoginGoogle} >
+          <TouchableOpacity onPress={this.handleLoginGoogle} style={styles.boton}>
             <Text style={styles.signupBtn} >
                 Ingresar con GOOGLE
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity
-           color="transparent" type="outline"
-          onPress={() => this.props.navigation.navigate('SignUp')}
-          > 
-          <Text style={styles.registerBtn} >
+          <TouchableOpacity color="transparent" type="outline"  onPress={() => this.props.navigation.navigate('SignUp')} style={styles.boton}> 
+          <Text style={styles.signupBtn} >
             ¿No tienes cuenta? ¡Regístrate!
           </Text>
           </TouchableOpacity>
@@ -110,7 +109,7 @@ headingSection: {
  marginBottom: 35
 },
 heading: {
- color: '#fff',
+ color: themeMainColor,
  fontSize: 20,
  marginBottom: 10,
  textAlign: 'center'
@@ -119,15 +118,14 @@ inputSize: {
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: '#fff',
+  backgroundColor: 'white', 
+  borderColor: themeMainColor,
   height: 40,
   margin: 10,
   height: 48,
-  borderColor: 'white',
   borderWidth: 1,
-  backgroundColor: 'white',
-  color: themeMainColor,
-  borderRadius: 5,
+  color: 'white',
+  borderRadius: 25,
   paddingLeft: '5%',
   fontSize: 16,
   width: 280,
@@ -137,25 +135,27 @@ inputSize: {
   shadowRadius: 1, //IOS
 },
 
-signupBtn: {
-  marginTop: 20,
-  width: 246,
-  height: 40,
-  borderWidth: 1,
-  padding: 10,
+boton:{
+  borderRadius: 5,
   borderColor: 'white',
-  backgroundColor: 'white',
-  color: themeMainColor,
-  fontSize: 15,
-  fontWeight: 'normal',
-  borderRadius: 50, //android
-  textAlign: "center",
-  elevation: 2,//android
-  shadowColor: 'rgba(0,0,0, .25)', // IOS
-  shadowOffset: { height: 3, width: 3 }, // IOS
-  shadowOpacity: 1, // IOS
-  shadowRadius: 1, //IOS
+ backgroundColor: themeMainColor,
+ marginTop: 20,
+ width: 246,
+ height: 40,
 },
+signupBtn: { 
+   padding: 10,
+   color: 'white',
+   fontSize: 15,
+   fontWeight: 'normal',
+   //borderRadius: 25, //android
+   textAlign: "center",
+   elevation: 2,//android
+   shadowColor: 'rgba(0,0,0, .25)', // IOS
+   shadowOffset: { height: 3, width: 3 }, // IOS
+   shadowOpacity: 1, // IOS
+   shadowRadius: 1, //IOS
+ },
 registerBtn: {
   marginTop: 20,
   width: 246,
@@ -182,7 +182,7 @@ textAlign: 'center'
 icons: {
   width: 25,
   height: 25,
-  tintColor: 'rgba(0,0,0,0.2)',
+  tintColor: 'grey',
   marginRight: 12,
 },
 })

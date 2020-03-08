@@ -24,7 +24,7 @@
       "assets/*"
     ],
     "android": {
-      "package": "com.Transform.transformAPK",
+      "package": "com.GreenToo.GreenTooApk",
       "versionCode": 1,
       "icon":"./src/assets/images/Greentoo_Icon.png"
     },

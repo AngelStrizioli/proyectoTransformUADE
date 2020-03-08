@@ -74,7 +74,7 @@ class IdeasGuardadas extends React.Component{
            {this._renderItems()}
            
           </ScrollView>
-
+          </Container>
         )
       } else {
       return(

@@ -35,13 +35,14 @@ export default class SignUp extends React.Component {
 
   render() {
     return (
-      <ScrollView style={{ backgroundColor: themeMainColor }}>
+      <ScrollView style={{ backgroundColor: 'white' }}>
       <View style={styles.container}>
-        {/*<Image source={require('../assets/images/uade_splash.png')} style={{
-          width: 300,
-          height: 60,
-          resizeMode: 'contain',
-        }}/>*/ } 
+      <Image source={require('../assets/images/splashGreenToo2.png')} style={{
+                      width: 1000, 
+                      height: 200,
+                      resizeMode: 'contain',
+                      marginBottom: 20
+                    }}/>
           <Text style={styles.heading}>¡Regístrate para disfrutar de Conciencia UADE!</Text>
           {this.state.errorMessage &&
             <Text style={{ color: 'red' }}>
@@ -74,10 +75,10 @@ export default class SignUp extends React.Component {
 						<Image source={require('../assets/images/eye_black.png')} style={styles.icons} />
 					  </TouchableOpacity>
           </View>
-            <TouchableOpacity onPress={this.handleSignUp}>
+            <TouchableOpacity onPress={this.handleSignUp} style={styles.boton}>
                 <Text style={styles.signupBtn}>¡Regístrate!</Text>
             </TouchableOpacity>
-        <TouchableOpacity color="transparent" onPress={() => this.props.navigation.navigate('Login')}>
+        <TouchableOpacity color="transparent" onPress={() => this.props.navigation.navigate('Login')} style={styles.boton}>
           <Text style={styles.signupBtn}>¿Ya tienes cuenta? Inicia sesión </Text>
         </TouchableOpacity>
      </View>
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
      marginBottom: 35
  },
  heading: {
-     color: '#fff',
+     color: themeMainColor,
      fontSize: 20,
      marginBottom: 10,
      textAlign: 'center'
@@ -109,15 +110,14 @@ const styles = StyleSheet.create({
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: '#fff',
+  backgroundColor: 'white', 
+  borderColor: themeMainColor,
   height: 40,
   margin: 10,
   height: 48,
-  borderColor: 'white',
   borderWidth: 1,
-  backgroundColor: 'white',
-  color: themeMainColor,
-  borderRadius: 5,
+  color: 'white',
+  borderRadius: 25,
   paddingLeft: '5%',
   fontSize: 16,
   width: 280,
@@ -126,24 +126,26 @@ const styles = StyleSheet.create({
   shadowOpacity: 1, // IOS
   shadowRadius: 1, //IOS
 },
-signupBtn: {
-  marginTop: 20,
-  width: 246,
-  height: 40,
-  borderWidth: 1,
-  padding: 10,
+boton:{
+  borderRadius: 5,
   borderColor: 'white',
-  backgroundColor: 'white',
-  color: themeMainColor,
-  fontSize: 15,
-  fontWeight: 'normal',
-  borderRadius: 50, //android
-  textAlign: "center",
-  elevation: 2,//android
-  shadowColor: 'rgba(0,0,0, .25)', // IOS
-  shadowOffset: { height: 3, width: 3 }, // IOS
-  shadowOpacity: 1, // IOS
-  shadowRadius: 1, //IOS
+ backgroundColor: themeMainColor,
+ marginTop: 20,
+ width: 246,
+ height: 40,
+},
+signupBtn: { 
+   padding: 10,
+   color: 'white',
+   fontSize: 15,
+   fontWeight: 'normal',
+   //borderRadius: 25, //android
+   textAlign: "center",
+   elevation: 2,//android
+   shadowColor: 'rgba(0,0,0, .25)', // IOS
+   shadowOffset: { height: 3, width: 3 }, // IOS
+   shadowOpacity: 1, // IOS
+   shadowRadius: 1, //IOS
 },
  buttonText: {
      color: '#fff',
@@ -152,7 +154,7 @@ signupBtn: {
  icons: {
   width: 25,
   height: 25,
-  tintColor: 'rgba(0,0,0,0.2)',
+  tintColor: 'grey',
   marginRight: 12,
 },
 })

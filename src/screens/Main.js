@@ -184,9 +184,6 @@ const bootRoot = createStackNavigator({
   TipoDeMaterial: {
     screen: TipoDeMaterial,
   },
-  ReciclableSioNo: {
-    screen: ReciclableSioNo,
-  },
   EventoSimple:{
     screen: EventoSimple
   },
@@ -262,6 +259,24 @@ const ContainerIdeasGuardadas = createStackNavigator({
     headerTintColor:('white'),}
   }
 });
+const ContainerMiCuenta = createStackNavigator({
+  MiCuenta:{
+    screen:MiCuenta,
+    navigationOptions:()=>{
+      return{ headerLeft: (<View />),
+      }}}
+
+}, {
+  defaultNavigationOptions:({navigation})=> {
+
+   return{ headerRight:(<TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginHorizontal:15, marginTop:20, height:50}} >
+    <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
+  </TouchableOpacity>),
+    headerTitle:( <SearchBar />),
+    headerStyle: (globalStyle.mainHeader),
+    headerTintColor:('white'),}
+  }
+});
 const ContainerInstructivo = createStackNavigator({
   Instructivo:{
     screen:Instructivo,
@@ -314,13 +329,12 @@ const DrawerRight = createDrawerNavigator({
       screen: IdeasGuardadas,
     },*/
     MiCuenta:{
-      screen: MiCuenta
-      screen: ContainerIdeasGuardadas,
+      screen: ContainerMiCuenta,
       navigationOptions:()=>{
-        return{ title: ('Mis ideas guardadas'),
-         drawerIcon: ({ focused }) => (
-           <Ionicons name="md-bookmark" size={24} color={focused ? themeMainColor : 'black'} />
-         ),}}
+        return{ title: 'Mi Cuenta',
+        drawerIcon: ({ focused }) => (
+          <Ionicons name="md-contact" size={24} color={focused ? themeMainColor : 'black'} />
+        ),}}
     },
     Instructivo: {
       screen: ContainerInstructivo,

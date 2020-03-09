@@ -20,7 +20,7 @@ class MiCuenta extends React.Component {
             if(this.state.userLoged === false){
             const { navigation } = this.props;
               return(
-                <ScrollView >
+                <View >
                     <View style={styles.container}>
                     <Image source={require('../assets/images/splashGreenToo2.png')} style={{
                       width: 1000, 
@@ -31,18 +31,18 @@ class MiCuenta extends React.Component {
                     <TouchableOpacity  onPress={() => { navigation.navigate('Login')}} style={styles.boton}>
                         <Text style={styles.signupBtn}> Iniciar Sesion  </Text>
                     </TouchableOpacity>
-                    <Text style={styles.heading}> Y si no tienes una pudes registarte pulsando el boton de Registrarse</Text>
+                    <Text style={styles.heading}> Y si no tienes una puedes registarte pulsando el boton de Registrarse</Text>
                     <TouchableOpacity  onPress={() => { navigation.navigate('SignUp')}} title="Registrarse" style={styles.boton}>
                         <Text style={styles.signupBtn}> Registrarse </Text>
                     </TouchableOpacity>
                     </View>
-                </ScrollView>
+                </View>
               );
             }else{
               return(
-                <ScrollView>
+                <View>
                     <PerfilUsuario/>
-                </ScrollView>
+                </View>
               )
             }
           }
@@ -62,7 +62,7 @@ export default withNavigation(MiCuenta);
 const heightConst = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
  container: {
-  height: heightConst-250,
+  marginTop: '25%',
   justifyContent: 'center',
   alignItems: 'center',
  },

@@ -29,9 +29,6 @@ class IdeaVideo extends React.Component{
             <ScrollView style={styles.container}>
             
                 <Text style={globalStyle.titleStyle}>{idea.titulo}</Text>
-                
-
-            
                   <View style={{flex: 1, marginLeft:8}}>
                   <Video
                     source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
@@ -42,7 +39,7 @@ class IdeaVideo extends React.Component{
                     shouldPlay
                     isLooping= {false}
                     useNativeControls={true} 
-                    style={{ width: 400, height: 300 }}
+                    style={styles.video}
                   />
                   </View>
 
@@ -65,8 +62,8 @@ class IdeaVideo extends React.Component{
                {/*<Text style={globalStyle.titleStyle}>Pasos</Text>*/}
 
             </ScrollView>
-            <Footer style={{}}>
-                    <FooterTab style={{marginHorizontal:'10%', marginTop:'3%'}}>
+            <Footer style={{backgroundColor: 'white'}}>
+                    <FooterTab style={{marginHorizontal:'10%', marginTop:'3%', backgroundColor: 'white'}}>
 
                          {this.cambiarCorazon()}
 
@@ -184,10 +181,16 @@ class IdeaVideo extends React.Component{
 
 }
 
+const widthConst = Dimensions.get('screen').width;
+const heightConst = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white'
+    },
+    video:{
+      width: widthConst-15,
+      height: heightConst-600,
     },
     titleStyle: {
       marginVertical:'5%',

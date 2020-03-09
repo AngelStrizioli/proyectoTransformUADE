@@ -2,7 +2,6 @@ import React, { Compo } from 'react';
 import { StyleSheet, ScrollView, View, Text, Dimensions, Image, ImageBackground } from 'react-native';
 import { TouchableOpacity, TouchableWithoutFeedback, TextInput } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
-import LockMap from '../Misc/Maps/LockMap';
 import { Card, CardItem } from 'native-base';
 
 let { width, height } = Dimensions.get('window');
@@ -104,18 +103,24 @@ class EventoSimple extends React.Component {
           </CardItem>
         </Card>
         {this.renderBlocks(evento)}
-        <LockMap evento={evento}/>
+        <Image source={{uri: 'https://i.imgur.com/RzquKLW.jpg'}} style={styles.mapa}/>
       </ScrollView>
     );
   }
 }
-
+const widthConst = Dimensions.get('screen').width;
+const heightConst = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     height: 200,
   },
-
+  mapa: {
+    flex:1,
+    margin:25,
+    width: widthConst-45,
+    height: heightConst-600
+  },
 
   tittleContainer: {
     flex: 1,

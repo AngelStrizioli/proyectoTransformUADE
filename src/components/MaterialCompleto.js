@@ -139,7 +139,7 @@ class MaterialCompleto extends React.Component{
                   <Image title='Icono Reciclable' source={{uri:(logo1)}} style={styles.imgStyle}/>
                   <Text style={styles.tipoMaterial}>¡Es reciclable! </Text>
               </View>
-              <View style={{alignItems:'center'}}>
+              <View style={{alignItems:'center', marginHorizontal:'2%'}}>
                   <Image title='Icono No Reciclable' source={{uri:(logo2)}} style={styles.imgStyle}/>
                   <Text style={styles.tipoMaterial}>¡No es reciclable! </Text>
               </View>
@@ -180,6 +180,7 @@ class MaterialCompleto extends React.Component{
     tipoMaterial:{
         fontSize:18,
         //marginTop:'5%'
+        textAlign: 'center',
     },
     imgStyle:{
       height: 60,

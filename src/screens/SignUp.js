@@ -89,7 +89,7 @@ export default class SignUp extends React.Component {
 const heightConst = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
  container: {
-  height: heightConst-155,
+  marginTop: '25%',
   justifyContent: 'center',
   alignItems: 'center',
   margin: 15,

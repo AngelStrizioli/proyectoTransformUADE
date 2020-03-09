@@ -31,12 +31,12 @@ export default class Conciencia extends Component {
           <Body>
               <ImageBackground source={{ uri: imagen1 }}  style={{ height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }}>
                   <View style={{ backgroundColor: 'rgba(0, 0, 0, 0.65)' }}>
-                    <Text style={{ color: 'white', textAlign: 'left', fontSize: 20, fontWeight: 'bold', marginLeft: '2%', marginTop: '2%' }}>{titulo1}</Text>
-                    <Text style={{ color: 'white', textAlign: 'left', fontSize: 16, marginHorizontal: '3%', marginTop: '2%', marginBottom: '2%' }}>{subtitulo1}</Text>
+                    <Text style={{ color: 'white', textAlign: 'left', fontSize: 18, fontWeight: 'bold', marginLeft: '2%', marginTop: '2%' }}>{titulo1}</Text>
+                    <Text style={{ color: 'white', textAlign: 'left', fontSize: 14, marginHorizontal: '3%', marginTop: '2%', marginBottom: '2%' }}>{subtitulo1}</Text>
                   </View>
                   <View style={{ marginTop: width*0.25 , justifyContent: 'flex-end', alignItems:'flex-end'}}>
                     <TouchableOpacity style={{backgroundColor: 'black', alignItems: 'center',   padding: '3%'}}>
-                      <Text style={{ color: 'white'}}>Conocé más ></Text>
+                      <Text style={{ color: 'white', fontSize:12}}>Conocé más ></Text>
                     </TouchableOpacity>
                   </View>
                 </ImageBackground>
@@ -54,12 +54,12 @@ export default class Conciencia extends Component {
           <Body>
               <ImageBackground source={{ uri: imagen2 }}  style={{ height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }}>
                   <View style={{ backgroundColor: 'rgba(0, 0, 0, 0.65)' }}>
-                    <Text style={{ color: 'white', textAlign: 'left', fontSize: 20, fontWeight: 'bold', marginLeft: '2%', marginTop: '2%' }}>{titulo2}</Text>
-                    <Text style={{ color: 'white', textAlign: 'left', fontSize: 16, marginHorizontal: '3%', marginTop: '2%', marginBottom: '2%' }}>{subtitulo2}</Text>
+                    <Text style={{ color: 'white', textAlign: 'left', fontSize: 18, fontWeight: 'bold', marginLeft: '2%', marginTop: '2%' }}>{titulo2}</Text>
+                    <Text style={{ color: 'white', textAlign: 'left', fontSize: 14, marginHorizontal: '3%', marginTop: '2%', marginBottom: '2%' }}>{subtitulo2}</Text>
                   </View>
                   <View style={{ marginTop: width*0.25 , justifyContent: 'flex-end', alignItems:'flex-end'}}>
                     <TouchableOpacity style={{backgroundColor: 'black', alignItems: 'center',   padding: '3%'}}>
-                      <Text style={{ color: 'white'}}>Conocé más ></Text>
+                      <Text style={{ color: 'white', fontSize:12}}>Conocé más ></Text>
                     </TouchableOpacity>
                   </View>
                 </ImageBackground>

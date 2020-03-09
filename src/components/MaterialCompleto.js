@@ -114,7 +114,7 @@ class MaterialCompleto extends React.Component{
       
           <ScrollView style={styles.container}>
             
-            <Text style={{ color: colorMateriales.titleColor , margin:'5%', fontWeight: 'bold', fontSize: 22}}>
+            <Text style={{ color: colorMateriales.titleColor , margin:'5%', fontWeight: 'bold', fontSize: 18}}>
             
                 {nombre}
 
@@ -139,7 +139,7 @@ class MaterialCompleto extends React.Component{
                   <Image title='Icono Reciclable' source={{uri:(logo1)}} style={styles.imgStyle}/>
                   <Text style={styles.tipoMaterial}>¡Es reciclable! </Text>
               </View>
-              <View style={{alignItems:'center'}}>
+              <View style={{alignItems:'center', marginHorizontal:'2%'}}>
                   <Image title='Icono No Reciclable' source={{uri:(logo2)}} style={styles.imgStyle}/>
                   <Text style={styles.tipoMaterial}>¡No es reciclable! </Text>
               </View>

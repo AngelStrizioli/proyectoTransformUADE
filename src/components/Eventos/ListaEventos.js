@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, TouchableOpacity, StyleSheet, Image, View, ScrollView } from 'react-native';
 import ApiController from '../../controller/ApiController';
 import ItemListaEventos from './ItemListaEventos'
-import globalStyles, { globalStyle } from '../../styles/globalStyles'
+import globalStyles, { globalStyle,footerContent } from '../../styles/globalStyles'
 import { Divider } from 'react-native-elements';
 
 export default class listaEventos extends Component {
@@ -25,11 +25,7 @@ export default class listaEventos extends Component {
         if(this.state.cargado){ 
             return(
               <ScrollView>
-              <Text style={{marginTop: '5%',
-      marginBottom:'3%',
-      fontSize: 20,
-      fontWeight: 'bold',
-      textAlign: 'center'}}>Eventos UADE</Text>
+              <Text style={footerContent.titleStyle}>Eventos UADE</Text>
               <Divider style={{ backgroundColor: 'black' }} />
               {this.state.eventos.map((evento, i) => {
                

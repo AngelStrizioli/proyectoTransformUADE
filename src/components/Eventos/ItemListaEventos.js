@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   itemEventoTitulo: {
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: '600',
     color: 'white',
     lineHeight:40,
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     paddingLeft:'3%'
   },
   itemEventoDesc: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: '400',
     textShadowRadius: 10,
     color: 'white',

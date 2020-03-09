@@ -110,7 +110,7 @@ headingSection: {
 },
 heading: {
  color: themeMainColor,
- fontSize: 20,
+ fontSize: 16,
  marginBottom: 10,
  textAlign: 'center'
 },
@@ -146,7 +146,7 @@ boton:{
 signupBtn: { 
    padding: 10,
    color: 'white',
-   fontSize: 15,
+   fontSize: 14,
    fontWeight: 'normal',
    //borderRadius: 25, //android
    textAlign: "center",

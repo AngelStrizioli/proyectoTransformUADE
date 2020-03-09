@@ -2,10 +2,12 @@ import React, { Compo } from 'react';
 import { StyleSheet, ScrollView, View, Text, Dimensions, Image, ImageBackground } from 'react-native';
 import { TouchableOpacity, TouchableWithoutFeedback, TextInput } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
-import LockMap from '../Misc/Maps/LockMap';
+//import LockMap from '../Misc/Maps/LockMap';
 import { Card, CardItem } from 'native-base';
 
 let { width, height } = Dimensions.get('window');
+const widthConst = Dimensions.get('screen').width;
+const heightConst = Dimensions.get('screen').height;
 import { themeMainColor, globalStyle } from '../../styles/globalStyles';
 
 
@@ -51,7 +53,7 @@ class EventoSimple extends React.Component {
           
             <TouchableOpacity  onPress={() => this._storeLikes()} >
               <Text>
-              <Ionicons name="md-heart" size={30} color={'black'} />
+              <Ionicons name="md-heart" size={20} color={'black'} />
               </Text>
             </TouchableOpacity>
      
@@ -61,7 +63,7 @@ class EventoSimple extends React.Component {
           
             <TouchableOpacity  onPress={() => this._storeLikes()} >
               <Text>
-              <Ionicons name="md-heart-empty" size={30}  />
+              <Ionicons name="md-heart-empty" size={20}  />
               </Text>
             </TouchableOpacity>
          
@@ -95,16 +97,16 @@ class EventoSimple extends React.Component {
             {this.cambiarCorazon()}
             <TouchableOpacity onPress={() => navigation.navigate('ComentariosEventos', {evento: evento })}>
                   <Text>
-                  <Ionicons name="md-text" size={30}/>
+                  <Ionicons name="md-text" size={20}/>
                   </Text>
             </TouchableOpacity>        
               <TouchableOpacity>
-                  <Text> <Ionicons name="md-share" size={30} /> </Text>
+                  <Text> <Ionicons name="md-share" size={20} /> </Text>
               </TouchableOpacity>
           </CardItem>
         </Card>
         {this.renderBlocks(evento)}
-        <LockMap evento={evento}/>
+        <Image source={{uri: 'https://i.imgur.com/RzquKLW.jpg'}} style={styles.mapa}/>
       </ScrollView>
     );
   }
@@ -115,7 +117,13 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 200,
   },
-
+  mapa: {
+    alignSelf:'center',
+    flex:1,
+    margin:25,
+    width: widthConst*0.95,
+    height: heightConst*0.4
+  },
 
   tittleContainer: {
     flex: 1,
@@ -140,7 +148,7 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
   },
   fechaText: {
-    fontSize: 18,
+    fontSize: 16,
     color: 'white',
     marginLeft: '2%',
     textAlign: 'auto',
@@ -160,7 +168,7 @@ const styles = StyleSheet.create({
 
   },
   titleStyle: {
-    fontSize: 26,
+    fontSize: 22,
     fontWeight: 'bold',
     color: 'white',
   },

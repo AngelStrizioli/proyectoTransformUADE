@@ -25,13 +25,13 @@ export const globalStyle = StyleSheet.create({
         marginBottom:'2%',
         //textAlign:'center',
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 18,
       
         //color: '#186db2',
     },
     textStyle: {
         paddingHorizontal: '6%',
-        fontSize:16,
+        fontSize:14,
         textAlign:'justify',
         lineHeight:26
 
@@ -49,7 +49,7 @@ export const globalStyle = StyleSheet.create({
         borderRadius: 25,
         paddingLeft: '5%',
         //marginBottom:5,
-        fontSize: 16,
+        fontSize: 12,
       },
 });
 
@@ -79,6 +79,47 @@ export const tagsStyles = StyleSheet.create({
         //textAlignVertical:'center',
     }
 })
+export const footerContent = StyleSheet.create({
+    container: {
+        // https://www.color-hex.com/ pag util para ver y hacer colores en hexa por si no sabemos el nombre en palabras
+        flex: 1,
+        justifyContent: 'center',
+    },
+    mainHeader:{
+        backgroundColor: themeMainColor,
+        height:55
+        
+    },
+    titleStyle: {
+        marginTop: '5%',
+        marginBottom:'3%',
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center'
+      },
+    textStyle: {
+        paddingHorizontal: '6%',
+        fontSize:16,
+        textAlign:'justify',
+        lineHeight:26
+
+    },
+    categoriaCardsText: {
+        color: '#186db2',
+         textAlign: "center",
+        alignSelf: "center"
+    },
+    inputDesigne: {
+        marginHorizontal:'3%',
+        width: "90%",
+        backgroundColor: 'white',
+        color: themeMainColor,
+        borderRadius: 25,
+        paddingLeft: '5%',
+        //marginBottom:5,
+        fontSize: 16,
+      },
+});
 
 export const plasticoColor = '#62A60A' ;
 

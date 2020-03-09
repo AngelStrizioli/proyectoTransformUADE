@@ -27,11 +27,11 @@ class MiCuenta extends React.Component {
                       height: 200,
                       resizeMode: 'contain',
                     }}/>
-                    <Text style={styles.heading}> Si tienes cuenta inicia sesion para disfrutar de Conciencia UADE</Text>
+                    <Text style={styles.heading}> Si tenés cuenta inicia sesion para disfrutar de Conciencia UADE</Text>
                     <TouchableOpacity  onPress={() => { navigation.navigate('Login')}} style={styles.boton}>
                         <Text style={styles.signupBtn}> Iniciar Sesion  </Text>
                     </TouchableOpacity>
-                    <Text style={styles.heading}> Y si no tienes una pudes registarte pulsando el boton de Registrarse</Text>
+                    <Text style={styles.heading}> Y si no tenés una puedes registarte pulsando el boton de Registrarse</Text>
                     <TouchableOpacity  onPress={() => { navigation.navigate('SignUp')}} title="Registrarse" style={styles.boton}>
                         <Text style={styles.signupBtn}> Registrarse </Text>
                     </TouchableOpacity>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
  signupBtn: { 
     padding: 10,
     color: 'white',
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 'normal',
     //borderRadius: 25, //android
     textAlign: "center",
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: themeMainColor,
-    fontSize: 20,
+    fontSize: 16,
     marginBottom: 10,
     textAlign: 'center',
     margin: 30,

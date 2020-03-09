@@ -83,10 +83,10 @@ class MaterialEsReciclable extends React.Component{
                     <Row>
 
                       <Col size={10} style={{}}>
-                        <Image title='Icono Material' source={{ uri: (logoMaterial) }} style={{height: 60, width: 60}} />
+                        <Image title='Icono Material' source={{ uri: (logoMaterial) }} style={{height: 50, width: 50}} />
                         </Col>
                         <Col size={30} style={{}}>
-                         <Text style={{fontSize:16,marginTop:'9%' ,textAlign:'left', color: themeMainColor, marginLeft:'3%'}}>{material.nombre}</Text>
+                         <Text style={{fontSize:14,marginTop:'9%' ,textAlign:'left', color: themeMainColor, marginLeft:'3%'}}>{material.nombre}</Text>
                          </Col>
                          <Col size={10} style={{marginTop:'4%', alignItems:'flex-end'}}> 
                           <Ionicons name="md-arrow-round-forward" size={30} color={'black'} />

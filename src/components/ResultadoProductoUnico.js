@@ -18,7 +18,7 @@ class ResultadoProductoUnico extends React.Component {
     const titleColor = title
     return (
         <ScrollView>
-          <Text style={{color: titleColor, margin:'5%', fontWeight: 'bold', fontSize: 22}}>{producto.nombre}</Text>
+          <Text style={{color: titleColor, margin:'5%', fontWeight: 'bold', fontSize: 18}}>{producto.nombre}</Text>
           <Text style={globalStyle.textStyle}>{producto.descripcion}</Text>
           <Text style={globalStyle.titleStyle}>Materiales</Text>
             {materiales.map((material) =>{

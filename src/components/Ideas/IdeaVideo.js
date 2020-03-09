@@ -8,6 +8,8 @@ import {Container, Footer, FooterTab, Button} from 'native-base'
 import { Video } from 'expo-av'
 
 const { width } = Dimensions.get('window');
+const widthConst = Dimensions.get('screen').width;
+const heightConst = Dimensions.get('screen').height;
 
 class IdeaVideo extends React.Component{
     constructor(props){
@@ -25,14 +27,14 @@ class IdeaVideo extends React.Component{
         var video = this.props.idea.video_url;
         var imagen = this.props.idea.img;
         return(
-          <Container>
+         
             <ScrollView style={styles.container}>
             
                 <Text style={globalStyle.titleStyle}>{idea.titulo}</Text>
                 
 
             
-                  <View style={{flex: 1, marginLeft:8}}>
+                  <View style={{flex: 1}}>
                   <Video
                     source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
                     rate={1.0}
@@ -42,9 +44,27 @@ class IdeaVideo extends React.Component{
                     shouldPlay
                     isLooping= {false}
                     useNativeControls={true} 
-                    style={{ width: 400, height: 300 }}
+                    style={styles.video}
                   />
                   </View>
+                  <Card  style={{backgroundColor:'white'}}>
+                     <CardItem style={{justifyContent:'space-around', backgroundColor:'white'}}> 
+
+                          {this.cambiarCorazon()}
+
+                          <TouchableOpacity onPress={() => navigation.navigate('ComentariosIdeas', {idea: idea })}>
+                        <Text>
+                          <Ionicons name="md-text" size={20}/>
+                        </Text>
+                      </TouchableOpacity> 
+
+                          {this.cambiarBoton()}
+                          <TouchableOpacity>
+                          <Text> <Ionicons name="md-share" size={20} /> </Text>   
+                      </TouchableOpacity>
+
+                    </CardItem>
+                </Card>
 
                  {/* <View style={{justifyContent:'space-around',marginTop:'3%' ,flexDirection:'row', height:35}}>
                     {this.cambiarCorazon()}
@@ -65,29 +85,12 @@ class IdeaVideo extends React.Component{
                {/*<Text style={globalStyle.titleStyle}>Pasos</Text>*/}
 
             </ScrollView>
-            <Footer style={{backgroundColor:'white'}}>
-                    <FooterTab style={{marginHorizontal:'10%', marginTop:'3%',backgroundColor:'white'}}>
-
-                         {this.cambiarCorazon()}
-
-                         <TouchableOpacity onPress={() => navigation.navigate('ComentariosIdeas', {idea: idea })}>
-                      <Text>
-                        <Ionicons name="md-text" size={30}/>
-                      </Text>
-                    </TouchableOpacity> 
-
-                         {this.cambiarBoton()}
-                         <TouchableOpacity>
-                        <Text> <Ionicons name="md-share" size={30} /> </Text>   
-                    </TouchableOpacity>
-
-                    </FooterTab>
-                </Footer>
+         
 
 
 
 
-            </Container>
+         
         );
     }
 
@@ -144,14 +147,14 @@ class IdeaVideo extends React.Component{
           
           return (
             <TouchableOpacity  onPress={() => this._storeData()} >
-              <Image style={{width:30, height:30}} source={{uri:('https://i.imgur.com/dHIs4kd.png')}} />
+              <Image style={{width:18, height:18,marginBottom:2}} source={{uri:('https://i.imgur.com/dHIs4kd.png')}} />
             </TouchableOpacity>
           )
       }else{
           return(
       
                 <TouchableOpacity onPress={() => this._storeData()} >
-                <Image style={{width:30, height:30}} source={{uri:('https://i.imgur.com/JkqyZWl.png')}} />
+                <Image style={{width:18, height:18,marginBottom:2}} source={{uri:('https://i.imgur.com/JkqyZWl.png')}} />
                 </TouchableOpacity>
        
           )
@@ -164,7 +167,7 @@ class IdeaVideo extends React.Component{
           
             <TouchableOpacity  onPress={() => this._storeLikes()} >
               <Text>
-              <Ionicons name="md-heart" size={30} color={'black'} />
+              <Ionicons name="md-heart" size={20} color={'black'} />
               </Text>
             </TouchableOpacity>
      
@@ -174,7 +177,7 @@ class IdeaVideo extends React.Component{
           
             <TouchableOpacity  onPress={() => this._storeLikes()} >
               <Text>
-              <Ionicons name="md-heart-empty" size={30}  />
+              <Ionicons name="md-heart-empty" size={20}  />
               </Text>
             </TouchableOpacity>
          
@@ -188,6 +191,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white'
+    },
+    video:{
+      alignSelf:'center',
+      width: widthConst*0.98,
+      height: heightConst*0.4
     },
     titleStyle: {
       marginVertical:'5%',

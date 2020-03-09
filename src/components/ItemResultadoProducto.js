@@ -28,7 +28,7 @@ export default class ItemResultadoProducto extends React.Component {
           <TouchableOpacity onPress={() => { navigation.navigate('ResultadoProductoUnico', {producto: producto, title: colorTitle}) }}>
               <View style={{flexDirection:'row', justifyContent:'space-between', marginRight:'7%'}}>
               <Text style={globalStyle.textStyle}>{this.state.titulo} </Text>
-              <Ionicons name="md-arrow-round-forward" size={24} color={themeMainColor} />
+              <Ionicons name="md-arrow-round-forward" size={20} color={themeMainColor} />
               </View>
           </TouchableOpacity>
         </View>);

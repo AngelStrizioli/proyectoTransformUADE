@@ -50,7 +50,7 @@ class SearchBar extends React.Component {
           style={globalStyle.inputDesigne}
           editable
           maxLength={32}
-          height={35}
+          height={30}
           placeholder="Ej: Lata, yerba, CD..."
           placeholderTextColor={themeMainColor}
           underlineColorAndroid = "transparent"

@@ -66,7 +66,7 @@ class ItemListaIdeas extends React.Component{
     },
     textStyle:{
       padding:'2%',
-      fontSize:20,
+      fontSize:18,
       textAlign:'left',
       fontWeight:'600',
       paddingLeft:'3%',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, ImageBackground, Dimensions, ScrollView } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
@@ -17,7 +17,7 @@ class ItemListaEventos extends React.Component {
 
     return(
  <View style={{marginHorizontal:'8%', marginVertical:'2%'}}>     
-    <TouchableOpacity  onPress={() => { navigation.navigate('EventoSimple', {evento: evento}) }}>
+    <TouchableWithoutFeedback  onPress={() => { navigation.navigate('EventoSimple', {evento: evento}) }}>
             <ImageBackground
               source={{uri: this.props.backgroundImage}}
               style={styles.backgroundImage}>
@@ -34,7 +34,7 @@ class ItemListaEventos extends React.Component {
             
 
             </ImageBackground>
-          </TouchableOpacity>
+          </TouchableWithoutFeedback>
       </View>
  
    

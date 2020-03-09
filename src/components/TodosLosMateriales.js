@@ -26,7 +26,7 @@ import { themeMainColor, globalStyle } from '../styles/globalStyles';
 class TodosLosMateriales extends React.Component{
     static navigationOptions = {
       title: 'Materiales',
-      header: null,
+      
       
       drawerIcon: ({ focused }) => (
         <Ionicons name="md-cube" size={24} color={focused ? themeMainColor : 'black'} />
@@ -61,7 +61,7 @@ class TodosLosMateriales extends React.Component{
         <ScrollView style={styles.container}>
 
        
-          <Text style= {globalStyle.titleStyle}>Materiales</Text>
+          <Text style= {styles.titleStyle}>Materiales</Text>
           <Divider style={{ backgroundColor: 'black'}} />
           <View>
           {materiales.map((material) =>{
@@ -90,7 +90,7 @@ class TodosLosMateriales extends React.Component{
     titleStyle: {
       marginTop: '5%',
       marginBottom:'3%',
-      fontSize: 26,
+      fontSize: 20,
       fontWeight: 'bold',
       textAlign: 'center'
     },

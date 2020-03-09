@@ -29,7 +29,7 @@ class TodasLasIdeas extends React.Component{
         
         <ScrollView style={styles.container}>
           <View>
-            <Text style= {globalStyle.titleStyle}>Ideas</Text>
+            <Text style= {styles.titleStyle}>Ideas</Text>
           </View>
           <Divider style={{ backgroundColor: 'black' }} />
           <View>
@@ -51,7 +51,7 @@ class TodasLasIdeas extends React.Component{
     titleStyle: {
       marginTop: '5%',
       marginBottom:'3%',
-      fontSize: 26,
+      fontSize: 20,
       fontWeight: 'bold',
       textAlign: 'center'
     },

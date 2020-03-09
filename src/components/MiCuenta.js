@@ -62,7 +62,7 @@ export default withNavigation(MiCuenta);
 const heightConst = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
  container: {
-  height: heightConst-250,
+  marginTop:'10%',
   justifyContent: 'center',
   alignItems: 'center',
  },

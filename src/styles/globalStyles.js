@@ -25,13 +25,13 @@ export const globalStyle = StyleSheet.create({
         marginBottom:'2%',
         //textAlign:'center',
         fontWeight: 'bold',
-        fontSize: 22,
+        fontSize: 20,
       
         //color: '#186db2',
     },
     textStyle: {
         paddingHorizontal: '6%',
-        fontSize:18,
+        fontSize:16,
         textAlign:'justify',
         lineHeight:26
 
@@ -63,7 +63,7 @@ export const tagsStyles = StyleSheet.create({
     tagsForm: {
         borderRadius: 50,
         backgroundColor: tagsColor,
-        height: 30,
+        //height: 30,
         paddingHorizontal: width*0.05,
         paddingTop:2,
         //marginVertical:15,
@@ -72,8 +72,9 @@ export const tagsStyles = StyleSheet.create({
     },
     textTags: {
         //fontWeight: 'bold',
-        fontSize: 19,
+        fontSize: 14,
         color: "white",
+        marginVertical:5,
         textAlign: 'center',
         //textAlignVertical:'center',
     }

@@ -65,8 +65,8 @@ class IdeaVideo extends React.Component{
                {/*<Text style={globalStyle.titleStyle}>Pasos</Text>*/}
 
             </ScrollView>
-            <Footer style={{}}>
-                    <FooterTab style={{marginHorizontal:'10%', marginTop:'3%'}}>
+            <Footer style={{backgroundColor:'white'}}>
+                    <FooterTab style={{marginHorizontal:'10%', marginTop:'3%',backgroundColor:'white'}}>
 
                          {this.cambiarCorazon()}
 

@@ -90,8 +90,8 @@ class EventoSimple extends React.Component {
             </View>
           </View>
         </ImageBackground>
-        <Card >
-          <CardItem style={{justifyContent:'space-around'}}>      
+        <Card  style={{backgroundColor:'white'}}>
+          <CardItem style={{justifyContent:'space-around', backgroundColor:'white'}}>      
             {this.cambiarCorazon()}
             <TouchableOpacity onPress={() => navigation.navigate('ComentariosEventos', {evento: evento })}>
                   <Text>

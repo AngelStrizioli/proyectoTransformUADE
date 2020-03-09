@@ -52,7 +52,7 @@ class ResultadoProductoMultiple extends React.Component {
     if(categoria){
       return (
         <View style={{height: 60 , justifyContent: 'center', alignItems:'center'}}>
-          <Text style={{color: categoria.titleColor, fontSize: 24, fontWeight: 'bold', alignSelf: 'center', textAlignVertical: 'center'}}>{categoria.title}</Text>
+          <Text style={{color: categoria.titleColor, fontSize: 20, fontWeight: 'bold', alignSelf: 'center', textAlignVertical: 'center'}}>{categoria.title}</Text>
         </View>
       )
     }else{

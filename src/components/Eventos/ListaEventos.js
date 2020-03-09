@@ -25,7 +25,11 @@ export default class listaEventos extends Component {
         if(this.state.cargado){ 
             return(
               <ScrollView>
-              <Text style={globalStyle.titleStyle}>Eventos UADE</Text>
+              <Text style={{marginTop: '5%',
+      marginBottom:'3%',
+      fontSize: 20,
+      fontWeight: 'bold',
+      textAlign: 'center'}}>Eventos UADE</Text>
               <Divider style={{ backgroundColor: 'black' }} />
               {this.state.eventos.map((evento, i) => {
                

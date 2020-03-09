@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, CardItem, Body, Text } from 'native-base';
-import { Image, ScrollView, Dimensions, ImageBackground, View } from 'react-native';
+import { Image, ScrollView, Dimensions, ImageBackground, View, TouchableWithoutFeedback } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -39,7 +39,8 @@ export default class CardsEventos extends Component {
                                     shadowRadius: 1,
                                     
                                 }}>
-                                    <CardItem cardBody button onPress={() => { navigation.navigate('EventoSimple', {evento: evento}) }}>
+                                    <CardItem cardBody  >
+                                        <TouchableWithoutFeedback onPress={() => { navigation.navigate('EventoSimple', {evento: evento}) }}>
                                         <Body>
                                             <ImageBackground source={{ uri: evento.img }} style={{ height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }}>
 
@@ -70,6 +71,7 @@ export default class CardsEventos extends Component {
                                                 </View>
                                             </ImageBackground>
                                         </Body>
+                                        </TouchableWithoutFeedback>
                                     </CardItem>
                                 </Card>
                             )

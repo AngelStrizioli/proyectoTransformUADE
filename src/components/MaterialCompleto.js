@@ -178,12 +178,12 @@ class MaterialCompleto extends React.Component{
         lineHeight:26
     },
     tipoMaterial:{
-        fontSize:18,
+        fontSize:14,
         //marginTop:'5%'
     },
     imgStyle:{
-      height: 60,
-       width: 60,
+      height: 50,
+       width: 50,
        marginBottom:15 
     },
 
@@ -198,7 +198,7 @@ class MaterialCompleto extends React.Component{
       },
      
       listTextStyle:{
-        fontSize:18,
+        fontSize:14,
         padding:'1%',
         lineHeight:26,
       }

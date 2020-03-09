@@ -129,58 +129,14 @@ class Main extends React.Component {
 - 0f446f (azul oscuro pero no tanto como el primero) en los touchables de los eventos */
 
 
-const Tab = createBottomTabNavigator({
-  Main:{
-    screen:Main,  
-  },
-  TodasLasIdeas:{
-    screen:TodasLasIdeas
-  },
-  TodosLosMateriales:{
-    screen:TodosLosMateriales,
-  },
-  ListaEventos:{
-    screen:ListaEventos
-  }},
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
-        const { routeName } = navigation.state;
-        let IconComponent = Ionicons;
-        let iconName;
-        if (routeName === 'Main') {
-          iconName = focused
-            ? 'ios-home'
-            : 'md-home';
-          // Sometimes we want to add badges to some icons.
-          // You can check the implementation below.
-          
-        } else if (routeName === 'TodasLasIdeas') {
-          iconName = focused ? 'ios-bulb' : 'md-bulb';
-        }
-        else if (routeName === 'TodosLosMateriales') {
-          iconName = focused ? 'ios-cube' : 'md-cube';
-        }
-        else if (routeName === 'ListaEventos') {
-          iconName = focused ? 'md-calendar' : 'ios-calendar';
-        }
 
-        // You can return any component that you like here!
-        return <IconComponent name={iconName} size={25} color={tintColor} />;
-      },
-    }),
-    tabBarOptions: {
-      activeTintColor: '#0f446f',
-      inactiveTintColor: 'gray',
-    },
-  })
 
 
 
 const bootRoot = createStackNavigator({
   
-  Tab:{
-    screen:Tab,
+  Main:{
+    screen:Main,
     navigationOptions:()=>{
       return{ headerLeft: (<View />),
       }}
@@ -238,6 +194,126 @@ const bootRoot = createStackNavigator({
    }
 })
 
+const ContainerTodasLasIdeas = createStackNavigator({
+  IdeasGuardadas:{
+    screen:TodasLasIdeas,
+    navigationOptions:()=>{
+      return{ headerLeft: (<View />),
+      }}}
+
+}, {
+  defaultNavigationOptions:({navigation})=> {
+
+   return{ headerRight:(<TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginHorizontal:15, marginTop:20, height:50}} >
+    <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
+  </TouchableOpacity>),
+    headerTitle:( <SearchBar />),
+    headerStyle: (globalStyle.mainHeader),
+    headerTintColor:('white'),}
+  }
+});
+const ContainerTodosLosMateriales = createStackNavigator({
+  IdeasGuardadas:{
+    screen:TodosLosMateriales,
+    navigationOptions:()=>{
+      return{ headerLeft: (<View />),
+      }}}
+
+}, {
+  defaultNavigationOptions:({navigation})=> {
+
+   return{ headerRight:(<TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginHorizontal:15, marginTop:20, height:50}} >
+    <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
+  </TouchableOpacity>),
+    headerTitle:( <SearchBar />),
+    headerStyle: (globalStyle.mainHeader),
+    headerTintColor:('white'),}
+  }
+});
+
+const ContainerListaEventos = createStackNavigator({
+  IdeasGuardadas:{
+    screen:ListaEventos,
+    navigationOptions:()=>{
+      return{ headerLeft: (<View />),
+      }}}
+
+}, {
+  defaultNavigationOptions:({navigation})=> {
+
+   return{ headerRight:(<TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginHorizontal:15, marginTop:20, height:50}} >
+    <Text> <Ionicons name="md-person" size={30} color={'white'} /> </Text>
+  </TouchableOpacity>),
+    headerTitle:( <SearchBar />),
+    headerStyle: (globalStyle.mainHeader),
+    headerTintColor:('white'),}
+  }
+});
+
+
+
+
+
+
+
+
+const Tab = createBottomTabNavigator({
+  bootRoot:{
+    screen:bootRoot, 
+    navigationOptions:()=>{
+      return{ title: ('Inicio'),
+      }}
+  },
+  TodasLasIdeas:{
+    screen:ContainerTodasLasIdeas,
+    navigationOptions:()=>{
+      return{ title: ('Ideas'),
+      }}
+  },
+  TodosLosMateriales:{
+    screen:ContainerTodosLosMateriales,
+    navigationOptions:()=>{
+      return{ title: ('Materiales'),
+      }}
+  },
+  ListaEventos:{
+    screen:ContainerListaEventos,
+    navigationOptions:()=>{
+      return{ title: ('Eventos'),
+      }}
+  }},
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+        let IconComponent = Ionicons;
+        let iconName;
+        if (routeName === 'bootRoot') {
+          iconName = focused
+            ? 'ios-home'
+            : 'md-home';
+          // Sometimes we want to add badges to some icons.
+          // You can check the implementation below.
+          
+        } else if (routeName === 'TodasLasIdeas') {
+          iconName = focused ? 'ios-bulb' : 'md-bulb';
+        }
+        else if (routeName === 'TodosLosMateriales') {
+          iconName = focused ? 'ios-cube' : 'md-cube';
+        }
+        else if (routeName === 'ListaEventos') {
+          iconName = focused ? 'md-calendar' : 'ios-calendar';
+        }
+
+        // You can return any component that you like here!
+        return <IconComponent name={iconName} size={25} color={tintColor} />;
+      },
+    }),
+    tabBarOptions: {
+      activeTintColor: '#0f446f',
+      inactiveTintColor: 'gray',
+    },
+  })
 
 const ContainerMiCuenta = createStackNavigator({
   PerfilUsuario:{
@@ -298,7 +374,7 @@ const ContainerInstructivo = createStackNavigator({
 
 const DrawerRight = createDrawerNavigator({ 
   Inicio:{
-    screen: bootRoot,
+    screen: Tab,
     navigationOptions:()=>{
      return{ title: ('Inicio'),
       drawerIcon: ({ focused }) => (

@@ -80,7 +80,7 @@ export default class CategoriasCards extends Component {
                                     <TouchableOpacity onPress={() => {this.buscarProductos(categoria.title)}}>
                                         <View style={{alignItems:'center'}}>
                                             <Image source={{uri: categoria.img}}  style={{borderRadius:25, backgroundColor:categoria.backgroundColor,height: width*0.12, width: width*0.12}} />
-                                            <Text style={{textAlign:'center'}}>{categoria.title} </Text>
+                                            <Text style={{textAlign:'center', fontSize:12}}>{categoria.title} </Text>
                                         </View>
                                     </TouchableOpacity>
                                     

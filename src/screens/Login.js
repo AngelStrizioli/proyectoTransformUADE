@@ -97,7 +97,7 @@ export default class Login extends React.Component {
 const heightConst = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
 container: {
- height: heightConst-155,
+marginTop:'10%',
  justifyContent: 'center',
  alignItems: 'center',
  margin: 15,

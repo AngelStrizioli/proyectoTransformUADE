@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import MaterialEsReciclable from './MaterialEsReciclable';
 import ApiController from '../controller/ApiController';
 import { Divider } from 'react-native-elements';
-import { themeMainColor } from '../styles/globalStyles';
+import { themeMainColor, globalStyle } from '../styles/globalStyles';
 
 
 /* ### PÁGINA QUE MUESTRA LA LISTA DE TODOS LOS MATERIALES CON INFORMACIÓN EN LA BD ###
@@ -61,8 +61,8 @@ class TodosLosMateriales extends React.Component{
         <ScrollView style={styles.container}>
 
        
-          <Text style= {styles.titleStyle}>Todos los materiales</Text>
-          <Divider style={{ backgroundColor: 'black' }} />
+          <Text style= {globalStyle.titleStyle}>Materiales</Text>
+          <Divider style={{ backgroundColor: 'black'}} />
           <View>
           {materiales.map((material) =>{
               

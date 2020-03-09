@@ -19,7 +19,7 @@ class MaterialEsReciclable extends React.Component{
   ObtenerDatosProd(newData){
     
     this.setState({ productos: newData })
-    this.props.navigation.navigate('MaterialCompleto',  {productos:this.state.productos,material:  this.props.material})
+    this.props.navigation.navigate('MaterialCompleto',  {productos:this.state.productos,material:  this.props.material , titleProd: this.props.colorTitle})
   }
   onClickListener = (id) => { 
     // funcion que llama al back para traer los productos cuando apretas el boton
@@ -34,6 +34,7 @@ class MaterialEsReciclable extends React.Component{
     render(){
       const { navigation } = this.props;
       const materiales =this.props.materiales;
+      const colorTitle = this.props.colorTitle
       const material = this.props.material;
       
 

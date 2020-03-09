@@ -5,8 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import ListaIdeas from './Ideas/ListaIdeas';
 import { Divider } from 'react-native-elements';
 
-import { themeMainColor } from '../styles/globalStyles';
-
+import { themeMainColor, globalStyle } from '../styles/globalStyles';
 import { withNavigation } from 'react-navigation';
 /* ### PÁGINA PARA MOSTRAR TODAS LAS IDEAS QUE ESTÁN GUARDADAS EN LA BD ###
     En prototipo: todavía no está */
@@ -30,7 +29,7 @@ class TodasLasIdeas extends React.Component{
         
         <ScrollView style={styles.container}>
           <View>
-            <Text style= {styles.titleStyle}>Todas las ideas</Text>
+            <Text style= {globalStyle.titleStyle}>Ideas</Text>
           </View>
           <Divider style={{ backgroundColor: 'black' }} />
           <View>

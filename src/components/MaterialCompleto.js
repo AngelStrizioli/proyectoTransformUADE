@@ -5,11 +5,55 @@ import ReciclableSioNo from './ReciclableSioNo';
 import ApiController from '../controller/ApiController'
 import ItemResultadoProducto from './ItemResultadoProducto'
 
-import { themeMainColor, globalStyle } from '../styles/globalStyles';
+import { themeMainColor, globalStyle, plasticoColor,papelColor,vidrioColor,pilaColor,metalColor,textilColor,electroColor, organicoColor } from '../styles/globalStyles';
 class MaterialCompleto extends React.Component{
   constructor(props){
     super(props);
     this.state ={ 
+      materialColor: [ {
+        title: "Plástico PET",
+        titleColor:plasticoColor,
+    },{
+      title: "Plástico P.P.",
+      titleColor:plasticoColor,
+    },{
+      title: "Plástico H.D.P.E",
+      titleColor:plasticoColor,
+    },{
+      title: "Otros Plásticos",
+      titleColor:plasticoColor,
+    },{
+      title: "Plástico P.S.",
+      titleColor:plasticoColor,
+    },{
+        title: "Papel/Cartón", 
+        titleColor: papelColor
+    }, {
+        title: "Vidrio",
+        titleColor: vidrioColor
+    }, {
+        title: "Pilas y baterías",
+        titleColor: pilaColor
+    }, {
+        title: "Metales",
+        titleColor: metalColor
+    }, {
+        title: "Textiles",
+        titleColor: textilColor
+    }, {
+        title: "RAEEs",
+        titleColor: electroColor
+    }, {
+        title: "Orgánico",
+        titleColor: organicoColor
+    },{
+        title: "Madera",
+        titleColor: organicoColor
+    },{
+        title: "TetraBrik",
+        titleColor: organicoColor
+    }],
+    text: ""
      
     }
   }
@@ -29,7 +73,10 @@ class MaterialCompleto extends React.Component{
         //reciclable original
         esReciclable=material.esReciclable
         var descartes=material.comoReciclar
-        
+        const titleProd = navigation.getParam('titleProd', {})
+        const titleColor = titleProd
+        const colorMateriales = this.state.materialColor.find(colorMateriales => colorMateriales.title === material.nombre)
+
 
         const urlReciclable = 'https://i.imgur.com/gagua5h.png';
         const urlWarning = 'https://i.imgur.com/OBbLG58.png';
@@ -67,7 +114,7 @@ class MaterialCompleto extends React.Component{
       
           <ScrollView style={styles.container}>
             
-            <Text style={globalStyle.titleStyle}>
+            <Text style={{ color: colorMateriales.titleColor , margin:'5%', fontWeight: 'bold', fontSize: 22}}>
             
                 {nombre}
 

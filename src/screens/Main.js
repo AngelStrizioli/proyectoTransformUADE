@@ -35,6 +35,9 @@ import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles"
 import * as Font from 'expo-font';
 import { withNavigation } from 'react-navigation';
 import SearchBar from '../components/SearchBar'
+import MiCuenta from '../components/MiCuenta'
+import Login from './Login'
+import SignUp from './SignUp'
 
 
 /* ### PÁGINA INICIAL ###
@@ -216,6 +219,12 @@ const bootRoot = createStackNavigator({
   ComentariosIdeas: {
     screen: ComentariosIdeas
   },
+  Login:{
+    screen:Login
+  },
+  SignUp:{
+    screen:SignUp
+  }
   
 },{
   defaultNavigationOptions:({navigation})=> {
@@ -230,9 +239,9 @@ const bootRoot = createStackNavigator({
 })
 
 
-const ContainerPerfilUsuario = createStackNavigator({
+const ContainerMiCuenta = createStackNavigator({
   PerfilUsuario:{
-    screen:PerfilUsuario,
+    screen:MiCuenta,
     navigationOptions:()=>{
       return{ headerLeft: (<View />),
       }}}
@@ -297,29 +306,29 @@ const DrawerRight = createDrawerNavigator({
       ),}}
   },
     PerfilUsuario:{
-      screen:ContainerPerfilUsuario,
+      screen:ContainerMiCuenta,
       navigationOptions:()=>{
-        return{ title: ('Mi perfil'),
+        return{ title: ('Mi cuenta'),
          drawerIcon: ({ focused }) => (
            <Ionicons name="md-contact" size={24} color={focused ? themeMainColor : 'black'} />
          ),}}
     },
-    IdeasGuardadas: {
+    /*IdeasGuardadas: {
       screen: ContainerIdeasGuardadas,
       navigationOptions:()=>{
         return{ title: ('Mis ideas guardadas'),
          drawerIcon: ({ focused }) => (
            <Ionicons name="md-bookmark" size={24} color={focused ? themeMainColor : 'black'} />
          ),}}
-    },
-    Instructivo: {
+    },*/
+   /* Instructivo: {
       screen: ContainerInstructivo,
       navigationOptions:()=>{
         return{ title: ('Instructivo'),
          drawerIcon: ({ focused }) => (
            <Ionicons name="md-help-circle" size={24} color={focused ? themeMainColor : 'black'} />
          ),}}
-    },
+    },*/
  
 },{
     drawerPosition: 'right',  

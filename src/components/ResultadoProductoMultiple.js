@@ -14,35 +14,35 @@ class ResultadoProductoMultiple extends React.Component {
       categorias: [ {
         title: "Plástico",
         img: "https://i.imgur.com/fCmH0nQ.png",
-        backgroundColor:plasticoColor,
+        titleColor:plasticoColor,
     },{
         title: "Papel",
         img: "https://i.imgur.com/OG1RVGW.png",
-        backgroundColor:papelColor,
+        titleColor:papelColor,
     }, {
         title: "Vidrio",
        img: "https://i.imgur.com/1VeQWb5.png",
-        backgroundColor:vidrioColor,
+       titleColor:vidrioColor,
     }, {
         title: "Pilas y baterías",
         img: "https://i.imgur.com/cbiuZXa.png",
-        backgroundColor:pilaColor,
+        titleColor:pilaColor,
     }, {
         title: "Metales",
         img: "https://i.imgur.com/UKPPz8D.png",
-        backgroundColor:metalColor,
+        titleColor:metalColor,
     }, {
         title: "Textiles",
         img: "https://i.imgur.com/yfkEpxU.png",
-        backgroundColor:textilColor,
+        titleColor:textilColor,
     }, {
         title: "Electrónica",
         img: "https://i.imgur.com/0sIAH6f.png",
-        backgroundColor:electroColor,
+        titleColor:electroColor,
     }, {
         title: "Orgánicos",
         img: "https://i.imgur.com/gqCFXHJ.png",
-        backgroundColor:organicoColor,
+        titleColor:organicoColor,
     }],
         text: ""
     }
@@ -51,8 +51,8 @@ class ResultadoProductoMultiple extends React.Component {
   renderTitle(categoria, busqueda){
     if(categoria){
       return (
-        <View style={{height: 60, backgroundColor: categoria.backgroundColor, justifyContent: 'center', alignItems:'center'}}>
-          <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold', alignSelf: 'center', textAlignVertical: 'center'}}>{categoria.title}</Text>
+        <View style={{height: 60 , justifyContent: 'center', alignItems:'center'}}>
+          <Text style={{color: categoria.titleColor, fontSize: 24, fontWeight: 'bold', alignSelf: 'center', textAlignVertical: 'center'}}>{categoria.title}</Text>
         </View>
       )
     }else{
@@ -74,7 +74,10 @@ class ResultadoProductoMultiple extends React.Component {
     let productos = navigation.getParam('productos', []);
    
     const categoria = this.state.categorias.find(categoria => categoria.title === busqueda)
-
+    let titleColor ="black";
+    if(categoria){
+      titleColor=categoria.titleColor
+    }
     return (
       <View style={styles.container}>
       <ScrollView>
@@ -84,11 +87,11 @@ class ResultadoProductoMultiple extends React.Component {
          
  
 
-        <View style={{marginTop:'5%', marginLeft:'4%'}}>
+        <View style={{marginTop:'2%', marginLeft:'4%'}}>
           
           { productos.map((producto) => {
              
-              return <ItemResultadoProducto  key={producto.id} titulo = {producto.nombre} producto={producto} navigation={this.props.navigation}/>
+              return <ItemResultadoProducto  key={producto.id} titulo = {producto.nombre} producto={producto} navigation={this.props.navigation} colorTitle={titleColor}/>
             })
           }
           

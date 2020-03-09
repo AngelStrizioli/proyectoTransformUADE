@@ -1,20 +1,28 @@
 
 import React, { Component } from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { Image, StyleSheet, View,Text } from 'react-native';
+import { Image, StyleSheet, View,Text, TouchableOpacity } from 'react-native';
 import { Container, Header, Content, Button, Right } from 'native-base';
 import { firebaseAuth } from '../environment/config';
 import { themeMainColor } from '../styles/globalStyles';
+import { withNavigation } from 'react-navigation'
+import { ScrollView } from 'react-native-gesture-handler';
 
 
-export default class PerfilUsuario extends React.Component {
-    static navigationOptions = {
+
+class PerfilUsuario extends React.Component {
+    /*static navigationOptions = {
         title: 'Mi perfil',
         drawerIcon: ({ focused }) => (
           <Ionicons name="md-contact" size={24} color={focused ? themeMainColor : 'black'} />
         )
       };
-
+    */
+   constructor(props){
+    super(props);
+    this.state={
+    }
+  }
     logOut = () => {
         console.log("!!");
         firebaseAuth.signOut()
@@ -22,8 +30,9 @@ export default class PerfilUsuario extends React.Component {
             .catch(error => this.setState({errorMessage: error.message}));
     };
     render() {
+     const { navigation } = this.props;
       return (
-
+          <ScrollView>
         <View style={styles.container}>
             <Image
             style={styles.image}
@@ -51,8 +60,15 @@ export default class PerfilUsuario extends React.Component {
             <Button full light style={styles.buttonStyleLogOut} onPress={this.logOut}>
                 <Text>Cerrar sesión</Text>
             </Button>
+            <Button  onPress={() => { navigation.navigate('IdeasGuardadas')}} full light style={styles.buttonStyle}>
+                <Ionicons name="md-bookmark" size={24}  style={styles.icons} />
+                <Text> 
+                  Ideas Guardadas  
+                </Text>
+            </Button>
 
         </View>
+        </ScrollView>
 
       );
     }
@@ -89,5 +105,13 @@ export default class PerfilUsuario extends React.Component {
     buttonStyleLogOut: {
         marginTop:20,
         backgroundColor: "#b2102f",
-    }
+    },
+    icons: {
+        width: 25,
+        height: 25,
+        color:themeMainColor,
+        marginRight: 12,
+    },
 })
+
+export default withNavigation(PerfilUsuario)

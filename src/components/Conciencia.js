@@ -57,7 +57,7 @@ export default class Conciencia extends Component {
                     <Text style={{ color: 'white', textAlign: 'left', fontSize: 24, fontWeight: 'bold', marginLeft: '2%', marginTop: '2%' }}>{titulo2}</Text>
                     <Text style={{ color: 'white', textAlign: 'left', fontSize: 16, marginHorizontal: '3%', marginTop: '2%', marginBottom: '2%' }}>{subtitulo2}</Text>
                   </View>
-                  <View style={{ marginTop: '35%' , justifyContent: 'flex-end', alignItems:'flex-end'}}>
+                  <View style={{ marginTop: width*0.25 , justifyContent: 'flex-end', alignItems:'flex-end'}}>
                     <TouchableOpacity style={{backgroundColor: 'black', alignItems: 'center',   padding: '3%'}}>
                       <Text style={{ color: 'white'}}>Conocé más ></Text>
                     </TouchableOpacity>

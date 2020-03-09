@@ -20,7 +20,7 @@ export default class EventosPatrocinados extends Component {
 
     render(){
       
-        if(this.state.cargado){
+        if(this.state.cargado){ 
             return(
               this.state.eventos.map((evento, i) => {
                 return(

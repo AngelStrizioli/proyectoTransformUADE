@@ -1,10 +1,9 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, Linking, ScrollView,AsyncStorage, TextInput,Dimensions } from 'react-native';
+import { Image, StyleSheet, Text, View, ScrollView,AsyncStorage,Dimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Card, CardItem, Body } from 'native-base';
+import { Card, CardItem } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 import { themeMainColor, globalStyle } from '../../styles/globalStyles';
-import {Container, Footer, FooterTab, Button} from 'native-base'
 import { Video } from 'expo-av'
 
 const { width } = Dimensions.get('window');
@@ -28,12 +27,8 @@ class IdeaVideo extends React.Component{
         var imagen = this.props.idea.img;
         return(
          
-            <ScrollView style={styles.container}>
-            
+            <ScrollView style={styles.container}>     
                 <Text style={globalStyle.titleStyle}>{idea.titulo}</Text>
-                
-
-            
                   <View style={{flex: 1}}>
                   <Video
                     source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
@@ -65,32 +60,9 @@ class IdeaVideo extends React.Component{
 
                     </CardItem>
                 </Card>
-
-                 {/* <View style={{justifyContent:'space-around',marginTop:'3%' ,flexDirection:'row', height:35}}>
-                    {this.cambiarCorazon()}
-                    <TouchableOpacity onPress={() => navigation.navigate('ComentariosIdeas', {idea: idea })}>
-                      <Text>
-                        <Ionicons name="md-text" size={30}/>
-                      </Text>
-                    </TouchableOpacity> 
-                    {this.cambiarBoton()}
-                    <TouchableOpacity>
-                        <Text> <Ionicons name="md-share" size={30} /> </Text>   
-                    </TouchableOpacity>
-                  </View>*/}
-             
                 <Text style={globalStyle.titleStyle}>Descripción</Text>
                 <Text style={globalStyle.textStyle}>{idea.texto}</Text>
-
-               {/*<Text style={globalStyle.titleStyle}>Pasos</Text>*/}
-
-            </ScrollView>
-         
-
-
-
-
-         
+            </ScrollView>                  
         );
     }
 
@@ -187,6 +159,8 @@ class IdeaVideo extends React.Component{
 
 }
 
+const widthConst = Dimensions.get('screen').width;
+const heightConst = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
     container: {
         flex: 1,

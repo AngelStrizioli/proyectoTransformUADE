@@ -13,14 +13,6 @@ export default class SignUp extends React.Component {
 		};
 		this.showPass = this.showPass.bind(this);
   }
-  /*
-  static navigationOptions = {
-    title: 'Registrarse',
-    drawerIcon: ({ focused }) => (
-      <Ionicons name="md-contact" size={24} color={focused ? themeMainColor : 'black'} />
-    )
-  };
-*/
   handleSignUp = () => {
     //FIREBASE AUTHENTICIATION STUFF
     console.log("handled signup");

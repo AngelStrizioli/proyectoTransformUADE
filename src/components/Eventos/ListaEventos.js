@@ -6,7 +6,13 @@ import globalStyles, { globalStyle,footerContent } from '../../styles/globalStyl
 import { Divider } from 'react-native-elements';
 
 export default class listaEventos extends Component {
+  static navigationOptions = {
+    title: 'Eventos',
+   drawerIcon: ({ focused }) => (
+      <Ionicons name="md-bulb" size={24} color={focused ? themeMainColor : 'black'} />
+    ),
 
+  };
     constructor(props){
         super(props);
         this.state={eventos: [], cargado: false};

@@ -14,14 +14,7 @@ export default class Login extends React.Component {
 		};
 		this.showPass = this.showPass.bind(this);
   }
-  /*
-  static navigationOptions = {
-    title: 'Iniciar Sesion',
-    drawerIcon: ({ focused }) => (
-      <Ionicons name="md-contact" size={24} color={focused ? themeMainColor : 'black'} />
-    )
-  };
-  */
+
   handleLogin = () => {
     firebaseAuth.signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => this.props.navigation.navigate('Main'))

@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Ionicons } from '@expo/vector-icons';
-import { View, ScrollView, Button, Text, Dimensions, StyleSheet, Image} from 'react-native';
+import { View, ScrollView, Text, Dimensions, StyleSheet, Image} from 'react-native';
 import { themeMainColor } from "../styles/globalStyles";
-import Login from '../screens/Login'
 import PerfilUsuario from './PerfilUsuario';
 import { withNavigation } from 'react-navigation'
 
@@ -20,7 +18,7 @@ class MiCuenta extends React.Component {
             if(this.state.userLoged === false){
             const { navigation } = this.props;
               return(
-                <ScrollView >
+                <View >
                     <View style={styles.container}>
                     <Image source={require('../assets/images/splashGreenToo2.png')} style={{
                       width: 1000, 
@@ -36,13 +34,13 @@ class MiCuenta extends React.Component {
                         <Text style={styles.signupBtn}> Registrarse </Text>
                     </TouchableOpacity>
                     </View>
-                </ScrollView>
+                </View>
               );
             }else{
               return(
-                <ScrollView>
+                <View>
                     <PerfilUsuario/>
-                </ScrollView>
+                </View>
               )
             }
           }

@@ -180,6 +180,7 @@ class MaterialCompleto extends React.Component{
     tipoMaterial:{
         fontSize:14,
         //marginTop:'5%'
+        textAlign: 'center',
     },
     imgStyle:{
       height: 50,

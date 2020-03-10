@@ -159,8 +159,6 @@ class IdeaVideo extends React.Component{
 
 }
 
-const widthConst = Dimensions.get('screen').width;
-const heightConst = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
     container: {
         flex: 1,

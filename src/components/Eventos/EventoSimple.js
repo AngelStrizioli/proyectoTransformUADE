@@ -111,8 +111,7 @@ class EventoSimple extends React.Component {
     );
   }
 }
-const widthConst = Dimensions.get('screen').width;
-const heightConst = Dimensions.get('screen').height;
+
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,

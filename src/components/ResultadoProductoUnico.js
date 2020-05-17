@@ -27,7 +27,7 @@ class ResultadoProductoUnico extends React.Component {
                 )
               })}
           <Text style={globalStyle.titleStyle}>Ideas para transformar</Text>
-          <ListaIdeasById  id={producto.id} name={producto.name} navigation={this.props.navigation}></ListaIdeasById> 
+          <ListaIdeasById  id={producto.id} navigation={this.props.navigation}></ListaIdeasById> 
         </ScrollView>
  
         );

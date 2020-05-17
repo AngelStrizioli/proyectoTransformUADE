@@ -19,18 +19,6 @@ class ComentariosEventos extends React.Component {
    
 }
 
-  renderBlocks(evento) {
-    if (evento.blocks != undefined) {
-      return evento.blocks.map((block, i) => {
-        return (
-          <View key={i}>
-            <Text style={styles.subtitleStyle}>{block.subtitle}</Text>
-            <Text style={styles.textStyle}>{block.text}</Text>
-          </View>
-        )
-      })
-    }
-  }
 
   _renderComment(){
    return(
@@ -42,9 +30,9 @@ class ComentariosEventos extends React.Component {
  
   onClickListener(evento){
     let data = {
-      id: evento.id,
-      texto: this.state.textoComentado,
-      usuario: "Usuario", //harcodeado hasta que usemos usuarios reales
+      event_id: evento.id,
+      text: this.state.textoComentado,
+      user_id: "Usuario", //harcodeado hasta que usemos usuarios reales
     }
      ApiController.pushCommentEvent(data, this.handleUpdate.bind(this));
      this.setState({
@@ -57,7 +45,7 @@ class ComentariosEventos extends React.Component {
     const { navigation } = this.props;
     const evento = navigation.getParam('evento', {});
     let data = {
-      id : evento.id
+      event_id : evento.id
     }
     ApiController.getCommentsEvents(data, this.handleComments.bind(this))
   }
@@ -79,7 +67,7 @@ class ComentariosEventos extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <ImageBackground
-          source={{ uri: evento.img }}
+          source={{ uri: evento.image }}
           style={styles.backgroundImage}>
           <View style={styles.tittleContainer}>
             <View style={styles.backButtonView}>
@@ -89,7 +77,7 @@ class ComentariosEventos extends React.Component {
             </View>
             <View style={styles.fechaPosition}>
               <Ionicons style={styles.fechaIcon} name="md-calendar" size={18} color={'white'} />
-              <Text style={styles.fechaText}>{evento.fecha}</Text>
+              <Text style={styles.fechaText}>{evento.date}</Text>
             </View>
           </View>
         </ImageBackground>

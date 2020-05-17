@@ -26,6 +26,10 @@ const urlGetTags = "api/getTags"
 const urlGetProductsByName = "api/getProductsByName"
 const urlGetPostsByProduct = "api/getPostsByProduct"
 const urlGetPosts = "api/getPosts"
+const urlAddCommentEvent = "api/addCommentToEvent"
+const urlGetEventComments = "api/getEventComments"
+const urlAddCommentPost = "api/addCommentToPost"
+const urlGetPostComments = "api/getPostComments"
 
 class ApiController extends Component
 {
@@ -192,8 +196,8 @@ class ApiController extends Component
     }
     */
     
-    pushCommentEvent(data,DevolverDatos){
-        const endpoint = `${url}${urlPushCommentEvent}`;
+    pushCommentEvent(data, DevolverDatos){
+        const endpoint = `${urlSql}${urlAddCommentEvent}`;
        fetch(endpoint,{
             method: 'POST', // or 'PUT'
             mode: "cors",
@@ -208,7 +212,7 @@ class ApiController extends Component
     }
 
     pushCommentPost(data,DevolverDatos){
-        const endpoint = `${url}${urlPushCommentPost}`;
+        const endpoint = `${urlSql}${urlAddCommentPost}`;
        fetch(endpoint,{
             method: 'POST', // or 'PUT'
             mode: "cors",
@@ -224,7 +228,7 @@ class ApiController extends Component
 
     getCommentsEvents(data,DevolverDatos)
     {
-        const endpoint = `${url}${urlGetCommentsEvent}`;
+        const endpoint = `${urlSql}${urlGetEventComments}`;
        fetch(endpoint,{
             method: 'POST', // or 'PUT'
             mode: "cors",
@@ -240,7 +244,7 @@ class ApiController extends Component
 
     getCommentsPost(data,DevolverDatos)
     {
-        const endpoint = `${url}${urlGetCommentsPost}`;
+        const endpoint = `${urlSql}${urlGetPostComments}`;
        fetch(endpoint,{
             method: 'POST', // or 'PUT'
             mode: "cors",

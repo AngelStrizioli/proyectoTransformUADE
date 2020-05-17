@@ -13,80 +13,26 @@ import { themeMainColor } from '../styles/globalStyles';
 class MaterialEsReciclable extends React.Component{
   constructor(props){
     super(props);
-    this.state ={ 
+    this.state = { 
     }
-  }
-  ObtenerDatosProd(newData){
-    
-    this.setState({ productos: newData })
-    this.props.navigation.navigate('MaterialCompleto',  {productos:this.state.productos,material:  this.props.material , titleProd: this.props.colorTitle})
-  }
-  onClickListener = (id) => { 
-    // funcion que llama al back para traer los productos cuando apretas el boton
-    //console.log("props",this.props);
-    let data = {
-      id: id
-    }
-    ApiController.getProductosByMaterial(data,this.ObtenerDatosProd.bind(this));
-    
   }
     
     render(){
       const { navigation } = this.props;
-      const materiales =this.props.materiales;
       const colorTitle = this.props.colorTitle
-      const material = this.props.material;
-      
-
-      const logoMaterial = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
-        //esto vuela cuando le pongamos los logos a los materiales en la bd
-
-      const urlReciclable = 'https://i.imgur.com/b2SVI7V.png';
-      const urlWarning = 'https://i.imgur.com/fqPjNqa.png';
-      const urlNoReciclable = 'https://i.imgur.com/R6WMDPY.png';
-        //cambiar estas const por los logos reales cuando esten terminados
-
-      let imagenLogo;
-      let colorTexto;
-      let icono;
-
-      switch(material.esReciclable){
-        case 1: 
-        imagenLogo = urlReciclable;
-        tituloPag = '¡Es reciclable!';
-        colorTexto = '#10E126';
-        icono = 'md-checkmark';
-        break;
-        case 2: 
-        imagenLogo = urlWarning;
-        tituloPag = '¡Con cuidado!';
-        colorTexto = '#FAAF2E';
-        icono = 'md-warning'
-        break;
-        case 3: 
-        imagenLogo = urlNoReciclable;
-        tituloPag = '¡No es reciclable!'
-        colorTexto = '#FE0000';
-        icono = 'md-close';
-        break;
-      }
-
-        //esto es lo que hay que cambiar si decidimos hacer mas categorias (hay un verde y un rojo, si decidimos 
-        //meter un amarillo o varios distintos solo hay que cambiar como se decide la variable imagenLogo)
-        {console.log("cant: "+materiales)}
-        console.log(material.id);
+      const { material } = this.props;
         
           return(
             <View> 
-              <TouchableOpacity style={styles.containerMaterial} onPress={() => { this.onClickListener(material.id) }}>
+              <TouchableOpacity style={styles.containerMaterial} onPress={() => { navigation.navigate('MaterialCompleto',  {material:  material}) }}>
                   <Grid>
                     <Row>
 
-                      <Col size={10} style={{}}>
-                        <Image title='Icono Material' source={{ uri: (logoMaterial) }} style={{height: 50, width: 50}} />
+                      <Col size={10}>
+                        <Image title='Icono Material' source={{ uri: material.logo }} style={{height: 50, width: 50}} />
                         </Col>
                         <Col size={30} style={{}}>
-                         <Text style={{fontSize:14,marginTop:'9%' ,textAlign:'left', color: themeMainColor, marginLeft:'3%'}}>{material.nombre}</Text>
+                         <Text style={{fontSize:14,marginTop:'9%' ,textAlign:'left', color: themeMainColor, marginLeft:'3%'}}>{material.name}</Text>
                          </Col>
                          <Col size={10} style={{marginTop:'4%', alignItems:'flex-end'}}> 
                           <Ionicons name="md-arrow-round-forward" size={30} color={'black'} />
@@ -105,13 +51,6 @@ class MaterialEsReciclable extends React.Component{
 
   const styles = StyleSheet.create({
     
-    containerImage:{
-      flexDirection: 'row',
-      //justifyContent:'space-between',
-      //width:'100%',
-
-      //marginBottom: '5%'
-    },
     textStyle:{
       //padding:'4%',
       fontSize:18,
@@ -130,36 +69,6 @@ class MaterialEsReciclable extends React.Component{
       width:'100%',
       
     },
-    botonDebug:{
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      //borderColor: "black",
-      //borderWidth: 1,
-      backgroundColor: themeMainColor,
-      marginTop: '17%',
-      elevation: 2,
-      shadowColor: 'rgba(0,0,0, .4)', 
-      shadowOffset: { height: 5, width: 5 }, 
-      shadowOpacity: 5, 
-      shadowRadius: 2,
-      borderRadius: 100,
-      height: 41,
-      width: 41
-    },
-    botonLargo:{
-      backgroundColor: themeMainColor,
-      elevation: 2,
-      shadowColor: 'rgba(0,0,0, .25)', 
-      shadowOffset: { height: 3, width: 3 }, 
-      shadowOpacity: 1, 
-      shadowRadius: 2,
-      borderRadius: 70,
-      justifyContent:'center',
-      textAlignVertical: 'center',
-      alignSelf: 'center',
-      width: 250,
-      height: 50,
-    }
 
      
   })

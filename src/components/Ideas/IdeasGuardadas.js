@@ -9,6 +9,9 @@ import { Divider } from 'react-native-elements';
 import { themeMainColor, globalStyle } from '../../styles/globalStyles';
 
 
+//CAMBIAR PARA ADAPTAR A LAS IDEAS DE LA BD SQL EN CASO DE VOLVER A USAR
+
+
 /* ### PÁGINA PARA VER TODAS LAS IDEAS GUARDADAS POR EL USUARIO ###
     En prototipo: Todavía no está. */
 class IdeasGuardadas extends React.Component{

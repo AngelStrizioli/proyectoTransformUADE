@@ -13,60 +13,29 @@ export default class CategoriasCards extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            categorias: [ {
-                title: "Plástico",
-                img: "https://i.imgur.com/fCmH0nQ.png",
-                backgroundColor:plasticoColor,
-            },{
-                title: "Papel",
-                img: "https://i.imgur.com/OG1RVGW.png",
-                backgroundColor:papelColor,
-            }, {
-                title: "Vidrio",
-               img: "https://i.imgur.com/1VeQWb5.png",
-                backgroundColor:vidrioColor,
-            }, {
-                title: "Pilas y baterías",
-                img: "https://i.imgur.com/cbiuZXa.png",
-                backgroundColor:pilaColor,
-            }, {
-                title: "Metales",
-                img: "https://i.imgur.com/UKPPz8D.png",
-                backgroundColor:metalColor,
-            }, {
-                title: "Textiles",
-                img: "https://i.imgur.com/yfkEpxU.png",
-                backgroundColor:textilColor,
-            }, {
-                title: "Electrónica",
-                img: "https://i.imgur.com/0sIAH6f.png",
-                backgroundColor:electroColor,
-            }, {
-                title: "Orgánicos",
-                img: "https://i.imgur.com/gqCFXHJ.png",
-                backgroundColor:organicoColor,
-            }],
-            text: ""
+            categorias: []
         }
     }
 
-    buscarProductos(text) {
-        let data = {
-            name: text
-        }
-        this.setState({ text: text })
-        ApiController.getProductosByNombre(data, this.handleProducts.bind(this));
+    componentDidMount(){
+        ApiController.getCategories(this.handleCategories.bind(this))
     }
 
-    handleProducts(productos) {
-        if (productos.length > 0) {
+    handleCategories(listaCategorias){
+        this.setState({ categorias: listaCategorias});
+    }
+
+    verProductos(categoria){
+        if(categoria.products.length > 0){
             this.props.navigation.navigate('ResultadoProductoMultiple',
                 {
-                    productos: productos,
-                    busqueda: this.state.text,
+                    productos: categoria.products,
+                    categoria: categoria,
+                    tipoBusqueda: 1
                 })
         }
     }
+
 
     render() {
         if (this.state.categorias.length != 0) {
@@ -76,11 +45,11 @@ export default class CategoriasCards extends Component {
                         {this.state.categorias.map((categoria) => {
                             return (
 
-                               <View style={{width:width*0.20, marginHorizontal:'2%', marginVertical:'2%',}} key={categoria.title}>
-                                    <TouchableOpacity onPress={() => {this.buscarProductos(categoria.title)}}>
+                               <View style={{width:width*0.20, marginHorizontal:'2%', marginVertical:'2%',}} key={categoria.name}>
+                                    <TouchableOpacity onPress={() => {this.verProductos(categoria)}}>
                                         <View style={{alignItems:'center'}}>
-                                            <Image source={{uri: categoria.img}}  style={{borderRadius:25, backgroundColor:categoria.backgroundColor,height: width*0.12, width: width*0.12}} />
-                                            <Text style={{textAlign:'center', fontSize:12}}>{categoria.title} </Text>
+                                            <Image source={{uri: categoria.url_image}}  style={{borderRadius:25, backgroundColor: categoria.background_color,height: width*0.12, width: width*0.12}} />
+                                            <Text style={{textAlign:'center', fontSize:12}}>{categoria.name} </Text>
                                         </View>
                                     </TouchableOpacity>
                                     
@@ -92,7 +61,7 @@ export default class CategoriasCards extends Component {
                 </View>
             )
         } else {
-            return null;
+            return <Text>Cargando...</Text>;
         }
     }
 }

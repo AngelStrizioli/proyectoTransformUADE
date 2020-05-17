@@ -8,6 +8,7 @@ export default class CardIdeas extends Component {
 
     render() {
         const { navigation, idea } = this.props;
+        const imagen = "https://i.ytimg.com/vi_webp/PL83nBs5XL4/sddefault.webp" //CAMBIAR
         return (
 
             <Card key={idea.id} style={{
@@ -19,7 +20,7 @@ export default class CardIdeas extends Component {
             }}>
                 <CardItem cardBody button onPress={() => { navigation.navigate('IdeaSimple', { idea: idea }) }}>
                     <Body>
-                        <ImageBackground source={{ uri: idea.img }} style={{ height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }}>
+                        <ImageBackground source={{ uri: imagen }} style={{ height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }}>
 
                             <View style={{
                                 flex: 1,
@@ -42,7 +43,7 @@ export default class CardIdeas extends Component {
                                         textShadowOffset: { width: 1, height: 1 },
                                         textShadowRadius: 1,
                                         paddingLeft: '3%'
-                                    }}>{idea.titulo}</Text>
+                                    }}>{idea.title}</Text>
                                 </View>
 
                             </View>

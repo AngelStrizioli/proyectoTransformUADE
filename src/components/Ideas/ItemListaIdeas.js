@@ -17,20 +17,22 @@ class ItemListaIdeas extends React.Component{
       
     }
     componentWillMount(){
-      this.setState({idea:this.props.idea})
+      this.setState({idea: this.props.idea})
     }
   
     render(){
       const { navigation } = this.props;
       const idea = this.props.idea;
+
+      let imagen = "https://i.ytimg.com/vi_webp/PL83nBs5XL4/sddefault.webp"
       
       return(
         
         <View style={styles.container}>
           <TouchableWithoutFeedback  onPress= {()=> {navigation.navigate('IdeaSimple', {idea: idea});}}>
-          <ImageBackground  source={{uri: this.state.idea.img}} style={{height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }} >
+          <ImageBackground  source={{uri: imagen}} style={{height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }} >
           <View style={styles.containerItems}> 
-              <Text style={styles.textStyle}>{this.state.idea.titulo}</Text>
+              <Text style={styles.textStyle}>{this.state.idea.title}</Text>
             </View>
             </ImageBackground>
           </TouchableWithoutFeedback>

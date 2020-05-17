@@ -42,7 +42,7 @@ export default class CardsEventos extends Component {
                                     <CardItem cardBody  >
                                         <TouchableWithoutFeedback onPress={() => { navigation.navigate('EventoSimple', {evento: evento}) }}>
                                         <Body>
-                                            <ImageBackground source={{ uri: evento.img }} style={{ height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }}>
+                                            <ImageBackground source={{ uri: evento.image }} style={{ height: width * 0.7, width: width * 0.8, resizeMode: 'cover', flex: 1 }}>
 
                                                 <View style={{
                                                     flex: 1,

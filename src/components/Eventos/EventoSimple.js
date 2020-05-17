@@ -22,18 +22,7 @@ class EventoSimple extends React.Component {
    
 }
 
-  renderBlocks(evento) {
-    if (evento.blocks != undefined) {
-      return evento.blocks.map((block, i) => {
-        return (
-          <View key={i}>
-            <Text style={globalStyle.titleStyle}>{block.subtitle}</Text>
-            <Text style={globalStyle.textStyle}>{block.text}</Text>
-          </View>
-        )
-      })
-    }
-  }
+  
   _storeLikes = () =>{
 
     if (this.state.corazon == false){
@@ -71,13 +60,14 @@ class EventoSimple extends React.Component {
   }
   }
 
+  
   render() {
     const { navigation } = this.props;
     const evento = navigation.getParam('evento', {});
     return (
       <ScrollView >
         <ImageBackground
-          source={{ uri: evento.img }}
+          source={{ uri: evento.image }}
           style={styles.backgroundImage}>
           <View style={styles.tittleContainer}>
             <View style={styles.backButtonView}>
@@ -88,7 +78,7 @@ class EventoSimple extends React.Component {
             </View>
             <View style={styles.fechaPosition}>
               <Ionicons style={styles.fechaIcon} name="md-calendar" size={18} color={'white'} />
-              <Text style={styles.fechaText}>{evento.fecha}</Text>
+              <Text style={styles.fechaText}>{evento.date}</Text>
             </View>
           </View>
         </ImageBackground>
@@ -105,7 +95,7 @@ class EventoSimple extends React.Component {
               </TouchableOpacity>
           </CardItem>
         </Card>
-        {this.renderBlocks(evento)}
+          <Text style={styles.textStyle}>{evento.description}</Text>
         <Image source={{uri: 'https://i.imgur.com/RzquKLW.jpg'}} style={styles.mapa}/>
       </ScrollView>
     );

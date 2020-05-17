@@ -14,21 +14,20 @@ class SearchBar extends React.Component {
       }
     }
   
-    ObtenerDatosProd(newData) {
+    handleProducts(newData) {
       //console.log(newData)
       this.setState({ productos: newData })
       // aca empieza la navegacion
-      this.fetchObjetos
       if (this.state.productos.length > 1) {
         this.props.navigation.navigate('ResultadoProductoMultiple',
           {
             productos: this.state.productos,
             busqueda: this.state.nombreProducto,
-          
+            tipoBusqueda: 3          
           })
       } else {
         if (this.state.productos.length == 0) {
-          alert("no se encontraron productos con este nombre: " + this.state.nombreProducto)
+          alert("No se encontraron productos que coincidan con la búsqueda: " + this.state.nombreProducto)
         } else {
           this.props.navigation.navigate('ResultadoProductoUnico',
             { producto: this.state.productos[0] })
@@ -40,7 +39,7 @@ class SearchBar extends React.Component {
       let data = {
         name: this.state.nombreProducto
       }
-      ApiController.getProductosByNombre(data, this.ObtenerDatosProd.bind(this));
+      ApiController.getProductosByNombre(data, this.handleProducts.bind(this));
     }
   
     render() {

@@ -19,7 +19,7 @@ export default class ListaIdeas extends React.Component {
   //Leo los productos de la API BD
   componentDidMount() {
     let data = {
-      id: this.props.id
+      name: this.props.name
     }
     ApiController.getPosteosByProd(this.okBusqueda2.bind(this), data);
   }

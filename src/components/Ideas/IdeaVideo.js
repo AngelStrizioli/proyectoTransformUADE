@@ -24,11 +24,11 @@ class IdeaVideo extends React.Component{
         const { navigation } = this.props;
         const idea = this.props.idea;
         var video = this.props.idea.video_url;
-        var imagen = this.props.idea.img;
+        //var imagen = this.props.idea.img;
         return(
          
             <ScrollView style={styles.container}>     
-                <Text style={globalStyle.titleStyle}>{idea.titulo}</Text>
+                <Text style={globalStyle.titleStyle}>{idea.title}</Text>
                   <View style={{flex: 1}}>
                   <Video
                     source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
@@ -61,21 +61,21 @@ class IdeaVideo extends React.Component{
                     </CardItem>
                 </Card>
                 <Text style={globalStyle.titleStyle}>Descripción</Text>
-                <Text style={globalStyle.textStyle}>{idea.texto}</Text>
+                <Text style={globalStyle.textStyle}>{idea.text}</Text>
             </ScrollView>                  
         );
     }
 
     _storeData = async () => {
       try {
-        var found = await AsyncStorage.getItem(this.props.idea.id);
+        var found = await AsyncStorage.getItem(this.props.idea.id.toString());
         if (found === null) {
-          await AsyncStorage.setItem(this.props.idea.id,JSON.stringify(this.props.idea));
+          await AsyncStorage.setItem(this.props.idea.id.toString(),JSON.stringify(this.props.idea));
           console.log("Se guardo el item: " + this.props.idea.id);
           this.setState({guardado: true})
 
         } else {
-          await AsyncStorage.removeItem(this.props.idea.id);
+          await AsyncStorage.removeItem(this.props.idea.id.toString());
           console.log("Se elimino el item: " + this.props.idea.id);
           this.setState({guardado: false})
 
@@ -87,7 +87,7 @@ class IdeaVideo extends React.Component{
 
     _isStored = async () => {
       try {
-        var found = await AsyncStorage.getItem(this.props.idea.id);
+        var found = await AsyncStorage.getItem(this.props.idea.id.toString());
         if (found === null) {
           this.setState({guardado: false})
           //console.log(this.state.guardado)

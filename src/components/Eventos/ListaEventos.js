@@ -37,7 +37,7 @@ export default class listaEventos extends Component {
                
                 return(
 
-                  <ItemListaEventos key={i} backgroundImage={evento.img} evento={evento} navigation={this.props.navigation}/>
+                  <ItemListaEventos key={i} backgroundImage={evento.image} evento={evento} navigation={this.props.navigation}/>
 
                   )
               })

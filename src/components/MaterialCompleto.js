@@ -5,19 +5,21 @@ import ReciclableSioNo from './ReciclableSioNo';
 import ApiController from '../controller/ApiController'
 import ItemResultadoProducto from './ItemResultadoProducto'
 
+
+
 import { themeMainColor, globalStyle, plasticoColor,papelColor,vidrioColor,pilaColor,metalColor,textilColor,electroColor, organicoColor } from '../styles/globalStyles';
 class MaterialCompleto extends React.Component{
   constructor(props){
     super(props);
     this.state ={ 
       materialColor: [ {
-        title: "Plástico PET",
-        titleColor:plasticoColor,
+        title: "Plástico P.E.T.",
+        titleColor: plasticoColor,
     },{
       title: "Plástico P.P.",
-      titleColor:plasticoColor,
+      titleColor: plasticoColor,
     },{
-      title: "Plástico H.D.P.E",
+      title: "Plástico H.D.P.E.",
       titleColor:plasticoColor,
     },{
       title: "Otros Plásticos",
@@ -35,7 +37,7 @@ class MaterialCompleto extends React.Component{
         title: "Pilas y baterías",
         titleColor: pilaColor
     }, {
-        title: "Metales",
+        title: "Metal",
         titleColor: metalColor
     }, {
         title: "Textiles",
@@ -58,24 +60,20 @@ class MaterialCompleto extends React.Component{
     }
   }
   
+  renderItems(material){
+    let items = material.items.split(' | ');
+    return(
+      items.map(item => {return (
+        <Text key={item} style={styles.listTextStyle}> »          {item}</Text>)})
+    )
+  }
   
-  /*FALTA:
-  -Usar correctamente los campos del json que llega en el array materiales
-   */
     render(){
         const { navigation } = this.props;
-        //material original
-        var material = navigation.getParam('material', {});
-        var productos = navigation.getParam('productos', []);
-        var nombre = material.nombre;
-        var texto = material.texto;
-        var logo = material.logo == 'url_logo' ?  "https://images-na.ssl-images-amazon.com/images/I/31EAAncqIwL._SX425_.jpg" : material.logo;
-        //reciclable original
-        esReciclable=material.esReciclable
-        var descartes=material.comoReciclar
-        const titleProd = navigation.getParam('titleProd', {})
-        const titleColor = titleProd
-        const colorMateriales = this.state.materialColor.find(colorMateriales => colorMateriales.title === material.nombre)
+        let material = navigation.getParam('material', {})        
+
+
+        const colorMateriales = this.state.materialColor.find(colorMateriales => colorMateriales.title === material.name)
 
 
         const urlReciclable = 'https://i.imgur.com/gagua5h.png';
@@ -86,24 +84,21 @@ class MaterialCompleto extends React.Component{
         const urlWarningGris = 'https://i.imgur.com/XeHAsid.png';
         const urlNoReciclableGris = 'https://i.imgur.com/Lror3pS.png';
 
-        let imagenLogo;
-        let tituloPag;
-        switch(material.esReciclable){
+        let logo1, logo2, logo3;
+
+        switch(material.isRecyclable){
             case 1: 
             logo1 = urlReciclable;
-            tituloPag = '¡Es reciclable!';
             logo2= urlNoReciclableGris;
             logo3= urlWarningGris
             break;
             case 2: 
             logo3 = urlWarning;
-            tituloPag = '¡Cuidado!'
             logo1= urlReciclableGris;
             logo2= urlNoReciclableGris;
             break;
             case 3: 
             logo2 = urlNoReciclable;
-            tituloPag = '¡No es reciclable!'
             logo1= urlReciclableGris;
             logo3= urlWarningGris
             break;
@@ -116,23 +111,13 @@ class MaterialCompleto extends React.Component{
             
             <Text style={{ color: colorMateriales.titleColor , margin:'5%', fontWeight: 'bold', fontSize: 18}}>
             
-                {nombre}
+                {material.name}
 
             </Text>
-            
-          
-           {/* <Image title='Icono Material' source={{uri: logo}} style={{ height: 160, width: 160, alignSelf: 'center' }} />*/}
-            
+                        
             <Text style={globalStyle.textStyle}>
-              {texto}
+               {material.description}
             </Text>
-            {/*}
-            <Text style={styles.subtitleStyle}>
-              Se encuentra en...
-            </Text>
-            <View style={{marginLeft: '6%'}}>
-              {productos.map((producto) =>{return(<ItemResultadoProducto  key={producto.id} titulo = {producto.nombre} producto={producto} navigation={this.props.navigation}/>)})}
-            </View>*/}
            
           <View style={{flexDirection:'row',justifyContent:'space-around', marginTop:'5%'}}>
               <View style={{alignItems:'center'}}>
@@ -151,9 +136,7 @@ class MaterialCompleto extends React.Component{
           
           <Text style={globalStyle.titleStyle}>Cómo descartarlo</Text>
           <View style={globalStyle.textStyle}>
-            {descartes.map((descarte)=>{return (
-              <Text key={descarte} style={styles.listTextStyle}> »  
-              {descarte}</Text>)})}
+            {this.renderItems(material)}
           </View>
         </ScrollView>
       );

@@ -3,6 +3,9 @@ import {Component} from 'react';
 const url ="https://sipi-transform.herokuapp.com/";
 //const urlLocal = "http://192.168.0.10:8080/"
 
+const urlSql = "https://transform-ceeef.appspot.com/"
+
+//Heroku
 const urlGetProductosByNombre="transform/getProductosByTagAndName";
 const urlGetPosteos="transform/getPosteos";
 const urlGetPosteosByProd="transform/getPosteosByProd?id=";
@@ -15,13 +18,21 @@ const urlPushCommentPost = "transform/commentPost"
 const urlGetCommentsEvent = "transform/getEventComments"
 const urlGetCommentsPost = "transform/getPostComments"
 
+//Sql
+const urlGetEvents = "api/getEvents"
+const urlGetMaterials = "api/getMaterials"
+const urlGetCategories = "api/getCategories"
+const urlGetTags = "api/getTags"
+const urlGetProductsByName = "api/getProductsByName"
+const urlGetPostsByProduct = "api/getPostsByProduct"
+const urlGetPosts = "api/getPosts"
 
 class ApiController extends Component
 {
    
     getProductosByNombre(data,DevolverDatos)
     {
-        const endpoint = `${url}${urlGetProductosByNombre}`;
+        const endpoint = `${urlSql}${urlGetProductsByName}`;
         console.log("Buscando", data.name)
         //console.log(data);
        fetch(endpoint,{
@@ -39,7 +50,7 @@ class ApiController extends Component
 
     getPosteos(okBusqueda)
     {
-        const endpoint = `${url}${urlGetPosteos}`;
+        const endpoint = `${urlSql}${urlGetPosts}`;
         console.log("Buscando posteos")
        fetch(endpoint,{
             method: 'GET', // or 'PUT'
@@ -57,7 +68,7 @@ class ApiController extends Component
 
     getPosteosByProd(okBusqueda2, data)
     {
-        const endpoint = `${url}${urlGetPosteosByProd}`;
+        const endpoint = `${urlSql}${urlGetPostsByProduct}`;
         console.log("Buscando posteos")
        fetch(endpoint,{
             method: 'POST', // or 'PUT'
@@ -76,7 +87,7 @@ class ApiController extends Component
 
     getMateriales(okBusqueda3)
     {
-        const endpoint = `${url}${urlGetMateriales}`;
+        const endpoint = `${urlSql}${urlGetMaterials}`;
         console.log("Buscando materiales")
        fetch(endpoint,{
             method: 'GET', // or 'PUT'
@@ -86,12 +97,13 @@ class ApiController extends Component
             //console.log("response",response);
             return response.json();
         }).then (responseData => {
-                //console.log(responseData);
+                console.log(responseData);
                 console.log("Recibi datos");
                 okBusqueda3(responseData);
         });
     }
 
+    /*
     getProductosByMaterial(data,DevolverDatos)
     {
         const endpoint = `${url}${urlGetProductosByMaterial}`;
@@ -109,9 +121,9 @@ class ApiController extends Component
                 DevolverDatos(responseData);
         });
     }
-
+*/
     getEventos(devolverDatos){
-        const endpoint = `${url}${urlGetEventos}`;
+        const endpoint = `${urlSql}${urlGetEvents}`;
         console.log("Buscando eventos")
        fetch(endpoint,{
             method: 'GET', // or 'PUT'
@@ -127,6 +139,41 @@ class ApiController extends Component
         });
     }
 
+    getCategories(devolverDatos){
+        const endpoint = `${urlSql}${urlGetCategories}`;
+        console.log("Buscando categorías")
+       fetch(endpoint,{
+            method: 'GET',
+            mode: "cors",
+            headers:{ 'Content-Type': 'application/json'},
+       }).then ((response) => {
+            //console.log("response",response);
+            return response.json();
+        }).then (responseData => {
+                //console.log(responseData);
+                console.log("Recibi datos");
+                devolverDatos(responseData);
+        });
+    }
+
+    getTags(devolverDatos){
+        const endpoint = `${urlSql}${urlGetTags}`;
+        console.log("Buscando tags")
+       fetch(endpoint,{
+            method: 'GET',
+            mode: "cors",
+            headers:{ 'Content-Type': 'application/json'},
+       }).then ((response) => {
+            //console.log("response",response);
+            return response.json();
+        }).then (responseData => {
+                console.log(responseData);
+                console.log("Recibi datos");
+                devolverDatos(responseData);
+        });
+    }
+
+    /*
     getPopularProducts(devolverDatos){
         const endpoint = `${url}${urlGetPopularProd}`;
         console.log("Buscando productos")
@@ -143,6 +190,7 @@ class ApiController extends Component
                 devolverDatos(responseData);
         });
     }
+    */
     
     pushCommentEvent(data,DevolverDatos){
         const endpoint = `${url}${urlPushCommentEvent}`;

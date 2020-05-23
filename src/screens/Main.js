@@ -30,7 +30,7 @@ import ComentariosIdeas from '../components/Ideas/ComentariosIdeas'
 import Conciencia from '../components/Conciencia'
 import CardsEventos from '../components/Eventos/CardsEventos'
 import {Container, Footer, FooterTab, } from 'native-base'
-
+import CategoriasScroll from '../components/CategoriasScroll'
 import { globalStyle, themeMainColor, tagsStyles } from "../styles/globalStyles";
 import * as Font from 'expo-font';
 import { withNavigation } from 'react-navigation';
@@ -112,7 +112,7 @@ class Main extends React.Component {
           <Conciencia />
           <Text style={globalStyle.titleStyle}>Eventos</Text>
           <CardsEventos navigation={this.props.navigation}></CardsEventos>
-
+         
         </ScrollView>
        {/*} <FooterMain />*/}
 
@@ -250,13 +250,6 @@ const ContainerListaEventos = createStackNavigator({
   }
 });
 
-
-
-
-
-
-
-
 const Tab = createBottomTabNavigator({
   bootRoot:{
     screen:bootRoot, 
@@ -370,8 +363,6 @@ const ContainerInstructivo = createStackNavigator({
     headerTintColor:('white'),}
   }
 })
-
-
 const DrawerRight = createDrawerNavigator({ 
   Inicio:{
     screen: Tab,

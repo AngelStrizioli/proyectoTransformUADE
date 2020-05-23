@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet } from 'react-native';
-
+import { Text, View, ScrollView, StyleSheet,Dimensions } from 'react-native';
+import CategoriasScroll from './CategoriasScroll'
 import ItemResultadoProducto from './ItemResultadoProducto'
 import { themeMainColor, plasticoColor, papelColor, vidrioColor, pilaColor, metalColor, textilColor, electroColor, organicoColor } from '../styles/globalStyles';
-
+const { width } = Dimensions.get('window');
 
 
 class ResultadoProductoMultiple extends React.Component {
@@ -19,7 +19,7 @@ class ResultadoProductoMultiple extends React.Component {
   renderTitle(tipoBusqueda, categoria, tag, busqueda) {
     if (tipoBusqueda == 1) {
       return (
-        <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
           <Text style={{ color: categoria.background_color, fontSize: 18, fontWeight: 'bold', alignSelf: 'center', textAlignVertical: 'center' }}>{categoria.name}</Text>
         </View>
       )
@@ -57,6 +57,9 @@ class ResultadoProductoMultiple extends React.Component {
 
     return (
       <View style={styles.container}>
+        <View style={{ height:width*0.18, marginTop:10 }}> 
+          <CategoriasScroll navigation={this.props.navigation} titulo={categoria.name} />
+        </View>
         <ScrollView>
 
           {this.renderTitle(tipoBusqueda, categoria, tag, busqueda)}
